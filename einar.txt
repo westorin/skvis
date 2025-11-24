@@ -1,4 +1,8 @@
 einar
- git commit -m "test1.001" 
+
+git pull
+git add {Filename}
+git commit -m "{name of change}" 
+git push
 
 AAAAAAAAAAAAAAAAAAHHHHHHHHhh
