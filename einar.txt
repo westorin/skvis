@@ -1,4 +1,4 @@
 einar
-
+ git commit -m "test1.001" 
 
 AAAAAAAAAAAAAAAAAAHHHHHHHHhh
