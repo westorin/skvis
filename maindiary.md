@@ -28,3 +28,18 @@ Staða á hópnum: Mæting hefur verið slök og hópurinn hefur ekki fengið
 tækifæri til að hittast allir saman. Erum að reyna gera það sem hægt 
 er að gera þangað til. Hingað til er það að ganga vel og er staða 
 nokkurn veginn samkvæmt áætlun.
+
+
+26/11/2025
+Mæting:
+Staða á verkefni:
+
+ToDo:
+Gera samning
+Gera Git handbók
+Skipta requirement list í functional og non-functional
+Use case
+Lofi prototype
+Class diagram
+State Diagrams?
+
