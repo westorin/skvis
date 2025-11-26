@@ -23,6 +23,7 @@ X - User group analysis
 X - Requirement list
 Í vinnslu - Use case
 Í vinnslu - Lofi prototype
+Happy Paths
 Class diagram
 Skoða hvort við þurfum State Diagrams
 
@@ -46,6 +47,7 @@ Gera Git handbók
 X - Skipta requirement list í functional og non-functional
 X - Use case
 Í vinnslu - Lofi prototype
+Happy Paths
 X - Class diagram
 State Diagrams?
 
@@ -55,5 +57,16 @@ er langt komin. Krisján tók þátt að heiman og græjaði Class Diagrams.
 
 -----------------------------------------------------------------------
 
-27/11/2025 - 
+27/11/2025 - [tími]
+Mæting:
+Staða á verkefni:
 
+ToDo:
+Gera samning
+Gera Git handbók
+Lofi prototype
+Happy Paths
+State Diagrams?
+"Tests or method of testing requirements (when applicable)." - spyrja út í þetta, eigum við að gera notendaprófanir?
+
+Staða á hópnum:
