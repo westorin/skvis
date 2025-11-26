@@ -1,3 +1,4 @@
+** Lesist betur undir "Code" flipanum **
 diary
 #Hópur 20/22
 24/11/2025 - 12:00
