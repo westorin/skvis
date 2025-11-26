@@ -8,6 +8,7 @@ alla í sama repo á github. Ræddum saman hvað verkefnið snýst um
 og hvernig verkefnaflæðið er skipulaggt.
 Þeir sem mættu: Kristján, Einar, Bragi, Bjarki, Halldór og Þorvaldur
 
+-----------------------------------------------------------------------
 
 25/11/2025 - 9:40
 Mæting: Halldór og Einar
@@ -27,19 +28,31 @@ Skoða hvort við þurfum State Diagrams
 Staða á hópnum: Mæting hefur verið slök og hópurinn hefur ekki fengið 
 tækifæri til að hittast allir saman. Erum að reyna gera það sem hægt 
 er að gera þangað til. Hingað til er það að ganga vel og er staða 
-nokkurn veginn samkvæmt áætlun.
+nokkurn veginn samkvæmt áætlun. Það er orðið staðfest að við erum
+hópur 22 og hópmeðlimir eru: Halldór, Einar, Kristján og Ivor.
 
+-----------------------------------------------------------------------
 
-26/11/2025
-Mæting:
-Staða á verkefni:
+26/11/2025 - 9:30
+Mæting: Halldór og Einar (Kristján online)
+Staða á verkefni: Erum búnir með notendahópagreininguna og kröfulista. 
+Erum að vinna í lofi frumgerðinni, use case og class diagrams. Þurfum að 
+fara gera samninginn og Git handbók líka en það vantar aftur upp á mætingu.
 
 ToDo:
 Gera samning
 Gera Git handbók
-Skipta requirement list í functional og non-functional
-Use case
-Lofi prototype
-Class diagram
+X - Skipta requirement list í functional og non-functional
+X - Use case
+Í vinnslu - Lofi prototype
+X - Class diagram
 State Diagrams?
+
+Staða á hópnum: Erum langt komnir með verkefnið. Notendahópagreining, 
+Kröfulistinn, Use Case og Class Diagrams er allt klárt. Lofi prototípan 
+er langt komin. Krisján tók þátt að heiman og græjaði Class Diagrams.
+
+-----------------------------------------------------------------------
+
+27/11/2025 - 
 
