@@ -1,8 +1,0 @@
-einar
-
-git pull
-git add {Filename}
-git commit -m "{name of change}" 
-git push
-
-AAAAAAAAAAAAAAAAAAHHHHHHHHhh
