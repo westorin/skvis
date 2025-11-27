@@ -1,11 +1,5 @@
 # skvis
-þetta er nytt
 
-þetta kemur a vefsiðuna
-
-sælir drengir
-
-
-annað test boys
-
-test
+Verkefnið snýst um að hanna og smíða hugbúnað sem heldur utan um rafíþróttamót — 
+skrá leikmenn og lið, búa til mót og leikjadagskrá, skrá úrslit og sýna stöðu og 
+upplýsingar á notendavænan hátt.
