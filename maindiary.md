@@ -57,9 +57,13 @@ er langt komin. Krisján tók þátt að heiman og græjaði Class Diagrams.
 
 -----------------------------------------------------------------------
 
-27/11/2025 - [tími]
-Mæting:
-Staða á verkefni:
+27/11/2025 - 9:00
+Mæting: Kristján, Einar og Halldór (fór snemma)
+Staða á verkefni: Verkefnið gengur vel. Eigum eftir að klára lofi 
+frumgerðina en hún er langt komin og við búumst við að hún verði
+orðin klár í lok dags. Þegar frumgerðin er tilbúin þá gerum
+við happy paths og klárum að útbúa skýrsluna svo að hún sé klár
+fyrir skil á morgun.
 
 ToDo:
 Gera samning
@@ -67,6 +71,7 @@ Gera Git handbók
 Lofi prototype
 Happy Paths
 State Diagrams?
-"Tests or method of testing requirements (when applicable)." - spyrja út í þetta, eigum við að gera notendaprófanir?
+"Tests or method of testing requirements (when applicable)." - spyrja 
+út í þetta, eigum við að gera notendaprófanir?
 
 Staða á hópnum:
