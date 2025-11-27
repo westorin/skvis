@@ -31,7 +31,7 @@ https://desktop.github.com/download/
 1. Logga sig fyrst inn
 2. Clonea verkefnið (skvis)
 3. pulla seinustu uppfærslur (Mikilvægt)
-   \ (Valfrjálst VVV)
+   <br /> (Valfrjálst VVV)
 4. Opna skjalið í VSCode
 5. Breyta kóða/texta
 6. Commita í Github Desktop og bæta við skilaboðum
