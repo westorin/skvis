@@ -1,6 +1,7 @@
 # skvis
 
-![Logo](https://prnt.sc/IB5g2eAOOgpc)
+![Logo](https://prnt.sc/IB5g2eAOOgpc](https://github.com/user-attachments/assets/9de5f392-ac85-4d30-8775-ad18071313ad))
+<img width="1090" height="996" alt="ASCII Art Converter" src="https://github.com/user-attachments/assets/9de5f392-ac85-4d30-8775-ad18071313ad" />
 
                    *****         ***
                  *********************
