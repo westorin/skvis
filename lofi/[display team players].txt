@@ -1,6 +1,5 @@
-[display team players]
 
-| {tournament name} team players |
+														| {tournament name} team players |
 
 
 		+-------------+---------------+--------------+ +-------------+---------------+--------------+ +-------------+---------------+--------------+
@@ -30,6 +29,6 @@
  		|             | {full name e} | {username e} | |             | {full name e} | {username e} | |             | {full name e} | {username e} |
  		+-------------+---------------+--------------+ +-------------+---------------+--------------+ +-------------+---------------+--------------+
 
-										| enter command |
+													| enter command |
 
-									| d. down | u. up | q. back |
+												| d. down | u. up | q. back |
