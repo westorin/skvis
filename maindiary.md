@@ -75,4 +75,3 @@ State Diagrams?
 út í þetta, eigum við að gera notendaprófanir?
 
 Staða á hópnum:
-já
