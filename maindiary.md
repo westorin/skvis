@@ -1,7 +1,9 @@
 ** Lesist betur undir "Code" flipanum **
 diary
-#Hópur 20/22
-24/11/2025 - 12:00
+
+# Hópur 20/22
+
+# 24/11/2025 - 12:00
 
 Hópurinn fannst en ekki rétti hópurinn. Fórum yfir efni saman
 þrátt fyrir að við vorum ekki allir í sama hóp. Kristján bætti
@@ -11,12 +13,14 @@ og hvernig verkefnaflæðið er skipulaggt.
 
 ---
 
-25/11/2025 - 9:40
+# 25/11/2025 - 9:40
+
 Mæting: Halldór og Einar
 Staða á verkefni: Dagbókin er klár en eigum eftir að gera samning
 (erum að bíða eftir að allur hópurinn hittist).
 
-ToDo:
+## ToDo:
+
 Gera samning
 Gera Git handbók
 X - User group analysis
@@ -35,13 +39,16 @@ hópur 22 og hópmeðlimir eru: Halldór, Einar, Kristján og Ivor.
 
 ---
 
-26/11/2025 - 9:30
-Mæting: Halldór og Einar (Kristján online)
+## 26/11/2025 - 9:30
+
+## Mæting: Halldór og Einar (Kristján online)
+
 Staða á verkefni: Erum búnir með notendahópagreininguna og kröfulista.
 Erum að vinna í lofi frumgerðinni, use case og class diagrams. Þurfum að
 fara gera samninginn og Git handbók líka en það vantar aftur upp á mætingu.
 
-ToDo:
+# ToDo:
+
 Gera samning
 Gera Git handbók
 X - Skipta requirement list í functional og non-functional
@@ -57,15 +64,18 @@ er langt komin. Krisján tók þátt að heiman og græjaði Class Diagrams.
 
 ---
 
-27/11/2025 - 9:00
-Mæting: Kristján, Einar og (Halldór (fór snemma))
+## 27/11/2025 - 9:00
+
+## Mæting: Kristján, Einar og (Halldór (fór snemma))
+
 Staða á verkefni: Verkefnið gengur vel. Eigum eftir að klára lofi
 frumgerðina en hún er langt komin og við búumst við að hún verði
 orðin klár í lok dags. Þegar frumgerðin er tilbúin þá gerum
 við happy paths og klárum að útbúa skýrsluna svo að hún sé klár
 fyrir skil á morgun.
 
-ToDo:
+# ToDo:
+
 / - Gera samning
 Gera Git handbók
 / - Lofi prototype
