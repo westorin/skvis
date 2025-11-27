@@ -1,0 +1,17 @@
+								| Update {team name} team |
+
+
+
+
+						+------------+-------------+------------+-------+-----+-------+--------+
+						|     id     | name        |  username  | phone | url | b-day | e-mail |
+						+------------+-------------+------------+-------+-----+-------+--------+
+						|            |             |            |       |     |       |        |
+						+------------+-------------+------------+-------+-----+-------+--------+
+
+
+
+
+								| enter {id/name/username/....} |
+	
+		|n. change name | us. change username | p. change phone | ur. change url | b. change | e. change email | q. back |
