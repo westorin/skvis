@@ -17,3 +17,7 @@ https://desktop.github.com/download/
 5. Breyta kóða/texta
 6. Commita í Github Desktop og bæta við skilaboðum
 7. Pusha uppfærslurnar þínar
+
+# Spurningar
+
+Ef það eru eitthverjar spurningar, endilega skjótið á okkar á Discordinu.
