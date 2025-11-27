@@ -1,6 +1,5 @@
-[game by game]
 
-											| {Tournament name} |
+														| {Tournament name} |
 
 
 
@@ -30,7 +29,7 @@
 
  
 							+--------------------------------------------------------------------------+
-                                                        |                            enter command                                 |
-						        +------------------------+---------------------+---------------------------+
-						        | d. to go down the list | u.to go up the list | q. to return to last page | 
+                        	|                            enter command                                 |
+						    +------------------------+---------------------+---------------------------+
+						    | d. to go down the list | u.to go up the list | q. to return to last page | 
 							+------------------------+---------------------+---------------------------+
