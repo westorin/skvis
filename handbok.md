@@ -1,9 +1,28 @@
 ## Github cmd:
 
-1. "git pull" #Fyrir nýjustu uppfærslur
-2. "git add {Filename}" #Bæta skjalinu við
-3. "git commit -m "{name of change}"" #Ready for send
-4. "git push" #Senda
+1. Fyrir nýjustu uppfærslur
+
+```bash
+  git pull
+```
+
+2. Bæta skjalinu við á git
+
+```bash
+  git add {Filename}
+```
+
+3. Ready for send
+
+```bash
+  git commit -m "{message}"
+```
+
+4. Send
+
+```bash
+  git push
+```
 
 ## Github Desktop:
 

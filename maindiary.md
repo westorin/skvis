@@ -1,5 +1,3 @@
-** Lesist betur undir "Code" flipanum **
-
 # Hópur 22
 
 # 24/11/2025 - 12:00
@@ -16,6 +14,7 @@ og hvernig verkefnaflæðið er skipulaggt.
 # 25/11/2025 - 9:40
 
 Mæting: Halldór og Einar
+\
 Staða á verkefni: Dagbókin er klár en eigum eftir að gera samning
 (erum að bíða eftir að allur hópurinn hittist).
 
@@ -31,7 +30,9 @@ Staða á verkefni: Dagbókin er klár en eigum eftir að gera samning
 - Class diagram
 - Skoða hvort við þurfum State Diagrams
 
-Staða á hópnum: Mæting hefur verið slök og hópurinn hefur ekki fengið tækifæri til að hittast allir saman. Erum að reyna gera það sem hægt er að gera þangað til. Hingað til er það að ganga vel og er staða nokkurn veginn samkvæmt áætlun. Það er orðið staðfest að við erum hópur 22 og hópmeðlimir eru: Halldór, Einar, Kristján og Ivor.
+Staða á hópnum: Mæting hefur verið slök og hópurinn hefur ekki fengið tækifæri til að hittast allir saman. Erum að reyna gera það sem hægt er að gera þangað til. Hingað til er það að ganga vel og er staða nokkurn veginn samkvæmt áætlun.
+\
+Það er orðið staðfest að við erum hópur 22 og hópmeðlimir eru: Halldór, Einar, Kristján og Ivor.
 
 ---
 
@@ -77,3 +78,5 @@ Staða á verkefni: Verkefnið gengur vel. Eigum eftir að klára lofi frumgerð
 
 Staða á hópnum:
 Við eigum ennþá eftir að fá að hittast allir saman.
+\
+Staða á verkefni: Kristján útfærði handbókina og hreinsaði aðeins til á github. Uppfærði ´README.md´ og ´maindiary.md´. Einar hélt áfram með lofi_prototype og State Diagram. Halldór hélt áfram með Use Cases.
