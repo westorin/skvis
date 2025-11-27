@@ -59,12 +59,12 @@ Staða á verkefni: Verkefnið gengur vel. Eigum eftir að klára lofi frumgerð
 
 - X (Vantar bara Einar og Ivor) - Gera samning
 - X - Gera Git handbók
-- Í vinnslu - Lofi prototype
+- X - Lofi prototype
 - Í vinnslu - Happy Paths
-- Í vinnslu - State Diagrams
+- X - State Diagrams
 - "Tests or method of testing requirements (when applicable)." - spyrja út í þetta, eigum við að gera notendaprófanir?
 
 Staða á hópnum:
 Við eigum ennþá eftir að fá að hittast allir saman.
-\
+<br />
 Staða á verkefni: Kristján útfærði handbókina og hreinsaði aðeins til á github. Uppfærði `README.md` og `maindiary.md`. Einar hélt áfram með lofi_prototype og State Diagram. Halldór hélt áfram með Use Cases.
