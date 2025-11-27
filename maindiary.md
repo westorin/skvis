@@ -39,7 +39,7 @@ hópur 22 og hópmeðlimir eru: Halldór, Einar, Kristján og Ivor.
 
 ---
 
-## 26/11/2025 - 9:30
+# 26/11/2025 - 9:30
 
 ## Mæting: Halldór og Einar (Kristján online)
 
@@ -47,7 +47,7 @@ Staða á verkefni: Erum búnir með notendahópagreininguna og kröfulista.
 Erum að vinna í lofi frumgerðinni, use case og class diagrams. Þurfum að
 fara gera samninginn og Git handbók líka en það vantar aftur upp á mætingu.
 
-# ToDo:
+## ToDo:
 
 Gera samning
 Gera Git handbók
@@ -64,7 +64,7 @@ er langt komin. Krisján tók þátt að heiman og græjaði Class Diagrams.
 
 ---
 
-## 27/11/2025 - 9:00
+# 27/11/2025 - 9:00
 
 ## Mæting: Kristján, Einar og (Halldór (fór snemma))
 
@@ -74,7 +74,7 @@ orðin klár í lok dags. Þegar frumgerðin er tilbúin þá gerum
 við happy paths og klárum að útbúa skýrsluna svo að hún sé klár
 fyrir skil á morgun.
 
-# ToDo:
+## ToDo:
 
 / - Gera samning
 Gera Git handbók
