@@ -12,10 +12,13 @@ alla í sama repo á github. Ræddum saman hvað verkefnið snýst um og hvernig
 
 ## Mæting: Halldór og Einar
 
+<<<<<<< Updated upstream
 <br />
 
 Staða á verkefni: Dagbókin er klár en eigum eftir að gera samning. (erum að bíða eftir að allur hópurinn hittist).
 
+=======
+>>>>>>> Stashed changes
 Staða á verkefni: Dagbókin er klár en eigum eftir að gera samning. (erum að bíða eftir að allur hópurinn hittist).
 
 ## ToDo:
