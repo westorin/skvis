@@ -81,9 +81,9 @@ Staða á verkefni: Það er allt klárt fyrir utan happy paths, notendaprófani
 
 ## ToDo:
 
-- Happy Paths
-- Notendaprófanir
-- Skýrsla
+- Óklárað - Happy Paths
+- X - Notendaprófanir
+- X - Skýrsla
 
 Staða á hópnum:
 Einar og Halldór voru að vinna í lo-fi og skýrslunni. Kristján og Halldór fóru í að klára Happy Paths og skráðu það sem þeir náðu að klára í skýrsluna en náðum ekki að klára öll Happy Paths fyrir skil og munum því þurfa að klára það um helgina eða að einn okkar fari í það á mánudaginn. Einar hélt áfram að bæta við fleiri hlutum í lo-fi prototýpuna. Halldór ætlar að fara í Notendaprófanir og skilar því í lok dags.
