@@ -1,0 +1,28 @@
+
+
+                                {club logo}
+                            
+                            
+                            | Add users to {club name} | 
+
+        +-----------------------+-------------------------+------------------------+
+        | Users in club         | adding these users      | all users not in clubs |
+        +=======================+=========================+========================+
+        |{name}, {name}, {name} |                         |{name}, {name}, {name}  |
+        |                       |                         |                        |
+        |                       |                         |                        |
+        |                       |                         |                        |
+        |                       |                         |                        |
+        |                       |                         |                        |
+        |                       |                         |                        |
+        |                       |                         |                        |
+        |                       |                         |                        |
+        |                       |                         |                        |
+        |                       |                         |                        |
+        |                       |                         |                        |
+        |                       |                         |                        |
+        +-----------------------+-------------------------+------------------------+
+
+                        | enter name of user you want to add or command you want | 
+
+                        | q. back | save. to add users to club |
