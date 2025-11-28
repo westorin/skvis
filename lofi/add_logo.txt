@@ -1,0 +1,26 @@
+
+
+                                            | Adding logo to {club or team name} |
+                                
+
+                                                    +--------------------+
+                                                    |    your logo       | 
+                                                    +--------------------+
+                                                    |                    |
+                                                    |                    |  <------
+                                                    |                    |
+                                                    |                    |
+                                                    |                    |
+                                                    |                    |
+                                                    |                    |
+                                                    |                    |
+                                                    |                    |
+                                                    |                    |
+                                                    +--------------------+
+
+
+
+
+
+                                            | Enter line by line your logo or use one of the commands|
+                                    | c. change line your on | d. down | u. up | q. back |
