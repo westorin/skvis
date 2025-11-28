@@ -1,16 +1,18 @@
 
 									  | make new tournament |
 
-							+--------------------+--------------+--------------+----------+
-							| name of tournament | start date   | end date     | location | 
-							+--------------------+--------------+--------------+----------+
-							| __________________ | {dd/mm/yyyy} | {dd/mm/yyyy} | {????}   |
-							+--------------------+--------------+--------------+----------+
+							+--------------------+--------------+--------------+----------+--------------+--------+
+							| name of tournament | start date   | end date     | location | phone number | e-mail | 
+							+--------------------+--------------+--------------+----------+--------------+--------+
+							| __________________ | {dd/mm/yyyy} | {dd/mm/yyyy} | {????}   | {??? ????}   | {????} |
+							+--------------------+--------------+--------------+----------+--------------+--------+
 
 
 
 
 
 									| enter {name/start/end date/location} |
-
-					| n. change name | s. change start date | e. change end date | l. change location | q. back |
+									
+												| enter to change |
+					| n.  name | s. start date | en. end date | l. location | p. phone number | em. e-mail | 
+															| q. back |
