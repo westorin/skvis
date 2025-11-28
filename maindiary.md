@@ -10,7 +10,7 @@ alla í sama repo á github. Ræddum saman hvað verkefnið snýst um og hvernig
 
 # 25/11/2025 - 9:40
 
-Mæting: Halldór og Einar
+## Mæting: Halldór og Einar
 <br />
 Staða á verkefni: Dagbókin er klár en eigum eftir að gera samning. (erum að bíða eftir að allur hópurinn hittist).
 
