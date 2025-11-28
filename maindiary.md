@@ -10,7 +10,7 @@ alla í sama repo á github. Ræddum saman hvað verkefnið snýst um og hvernig
 
 # 25/11/2025 - 9:40
 
-Mæting: Halldór og Einar
+## Mæting: Halldór og Einar
 <br />
 Staða á verkefni: Dagbókin er klár en eigum eftir að gera samning. (erum að bíða eftir að allur hópurinn hittist).
 
@@ -67,7 +67,7 @@ Staða á verkefni: Verkefnið gengur vel. Eigum eftir að klára lofi frumgerð
 Staða á hópnum:
 Við eigum ennþá eftir að fá að hittast allir saman.
 <br />
-Staða á verkefni: Kristján útfærði handbókina og hreinsaði aðeins til á github. Uppfærði `README.md` og `maindiary.md`. Einar hélt áfram með lofi_prototype og State Diagram. Halldór hélt áfram með Use Cases.
+Staða á verkefni: Kristján útfærði handbókina og hreinsaði aðeins til á github. Uppfærði `README.md` og `maindiary.md`. Einar hélt áfram með lofi_prototype og Flowchart. Halldór hélt áfram með Use Cases.
 
 # 28/11/2025 - 9:00
 
