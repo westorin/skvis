@@ -13,6 +13,7 @@ alla í sama repo á github. Ræddum saman hvað verkefnið snýst um og hvernig
 ## Mæting: Halldór og Einar
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <br />
 =======
 
