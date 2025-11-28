@@ -1,0 +1,15 @@
+
+
+                                | Create club |
+
+                    +--------------+-------------+---------+-----------+
+                    | name of club | club colour | country | Home town | 
+                    +--------------+-------------+---------+-----------+
+                    | {???}        | {???}       | {???}   | {????}    |
+                    +--------------+-------------+---------+-----------+
+
+
+
+                                    | to change |
+                    | n. name | cl. colour | ct. country | h. home town |
+                            | save. adds the club | q. back |  
