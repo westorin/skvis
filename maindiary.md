@@ -11,6 +11,7 @@ alla í sama repo á github. Ræddum saman hvað verkefnið snýst um og hvernig
 # 25/11/2025 - 9:40
 
 ## Mæting: Halldór og Einar
+
 <br />
 Staða á verkefni: Dagbókin er klár en eigum eftir að gera samning. (erum að bíða eftir að allur hópurinn hittist).
 
@@ -71,7 +72,7 @@ Staða á verkefni: Kristján útfærði handbókina og hreinsaði aðeins til �
 
 # 28/11/2025 - 9:00
 
-## Mæting: Halldór og Einar
+## Mæting: Halldór og Einar (Kristján (Seinn))
 
 Staða á verkefni: Það er allt klárt fyrir utan happy paths, notendaprófanir og skýrslan.
 
@@ -81,4 +82,4 @@ Staða á verkefni: Það er allt klárt fyrir utan happy paths, notendaprófani
 - Notendaprófanir
 - Skýrsla
 
-Staða á hópnum: 
+Staða á hópnum:
