@@ -1,0 +1,24 @@
+
+                                        | Pick a game for the tournament |
+
+                                +----------------------------------------------------+
+                                |                   list of all game                 |
+                                +----------------------------------------------------+
+                                | {game}, {game}, {game}, {game}, {game}, {game},    |
+                                | {game}, {game}, {game}, {game}, {game}, {game},    |
+                                | {game}, {game}, {game}, {game}, {game}, {game},    |
+                                | {game}, {game}, {game}, {game}, {game}, {game},    |
+                                |                                                    |
+                                |                                                    |
+                                |                                                    |
+                                |                                                    |
+                                |                                                    |
+                                |                                                    |
+                                |                                                    |
+                                |                                                    |
+                                |                                                    |
+                                |                                                    |
+                                |                                                    |
+                                +----------------------------------------------------+
+                                | Enter the name of the game you for your tournament |
+                                +----------------------------------------------------+
