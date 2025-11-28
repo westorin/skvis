@@ -68,3 +68,17 @@ Staða á hópnum:
 Við eigum ennþá eftir að fá að hittast allir saman.
 <br />
 Staða á verkefni: Kristján útfærði handbókina og hreinsaði aðeins til á github. Uppfærði `README.md` og `maindiary.md`. Einar hélt áfram með lofi_prototype og State Diagram. Halldór hélt áfram með Use Cases.
+
+# 28/11/2025 - 9:00
+
+## Mæting: Halldór og Einar
+
+Staða á verkefni: Það er allt klárt fyrir utan happy paths, notendaprófanir og skýrslan.
+
+## ToDo:
+
+- Happy Paths
+- Notendaprófanir
+- Skýrsla
+
+Staða á hópnum: 
