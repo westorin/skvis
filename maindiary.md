@@ -73,7 +73,7 @@ Við eigum ennþá eftir að fá að hittast allir saman.
 <br />
 Staða á verkefni: Kristján útfærði handbókina og hreinsaði aðeins til á github. Uppfærði `README.md` og `maindiary.md`. Einar hélt áfram með lofi_prototype og Flowchart. Halldór hélt áfram með Use Cases.
 
-# 28/11/2025 - 9:00
+# 28/11/2025 - 9:00 | Skil á hönnun í lok viku 1
 
 ## Mæting: Halldór og Einar (Kristján (Seinn))
 
@@ -86,3 +86,4 @@ Staða á verkefni: Það er allt klárt fyrir utan happy paths, notendaprófani
 - Skýrsla
 
 Staða á hópnum:
+Einar og Halldór voru að vinna í low-fi og skýrsluna. Kristján og Halldór fóru í að klára Happy Paths og skráðu það í skýrsluna. Einar hélt áfram í að bæta við fleiri hluti í low-fi prototype. Halldór ætlar að klára Notendaprófanir heima og skilur það í lokdags.
