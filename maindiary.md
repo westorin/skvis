@@ -71,7 +71,7 @@ Staða á verkefni: Kristján útfærði handbókina og hreinsaði aðeins til �
 
 # 28/11/2025 - 9:00
 
-## Mæting: Halldór og Einar
+## Mæting: Halldór, Einar og Kristján
 
 Staða á verkefni: Það er allt klárt fyrir utan happy paths, notendaprófanir og skýrslan.
 
