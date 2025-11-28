@@ -15,8 +15,9 @@ alla í sama repo á github. Ræddum saman hvað verkefnið snýst um og hvernig
 <<<<<<< Updated upstream
 <br />
 =======
->>>>>>> Stashed changes
-Staða á verkefni: Dagbókin er klár en eigum eftir að gera samning. (erum að bíða eftir að allur hópurinn hittist).
+
+> > > > > > > Stashed changes
+> > > > > > > Staða á verkefni: Dagbókin er klár en eigum eftir að gera samning. (erum að bíða eftir að allur hópurinn hittist).
 
 ## ToDo:
 
