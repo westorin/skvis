@@ -88,8 +88,21 @@ Einar og Halldór voru að vinna í lo-fi og skýrslunni. Kristján og Halldór 
 
 ## Mæting: Kristján, Einar og Halldór
 
+Staða á verkefni: Fengum endurgjöf á skýrsluna að við ættum að ræða við kennara áður en við myndum byrja að kóða svo við gerðum það og fengum þá ábendingu að laga class diagramið áður en við höldum áfram svo við byrjum á að gera það í dag.
+
+## ToDo:
+- X - Laga Class Diagram
+- X - Setja upp möppur + skrár til að byrja að kóða
+- Byrja að kóða
+
+Staða á hópnum: Við fórum yfir stöðuna og allt virðist ganga vel. Við ætlum að byrja að kóða á morgun þar sem dagurinn í dag fór í að endurgera Klasana og setja allt upp svo það sé tilbúið fyrir morgundaginn.
+
+# 2/12/2025 - 
+
+## Mæting:
+
 Staða á verkefni:
 
-## Todo:
+## ToDo:
 
 Staða á hópnum:
