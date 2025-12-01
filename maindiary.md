@@ -12,8 +12,6 @@ alla í sama repo á github. Ræddum saman hvað verkefnið snýst um og hvernig
 
 ## Mæting: Halldór og Einar
 
-<br />
-
 Staða á verkefni: Dagbókin er klár en eigum eftir að gera samning. (erum að bíða eftir að allur hópurinn hittist).
 
 ## ToDo:
