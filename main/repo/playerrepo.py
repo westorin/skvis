@@ -1,5 +1,5 @@
-from main.IO.playerIO import PlayerIO
-from main.models.playermodel import Player
+from IO.playerIO import PlayerIO
+from models.playermodel import Player
 
 class PlayerRepository:
     def __init__(self):

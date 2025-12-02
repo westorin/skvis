@@ -1,4 +1,4 @@
-from UI.createplayerUI import PlayerUI
+from main.UI.createplayerUI import PlayerUI
 
 def main():
     player_ui = PlayerUI()
