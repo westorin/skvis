@@ -1,13 +1,15 @@
 # LL/tournamentmanager.py
 
+from typing import List, Dict # Type hinting
+
 class TournamentManager:
     """Handles creating and storing tournaments in memory."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         # Holds all tournaments created
-        self._tournaments = list[dict] = [] # List of dicts (can be Tournament objects later)
+        self._tournaments = List[Dict] = [] # List of dicts (can be Tournament objects later)
 
-    def create_tournament(self, data: dict) -> dict:
+    def create_tournament(self, data: Dict) -> Dict:
         """Creates a new tournament and stores it in the list."""
 
         name = data["name"]
@@ -17,16 +19,16 @@ class TournamentManager:
             raise ValueError("Tournament name must be unique")
         
         # Create a dict representing the tournament
-        tournament: dict = {
-            "name": name
+        tournament: Dict = {
+            "name": name,
             "start_date": data["start_date"],
             "end_date": data["end_date"],
             "location": data["location"],
             "contact_email": data["contact_email"],
             "contact_phone": data["contact_phone"],
-            "teams": [], # Will hold teams later
-            "matches": [], # Will hold matches later
-            "winner": [], # Later can be a team
+            "teams": [],      # will hold teams later
+            "matches": [],    # will hold matches later
+            "winner": None,   # later a team
         }
 
         # Store it
@@ -34,3 +36,14 @@ class TournamentManager:
 
         # Return it, so caller can use it if needed
         return tournament
+    
+    def get_tournament(self, name: str) -> Dict | None:
+        """Return the tournament with this name, or None if not found."""
+        for t in self._tournaments:
+            if t["name"] == name:
+                return t
+        return None
+    
+    def list_tournaments(self) -> List[Dict]:
+        """Return a list of all tournaments."""
+        return list(self._tournaments)
