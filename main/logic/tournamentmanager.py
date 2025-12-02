@@ -18,7 +18,7 @@ class TournamentManager:
         
         # Create a dict representing the tournament
         tournament: dict = {
-            "name": name
+            "name": name,
             "start_date": data["start_date"],
             "end_date": data["end_date"],
             "location": data["location"],
