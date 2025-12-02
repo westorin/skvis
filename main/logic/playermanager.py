@@ -1,5 +1,5 @@
-from models.playermodel import Player
-from repo.playerrepo import PlayerRepository
+from main.models.playermodel import Player
+from main.repo.playerrepo import PlayerRepository
 
 class PlayerManager:
     def __init__(self):

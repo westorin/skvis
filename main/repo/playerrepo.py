@@ -1,5 +1,5 @@
-from IO.playerIO import PlayerIO
-from models.playermodel import Player
+from main.IO.playerIO import PlayerIO
+from main.models.playermodel import Player
 
 class PlayerRepository:
     def __init__(self):
@@ -11,8 +11,11 @@ class PlayerRepository:
         players = []
         for row in rows:
             if row[0] == 'playerID':
+                continue  # Skip header row
+            else:
                 p = Player(*row)
                 players.append(p)
+
         return players
     
     def _get_next_id(self):
@@ -27,9 +30,19 @@ class PlayerRepository:
         self.save_players()
 
     def save_players(self):
-        rows = ["playerId,name,dob,address,phone,email,url,username,team"]
+        rows = [["playerID","name","dob","address","phone","email","url","username","team"]]
         for p in self.players:
-            rows.append(f"{p.player_id},{p.name},{p.dob},{p.address},{p.phone},{p.email},{p.url},{p.username},{p.team}")
+            rows.append([
+                p.player_id,
+                p.name,
+                p.dob,
+                p.address,
+                p.phone,
+                p.email,
+                p.url,
+                p.username,
+                p.team
+            ])
         self.io.write_file(rows)
 
     def get_next_id(self):
