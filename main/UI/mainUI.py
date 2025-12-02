@@ -1,7 +1,7 @@
 '''
 To run the main UI type this into terminal: 
 
-python -m main.UI.mainUI
+python3 -m main.UI.mainUI
 
 '''
 from main.UI.createplayerUI import PlayerUI
