@@ -7,7 +7,7 @@ class TournamentManager:
 
     def __init__(self) -> None:
         # Holds all tournaments created
-        self._tournaments = List[Dict] = [] # List of dicts (can be Tournament objects later)
+        self._tournaments: List[Dict] = [] # List of dicts (can be Tournament objects later)
 
     def create_tournament(self, data: Dict) -> Dict:
         """Creates a new tournament and stores it in the list."""
@@ -26,9 +26,9 @@ class TournamentManager:
             "location": data["location"],
             "contact_email": data["contact_email"],
             "contact_phone": data["contact_phone"],
-            "teams": [],      # will hold teams later
-            "matches": [],    # will hold matches later
-            "winner": None,   # later a team
+            "teams": [],      # Will hold teams later
+            "matches": [],    # Will hold matches later
+            "winner": None,   # Can be a team later
         }
 
         # Store it

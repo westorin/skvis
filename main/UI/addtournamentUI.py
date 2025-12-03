@@ -1,4 +1,4 @@
-from main.LL.tournamentmanager import TournamentManager
+from main.logic.tournamentmanager import TournamentManager
 
 class AddTournamentUI:
     def __init__(self) -> None:
@@ -28,3 +28,8 @@ class AddTournamentUI:
             print("Tournament successfully created!")
         except ValueError as e:
             print("Error:", e)
+        
+# Temporary for testing
+if __name__ == "__main__":
+    ui = AddTournamentUI()
+    ui.add_tournament_ui()
