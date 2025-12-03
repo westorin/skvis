@@ -1,7 +1,55 @@
-from typing import List, Dict
+from main.models.teammodel import Team
 from main.IO.teamIO import TeamIO
 
 class TeamRepository:
-    def __init__(self) -> None:
+    def __init__(self):
         self.io = TeamIO()
-        self._teams: List[Dict] = self.
+        self.teams = self.load_teams()
+
+    def load_teams(self):
+        rows = self.io.read_file()
+        teams = []
+        for row in rows:
+            if row[0] == 'team_id':
+                continue  # Skip header row
+            else:
+                team_id = row[0]
+                name = row[1]
+                captain = row[2]
+                players = row[3].split("|") if row[3] else []
+                website_url = row[4]
+
+                t = Team(team_id, name, captain, players, website_url)
+                teams.append(t)
+
+        return teams
+        
+    def save_teams(self):
+        rows = [["team_id", "name", "captain", "players", "website_url"]]
+        for t in self.teams:
+            player_string = "|".join(t.players)
+            rows.append([
+                t.team_id,
+                t.name,
+                t.captain,
+                player_string,
+                t.website_url
+            ])
+        self.io.write_file(rows)
+
+    def add_team(self, team):
+        self.teams.append(team)
+        self.save_teams()
+
+    def get_next_id(self):
+        if not self.teams:
+            return 1
+        else:
+            max_id = max(int(team.team_id) for team in self.teams)
+            return max_id + 1
+        
+    def get_team(self, team_name):
+        for team in self.teams:
+            if team.name == team_name:
+                return team
+        return None

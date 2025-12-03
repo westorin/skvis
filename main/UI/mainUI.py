@@ -2,6 +2,8 @@
 To run the main UI type this into terminal: 
 
 python3 -m main.UI.mainUI
+or
+python3 run.py
 
 '''
 from main.UI.createplayerUI import PlayerUI

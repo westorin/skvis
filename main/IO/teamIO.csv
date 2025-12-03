@@ -1,1 +1,3 @@
-name, captain, players, website_url,
+team_id,name,captain,players,website_url
+1,Faze,westorin,westorin|stekkjastaur,faze.com
+2,Jolasveinarnir,stekkjastaur,stekkjastaur,jol.is
