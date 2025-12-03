@@ -120,7 +120,7 @@ Staða á verkefni: Kóðinn fyrir Tournament og Player er klár og virkar. Við
 
 ## ToDo:
 - Match
-- Í vinnslu - Team (Halldór)
+- Team
 - Gera model fyrir tournament (Halldór)
 
 Staða á hópnum:
