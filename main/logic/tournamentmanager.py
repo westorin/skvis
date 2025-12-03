@@ -1,14 +1,15 @@
 # LL/tournamentmanager.py
 
 from typing import List, Dict # Type hinting
+from main.repo.tournamentrepo import TournamentRepository
 
 class TournamentManager:
     """Handles creating and storing tournaments in memory."""
 
     def __init__(self) -> None:
         # Holds all tournaments created
-        self._tournaments: List[Dict] = [] # List of dicts (can be Tournament objects later)
-
+        self.repo = TournamentRepository()
+        
     def create_tournament(self, data: Dict) -> Dict:
         """Creates a new tournament and stores it in the list."""
 
@@ -30,20 +31,17 @@ class TournamentManager:
             "matches": [],    # Will hold matches later
             "winner": None,   # Can be a team later
         }
-
+        
         # Store it
-        self._tournaments.append(tournament)
+        self.repo.add_tournament(tournament)
 
         # Return it, so caller can use it if needed
         return tournament
     
     def get_tournament(self, name: str) -> Dict | None:
-        """Return the tournament with this name, or None if not found."""
-        for t in self._tournaments:
-            if t["name"] == name:
-                return t
-        return None
+        """Return tournament with this name, or None."""
+        return self.repo.get_by_name(name)
     
     def list_tournaments(self) -> List[Dict]:
-        """Return a list of all tournaments."""
-        return list(self._tournaments)
+        """Return list of all tournaments."""
+        return self.repo.get_all()
