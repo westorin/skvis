@@ -1,0 +1,4 @@
+from typing
+
+class TeamRepository:
+    

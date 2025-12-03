@@ -7,7 +7,7 @@ class TournamentRepository:
         self.io = TournamentIO()
         self._tournaments: List[Dict] = self._load_from_file()
 
-    # ------------ internal helpers ------------
+    # internal helpers
 
     def _load_from_file(self) -> List[Dict]:
         rows = self.io.read_file()
@@ -79,7 +79,7 @@ class TournamentRepository:
 
         self.io.write_file(rows)
 
-    # ------------ public API ------------
+    # public API 
 
     def add_tournament(self, tournament: Dict) -> None:
         self._tournaments.append(tournament)
