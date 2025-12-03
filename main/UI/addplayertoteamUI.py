@@ -1,5 +1,11 @@
 from main.logic.teammanager import TeamManager
 
+'''
+To run the main UI type this into terminal: 
+
+python3 -m main.UI.addplayertoteamUI 
+'''
+
 class AddPlayerToTeamUI:
     def __init__(self) -> None:
         self.tm = TeamManager()
