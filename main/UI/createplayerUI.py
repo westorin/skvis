@@ -7,6 +7,10 @@ class PlayerUI:
         self.pm = PlayerManager()
 
     def register_player_ui(self):
+#       if register_player_is_empty:
+#            print("\nError: All fields are required.")
+#            return
+        
         print("=== Register New Player ===")
 
         name = input("Name: ")
@@ -26,3 +30,6 @@ class PlayerUI:
             print("\nPlayer successfully registered!")
         except ValueError as e:
             print("\nError:", e)
+
+#        def register_player_is_empty(self, name, dob, address, phone, email, url, username, team):
+#           return not all([name, dob, address, phone, email, url, username, team])

@@ -10,5 +10,4 @@ class PlayerManager:
 
         new_player = Player(player_id, name, dob, address, phone, email, url, username, team)
         self.repo.add_player(new_player)
-        return new_player
-    
+        return new_player    

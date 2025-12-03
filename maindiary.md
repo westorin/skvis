@@ -97,12 +97,30 @@ Staða á verkefni: Fengum endurgjöf á skýrsluna að við ættum að ræða v
 
 Staða á hópnum: Við fórum yfir stöðuna og allt virðist ganga vel. Við ætlum að byrja að kóða á morgun þar sem dagurinn í dag fór í að endurgera Klasana og setja allt upp svo það sé tilbúið fyrir morgundaginn.
 
-# 2/12/2025 - 
+# 2/12/2025 - 12:30
 
-## Mæting:
+## Mæting: Einar og Kristján (Halldór online)
 
-Staða á verkefni:
+Staða á verkefni: Við teljum okkur tilbúna til að byrja kóða. Kristján mun fara í að kóða player klassan og Halldór mun fara í að kóða tournament klassan. Einar mun halda áfram með UI.
 
 ## ToDo:
+- X - Player
+- X - Tournament
+- Match
+- Team
+- Search
+
+Staða á hópnum: Við erum allir að vinna í okkar, ættum að fara betur yfir og passa að verkefnið sé í samræmi og að við séum 100% með sömu hugmyndina í kóðanum. Verkefnið gengur vel og við vonumst til að vera komnir ágætlega yfir helminginn af forrituninni fyrir helgi.
+
+# 3/12/2025 - 8:00
+
+## Mæting: Halldór
+
+Staða á verkefni: Kóðinn fyrir Tournament og Player er klár og virkar. Við munum halda áfram að negla niður allar A kröfur í requirement listanum. 
+
+## ToDo:
+- Match
+- Í vinnslu - Teams
+- Gera model fyrir tournament (Halldór)
 
 Staða á hópnum:
