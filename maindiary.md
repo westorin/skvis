@@ -122,5 +122,6 @@ Staða á verkefni: Kóðinn fyrir Tournament og Player er klár og virkar. Við
 - Match
 - Í vinnslu - Teams
 - Gera model fyrir tournament (Halldór)
+- Klára IO/LL/UI fyrir allar A kröfur
 
 Staða á hópnum:
