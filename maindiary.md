@@ -112,7 +112,7 @@ Staða á verkefni: Við teljum okkur tilbúna til að byrja kóða. Kristján m
 
 Staða á hópnum: Við erum allir að vinna í okkar, ættum að fara betur yfir og passa að verkefnið sé í samræmi og að við séum 100% með sömu hugmyndina í kóðanum. Verkefnið gengur vel og við vonumst til að vera komnir ágætlega yfir helminginn af forrituninni fyrir helgi.
 
-# 3/12/2025
+# 3/12/2025 - 8:00
 
 ## Mæting: Halldór
 
