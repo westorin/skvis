@@ -110,14 +110,17 @@ Staða á verkefni: Við teljum okkur tilbúna til að byrja kóða. Kristján m
 - Team
 - Search
 
-Staða á hópnum:
+Staða á hópnum: Við erum allir að vinna í okkar, ættum að fara betur yfir og passa að verkefnið sé í samræmi og að við séum 100% með sömu hugmyndina í kóðanum. Verkefnið gengur vel og við vonumst til að vera komnir ágætlega yfir helminginn af forrituninni fyrir helgi.
 
-# 2/12/2025
+# 3/12/2025
 
 ## Mæting: Halldór
 
-Staða á verkefni:
+Staða á verkefni: Kóðinn fyrir Tournament og Player er klár og virkar. Við munum halda áfram að negla niður allar A kröfur í requirement listanum. 
 
 ## ToDo:
+- Match
+- Í vinnslu - Team (Halldór)
+- Gera model fyrir tournament (Halldór)
 
 Staða á hópnum:
