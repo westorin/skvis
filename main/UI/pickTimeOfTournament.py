@@ -73,7 +73,7 @@ class PickTimeOfTournamntsUI():
             elif(choice == "3"):
                 return "Future"
             elif(choice.lower() == "b"):
-                return "Homepage"
+                return "BACK"
             elif choice.lower() == "q":
                 return "QUIT"
             else:
