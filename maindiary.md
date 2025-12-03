@@ -97,9 +97,24 @@ Staða á verkefni: Fengum endurgjöf á skýrsluna að við ættum að ræða v
 
 Staða á hópnum: Við fórum yfir stöðuna og allt virðist ganga vel. Við ætlum að byrja að kóða á morgun þar sem dagurinn í dag fór í að endurgera Klasana og setja allt upp svo það sé tilbúið fyrir morgundaginn.
 
-# 2/12/2025 - 
+# 2/12/2025 - 12:30
 
-## Mæting:
+## Mæting: Einar og Kristján (Halldór online)
+
+Staða á verkefni: Við teljum okkur tilbúna til að byrja kóða. Kristján mun fara í að kóða player klassan og Halldór mun fara í að kóða tournament klassan. Einar mun halda áfram með UI.
+
+## ToDo:
+- X - Player
+- X - Tournament
+- Match
+- Team
+- Search
+
+Staða á hópnum:
+
+# 2/12/2025
+
+## Mæting: Halldór
 
 Staða á verkefni:
 
