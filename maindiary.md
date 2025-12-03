@@ -114,7 +114,7 @@ Staða á hópnum: Við erum allir að vinna í okkar, ættum að fara betur yfi
 
 # 3/12/2025 - 8:00
 
-## Mæting: Halldór
+## Mæting: Halldór og Einar
 
 Staða á verkefni: Kóðinn fyrir Tournament og Player er klár og virkar. Við munum halda áfram að negla niður allar A kröfur í requirement listanum. 
 
@@ -122,5 +122,6 @@ Staða á verkefni: Kóðinn fyrir Tournament og Player er klár og virkar. Við
 - Match
 - Í vinnslu - Teams
 - Gera model fyrir tournament (Halldór)
+- Klára IO/LL/UI fyrir allar A kröfur
 
 Staða á hópnum:
