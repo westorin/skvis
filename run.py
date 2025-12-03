@@ -1,3 +1,6 @@
-from main.UI.mainUI import main
+from main.UI.mainUI import MainUI
+from main.UI.homepage_UI import homepageUI 
+from main.UI.pickTimeOfTournament import PickTimeOfTournamntsUI
 
-main()
+run_program = MainUI(homepageUI, PickTimeOfTournamntsUI)
+run_program.run()
