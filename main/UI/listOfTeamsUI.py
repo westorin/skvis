@@ -1,10 +1,14 @@
-# from main.logic.listOfTeams import lists_of_teams
+from main.logic.listOfTeams import ListOfTeamsLogic
 
 class ListOfTeamsUI():
     def __init__(self):
         pass
 
     def print_list_of_teams(self):
+        teams = ListOfTeamsLogic().get_all_teams()
+        logic = ListOfTeamsLogic()
+        
+        print(len(teams[0].name))
 
         header = f"""+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
@@ -16,7 +20,7 @@ class ListOfTeamsUI():
 |\t\t\t\t\t\t   +---------------------+----------------------+----------------------+\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t   | Team name           | Team Capt.           | URL                  |\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t   +=====================+======================+======================+\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t   | {" "*19} | {" "*20} | {" "*20} |\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t   | {teams[0].name+" "*(19-len(teams[0].name))} | {" "*20} | {" "*20} |\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t   +---------------------+----------------------+----------------------+\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t   | {" "*19} | {" "*20} | {" "*20} |\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t   +---------------------+----------------------+----------------------+\t\t\t\t\t\t\t|
@@ -59,8 +63,11 @@ class ListOfTeamsUI():
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+"""
         print(header)
-        print(error_text)
-        print(footer_text)
+        print(center_text)
+        print(footer_text)    
 
 call = ListOfTeamsUI()
 call.print_list_of_teams()
+
+if __name__ == "__main__":
+        ListOfTeamsUI().print_list_of_teams()
