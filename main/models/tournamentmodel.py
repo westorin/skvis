@@ -10,3 +10,6 @@ class Tournament:
         self.teams = teams or []
         self.matches = matches or []
         self.winner = winner
+
+        # Bæta við (type hinting) í __init__
+        # dæmi: name: str, start: date, start: date, location: str
