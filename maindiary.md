@@ -152,7 +152,7 @@ Staða á verkefni: Player, teams og tournaments er tilbúið. Einar er að vinn
 - Allir notendur - Hugbúnaðurinn má ekki crasha (Use Case 27)
 - Kerfið - Geyma gögn í textaskrám (Use Case 28) - # SO FAR SO GOOD
 - Halldór - Validate Dates fall virkar ekki, laga það
-- Halldór - Tournament "Error: Tournament name must be unique" - það á að koma fyrr
 - WRAPPERS + API !!!
+- Búa til Admin permissions í Login
 
 Staða á hópnum:
