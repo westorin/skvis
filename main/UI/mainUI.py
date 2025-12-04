@@ -2,6 +2,8 @@
 To run the main UI type this into terminal: 
 
 python3 -m main.UI.mainUI
+or
+python3 run.py
 
 '''
 from main.UI.createplayerUI import PlayerUI
@@ -33,6 +35,8 @@ class MainUI():
                     self.current_ui_page = "On_Going_Tournaments"
                 elif(action == "Future"):
                     self.current_ui_page = "Future_Tournaments"
+                elif(action == "BACK"):
+                    self.current_ui_page = "Homepage"
                 elif(action == "QUIT"):
                     self.current_ui_page = "Quit"
                     break

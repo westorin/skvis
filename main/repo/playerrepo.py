@@ -47,3 +47,9 @@ class PlayerRepository:
 
     def get_next_id(self):
         return self._get_next_id()
+    
+    def get_by_handle(self, handle:str):
+        for p in self.players:
+            if p.username == handle:
+                return p
+        return None
