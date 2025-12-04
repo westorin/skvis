@@ -128,3 +128,6 @@ class TeamManager:
 
         # Save updated teams
         self.team_repo.save_teams()
+
+    def get_all_teams(self):
+        return self.team_repo.teams
