@@ -1,12 +1,3 @@
-'''
-To run the main UI type this into terminal: 
-
-python3 -m main.UI.mainUI
-or
-python3 run.py
-
-'''
-
 from main.UI.homepage_UI import homepageUI
 from main.UI.pickTimeOfTournament import PickTimeOfTournamntsUI
 from main.UI.leaderboard import LeaderBoardUI
@@ -33,12 +24,13 @@ class MainUI():
         self.isAdmin = False
         self.isATeamCapt = False
     
+    # Here is the function to run the code
     def run(self):
         while True:
             # Check if you are on the homepage to set it to the correct page you choose
             if( self.current_ui_page == "Homepage"):
                 # Here we get what page you wanted to go to
-                action = self.__homepage_ui.print_menu(self)
+                action = self.__homepage_ui.print_menu(self, self.isAdmin, self.isATeamCapt)
                 
                 # Here we put set you to the page that lets you pick the time of the tournament
                 if(action == "TIME"):
@@ -95,7 +87,8 @@ class MainUI():
                 # Here you're set to the page that holds all the old tournaments
                 if(action == "Past"):
                     self.current_ui_page = "Past_Tournamnets"
-                
+                    print("not implamented")
+                    break
                 # Here you're set to the page that holds all the tournaments that are still on going
                 elif(action == "On going"):
                     self.current_ui_page = "On_Going_Tournaments"
