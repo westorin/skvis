@@ -1,17 +1,5 @@
 class Tournament:
-    def __init__(
-        self,
-        name,
-        start,
-        end,
-        location,
-        contact_email,
-        contact_phone,
-        teams=None,
-        matches=None,
-        winner=None,
-        tournament_id=None,
-    ):
+    def __init__(self, name, start, end, location, contact_email, contact_phone, teams=None, matches=None, winner=None, tournament_id=None):
         self.tournament_id = tournament_id
         self.name = name
         self.start = start
