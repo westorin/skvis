@@ -1,4 +1,4 @@
-roles_id,name,password,role
-1,admin,admin123,admin
-2,captain,captain123,captain
-3,player,player123,player
+username,role
+westorin,captain
+admin,admin
+einarberg,player

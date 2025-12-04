@@ -1,0 +1,13 @@
+import csv
+
+class RoleIO:
+    FILE_PATH = "main/IO/roles.csv"
+
+    def read_file(self):
+        with open(self.FILE_PATH, 'r', newline='') as csvfile:
+            return list(csv.reader(csvfile))
+        
+    def write_file(self, rows):
+        with open(self.FILE_PATH, 'w', newline='') as csvfile:
+            csv_writer = csv.writer(csvfile)
+            csv_writer.writerows(rows)
