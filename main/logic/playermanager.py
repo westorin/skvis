@@ -1,9 +1,11 @@
+from main.logic.teammanager import TeamManager
 from main.models.playermodel import Player
 from main.repo.playerrepo import PlayerRepository
 
 class PlayerManager:
     def __init__(self):
         self.player_repo = PlayerRepository()
+        self.team_manager = TeamManager()
 
     def register_player(self, name, dob, address, phone, email, url, username, team):
         player_id = self.player_repo.get_next_id()
@@ -33,6 +35,17 @@ class PlayerManager:
             player.username = username
         if team is not None:
             player.team = team
+
+        #Sync username changes with teams
+        if username is not None:
+            for team in self.team_manager.team_repo.teams:
+                if player_name in team.players:
+                    team.players.remove(player_name)
+                    team.players.append(username)
+            self.team_manager.team_repo.save_teams()
+        #Sync team assignment changes
+        if team is not None:
+            self.team_manager.update_player_team(player_name, team)
 
         self.player_repo.update_player(player)
         return player
