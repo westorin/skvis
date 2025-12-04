@@ -134,11 +134,12 @@ Staða á hópnum: Það virðist allt ganga vel. Við erum ágætlega langt kom
 Staða á verkefni: Player, teams og tournaments er tilbúið. Einar er að vinna í UI-inu, fyrsta síðan er klár ásamt einni annari og allt skipulagt hvernig flæðið á að vera.
 
 ## ToDo:
+
 - Halda áfram með UI
 - Laga tournaments, virkar ekki að runna það (Halldór)
 - Klára allar A kröfur:
 - Admin - Skipuleggja útsláttarkeppni (Use Case 1)
-- Liðsfyrirliði uppfærir upplýsingar leikmanns (Use Case 5)
+- ✅ Liðsfyrirliði uppfærir upplýsingar leikmanns (Use Case 5)
 - Allir notendur - Skoða stöðu og dagskrá (Use Case 6)
 - Admin - Stjórna keppnum (Use Case 7)
 - Allir notendur - Persónuupplýsingar leikmanna (Use Case 8)
@@ -149,6 +150,6 @@ Staða á verkefni: Player, teams og tournaments er tilbúið. Einar er að vinn
 - Notandi, Admin - Prenta leikjadagskrá (Use Case 14)
 - Admin - Leikjaniðurstöður (Use Case 15)
 - Allir notendur - Hugbúnaðurinn má ekki crasha (Use Case 27)
-- Kerfið - Geyma gögn í textaskrám (Use Case 28) -  # SO FAR SO GOOD
+- Kerfið - Geyma gögn í textaskrám (Use Case 28) - # SO FAR SO GOOD
 
 Staða á hópnum:
