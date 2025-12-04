@@ -1,54 +1,72 @@
-# # LL/tournamentmanager.py
+# LL/tournamentmanager.py
 
 from datetime import datetime
 from typing import List, Dict
-from main.repo.tournamentrepo import TournamentRepository
 from main.models.tournamentmodel import Tournament
 
-
 class TournamentManager:
-    """Handles creating and storing tournaments in memory + CSV."""
+    """Handles creating and storing tournaments in memory + CSV"""
 
     def __init__(self) -> None:
-        self.repo = TournamentRepository()
+        
 
-    def validate_dates(self, start_date: str, end_date: str) -> None:
-        try:
-            start = datetime.strptime(start_date, "%Y-%m-%d").date()
-            end = datetime.strptime(end_date, "%Y-%m-%d").date()
-        except ValueError:
-            raise ValueError("Invalid date format, use YYYY-MM-DD")
 
-        if end < start:
-            raise ValueError("End date cannot be before start date")
 
-    def create_tournament(self, data: Dict) -> Tournament:
-        name = data["name"]
 
-        # validate dates
-        self.validate_dates(data["start_date"], data["end_date"])
 
-        # check uniqueness
-        if self.get_tournament(name) is not None:
-            raise ValueError("Tournament name must be unique")
 
-        tournament = Tournament(
-            name=name,
-            start_date=data["start_date"],
-            end_date=data["end_date"],
-            location=data["location"],
-            contact_email=data["contact_email"],
-            contact_phone=data["contact_phone"],
-        )
 
-        self.repo.add_tournament(tournament)
-        return tournament
 
-    def get_tournament(self, name: str) -> Tournament | None:
-        return self.repo.get_by_name(name)
 
-    def list_tournaments(self) -> List[Tournament]:
-        return self.repo.get_all()
+# from datetime import datetime
+# from typing import List, Dict
+# from main.repo.tournamentrepo import TournamentRepository
+# from main.models.tournamentmodel import Tournament
+
+
+# class TournamentManager:
+#     """Handles creating and storing tournaments in memory + CSV."""
+
+#     def __init__(self) -> None:
+#         self.repo = TournamentRepository()
+
+#     def validate_dates(self, start_date: str, end_date: str) -> None:
+#         try:
+#             start = datetime.strptime(start_date, "%Y-%m-%d").date()
+#             end = datetime.strptime(end_date, "%Y-%m-%d").date()
+#         except ValueError:
+#             raise ValueError("Invalid date format, use YYYY-MM-DD")
+
+#         if end < start:
+#             raise ValueError("End date cannot be before start date")
+
+#     def create_tournament(self, data: Dict) -> Tournament:
+#         name = data["name"]
+
+#         # validate dates
+#         self.validate_dates(data["start_date"], data["end_date"])
+
+#         # check uniqueness
+#         if self.get_tournament(name) is not None:
+#             raise ValueError("Tournament name must be unique")
+
+#         tournament = Tournament(
+#             name=name,
+#             start_date=data["start_date"],
+#             end_date=data["end_date"],
+#             location=data["location"],
+#             contact_email=data["contact_email"],
+#             contact_phone=data["contact_phone"],
+#         )
+
+#         self.repo.add_tournament(tournament)
+#         return tournament
+
+#     def get_tournament(self, name: str) -> Tournament | None:
+#         return self.repo.get_by_name(name)
+
+#     def list_tournaments(self) -> List[Tournament]:
+#         return self.repo.get_all()
 
 
 # from datetime import datetime # # # # # # # # # # # # # # # Klára að bæta við
