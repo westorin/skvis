@@ -10,6 +10,8 @@ class PickTimeOfTournamntsUI():
         header_text = """+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t                       *****         ***                       \t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t                     *********************                     \t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t                   **************************                  \t\t\t\t\t\t\t\t|
@@ -43,7 +45,7 @@ class PickTimeOfTournamntsUI():
 |\t\t\t\t\t\t\t                             *****                             \t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t                          e-Sports                             \t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|                       Pick a command                        |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|                 Enter the command you want...               |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+====================+===================+====================+\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|                    |                   |                    |\t\t\t\t\t\t\t\t|"""
 
@@ -53,6 +55,8 @@ class PickTimeOfTournamntsUI():
 |\t\t\t\t\t\t\t+====================+========+==========+====================+\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|         b. To go back       |    q. To quit  the program    |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+-----------------------------+-------------------------------+\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+"""

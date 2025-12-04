@@ -1,20 +1,18 @@
-from main.logic.clearScreenInTerminal import clear_screen
 
-class homepageUI():
+
+
+
+class LoginUI():
     def __init__(self):
-        pass
+        self.username = ""
+        self.password = ""
+    
 
-    def print_menu(self):
-        # This checks if you are signed in as admin and prints out what you should see according to it
-        admin = False
-        if admin == True:
-            var1 = "5. Sign Out      "
-            var2 = "7. Add tournament "
-        else:
-            var1 = "5. Login         "
-            var2 = "                  "
-        
-        header = """+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+    def print_login(self):
+
+
+
+        header_text = """+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
@@ -34,17 +32,6 @@ class homepageUI():
 |\t\t\t\t\t\t\t               *********************************               \t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t                *********   *******************                \t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t                 ****      ************* *****                 \t\t\t\t\t\t\t\t|""" 
-
-        center_text = """|\t\t\t\t\t\t\t                          **************   *                   \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t                          *************                        \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t                         **************                        \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t                             *****                             \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t                          e-Sports                             \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|                 Enter the command you want...               |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+====================+===================+====================+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t| 1. Tournaments     | 2. Leader Board   | 3. Teams           |\t\t\t\t\t\t\t\t|"""
-
         error_text ="""|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|     ^                                                       |\t\t\t\t\t\t\t\t|
@@ -55,10 +42,21 @@ class homepageUI():
 |\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|"""
 
-        footer = f"""|\t\t\t\t\t\t\t+--------------------+-------------------+--------------------+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t| 4. Clubs           | {var1} | 6. Players         |\t\t\t\t\t\t\t\t|
+        center_text = """|\t\t\t\t\t\t\t                          **************   *                   \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t                          *************                        \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t                         **************                        \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t                             *****                             \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t                          e-Sports                             \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|                 Enter your username                         |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t+=============================================================+\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|     Username:                                               |\t\t\t\t\t\t\t\t|"""
+
+        footer_text = f"""
+|\t\t\t\t\t\t\t+   +-----------------------------------------------------+   +\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|   | {self.username + " "*(len(self.username))}         |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+--------------------+-------------------+--------------------+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t| {var2} | 8. Search         |                    |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|                    | 8. Search         |                    |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+====================+===================+====================+\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|                         q. quit                             |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
@@ -66,45 +64,3 @@ class homepageUI():
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+"""
-        while True:
-            clear_screen()
-
-            print(header)
-            print(center_text)
-            print(footer)
-
-            choice = str(input(">>>>"))
-
-            if choice == "1":
-                return "TIME"
-            elif(choice == "2"):
-                return "LEADER"
-            elif(choice == "3"):
-                return "TEAMS"
-            elif(choice == "4"):
-                return "CLUBS"
-            elif(choice == "5"):
-                if(admin == True):
-                    return "SIGN"
-                else:
-                    return "LOGIN"
-            elif(choice == "6"):
-                return "PLAYERS"
-            elif(choice == "7" and admin == True):
-                return "ADD"
-            elif(choice == "8"):
-                return "SEARCH"
-            elif choice.lower() == "q":
-                return "QUIT"
-            else:
-                clear_screen()
-
-                print(header)
-                print(error_text)
-                print(footer)
-                
-                choice_error = input(">>>>")
-                if( choice_error.lower() == "q"):
-                    return "QUIT"
-                else:
-                    clear_screen()
