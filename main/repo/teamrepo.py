@@ -6,6 +6,7 @@ class TeamRepository:
         self.io = TeamIO()
         self.teams = self.load_teams()
 
+    # Load teams from storage
     def load_teams(self):
         rows = self.io.read_file()
         teams = []
@@ -23,7 +24,8 @@ class TeamRepository:
                 teams.append(t)
 
         return teams
-        
+
+    # Save teams to storage
     def save_teams(self):
         rows = [["team_id", "name", "captain", "players", "website_url"]]
         for t in self.teams:
@@ -37,17 +39,20 @@ class TeamRepository:
             ])
         self.io.write_file(rows)
 
+    # Add a new team
     def add_team(self, team):
         self.teams.append(team)
         self.save_teams()
 
+    # Get the next available team ID
     def get_next_id(self):
         if not self.teams:
             return 1
         else:
             max_id = max(int(team.team_id) for team in self.teams)
             return max_id + 1
-        
+    
+    # Get team by name
     def get_team(self, team_name):
         for team in self.teams:
             if team.name == team_name:

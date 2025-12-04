@@ -36,16 +36,12 @@ class PlayerManager:
         if team is not None:
             player.team = team
 
-        #Sync username changes with teams
+        # Sync username changes in all teams
         if username is not None:
-            for team in self.team_manager.team_repo.teams:
-                if player_name in team.players:
-                    team.players.remove(player_name)
-                    team.players.append(username)
-            self.team_manager.team_repo.save_teams()
-        #Sync team assignment changes
-        if team is not None:
-            self.team_manager.update_player_team(player_name, team)
+            self.team_manager.update_username_in_teams(player_name, username)
+        # Sync team assignment only when changed
+        if team is not None and team != player.team:
+            self.team_manager.update_player_team(player.username, team)
 
         self.player_repo.update_player(player)
         return player
