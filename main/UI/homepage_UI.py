@@ -4,12 +4,17 @@ class homepageUI():
     def __init__(self):
         pass
 
-    def print_menu(self):
+    def print_menu(self, isAdminFromMainUI: bool, isATeamCaptFromMainUI: bool):
         # This checks if you are signed in as admin and prints out what you should see according to it
-        admin = False
-        if admin == True:
+        self.isAdmin = isAdminFromMainUI
+        self.isATeamCapt = isATeamCaptFromMainUI
+
+        if(self.isAdmin == True or self.isATeamCapt == True):
             var1 = "5. Sign Out      "
-            var2 = "7. Add tournament "
+            if(self.isAdmin == True):
+                var2 = "7. Add tournament "
+            else:
+                var2 = "                  "
         else:
             var1 = "5. Login         "
             var2 = "                  "
@@ -84,13 +89,13 @@ class homepageUI():
             elif(choice == "4"):
                 return "CLUBS"
             elif(choice == "5"):
-                if(admin == True):
+                if(self.isAdmin == True or self.isATeamCapt == True):
                     return "SIGN"
                 else:
                     return "LOGIN"
             elif(choice == "6"):
                 return "PLAYERS"
-            elif(choice == "7" and admin == True):
+            elif(choice == "7" and self.isAdmin == True):
                 return "ADD"
             elif(choice == "8"):
                 return "SEARCH"
