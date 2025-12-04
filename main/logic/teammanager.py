@@ -67,3 +67,64 @@ class TeamManager:
         self.player_repo.save_players()
 
         return team
+    
+    # Sync team assignment when updating player's team
+    def update_player_team(self, player_handle, new_team):
+        # If new_team is a Team object, convert it to its name
+        if hasattr(new_team, "name"):
+            new_team = new_team.name
+
+        # If no new team was provided, do nothing
+        if not new_team or new_team.strip() == "":
+            return
+
+        # Load player to check current team
+        player = self.player_repo.get_by_handle(player_handle)
+        if not player:
+            raise ValueError("Player does not exist")
+
+        # If updating username triggers this function by mistake, ignore it
+        # (username == new_team -> invalid)
+        if new_team == player_handle:
+            return
+
+        # If player is already in the correct team, nothing to do
+        if player.team == new_team:
+            return
+
+        # Remove player from old team
+        for team in self.team_repo.teams:
+            if player_handle in team.players:
+                team.players.remove(player_handle)
+                break
+
+        # Add to new team ONLY if it exists
+        new_team_obj = self.team_repo.get_team(new_team)
+        if new_team_obj is None:
+            raise ValueError("New team does not exist")
+
+        new_team_obj.players.append(player_handle)
+
+        # Update player CSV team
+        player.team = new_team
+        self.player_repo.save_players()
+
+        # Save updated teams
+        self.team_repo.save_teams()
+
+
+    # Sync username changes inside team players list
+    def update_username_in_teams(self, old_handle, new_handle):
+        # Replace old username with new username in every team
+        for team in self.team_repo.teams:
+            team.players = [
+                new_handle if p == old_handle else p
+                for p in team.players
+            ]
+
+            # Update captain field if needed
+            if team.captain == old_handle:
+                team.captain = new_handle
+
+        # Save updated teams
+        self.team_repo.save_teams()
