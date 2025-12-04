@@ -1,5 +1,5 @@
 class Player:
-    def __init__(self, player_id, name, dob, address, phone, email, url, username, team):
+    def __init__(self, player_id, name, dob, address, phone, email, url, username, team, role="player"):
         self.player_id = player_id
         self.name = name
         self.dob = dob
@@ -9,3 +9,4 @@ class Player:
         self.url = url
         self.username = username
         self.team = team
+        self.role = role

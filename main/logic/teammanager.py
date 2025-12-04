@@ -7,7 +7,7 @@ class TeamManager:
         self.team_repo = TeamRepository()
         self.player_repo = PlayerRepository()
 
-    # Create a new team
+    # Create a new team ============================
     def register_team(self, name, captain_handle, website_url="") -> "Team":
         team_id = self.team_repo.get_next_id()
 
@@ -39,7 +39,7 @@ class TeamManager:
 
         return new_team
 
-    # Add a player to a team
+    # Add a player to a team ============================ 
     def add_player_to_team(self, team_name, player_handle):
         team = self.team_repo.get_team(team_name)
         if team is None:
@@ -68,7 +68,45 @@ class TeamManager:
 
         return team
     
-    # Sync team assignment when updating player's team
+    # Remove a player from a team ===========================
+    def remove_player_from_team(self, current_user, team_name, player_handle):
+        team = self.team_repo.get_team(team_name)
+        # If team does not exist, raise error
+        if not team:
+            raise ValueError("Team does not exist")
+
+        player = self.player_repo.get_by_handle(player_handle)
+        # If player does not exist, raise error
+        if not player: 
+            raise ValueError("Player does not exist")
+        
+        #Permission check
+        if current_user.role == "captain":
+            raise PermissionError("Captains can only edit their own team")
+        elif current_user.role == "player":
+            raise PermissionError("Players cannot remove other players")
+        
+        # Check if player is in the team
+        if player_handle not in team.players:
+            raise ValueError("Player is not in the team")
+        
+        # Do NOT allow removing captain unless by admin
+        if player_handle == team.captain and current_user.role != "admin":
+            raise ValueError("Cannot remove the team captain unless you are an admin")
+        
+        # Remove player from team
+        team.players.remove(player_handle)
+
+        #Update player's team to empty
+        player.team = ""
+
+        #Save updates
+        self.team_repo.save_teams()
+        self.player_repo.save_players()
+
+        return team
+
+    # Sync team assignment when updating player's team ===========================
     def update_player_team(self, player_handle, new_team):
         # If new_team is a Team object, convert it to its name
         if hasattr(new_team, "name"):
@@ -113,7 +151,7 @@ class TeamManager:
         self.team_repo.save_teams()
 
 
-    # Sync username changes inside team players list
+    # Sync username changes inside team players list ===========================
     def update_username_in_teams(self, old_handle, new_handle):
         # Replace old username with new username in every team
         for team in self.team_repo.teams:
@@ -129,5 +167,6 @@ class TeamManager:
         # Save updated teams
         self.team_repo.save_teams()
 
+    # Get all teams ===========================
     def get_all_teams(self):
         return self.team_repo.teams
