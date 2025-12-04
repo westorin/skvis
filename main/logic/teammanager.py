@@ -1,35 +1,69 @@
-from typing import List, Dict # Type hinting
 from main.repo.teamrepo import TeamRepository
+from main.repo.playerrepo import PlayerRepository
+from main.models.teammodel import Team
 
 class TeamManager:
-    """Handles creating and storing teams in memory."""
+    def __init__(self):
+        self.team_repo = TeamRepository()
+        self.player_repo = PlayerRepository()
 
-    def __init__(self) -> None:
-        self.repo = TeamRepository()
+    # Create a new team
+    def register_team(self, name, captain_handle, website_url="") -> "Team":
+        team_id = self.team_repo.get_next_id()
 
-    def create_team(self, data: Dict) -> Dict:
-        """Creates a new team and stores it in the list"""
+        # Look up captain by handle
+        captain = self.player_repo.get_by_handle(captain_handle)
+        if captain is None:
+            print("DEBUG PLAYERS:", [(p.username) for p in self.player_repo.players])
+            raise ValueError("Captain must be a registered player")
+            
 
-        name = data["name"]
-
-        if self.get_team(name) is not None:
+        # Team name must be unique
+        if self.team_repo.get_team(name):
             raise ValueError("Team name must be unique")
-        
-        team: Dict = {
-            "name": name,
-            "captain": data["captain"],
-            "players": data["players"],
-            "website_url": data["website_url"],
-        }
 
-        self.repo.add_team(team)
+        new_team = Team(
+            team_id=team_id,
+            name=name,
+            captain=captain_handle,
+            players=[captain_handle],
+            website_url=website_url
+        )
+
+        # Add team to repository
+        self.team_repo.add_team(new_team)
+
+        # Assign captain to the team
+        captain.team = name
+        self.player_repo.save_players()
+
+        return new_team
+
+    # Add a player to a team
+    def add_player_to_team(self, team_name, player_handle):
+        team = self.team_repo.get_team(team_name)
+        if team is None:
+            raise ValueError("Team does not exist")
+
+        # Look up player object by handle
+        player = self.player_repo.get_by_handle(player_handle)
+        if player is None:
+            raise ValueError("Player does not exist")
+
+        if player.team == team_name:
+            raise ValueError("Player is already in the team")
+
+        # Max team size = 5
+        if len(team.players) >= 5:
+            print("DEBUG team.players =", team.players, type(team.players))
+            raise ValueError("Team is already full (max 5 players)")
+
+        # Add player to team
+        team.players.append(player_handle)
+        player.team = team_name
+
+        # Save updates
+        self.team_repo.save_teams()
+        self.player_repo.save_players()
 
         return team
-    
-    def get_team(self, name: str) -> Dict | None:
-        """Return team with this name, or None."""
-        return self.repo.get_by_team_name(name)
-
-    def list_teams(self) -> List[Dict]:
-        """Return list of all teams"""
-        return self.repo.get_all()

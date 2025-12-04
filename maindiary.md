@@ -18,8 +18,8 @@ Staða á verkefni: Dagbókin er klár en eigum eftir að gera samning. (erum a�
 
 - Gera samning
 - Gera Git handbók
-- X - User group analysis
-- X - Requirement list
+- ✅ - User group analysis
+- ✅ - Requirement list
 - Í vinnslu - Use case
 - Í vinnslu - Lofi prototype
 - Happy Paths
@@ -40,11 +40,11 @@ Staða á verkefni: Erum búnir með notendahópagreininguna og kröfulista. Eru
 
 - Gera samning
 - Gera Git handbók
-- X - Skipta requirement list í functional og non-functional
-- X - Use case
+- ✅ - Skipta requirement list í functional og non-functional
+- ✅ - Use case
 - Í vinnslu - Lofi prototype
 - Happy Paths
-- X - Class diagram
+- ✅ - Class diagram
 - State Diagrams?
 
 Staða á hópnum: Erum langt komnir með verkefnið. Notendahópagreining, Kröfulistinn, Use Case og Class Diagrams er allt klárt. Lofi prototípan er langt komin. Krisján tók þátt að heiman og græjaði Class Diagrams.
@@ -57,11 +57,11 @@ Staða á verkefni: Verkefnið gengur vel. Eigum eftir að klára lofi frumgerð
 
 ## ToDo:
 
-- X (Vantar bara Einar og Ivor) - Gera samning
-- X - Gera Git handbók
-- X - Lofi prototype
+- ✅ (Vantar bara Einar og Ivor) - Gera samning
+- ✅ - Gera Git handbók
+- ✅ - Lofi prototype
 - Í vinnslu - Happy Paths
-- X - State Diagrams
+- ✅ - State Diagrams
 - "Tests or method of testing requirements (when applicable)." - spyrja út í þetta, eigum við að gera notendaprófanir?
 
 Staða á hópnum:
@@ -78,8 +78,8 @@ Staða á verkefni: Það er allt klárt fyrir utan happy paths, notendaprófani
 ## ToDo:
 
 - Óklárað - Happy Paths
-- X - Notendaprófanir
-- X - Skýrsla
+- ✅ - Notendaprófanir
+- ✅ - Skýrsla
 
 Staða á hópnum:
 Einar og Halldór voru að vinna í lo-fi og skýrslunni. Kristján og Halldór fóru í að klára Happy Paths og skráðu það sem þeir náðu að klára í skýrsluna en náðum ekki að klára öll Happy Paths fyrir skil og munum því þurfa að klára það um helgina eða að einn okkar fari í það á mánudaginn. Einar hélt áfram að bæta við fleiri hlutum í lo-fi prototýpuna. Halldór ætlar að fara í Notendaprófanir og skilar því í lok dags.
@@ -91,8 +91,9 @@ Einar og Halldór voru að vinna í lo-fi og skýrslunni. Kristján og Halldór 
 Staða á verkefni: Fengum endurgjöf á skýrsluna að við ættum að ræða við kennara áður en við myndum byrja að kóða svo við gerðum það og fengum þá ábendingu að laga class diagramið áður en við höldum áfram svo við byrjum á að gera það í dag.
 
 ## ToDo:
-- X - Laga Class Diagram
-- X - Setja upp möppur + skrár til að byrja að kóða
+
+- ✅ - Laga Class Diagram
+- ✅ - Setja upp möppur + skrár til að byrja að kóða
 - Byrja að kóða
 
 Staða á hópnum: Við fórum yfir stöðuna og allt virðist ganga vel. Við ætlum að byrja að kóða á morgun þar sem dagurinn í dag fór í að endurgera Klasana og setja allt upp svo það sé tilbúið fyrir morgundaginn.
@@ -104,8 +105,9 @@ Staða á hópnum: Við fórum yfir stöðuna og allt virðist ganga vel. Við �
 Staða á verkefni: Við teljum okkur tilbúna til að byrja kóða. Kristján mun fara í að kóða player klassan og Halldór mun fara í að kóða tournament klassan. Einar mun halda áfram með UI.
 
 ## ToDo:
-- X - Player
-- X - Tournament
+
+- ✅ - Player
+- ✅ - Tournament
 - Match
 - Team
 - Search
@@ -114,13 +116,14 @@ Staða á hópnum: Við erum allir að vinna í okkar, ættum að fara betur yfi
 
 # 3/12/2025 - 8:00
 
-## Mæting: Halldór og Einar
+## Mæting: Halldór og Einar (Kristján (online))
 
-Staða á verkefni: Kóðinn fyrir Tournament og Player er klár og virkar. Við munum halda áfram að negla niður allar A kröfur í requirement listanum. 
+Staða á verkefni: Kóðinn fyrir Tournament og Player er klár og virkar. Við munum halda áfram að negla niður allar A kröfur í requirement listanum. Kristján bæti við functonality í team. Þá á forritið að geta búið til lið og bætt núþegar manneskjur í liðið.
 
 ## ToDo:
+
 - Match
-- Í vinnslu - Teams
+- ✅ - Teams (Kristján)
 - Gera model fyrir tournament (Halldór)
 - Klára IO/LL/UI fyrir allar A kröfur
 
