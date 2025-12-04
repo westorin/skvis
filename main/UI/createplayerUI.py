@@ -23,7 +23,7 @@ class PlayerUI:
         print("=== Register New Player ===")
 
         name = input("Name: ")
-        dob = input("DOB (YYYY-MM-DD): ")
+        dob = input("DOB (DD-MM-YYYY): ")
         address = input("Address: ")
         phone = input("Phone: ")
         email = input("Email: ")

@@ -11,7 +11,7 @@ class TeamManager:
     def register_team(self, name, captain_handle, website_url="") -> "Team":
         team_id = self.team_repo.get_next_id()
 
-        # Look up captain by handle
+        # Look up captain by name
         captain = self.player_repo.get_by_handle(captain_handle)
         if captain is None:
             print("DEBUG PLAYERS:", [(p.username) for p in self.player_repo.players])
@@ -45,7 +45,7 @@ class TeamManager:
         if team is None:
             raise ValueError("Team does not exist")
 
-        # Look up player object by handle
+        # Look up player object by name
         player = self.player_repo.get_by_handle(player_handle)
         if player is None:
             raise ValueError("Player does not exist")

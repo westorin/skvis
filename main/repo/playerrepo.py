@@ -48,8 +48,22 @@ class PlayerRepository:
     def get_next_id(self):
         return self._get_next_id()
     
+    def get_by_name(self, name:str):
+        for p in self.players:
+            if p.name == name:
+                return p
+        return None
+    
     def get_by_handle(self, handle:str):
         for p in self.players:
             if p.username == handle:
                 return p
         return None
+    
+    def update_player(self, player):
+        for idx, p in enumerate(self.players):
+            if p.player_id == player.player_id:
+                self.players[idx] = player
+                self.save_players()
+                return
+        raise ValueError("Player not found in repository")
