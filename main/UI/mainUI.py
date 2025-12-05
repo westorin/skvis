@@ -104,8 +104,6 @@ class MainUI():
                 # Here you're set to the page you where just on
                 elif(action == "BACK"):
                     self.current_ui_page = "Homepage"
-                    print("not implamented")
-                    break
                 
                 # Here we end the program
                 elif(action == "QUIT"):
@@ -122,7 +120,14 @@ class MainUI():
 
             if(self.current_ui_page == "LIST_OF_TEAMS"):
                 action = self.__list_of_teams_ui.print_list_of_teams(self, self.isAdmin)
-                break
+                if(action == "BACK"):
+                    self.current_ui_page = "Homepage"
+                elif(action == "QUIT"):
+                    break
+                elif(action == "ADD_TE"):
+                    self.current_ui_page = "ADD_TEAM"
+                    print("NOT IMPLAMENTED!!!!!!!!!!!!!!!")
+                    break
             
             if(self.current_ui_page == "LIST_OF_CLUBS"):
                 print("not implamented")

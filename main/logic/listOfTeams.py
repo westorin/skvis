@@ -53,8 +53,8 @@ class ListOfTeamsLogic():
         list_of_teams = ListOfTeamsLogic().make_list_of_all_teams()
         
         list_of_teams_in_pers_of_tens = []
-
-        ten_teams_counter = (len(list_of_teams) // 10)+1
+        
+        ten_teams_counter = (len(list_of_teams) // 10)+ 1
 
         for t in range(0, ten_teams_counter):
             lists_of_ten_teams = []
@@ -63,16 +63,17 @@ class ListOfTeamsLogic():
                 # Here we have a for loop that counts ten so we can add the ten teams to a list and remove the on you add
                 for i in range(0,10):
                     lists_of_ten_teams.append(list_of_teams[0])
-                    list_of_teams.pop(0)
+                    list_of_teams = list_of_teams[1:]
                 list_of_teams_in_pers_of_tens.append(lists_of_ten_teams)
 
-            # Here we check if the list of all teams has less then 10 teams 
+            # Here we check if the list of all teams has less then 10 teams
             if((len(list_of_teams) // 10 ) == 0):
                 for team in list_of_teams:
                     lists_of_ten_teams.append(team)
-                for i in range(0, (10 - (len(list_of_teams) % 10))):
-                    lists_of_ten_teams.append(["", "", ""])
-                list_of_teams_in_pers_of_tens.append(lists_of_ten_teams)
+                    list_of_teams = list_of_teams[1:]
 
+                for i in range(0, (10 - (len(list_of_teams) % 10))):
+                    lists_of_ten_teams.append(["NaN", "NaN", "NaN"])
+                list_of_teams_in_pers_of_tens.append(lists_of_ten_teams)
 
         return list_of_teams_in_pers_of_tens

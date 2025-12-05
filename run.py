@@ -10,9 +10,8 @@ from main.UI.listOfPlayers import ListOfPlayersUI
 from main.UI.addtournament import AddTournamentUI
 from main.UI.search import SearchUI
 
-teams = ListOfTeamsLogic()
-print(teams.sort_teams_into_a_list_of_tens())
 
 
-#run_program = MainUI(homepageUI, PickTimeOfTournamntsUI, LeaderBoardUI, ListOfTeamsUI, listOfClubsUI, LoginUI, ListOfPlayersUI, AddTournamentUI, SearchUI)
-#run_program.run()
+
+run_program = MainUI(homepageUI, PickTimeOfTournamntsUI, LeaderBoardUI, ListOfTeamsUI, listOfClubsUI, LoginUI, ListOfPlayersUI, AddTournamentUI, SearchUI)
+run_program.run()
