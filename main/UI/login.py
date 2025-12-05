@@ -47,9 +47,8 @@ class LoginUI():
 |\t\t\t\t\t\t\t+=============================================================+\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|     Username:                                               |\t\t\t\t\t\t\t\t|"""
 
-        footer_text = f"""
-|\t\t\t\t\t\t\t+   +-----------------------------------------------------+   +\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|   | {self.username + " "*(len(self.username))}         |\t\t\t\t\t\t\t\t|
+        footer_text = f"""|\t\t\t\t\t\t\t+   +-----------------------------------------------------+   +\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|   | {self.username + " "*(50-len(self.username))} |         |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+--------------------+-------------------+--------------------+\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|                    | 8. Search         |                    |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+====================+===================+====================+\t\t\t\t\t\t\t\t|
