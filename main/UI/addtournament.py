@@ -18,7 +18,6 @@ class AddTournamentUI:
         tournament_type = "Knockout"
         name = input("Name: ")
 
-
         if self.tm.get_tournament(name):
             print("Error: Tournament name must be unique.")
             return
