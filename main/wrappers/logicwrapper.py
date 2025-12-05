@@ -15,6 +15,6 @@ class LogicWrapper:
 
         self.tournament_manager = TournamentManager(data.tournaments, data.teams)
 
-        self.match_manager = MatchManager(data.matches)
+        #self.match_manager = MatchManager(data.matches)
         #self.search_manager = SearchManager(data.players,data.teams,data.tournaments)
         self.login_manager = LoginManager(data.players, data.roles, data.passwords)
