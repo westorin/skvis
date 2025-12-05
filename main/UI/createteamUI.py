@@ -17,7 +17,7 @@ class CreateTeamUI:
         print("Create a New Team")
 
         name = input("Team Name: ")
-        captain = input("Captain Name: ")
+        captain = input("Captain's username: ")
         website_url = input("Website URL (optional): ")
 
         try:
