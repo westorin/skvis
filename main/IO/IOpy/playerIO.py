@@ -1,7 +1,7 @@
 import csv
 
 class PlayerIO:
-    FILE_PATH = "main/IO/playerIO.csv"
+    FILE_PATH = "main/IO/csv/playerIO.csv"
 
     def read_file(self):
         with open(self.FILE_PATH, 'r', newline='') as csvfile:

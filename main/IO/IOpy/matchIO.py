@@ -1,8 +1,17 @@
 import csv
 from typing import List
 
-class TeamIO:
-    FILE_PATH = "main/IO/teamIO.csv"
+class MatchIO:
+    FILE_PATH = "main/IO/csv/matchIO.csv"
+
+    def read_file(self):
+        with open(self.FILE_PATH, 'r', newline='') as csvfile:
+            return list(csv.reader(csvfile))
+        
+    def write_file(self, rows):
+        with open(self.FILE_PATH, 'w', newline='') as csvfile:
+            csv_writer = csv.writer(csvfile)
+            csv_writer.writerows(rows)
 
     def read_file(self) -> List[list[str]]:
         with open(self.FILE_PATH, "r", newline="") as csvfile:
