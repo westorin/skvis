@@ -1,10 +1,15 @@
+
+
+
+
 class LoginUI():
     def __init__(self):
-        self.username = ""
+        self.username = "Test"
         self.password = ""
     
 
     def print_login(self):
+
 
 
         header_text = """+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -49,7 +54,7 @@ class LoginUI():
 
         footer_text = f"""
 |\t\t\t\t\t\t\t+   +-----------------------------------------------------+   +\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|   | {self.username + " "*(len(self.username))}         |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|   | {self.username + " "*(50 -len(self.username))} |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+--------------------+-------------------+--------------------+\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|                    | 8. Search         |                    |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+====================+===================+====================+\t\t\t\t\t\t\t\t|
@@ -59,9 +64,7 @@ class LoginUI():
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+"""
+
         print(header_text)
         print(center_text)
         print(footer_text)
-
-if __name__ == "__main__":
-    LoginUI().print_login()

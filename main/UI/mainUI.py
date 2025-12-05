@@ -21,7 +21,7 @@ class MainUI():
         self.__search_ui = search_ui
 
         self.current_ui_page = "Homepage"
-        self.isAdmin = False
+        self.isAdmin = True
         self.isATeamCapt = False
     
     # Here is the function to run the code
@@ -134,6 +134,7 @@ class MainUI():
                 break
 
             if(self.current_ui_page == "LOG_IN"):
+                action = self.__login_ui.print_login()
                 # role = self.__login_ui.print_login_ui(self)
 
                 # if role:
