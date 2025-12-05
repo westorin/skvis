@@ -1,7 +1,7 @@
 import csv
 
 class RoleIO:
-    FILE_PATH = "main/IO/roles.csv"
+    FILE_PATH = "main/IO/csv/roles.csv"
 
     def read_file(self):
         with open(self.FILE_PATH, 'r', newline='') as csvfile:

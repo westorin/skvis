@@ -4,7 +4,7 @@ import csv
 from typing import List
 
 class TournamentIO:
-    FILE_PATH = "main/IO/tournamentIO.csv"
+    FILE_PATH = "main/IO/csv/tournamentIO.csv"
 
     def read_file(self) -> List[list[str]]:
         with open(self.FILE_PATH, "r", newline="") as csvfile:

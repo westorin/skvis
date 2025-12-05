@@ -1,18 +1,26 @@
-from main.logic.tournamentmanager import TournamentManager
+from main.wrappers.datawrapper import DataWrapper
+from main.wrappers.logicwrapper import LogicWrapper
 
 '''
 To run the main UI type this into terminal: 
 
-python3 -m main.UI.addtournament (virkar ekki)
+python3 -m main.UI.addtournament
 '''
 class AddTournamentUI:
     def __init__(self) -> None:
-        self.tm = TournamentManager()
+        data = DataWrapper()
+        logic = LogicWrapper(data)
+        self.tm = logic.tournament_manager
 
     def add_tournament_ui(self) -> None:
         print("=== Create new tournament ===")
 
         name = input("Name: ")
+
+        if self.tm.get_tournament(name):
+            print("Error: Tournament name must be unique.")
+            return
+
         start = input("Start date (DD-MM-YYYY): ")
         end = input("End date (DD-MM-YYYY): ")
         location = input("Location: ")

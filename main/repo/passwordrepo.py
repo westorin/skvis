@@ -1,4 +1,4 @@
-from main.IO.passwordsIO import PasswordsIO
+from main.IO.IOpy.passwordsIO import PasswordsIO
 from main.models.passwordsmodel import PasswordsManager
 
 class PasswordRepository:

@@ -1,11 +1,9 @@
-from main.repo.teamrepo import TeamRepository
-from main.repo.playerrepo import PlayerRepository
 from main.models.teammodel import Team
 
 class TeamManager:
-    def __init__(self):
-        self.team_repo = TeamRepository()
-        self.player_repo = PlayerRepository()
+    def __init__(self, team_repo=None, player_repo=None):
+        self.team_repo = team_repo
+        self.player_repo = player_repo
 
     # Create a new team ============================
     def register_team(self, name, captain_handle, website_url="") -> "Team":

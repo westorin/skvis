@@ -1,4 +1,4 @@
-from main.IO.roleIO import RoleIO
+from main.IO.IOpy.roleIO import RoleIO
 from main.models.rolemodel import Role
 
 class RoleRepository:

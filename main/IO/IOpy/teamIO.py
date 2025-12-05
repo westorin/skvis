@@ -2,7 +2,7 @@ import csv
 from typing import List
 
 class TeamIO:
-    FILE_PATH = "main/IO/teamIO.csv"
+    FILE_PATH = "main/IO/csv/teamIO.csv"
 
     def read_file(self) -> List[list[str]]:
         with open(self.FILE_PATH, "r", newline="") as csvfile:

@@ -1,12 +1,12 @@
-from main.logic.loginmanager import LoginManager
-from main.repo.playerrepo import PlayerRepository
-from main.repo.rolesrepo import RoleRepository
-from main.repo.passwordrepo import PasswordRepository
+from main.wrappers.datawrapper import DataWrapper
+from main.wrappers.logicwrapper import LogicWrapper
 
 class LoginUI:
     def __init__(self):
-        self.login_manager = LoginManager(PlayerRepository(), RoleRepository(), PasswordRepository())
-
+        data = DataWrapper()
+        logic = LogicWrapper(data)
+        self.login_manager = logic.login_manager
+        
     def login(self):
         username = input("Enter username: ")
         password = input("Enter password: ")

@@ -1,3 +1,6 @@
+from main.wrappers.datawrapper import DataWrapper
+from main.wrappers.logicwrapper import LogicWrapper
+
 from main.logic.clearScreenInTerminal import clear_screen
 
 
@@ -5,9 +8,14 @@ from main.logic.clearScreenInTerminal import clear_screen
 class LoginUI():
     def __init__(self):
         pass
+
     
 
     def print_login(self) -> tuple:
+        data = DataWrapper()
+        logic = LogicWrapper(data)
+        self.login_manager = logic.login_manager
+        
         self.username = ""
         self.password = ""
 
@@ -125,7 +133,17 @@ class LoginUI():
                 self.password = choice
 
             elif(self.username != "" or self.password != "" and choice.lower() == "t"):
-                pass
+                role = self.login_manager.authenticate(self.username, self.password)
+                if(role == "admin"):
+                    print("works")
+                    break
+                else:
+                    print("error")
+                    break
+                
+
+
+
             else:
                 clear_screen()
                 print(header_text)

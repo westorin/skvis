@@ -1,5 +1,5 @@
 from main.models.teammodel import Team
-from main.IO.teamIO import TeamIO
+from main.IO.IOpy.teamIO import TeamIO
 
 class TeamRepository:
     def __init__(self):

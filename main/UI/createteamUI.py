@@ -1,4 +1,5 @@
-from main.logic.teammanager import TeamManager
+from main.wrappers.datawrapper import DataWrapper
+from main.wrappers.logicwrapper import LogicWrapper
 
 '''
 To run the main UI type this into terminal: 
@@ -8,7 +9,9 @@ python3 -m main.UI.createteamUI
 
 class CreateTeamUI:
     def __init__(self) -> None:
-        self.tm = TeamManager()
+        data = DataWrapper()
+        logic = LogicWrapper(data)
+        self.tm = logic.team_manager
 
     def add_team_ui(self) -> None:
         print("Create a New Team")
