@@ -16,6 +16,7 @@ class LoginUI:
             print(f"Login successful! Role: {role}")
             return role
         else:
+            print("Invalid username or password.")
             return None
 
 if __name__ == "__main__":
