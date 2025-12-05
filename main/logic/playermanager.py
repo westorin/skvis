@@ -1,11 +1,9 @@
-from main.logic.teammanager import TeamManager
 from main.models.playermodel import Player
-from main.repo.playerrepo import PlayerRepository
 
 class PlayerManager:
-    def __init__(self):
-        self.player_repo = PlayerRepository()
-        self.team_manager = TeamManager()
+    def __init__(self,player_repo,team_manager=None):
+        self.player_repo = player_repo
+        self.team_manager = team_manager
 
     def register_player(self, name, dob, address, phone, email, url, username, team):
         player_id = self.player_repo.get_next_id()

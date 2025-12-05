@@ -1,5 +1,4 @@
-import main.repo.playerrepo as PlayerRepository
-import main.repo.passwordrepo as PasswordRepository
+import main.models.passwordsmodel as PasswordsModel
 
 class LoginManager:
     def __init__(self, player_repo, role_repo, password_repo):

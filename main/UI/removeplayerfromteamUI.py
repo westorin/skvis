@@ -19,8 +19,13 @@ class RemovePlayerfromTeamUI:
             print(f"Permission Error: {e}")
 
 if __name__ == "__main__":
-    from main.logic.teammanager import TeamManager
+    from main.wrappers.datawrapper import DataWrapper
+    from main.wrappers.logicwrapper import LogicWrapper
     from main.models.playermodel import Player
+
+    data = DataWrapper()
+    logic = LogicWrapper(data)
+    team_manager = logic.team_manager
 
     current_user = Player(
         player_id=0,
@@ -34,6 +39,5 @@ if __name__ == "__main__":
         team="",
         role="admin"
     )
-    team_manager = TeamManager()
     ui = RemovePlayerfromTeamUI(team_manager, current_user)
     ui.remove_player_from_team()
