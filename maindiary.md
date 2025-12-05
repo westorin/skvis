@@ -179,5 +179,5 @@ Staða á verkefni: Allt gengur vel. Erum komnir með góðann grunn af öllu. T
 - ✅ WRAPPERS + API !!!
 - ✅ Búa til Admin permissions í Login
 
-Staða á hópnum:
+Staða á hópnum: Erum ennþá að vinna í okkar. Allt er að koma saman.
 
