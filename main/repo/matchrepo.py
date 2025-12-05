@@ -1,4 +1,4 @@
-from main.IO.matchIO import MatchIO
+from main.IO.IOpy.matchIO import MatchIO
 
 class MatchRepository:
     def __init__(self):

@@ -1,5 +1,5 @@
 from typing import List
-from main.IO.tournamentIO import TournamentIO
+from main.IO.IOpy.tournamentIO import TournamentIO
 from main.models.tournamentmodel import Tournament
 
 

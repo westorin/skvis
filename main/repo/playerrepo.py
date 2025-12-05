@@ -1,4 +1,4 @@
-from main.IO.playerIO import PlayerIO
+from main.IO.IOpy.playerIO import PlayerIO
 from main.models.playermodel import Player
 
 class PlayerRepository:
