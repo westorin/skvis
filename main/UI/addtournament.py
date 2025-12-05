@@ -3,7 +3,7 @@ from main.logic.tournamentmanager import TournamentManager
 '''
 To run the main UI type this into terminal: 
 
-python3 -m main.UI.addtournament (virkar ekki)
+python3 -m main.UI.addtournament
 '''
 class AddTournamentUI:
     def __init__(self) -> None:
