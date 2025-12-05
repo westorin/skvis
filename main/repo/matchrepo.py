@@ -1,4 +1,5 @@
 from main.IO.IOpy.matchIO import MatchIO
+from main.models.matchmodel import Match
 
 class MatchRepository:
     def __init__(self):
@@ -81,7 +82,7 @@ class MatchRepository:
         self.io.write_file(rows)
 
     def add_match(self, Match) -> None:
-        self.matches.append(match)
+        # self.matches.append(match)
         self.save_to_file()
     
     def get_all(self) -> Match:
