@@ -159,7 +159,7 @@ Staða á hópnum: Allt virðist ganga vel.
 
 # 5/12/2025 - 12:00
 
-Staða á verkefni: 
+Staða á verkefni: Allt gengur vel. Erum komnir með góðann grunn af öllu. Tournaments, Teams, Players, Match, og Login er næstum því allt tilbúið.
 
 ## ToDo:
 - Halda áfram með UI
