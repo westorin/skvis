@@ -90,5 +90,3 @@ class PickTimeOfTournamntsUI():
                 choice_error = input(">>>>")
                 if(choice_error.lower() == "q"):
                     return "BACK"
-                else:
-                    clear_screen()

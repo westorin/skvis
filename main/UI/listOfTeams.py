@@ -36,6 +36,7 @@ class ListOfTeamsUI():
 |\t\t\t\t\t\t| /_______\               or q. if you want to quit.                     |  \t\t\t\t\t\t\t|
 |\t\t\t\t\t\t|                                                                        |  \t\t\t\t\t\t\t|
 |\t\t\t\t\t\t+------------------------------------------------------------------------+  \t\t\t\t\t\t\t|"""
+        
         while True:
             if(len(self.list_of_teams) <= 1):
                 up_down_command = """|\t\t\t\t\t\t\t| b. To go back               | q. To quit  the program       |\t\t\t\t\t\t\t\t|
