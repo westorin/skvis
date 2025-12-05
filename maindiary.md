@@ -151,7 +151,7 @@ Staða á verkefni: Player, teams og tournaments er tilbúið. Einar er að vinn
 - Admin - Leikjaniðurstöður (Use Case 15)
 - Allir notendur - Hugbúnaðurinn má ekki crasha (Use Case 27)
 - Kerfið - Geyma gögn í textaskrám (Use Case 28) - # SO FAR SO GOOD
-- Halldór - Validate Dates fall virkar ekki, laga það
+- ✅ - Halldór - Validate Dates fall virkar ekki, laga það
 - WRAPPERS + API !!!
 - Búa til Admin permissions í Login
 
@@ -170,13 +170,12 @@ Staða á verkefni:
 - Allir notendur - Persónuupplýsingar leikmanna (Use Case 8)
 - Admin - Skráning leikja (Use Case 9)
 - ✅ Admin - Breyting á skráningum liða (Use Case 11)
-- Admin - Skrá leik með tíma og serverID (Use Case 12)
+- ✅ Admin - Skrá leik með tíma og serverID (Use Case 12)
 - Admin - Fjöldi leikja sem eru samtímis (Use Case 13)
 - Notandi, Admin - Prenta leikjadagskrá (Use Case 14)
 - Admin - Leikjaniðurstöður (Use Case 15)
 - Allir notendur - Hugbúnaðurinn má ekki crasha (Use Case 27)
 - Kerfið - Geyma gögn í textaskrám (Use Case 28) - # SO FAR SO GOOD
-- Halldór - Validate Dates fall virkar ekki, laga það
 - WRAPPERS + API !!!
 - ✅ - Búa til Admin permissions í Login
 
