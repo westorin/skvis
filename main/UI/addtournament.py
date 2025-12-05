@@ -14,7 +14,8 @@ class AddTournamentUI:
 
     def add_tournament_ui(self) -> None:
         print("=== Create new tournament ===")
-
+        event = ("CS") # input("Event: ")
+        tournament_type = "Knockout"
         name = input("Name: ")
 
         if self.tm.get_tournament(name):
@@ -26,14 +27,18 @@ class AddTournamentUI:
         location = input("Location: ")
         contact_email = input("Contact email: ")
         contact_phone = input("Contact phone: ")
+        points = "17"
 
         data = {
+            "event": event,
+            "tournament_type": tournament_type,
             "name": name,
             "start": start,
             "end": end,
             "location": location,
             "contact_email": contact_email,
             "contact_phone": contact_phone,
+            "points": points,
         }
 
         try:

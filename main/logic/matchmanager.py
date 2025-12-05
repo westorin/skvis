@@ -4,8 +4,8 @@ from main.models.matchmodel import Match
 class MatchManager:
     """Match creation and updates."""
 
-    def __init__(self) -> None:
-        self.repo = MatchRepository()
+    def __init__(self, match_repo: MatchRepository | None = None) -> None:
+        self.repo = match_repo or MatchRepository()
     
     def create_match(self, data) -> Match:
         """Create a new match."""
