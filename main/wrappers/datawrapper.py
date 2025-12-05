@@ -1,4 +1,5 @@
 #DataWrapper = (Repositories) → IO → CSV
+from main.repo.matchrepo import MatchRepository
 from main.repo.playerrepo import PlayerRepository
 from main.repo.teamrepo import TeamRepository
 from main.repo.tournamentrepo import TournamentRepository
