@@ -1,21 +1,17 @@
-
+from main.logic.clearScreenInTerminal import clear_screen
 
 
 
 class LoginUI():
     def __init__(self):
-        self.username = "Test"
-        self.password = ""
+        pass
     
 
-    def print_login(self):
-
-
+    def print_login(self) -> tuple:
+        self.username = ""
+        self.password = ""
 
         header_text = """+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t                       *****         ***                       \t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t                     *********************                     \t\t\t\t\t\t\t\t|
@@ -42,29 +38,102 @@ class LoginUI():
 |\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|"""
 
-        center_text = """|\t\t\t\t\t\t\t                          **************   *                   \t\t\t\t\t\t\t\t|
+        login_pop_up_text ="""|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|                     You have been loged in                  |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|"""
+        while True:
+            user_inputs_text = f"""|\t\t\t\t\t\t\t|   +-----------------------------------------------------+   |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|   | {self.username + " "*(51 -len(self.username))} |   |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|   +-----------------------------------------------------+   |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|     Password:                                               |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|   +-----------------------------------------------------+   |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|   | {"*"*len(self.password) + " "*(51 -len(self.password))} |   |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|   +-----------------------------------------------------+   |\t\t\t\t\t\t\t\t|"""
+        
+            base_commands_text ="""|\t\t\t\t\t\t\t+===================+===============+=========================+\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t| t. try loging in  | b. To go back | q. To quit  the program |\t\t\t\t\t\t\t\t|"""
+            if(self.username != "" and self.password != ""):
+                change_commands = """|\t\t\t\t\t\t\t+==============================+==============================+\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t| u. To change username input  | p. To change password input  |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t+-------------------+----------+----+-------------------------+\t\t\t\t\t\t\t\t|"""
+                add_space = """"""
+                enter_name = "command "
+            elif(self.username != ""):
+                change_commands = """|\t\t\t\t\t\t\t+=============================================================+\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|               u. To change username input                   |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t+-------------------+---------------+-------------------------+\t\t\t\t\t\t\t\t|"""
+                add_space = """"""
+                enter_name = "password"
+                
+            elif(self.password != "" and self.username == ""):
+                change_commands = """|\t\t\t\t\t\t\t+=============================================================+\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|               p. To change password input                   |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t+-------------------+---------------+-------------------------+\t\t\t\t\t\t\t\t|"""
+                add_space = """"""
+                enter_name = "username"
+            else:
+                change_commands = """|\t\t\t\t\t\t\t+===================+===============+=========================+\t\t\t\t\t\t\t\t|"""
+                add_space = """\n|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|"""
+                enter_name = "username"
+
+            center_text = f"""|\t\t\t\t\t\t\t                          **************   *                   \t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t                          *************                        \t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t                         **************                        \t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t                             *****                             \t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t                          e-Sports                             \t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|                 Enter your username                         |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|                 Enter your {enter_name}                         |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+=============================================================+\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|     Username:                                               |\t\t\t\t\t\t\t\t|"""
 
-        footer_text = f"""
-|\t\t\t\t\t\t\t+   +-----------------------------------------------------+   +\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|   | {self.username + " "*(50 -len(self.username))} |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+--------------------+-------------------+--------------------+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|                    | 8. Search         |                    |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+====================+===================+====================+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|                         q. quit                             |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
+            commands_text = f"""{change_commands}
+|\t\t\t\t\t\t\t| t. try loging in  | b. To go back | q. To quit  the program |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t+-------------------+---------------+-------------------------+\t\t\t\t\t\t\t\t|{add_space}
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+"""
 
-        print(header_text)
-        print(center_text)
-        print(footer_text)
+
+            clear_screen()
+            print(header_text)
+            print(center_text)
+            print(user_inputs_text)
+            print(commands_text)
+            
+            choice = str(input(">>>>"))
+            
+            if(choice.lower() == "q"):
+                return "QUIT"
+            elif(choice.lower() == "u" and self.username != ""):
+                self.username = ""
+            elif(choice.lower() == "p" and self.password != ""):
+                self.password = ""
+            
+            elif(choice.lower() == "b"):
+                return "BACK"
+            
+            elif(len(choice) < 51  and self.username == ""):
+                self.username = choice
+
+            elif(len(choice) < 51  and self.password == ""):
+                self.password = choice
+
+            elif(self.username != "" or self.password != "" and choice.lower() == "t"):
+                pass
+            else:
+                clear_screen()
+                print(header_text)
+                print(error_text)
+                print(user_inputs_text)
+                print(commands_text)
+                
+                choice = str(input(">>>>"))
+
+                if(choice.lower() == "q"):
+                    return "BACK"

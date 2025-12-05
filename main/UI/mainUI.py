@@ -21,7 +21,7 @@ class MainUI():
         self.__search_ui = search_ui
 
         self.current_ui_page = "Homepage"
-        self.isAdmin = True
+        self.isAdmin = False
         self.isATeamCapt = False
     
     # Here is the function to run the code
@@ -134,8 +134,11 @@ class MainUI():
                 break
 
             if(self.current_ui_page == "LOG_IN"):
-                action = self.__login_ui.print_login()
-                # role = self.__login_ui.print_login_ui(self)
+                action = self.__login_ui.print_login(self)
+                if(action == "BACK"):
+                    self.current_ui_page = "Homepage"
+                elif(action == "QUIT"):
+                    break
 
                 # if role:
                 #     self.isAdmin = False
@@ -152,8 +155,6 @@ class MainUI():
 
                 # self.current_ui_page = "Homepage"
                 # continue
-                print("not implamented")
-                break
 
             if(self.current_ui_page == "LIST_OF_PLAYERS"):
                 print("not implamented")
