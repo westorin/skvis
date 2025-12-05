@@ -1,4 +1,5 @@
-from main.logic.tournamentmanager import TournamentManager
+from main.wrappers.datawrapper import DataWrapper
+from main.wrappers.logicwrapper import LogicWrapper
 
 '''
 To run the main UI type this into terminal: 
@@ -7,7 +8,9 @@ python3 -m main.UI.addtournament
 '''
 class AddTournamentUI:
     def __init__(self) -> None:
-        self.tm = TournamentManager()
+        data = DataWrapper()
+        logic = LogicWrapper(data)
+        self.tm = logic.tournament_manager
 
     def add_tournament_ui(self) -> None:
         print("=== Create new tournament ===")

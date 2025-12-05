@@ -181,3 +181,11 @@ Staða á verkefni:
 - ✅ - Búa til Admin permissions í Login
 
 Staða á hópnum:
+
+# 5/12/2025 - 12:00
+
+Staða á verkefni:
+
+## ToDo:
+
+Staða á hópnum:

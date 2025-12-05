@@ -2,17 +2,17 @@
 
 from datetime import datetime
 from typing import List, Dict
-from main.repo.tournamentrepo import TournamentRepository
 from main.models.tournamentmodel import Tournament
 
 class TournamentManager:
     """Handles creating and storing tournaments in memory + CSV."""
 
-    def __init__(self) -> None:
-        self.repo = TournamentRepository()
+    def __init__(self, tournaments, teams) -> None:
+        self.tournaments = tournaments
+        self.teams = teams
 
     def get_tournament(self, name: str) -> Tournament | None:
-        return self.repo.get_by_name(name)
+        return self.tournaments.get_by_name(name)
     
     def create_tournament(self, data: Dict) -> Tournament:
         """Creates a new tournament and stores it in the list."""
@@ -32,7 +32,7 @@ class TournamentManager:
             contact_phone=data["contact_phone"],
         )
         
-        self.repo.add_tournament(tournament)
+        self.tournaments.add_tournament(tournament)
 
         return tournament
 
@@ -53,6 +53,6 @@ class TournamentManager:
     # def is_team_registered(tournament, team):
 
     def list_tournaments(self) -> List[Tournament]:
-        return self.repo.get_all()
+        return self.tournaments.get_all()
     
     # def get_schedule(tournament):
