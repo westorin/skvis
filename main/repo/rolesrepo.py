@@ -22,9 +22,10 @@ class RoleRepository:
         return roles
     
     def get_role_by_username(self, username:str):
-        for r in self.roles:
-            if r.username == username:
-                return r
+        print("Debug", [repr(role.username) for role in self.roles], repr(username))
+        for role in self.roles:
+            if role.username == username:
+                return role
         return None
     
     def save_roles(self):
