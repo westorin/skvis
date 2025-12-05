@@ -163,6 +163,7 @@ Staða á verkefni: Allt gengur vel. Erum komnir með góðann grunn af öllu. T
 
 ## ToDo:
 - Halda áfram með UI
+- Type hinta
 - Klára allar A kröfur:
 - Admin - Skipuleggja útsláttarkeppni (Use Case 1)
 - Allir notendur - Skoða stöðu og dagskrá (Use Case 6)
