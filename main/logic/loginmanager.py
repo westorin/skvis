@@ -18,4 +18,8 @@ class LoginManager:
         if entry.password.strip() != password:
             return None
         
-        return entry.username  # Return username on successful authentication
+        role_entry = self.role_repo.get_role_by_username(username)
+        if role_entry:
+            return role_entry.role
+        
+        return "player"  # Default role if none found

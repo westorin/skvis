@@ -129,6 +129,23 @@ class MainUI():
                 break
 
             if(self.current_ui_page == "LOG_IN"):
+                # role = self.__login_ui.print_login_ui(self)
+
+                # if role:
+                #     self.isAdmin = False
+                #     self.isATeamCapt = False
+
+                #     if role == "admin":
+                #         self.isAdmin = True
+                #     elif role == "captain":
+                #         self.isATeamCapt = True
+
+                #     print(f"Logged in as {role}")
+                # else:
+                #     print("Login failed. Please try again.")
+
+                # self.current_ui_page = "Homepage"
+                # continue
                 print("not implamented")
                 break
 
