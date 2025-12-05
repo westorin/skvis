@@ -132,14 +132,15 @@ class LoginUI():
             elif(len(choice) < 51  and self.password == ""):
                 self.password = choice
 
-            elif(self.username != "" or self.password != "" and choice.lower() == "t"):
+            elif(choice.lower() == "t"):
                 role = self.login_manager.authenticate(self.username, self.password)
                 if(role == "admin"):
-                    print("works")
-                    break
+                    return "ADMIN"
+                elif(role == "captain"):
+                    return "CAPT"
                 else:
                     print("error")
-                    break
+                    
                 
 
 

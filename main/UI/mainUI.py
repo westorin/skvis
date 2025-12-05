@@ -23,6 +23,7 @@ class MainUI():
         self.current_ui_page = "Homepage"
         self.isAdmin = False
         self.isATeamCapt = False
+        self.captName = ""
     
     # Here is the function to run the code
     def run(self):
@@ -139,7 +140,13 @@ class MainUI():
                     self.current_ui_page = "Homepage"
                 elif(action == "QUIT"):
                     break
-
+                elif(action == "ADMIN"):
+                    self.current_ui_page ="Homepage"
+                    self.isAdmin = True
+                elif(action == "CAPT"):
+                    self.current_ui_page = "Homepage"
+                    self.isATeamCapt = True
+                    #self.captName = action[1]
                 # if role:
                 #     self.isAdmin = False
                 #     self.isATeamCapt = False
