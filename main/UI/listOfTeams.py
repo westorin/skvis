@@ -146,7 +146,7 @@ class ListOfTeamsUI():
                 return "QUIT"
             elif(choice.lower() == "a" and self.isAdmin == True):
                 return "ADD_TE"
-
+            # TODO Need to add show a team
             else:
                 clear_screen()
 

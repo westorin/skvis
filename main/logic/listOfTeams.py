@@ -73,7 +73,7 @@ class ListOfTeamsLogic():
                     list_of_teams = list_of_teams[1:]
 
                 for i in range(0, (10 - (len(list_of_teams) % 10))):
-                    lists_of_ten_teams.append(["NaN", "NaN", "NaN"])
+                    lists_of_ten_teams.append(["", "", ""])
                 list_of_teams_in_pers_of_tens.append(lists_of_ten_teams)
 
         return list_of_teams_in_pers_of_tens
