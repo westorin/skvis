@@ -163,6 +163,10 @@ Staða á verkefni: Allt gengur vel. Erum komnir með góðann grunn af öllu. T
 
 ## ToDo:
 - Halda áfram með UI
+- ✅ Login
+- ✅ List of teams
+- List of players
+- Tournament
 - Type hinta
 - Klára allar A kröfur:
 - Admin - Skipuleggja útsláttarkeppni (Use Case 1)
@@ -180,6 +184,7 @@ Staða á verkefni: Allt gengur vel. Erum komnir með góðann grunn af öllu. T
 - ✅ WRAPPERS
 - ? API
 - ✅ Búa til Admin permissions í Login
+- Tournaments: Klára allt - stigagjöf, knockout tournament, double knockout tournaments, events (leikir)
 
 Staða á hópnum: Erum ennþá að vinna í okkar og tengja allt saman. Wrappers eru tilbúnir.
 
