@@ -1,5 +1,5 @@
 #UI → PlayerManager → PlayerRepository → PlayerIO → CSV
-
+#Wrappers = UI → LogicWrapper → (Logic Managers) → DataWrapper → (Repositories) → IO → CSV
 '''
 Viljum við þegar við búum til nýjan player að hann fær að velja lið eða viljum við að fær að búa til lið?
 hvernig þetta er núna er að hann býr til lið sem er eingöngu í playerIO.csv og ekkert gerist í teamIO.csv
@@ -7,13 +7,14 @@ Kannski bæta við að liðið sé ekki til og lista öll liðin sem hann getur 
 Eða láta hann fá að búa til lið og liðið er bara tómt nema nafnið á liðinu?
 '''
 
-from main.logic.playermanager import PlayerManager
-from main.logic.teammanager import TeamManager
+from main.wrappers.datawrapper import DataWrapper
+from main.wrappers.logicwrapper import LogicWrapper
 
 class PlayerUI:
     def __init__(self):
-        self.pm = PlayerManager()
-        self.tm = TeamManager()
+        data = DataWrapper()
+        logic = LogicWrapper(data)
+        self.pm = logic.player_manager
 
     def register_player_ui(self):
 #       if register_player_is_empty:

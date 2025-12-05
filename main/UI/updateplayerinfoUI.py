@@ -1,9 +1,12 @@
-from main.logic.playermanager import PlayerManager
+from main.wrappers.datawrapper import DataWrapper
+from main.wrappers.logicwrapper import LogicWrapper
 
 class UpdatePlayerInfoUI:
     def __init__(self):
-        self.player_manager = PlayerManager()
-
+        data = DataWrapper()
+        logic = LogicWrapper(data)
+        self.player_manager = logic.player_manager
+        
     def ui(self):
         print("=== Update Player Information ===")
 

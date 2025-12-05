@@ -1,10 +1,15 @@
+
+
+
+
 class LoginUI():
     def __init__(self):
-        self.username = ""
+        self.username = "Test"
         self.password = ""
     
 
     def print_login(self):
+
 
 
         header_text = """+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -58,9 +63,7 @@ class LoginUI():
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+"""
+
         print(header_text)
         print(center_text)
         print(footer_text)
-
-if __name__ == "__main__":
-    LoginUI().print_login()
