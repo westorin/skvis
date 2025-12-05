@@ -1,7 +1,7 @@
 from main.UI.homepage_UI import homepageUI
 from main.UI.pickTimeOfTournament import PickTimeOfTournamntsUI
 from main.UI.leaderboard import LeaderBoardUI
-from main.UI.listOfTeamsUI import ListOfTeamsUI
+from main.UI.listOfTeams import ListOfTeamsUI
 from main.UI.listOfClubs import listOfClubsUI
 from main.UI.login import LoginUI
 from main.UI.listOfPlayers import ListOfPlayersUI
@@ -121,7 +121,7 @@ class MainUI():
                 break
 
             if(self.current_ui_page == "LIST_OF_TEAMS"):
-                print("not implamented")
+                action = self.__list_of_teams_ui.print_list_of_teams(self, self.isAdmin)
                 break
             
             if(self.current_ui_page == "LIST_OF_CLUBS"):
