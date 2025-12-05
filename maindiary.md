@@ -157,9 +157,9 @@ Staða á verkefni: Player, teams og tournaments er tilbúið. Einar er að vinn
 
 Staða á hópnum: Allt virðist ganga vel.
 
-# 5/12/2025 - 13:00
+# 5/12/2025 - 12:00
 
-Staða á verkefni: 
+Staða á verkefni: Allt gengur vel. Erum komnir með góðann grunn af öllu. Tournaments, Teams, Players, Match, og Login er næstum því allt tilbúið.
 
 ## ToDo:
 - Halda áfram með UI
@@ -181,10 +181,3 @@ Staða á verkefni:
 
 Staða á hópnum:
 
-# 5/12/2025 - 12:00
-
-Staða á verkefni:
-
-## ToDo:
-
-Staða á hópnum:
