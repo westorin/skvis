@@ -2,13 +2,13 @@ from main.repo.matchrepo import MatchRepository
 from main.models.matchmodel import Match
 
 class MatchManager:
-    """Coordinates match creation and updates."""
+    """Match creation and updates."""
 
     def __init__(self) -> None:
         self.repo = MatchRepository()
     
     def create_match(self, data) -> Match:
-        """Create and persist a new match."""
+        """Create a new match."""
         server_id = data["server_id"]
 
         if self.repo.get_by_server_id(server_id):
