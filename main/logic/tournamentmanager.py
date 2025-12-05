@@ -17,16 +17,18 @@ class TournamentManager:
     def create_tournament(self, data: Dict) -> Tournament:
         """Creates a new tournament and stores it in the list."""
 
-        name = data["name"]
+        name = data["name"].strip()
 
-        # Check if the name is unique
+        # Check name ASAP to fail fast on bad input
         if self.get_tournament(name) is not None:
             raise ValueError("Tournament name must be unique.")
-        
+
+        start, end = self.validate_dates(data["start"], data["end"])
+
         tournament = Tournament(
             name=name,
-            start=data["start"],
-            end=data["end"],
+            start=start,
+            end=end,
             location=data["location"],
             contact_email=data["contact_email"],
             contact_phone=data["contact_phone"],
@@ -40,15 +42,17 @@ class TournamentManager:
         
     # def generate_schedule(tournament):
 
-    def validate_dates(self, start: str, end: str) -> None:
+    def validate_dates(self, start: str, end: str) -> tuple[str, str]:
         try:
-            start = datetime.strptime(start, "%d-%m-%Y").date()
-            end = datetime.strptime(end, "%d-%m-%Y").date()
+            start_date = datetime.strptime(start.strip(), "%d-%m-%Y").date()
+            end_date = datetime.strptime(end.strip(), "%d-%m-%Y").date()
         except ValueError:
             raise ValueError("Invalid date format, use DD-MM-YYYY")
 
-        if end < start:
+        if end_date < start_date:
             raise ValueError("End date cannot be before start date")
+
+        return start_date.isoformat(), end_date.isoformat()
 
     # def is_team_registered(tournament, team):
 

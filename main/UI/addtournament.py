@@ -16,6 +16,11 @@ class AddTournamentUI:
         print("=== Create new tournament ===")
 
         name = input("Name: ")
+
+        if self.tm.get_tournament(name):
+            print("Error: Tournament name must be unique.")
+            return
+
         start = input("Start date (DD-MM-YYYY): ")
         end = input("End date (DD-MM-YYYY): ")
         location = input("Location: ")
