@@ -25,7 +25,9 @@ class TeamManager:
             name=name,
             captain=captain_handle,
             players=[captain_handle],
-            website_url=website_url
+            website_url=website_url,
+            wins=0,
+            losses=0
         )
 
         # Add team to repository
