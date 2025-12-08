@@ -154,9 +154,8 @@ class ListOfTeamsUI():
             elif(choice.lower() == "a" and self.isAdmin == True):
                 return "ADD_TE"
             elif(tm.does_team_exist(choice) == True):
-                print("works")
-                i = input()
-            # TODO Need to add show a team
+                return "TEAM", choice
+
             else:
                 clear_screen()
 
