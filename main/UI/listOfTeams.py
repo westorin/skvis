@@ -4,9 +4,6 @@ from main.logic.clearScreenInTerminal import clear_screen
 class ListOfTeamsUI():
     def __init__(self):
         pass
-
-#        teams = ListOfTeamsLogic().get_all_teams()
- #       logic = ListOfTeamsLogic()
         
     def print_list_of_teams(self, isAdminFromMain: bool) -> str:
         self.isAdmin = isAdminFromMain

@@ -164,6 +164,9 @@ class MainUI():
                 # continue
 
             if(self.current_ui_page == "LIST_OF_PLAYERS"):
+                action = self.__list_of_players_ui.print_list_of_players(self)
+                
+                
                 print("not implamented")
                 break
 
