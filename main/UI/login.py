@@ -46,15 +46,6 @@ class LoginUI():
 |\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|"""
 
-        login_pop_up_text ="""|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|                     You have been loged in                  |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|"""
         while True:
             user_inputs_text = f"""|\t\t\t\t\t\t\t|   +-----------------------------------------------------+   |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|   | {self.username + " "*(51 -len(self.username))} |   |\t\t\t\t\t\t\t\t|
@@ -107,6 +98,15 @@ class LoginUI():
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+"""
 
+            login_pop_up_text = f"""|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|╦ ╦╔═╗╦ ╦  ╦ ╦╔═╗╦  ╦╔═╗  ╔╗ ╔═╗╔═╗╔╗╔  ╦  ╔═╗╔═╗╔═╗╔╦╗  ╦╔╗╔|\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|╚╦╝║ ║║ ║  ╠═╣╠═╣╚╗╔╝║╣   ╠╩╗║╣ ║╣ ║║║  ║  ║ ║║ ╦║╣  ║║  ║║║║|\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t| ╩ ╚═╝╚═╝  ╩ ╩╩ ╩ ╚╝ ╚═╝  ╚═╝╚═╝╚═╝╝╚╝  ╩═╝╚═╝╚═╝╚═╝═╩╝  ╩╩╚╝|\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|      AS: {self.username.upper() + " "*(47 - len(self.username))}    |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|"""
 
             clear_screen()
             print(header_text)
@@ -135,16 +135,24 @@ class LoginUI():
             elif(choice.lower() == "t"):
                 role = self.login_manager.authenticate(self.username, self.password)
                 if(role == "admin"):
+                    clear_screen()
+                    print(header_text)
+                    print(login_pop_up_text)
+                    print(user_inputs_text)
+                    print(commands_text)
+                    choice = str(input(">>>>"))
                     return "ADMIN"
                 elif(role == "captain"):
-                    return "CAPT"
+                    clear_screen()
+                    print(header_text)
+                    print(login_pop_up_text)
+                    print(user_inputs_text)
+                    print(commands_text)
+                    choice = str(input(">>>>"))
+                    return "CAPT", self.username
                 else:
-                    print("error")
+                    print("error in the login checker")
                     
-                
-
-
-
             else:
                 clear_screen()
                 print(header_text)
