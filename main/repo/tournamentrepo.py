@@ -141,3 +141,16 @@ class TournamentRepository:
     def save(self) -> None:
         """ - """ # Comment her
         self.save_to_file()
+
+    def update_tournament(self, tournament: Tournament) -> None:
+        for idx, t in enumerate(self.tournaments):
+            if t.tournament_id == tournament.tournament_id:
+                self.tournaments[idx] = tournament
+                self.save_to_file()
+                return
+            
+    def get_tournament(self, tournament_name: str) -> Optional[Tournament]:
+        for tournament in self.tournaments:
+            if tournament.name == tournament_name:
+                return tournament
+        return None
