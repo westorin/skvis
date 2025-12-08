@@ -58,3 +58,10 @@ class TeamRepository:
             if team.name == team_name:
                 return team
         return None
+    
+    def get_all_players_in_team(self) -> list:
+        all_players = []
+        for team in self.teams:
+            for player in team.players:
+                all_players.append(player)
+        return all_players
