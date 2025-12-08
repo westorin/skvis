@@ -22,12 +22,12 @@ class ListOfTeamsLogic():
         print(len(teams) % 10)
 
     def make_list_of_all_teams(self) -> list:
-        all_teams_date = ListOfTeamsLogic().get_all_teams()
+        all_teams_data = ListOfTeamsLogic().get_all_teams()
 
         list_of_teams = []
         
         # Here we take one team at a time and we put it all the data of the team in to a list that we then put it in another list
-        for team in all_teams_date:
+        for team in all_teams_data:
             list_of_one_team = []
             if(len(team.name) > 20):
                 list_of_one_team.append(team.name[0:16] + "...")
@@ -54,7 +54,10 @@ class ListOfTeamsLogic():
         
         list_of_teams_in_pers_of_tens = []
         
-        ten_teams_counter = (len(list_of_teams) // 10)+ 1
+        if(len(list_of_teams) % 10 == 0):
+            ten_teams_counter = (len(list_of_teams) // 10)
+        else:
+            ten_teams_counter = (len(list_of_teams) // 10)+ 1
 
         for t in range(0, ten_teams_counter):
             lists_of_ten_teams = []
@@ -70,10 +73,9 @@ class ListOfTeamsLogic():
             if((len(list_of_teams) // 10 ) == 0):
                 for team in list_of_teams:
                     lists_of_ten_teams.append(team)
-                    list_of_teams = list_of_teams[1:]
 
                 for i in range(0, (10 - (len(list_of_teams) % 10))):
                     lists_of_ten_teams.append(["", "", ""])
                 list_of_teams_in_pers_of_tens.append(lists_of_ten_teams)
-
+                list_of_teams = []
         return list_of_teams_in_pers_of_tens
