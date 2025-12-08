@@ -165,8 +165,9 @@ Staða á verkefni: Allt gengur vel. Erum komnir með góðann grunn af öllu. T
 - Halda áfram með UI
 - ✅ Login
 - ✅ List of teams
-- List of players
+- ✅ List of players
 - Tournament
+- Leaderboard
 - Type hinta
 - Klára allar A kröfur:
 - Admin - Skipuleggja útsláttarkeppni (Use Case 1)
@@ -187,4 +188,29 @@ Staða á verkefni: Allt gengur vel. Erum komnir með góðann grunn af öllu. T
 - Tournaments: Klára allt - stigagjöf, knockout tournament, double knockout tournaments, events (leikir)
 
 Staða á hópnum: Erum ennþá að vinna í okkar og tengja allt saman. Wrappers eru tilbúnir.
+
+# 8/12/2025
+
+Staða á verkefni: Flestar A kröfur eru tilbúnar. Þurfum að fínpússa og tengja kóðann betur saman. Við skiptum Tournament classanum og tókum schedule föllin úr honum og bjuggum til sér skrár fyrir schedule en það þarf að græja það sem fyrst.
+
+## ToDo:
+- Halda áfram með UI
+- Klára allar A kröfur:
+- Schedule
+- Admin - Skipuleggja útsláttarkeppni (Use Case 1)
+- Allir notendur - Skoða stöðu og dagskrá (Use Case 6)
+- Admin - Stjórna keppnum (Use Case 7)
+- Allir notendur - Persónuupplýsingar leikmanna (Use Case 8)
+- Admin - Skráning leikja (Use Case 9)
+- Admin - Fjöldi leikja sem eru samtímis (Use Case 13)
+- Notandi, Admin - Prenta leikjadagskrá (Use Case 14)
+- Admin - Leikjaniðurstöður (Use Case 15)
+- Allir notendur - Hugbúnaðurinn má ekki crasha (Use Case 27)
+- Kerfið - Geyma gögn í textaskrám (Use Case 28) - # SO FAR SO GOOD
+- ? API
+- Tournaments: Klára allt - stigagjöf, knockout tournament, double knockout tournaments, events (leikir)
+
+Staða á hópnum: Erum ennþá að vinna í okkar og tengja allt saman. Wrappers eru tilbúnir.
+
+Staða á hópnum:
 
