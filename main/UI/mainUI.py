@@ -52,6 +52,7 @@ class MainUI():
                 elif(action == "SIGN"):
                     self.isAdmin = False
                     self.isATeamCapt = False
+                    self.captName = ""
                     self.current_ui_page = "Homepage"
                 
                 # Here we set you to the page that lets you log in
@@ -143,25 +144,10 @@ class MainUI():
                 elif(action == "ADMIN"):
                     self.current_ui_page ="Homepage"
                     self.isAdmin = True
-                elif(action == "CAPT"):
+                elif(action[0] == "CAPT"):
                     self.current_ui_page = "Homepage"
                     self.isATeamCapt = True
-                    #self.captName = action[1]
-                # if role:
-                #     self.isAdmin = False
-                #     self.isATeamCapt = False
-
-                #     if role == "admin":
-                #         self.isAdmin = True
-                #     elif role == "captain":
-                #         self.isATeamCapt = True
-
-                #     print(f"Logged in as {role}")
-                # else:
-                #     print("Login failed. Please try again.")
-
-                # self.current_ui_page = "Homepage"
-                # continue
+                    self.captName = action[1]
 
             if(self.current_ui_page == "LIST_OF_PLAYERS"):
                 action = self.__list_of_players_ui.print_list_of_players(self)
