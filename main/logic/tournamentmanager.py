@@ -156,11 +156,11 @@ class TournamentManager:
 
             #Create placeholder round files
             for round_number in range(1, 14):  # Assuming 13 rounds per match
-                round_file_path = os.path.join(match_folder, f"Round_{round_number}.txt")
+                round_file_path = os.path.join(match_folder, f"Round_{round_number}.csv")
                 if not os.path.exists(round_file_path):
-                    with open(round_file_path, 'w') as f:
-                        f.write(f"Match {match_index} - Round {round_number}\n")
-                        f.write(f"Winner: TBD\n Loser: TBD\n Bracket: TBD\n")
+                    with open(round_file_path, 'w', encoding='utf-8') as f:
+                        f.write("match,round,winner,loser,bracket\n")
+                        f.write(f"{match_index},{round_number},TBD,TBD,TBD\n")
         print(f"Tournament results exported to {tournament_folder}")
         
         

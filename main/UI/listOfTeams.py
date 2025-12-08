@@ -1,9 +1,13 @@
 from main.logic.listOfTeams import ListOfTeamsLogic
 from main.logic.clearScreenInTerminal import clear_screen
+from main.wrappers.datawrapper import DataWrapper
+from main.wrappers.logicwrapper import LogicWrapper
 
 class ListOfTeamsUI():
     def __init__(self):
-        pass
+        data = DataWrapper()
+        logic = LogicWrapper(data)
+        self.tm = logic.team_manager
         
     def print_list_of_teams(self, isAdminFromMain: bool) -> str:
         self.isAdmin = isAdminFromMain
