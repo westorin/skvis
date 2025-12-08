@@ -135,24 +135,3 @@ class TournamentManager:
             timeframe = self.get_timeframe(tournament, reference_date)
             group[timeframe].append(tournament)
         return group
-
-    # Tournament Teams 
-
-    # def set_teams_for_tournament(self, tournament_name: str, team_names: List[str]) -> None:
-    #     tournament = self.get_tournament(tournament_name)
-    #     # Tournament should have exactly 16 teams
-    #     if len(team_names) != 16:
-    #         raise ValueError("Exactly 16 teams are required for the tournament.")
-        
-    #     # Verify all teams exist
-    #     for name in team_names:
-    #         if self.teams.get_team(name) is None:
-    #             raise ValueError(f"Team '{name}' does not exist.")
-            
-    #     # Remove duplicates while preserving order
-    #     tournament.teams = list(dict.fromkeys(team_names))
-
-    #     self.tournaments.update_tournament(tournament)
-
-    # def generate_initial_matches(self, tournament_name: str) -> None:
-    #     pass
