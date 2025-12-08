@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional # Má nota optional?
 from main.IO.IOpy.tournamentIO import TournamentIO
 from main.models.tournamentmodel import Tournament
 
@@ -17,24 +17,45 @@ class TournamentRepository:
         if not rows:
             return tournaments
 
-        header = rows[0]
         data_rows = rows[1:]
 
         for row in data_rows:
             if not row:
                 continue
+            
+            if len(row) == 9:
+                (
+                    name,
+                    start,
+                    end,
+                    location,
+                    contact_email,
+                    contact_phone,
+                    teams,
+                    matches,
+                    winner,
+                ) = row
+                tournament_id = None
 
-            (
-                name,
-                start,
-                end,
-                location,
-                contact_email,
-                contact_phone,
-                teams,
-                matches,
-                winner,
-            ) = row
+            elif len(row) == 10:
+                (
+                    tournament_id,
+                    name,
+                    start,
+                    end,
+                    location,
+                    contact_email,
+                    contact_phone,
+                    teams,
+                    matches,
+                    winner,
+                ) = row
+
+            else:
+                continue
+            
+            teams = teams.split("|") if teams else []
+            matches = matches.split("|") if matches else []
 
             tournament = Tournament(
                 name=name,
@@ -43,9 +64,10 @@ class TournamentRepository:
                 location=location,
                 contact_email=contact_email,
                 contact_phone=contact_phone,
-                teams=[],      # not loading from CSV yet
-                matches=[],    # same here
+                teams=teams,
+                matches=matches,
                 winner=winner or None,
+                tournament_id=int(tournament_id) if tournament_id else None,
             )
             tournaments.append(tournament)
 
@@ -55,6 +77,7 @@ class TournamentRepository:
         rows: List[list[str]] = []
 
         rows.append([
+            "tournament_id",
             "name",
             "start_date",
             "end_date",
@@ -67,15 +90,28 @@ class TournamentRepository:
         ])
 
         for t in self.tournaments:
+            # Convert lists back to strings seperated by pipes
+            if t.teams:
+                teams = "|".join(t.teams)
+            else:
+                teams = ""
+            
+            
+            if t.matches:
+                matches = "|".join([str(m) for m in t.matches])
+            else:
+                matches = ""
+
             rows.append([
+                str(t.tournament_id),
                 t.name,
                 t.start,
                 t.end,
                 t.location,
                 t.contact_email,
                 t.contact_phone,
-                "",                   # teams serialisation later
-                "",                   # matches serialisation later
+                teams,
+                matches,
                 t.winner or "",
             ])
 
@@ -90,8 +126,18 @@ class TournamentRepository:
     def get_all(self) -> List[Tournament]:
         return list(self.tournaments)
 
-    def get_by_name(self, name: str) -> Tournament | None:
+    def get_by_name(self, name: str) -> Optional[Tournament]:
         for t in self.tournaments:
             if t.name == name:
                 return t
         return None
+    
+    def get_next_id(self) -> int:
+        if not self.tournaments:
+            return 1
+        max_id = max(t.tournament_id or 0 for t in self.tournaments)
+        return max_id + 1
+    
+    def save(self) -> None:
+        """ - """ # Comment her
+        self.save_to_file()
