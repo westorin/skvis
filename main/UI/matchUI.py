@@ -1,6 +1,5 @@
 from main.logic.matchmanager import MatchManager
 
-
 class MatchUI:
     def __init__(self) -> None:
         self.mm = MatchManager()
@@ -24,7 +23,7 @@ class MatchUI:
             "round": round_name or None,
             "tournament": tournament or None,
         }
-
+        
         try:
             match = self.mm.create_match(data)
             print(f"Match saved: {match.team1} vs. {match.team2} on server {match.server_id}")

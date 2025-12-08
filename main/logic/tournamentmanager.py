@@ -1,6 +1,6 @@
 # LL/tournamentmanager.py
 
-from datetime import datetime
+from datetime import datetime, date
 from typing import List, Dict, Optional
 
 from main.models.tournamentmodel import Tournament
@@ -89,3 +89,30 @@ class TournamentManager:
             raise ValueError("End date cannot be before start date")
 
         return start_date.isoformat(), end_date.isoformat()
+
+    def analyze_date_string(self, value: str) -> date:
+        """Analyzes stored date strings (ISO or DD-MM-YYYY) and changes them into date objects."""
+        try:
+            return date.fromisoformat(value.strip())
+        except ValueError:
+            return datetime.strptime(value.strip(), "%d-%m-%Y").date()
+
+    def get_timeframe(self, tournament: Tournament, reference_date: Optional[date] = None) -> str:
+        """ - """ # Comment her
+        today = reference_date or date.today()
+        start_date = self.analyze_date_string(tournament.start)
+        end_date = self.analyze_date_string(tournament.end)
+
+        if end_date < today:
+            return "Past"
+        if start_date > today:
+            return "Future"
+        return "On going"
+
+    def group_by_timeframe(self, reference_date: Optional[date] = None) -> Dict[str, List[Tournament]]:
+        """Group tournaments into Past/On going/Future for the UI layer."""
+        group: Dict[str, List[Tournament]] = {"Past": [], "On going": [], "Future": []}
+        for tournament in self.list_tournaments():
+            timeframe = self.get_timeframe(tournament, reference_date)
+            group[timeframe].append(tournament)
+        return group
