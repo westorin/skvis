@@ -123,7 +123,7 @@ class ListOfPlayersUI():
 
             print(header_text)
             print(center_text)
-            print(footer_text)    
+            print(footer_text)   
             
             choice = str(input(">>>>"))
             

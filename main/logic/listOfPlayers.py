@@ -41,14 +41,16 @@ class ListOfPlayersLogic():
                     list_of_players = list_of_players[1:]
                 list_of_players_in_pers_of_ten.append(list_of_ten_players)
 
-            if((len(list_of_players) // 10) == 0):
+            elif((len(list_of_players) // 10) == 0 and (len(list_of_players) % 10) != 0):
                 for player in list_of_players:
                     list_of_ten_players.append(player)
+                    list_of_players = list_of_players[1:]
                     
 
                 for i in range(0, (10 - len(list_of_players))):
                     list_of_ten_players.append(["","",""])
                 list_of_players_in_pers_of_ten.append(list_of_ten_players)
-                list_of_players = []
-            return list_of_players_in_pers_of_ten
+                
+
+        return list_of_players_in_pers_of_ten
                     

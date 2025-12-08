@@ -66,16 +66,19 @@ class ListOfTeamsLogic():
                 # Here we have a for loop that counts ten so we can add the ten teams to a list and remove the on you add
                 for i in range(0,10):
                     lists_of_ten_teams.append(list_of_teams[0])
-                    list_of_teams = list_of_teams[1:]
+                    list_of_teams = list_of_teams[1:]                
+                    
                 list_of_teams_in_pers_of_tens.append(lists_of_ten_teams)
-
+    
             # Here we check if the list of all teams has less then 10 teams
-            if((len(list_of_teams) // 10 ) == 0):
+            elif((len(list_of_teams) // 10 ) == 0 and (len(list_of_teams) % 10) != 1):
                 for team in list_of_teams:
                     lists_of_ten_teams.append(team)
+                    list_of_teams = list_of_teams[1:]
 
                 for i in range(0, (10 - (len(list_of_teams) % 10))):
                     lists_of_ten_teams.append(["", "", ""])
                 list_of_teams_in_pers_of_tens.append(lists_of_ten_teams)
                 list_of_teams = []
+
         return list_of_teams_in_pers_of_tens

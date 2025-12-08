@@ -9,5 +9,7 @@ from main.UI.listOfPlayers import ListOfPlayersUI
 from main.UI.addtournament import AddTournamentUI
 from main.UI.search import SearchUI
 
+
+
 run_program = MainUI(homepageUI, PickTimeOfTournamntsUI, LeaderBoardUI, ListOfTeamsUI, listOfClubsUI, LoginUI, ListOfPlayersUI, AddTournamentUI, SearchUI)
 run_program.run()
