@@ -1,7 +1,9 @@
-date,time,server_id,team1,team2,score1,score2,winner,round,tournament
-05-12-2025,16:00,ser-1,Faze,Ekki til,0,0,,3,Forntintre
-12-12-2025,13:00,ser-2,Faze,Jolasveinarnir,0,0,,5,Fortnite Cuo
-03-09-2025,14:30,ser-5,Lego Fans,Jolasveinarnir,0,0,,3,HAHA Cup
-05-01-2025,12:15,ser-2,Faze,Lego Fans,0,0,,2,Python
-22-12-2025,19:00,ser-7,Faze,Jolasveinarnir,0,0,,4,Fortnite Cup
-12-12-2025,12:00,1,,f,0,0,,4,hdejkc
+match_id,team1,team2,date,time,server_id,round,bracket,winner,loser,tournament_id,final_score,total_rounds,score1,score2
+1,Jolasveinarnir,Liquid,,,1_match_1,1,W,Jolasveinarnir,Liquid,1,13-5,18,0,0
+2,Aurora,Legacy,,,1_match_2,1,W,Aurora,Legacy,1,13-4,17,0,0
+3,Le France,Lego Fans,,,1_match_3,1,W,Le France,Lego Fans,1,13-12,25,0,0
+4,Taco,Faze,,,1_match_4,1,W,Faze,Taco,1,10-13,23,0,0
+5,Hrútar,Spirit,,,1_match_5,1,W,Hrútar,Spirit,1,13-11,24,0,0
+6,Greek,Vitality,,,1_match_6,1,W,Greek,Vitality,1,13-12,25,0,0
+7,MOUZ,FURIA,,,1_match_7,1,W,MOUZ,FURIA,1,13-4,17,0,0
+8,G2,Falcons,,,1_match_8,1,W,G2,Falcons,1,13-11,24,0,0

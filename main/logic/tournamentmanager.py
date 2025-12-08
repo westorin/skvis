@@ -1,13 +1,13 @@
-# LL/tournamentmanager.py
-
 from datetime import datetime, date
 from typing import List, Dict, Optional
 import os
+import random
 
 from main.models.tournamentmodel import Tournament
 from main.repo.tournamentrepo import TournamentRepository
 from main.repo.teamrepo import TeamRepository
 from main.logic.matchmanager import MatchManager
+
 class TournamentManager:
     """Handles creating and storing tournaments in memory + CSV."""
 
@@ -94,8 +94,50 @@ class TournamentManager:
         self.tournaments.update_tournament(tournament)
 
     def generate_initial_matches(self, tournament_name: str) -> None:
-        pass
-    
+        "Generates 8 matches for the first round of a 16-team tournament."
+        tournament = self.get_tournament(tournament_name)
+        if tournament is None:
+            raise ValueError("Tournament does not exist.")
+        if len(tournament.teams) != 16:
+            raise ValueError("Tournament must have exactly 16 teams to generate matches.")
+
+        #Shuffle teams for randomness
+        teams = tournament.teams.copy()
+        random.shuffle(teams)
+
+        match_ids = []
+
+        #Pair teams into 8 matches
+        for i in range(0, 16, 2):
+            team1 = teams[i]
+            team2 = teams[i + 1]
+
+            match_data = self.match_manager.create_tournament_match(
+                team1 = team1, 
+                team2 = team2,
+                bracket = "W",
+                round_number = 1,
+                tournament_id = tournament.tournament_id
+                )
+
+            match_ids.append(match_data.match_id)
+
+            #Create the folder automatically inside tournament folder
+            tournament_folder = f"tournament_{tournament.name}"
+            match_folder = os.path.join(tournament_folder, f"match_{match_data.match_id}")
+            os.makedirs(match_folder, exist_ok=True)
+
+            #Create initial 13 placeholder round CSV files
+            for round_number in range(1, 14):
+                round_path = os.path.join(match_folder, f"round_{round_number}.csv")
+                with open(round_path, 'w', encoding='utf-8') as f:
+                    f.write("match_id,round,winner,loser,bracket\n")
+                    f.write(f"{match_data.match_id},{round_number},TBD,TBD,W\n")
+
+        #Save match list into tournament
+        tournament.matches = match_ids
+        self.tournaments.update_tournament(tournament)
+
     # Date validation
 
     def validate_dates(self, start: str, end: str) -> tuple[str, str]:
