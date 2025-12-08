@@ -14,20 +14,16 @@ class AddTournamentUI:
 
     def add_tournament_ui(self) -> None:
         print("=== Create new tournament ===")
+        
         event = ("CS") # input("Event: ")
         tournament_type = "Knockout"
         name = input("Name: ")
-
-        if self.tm.get_tournament(name):
-            print("Error: Tournament name must be unique.")
-            return
-
         start = input("Start date (DD-MM-YYYY): ")
         end = input("End date (DD-MM-YYYY): ")
         location = input("Location: ")
         contact_email = input("Contact email: ")
         contact_phone = input("Contact phone: ")
-        points = "17"
+        points = "17" # Hvernig viljum við hafa þetta?
 
         data = {
             "event": event,

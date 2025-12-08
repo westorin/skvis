@@ -27,7 +27,7 @@ class MatchUI:
 
         try:
             match = self.mm.create_match(data)
-            print(f"Match saved: {match.team1} vs {match.team2} on server {match.server_id}")
+            print(f"Match saved: {match.team1} vs. {match.team2} on server {match.server_id}")
         except ValueError as e:
             print("Error:", e)
 
@@ -42,7 +42,6 @@ class MatchUI:
             score = f"{m.score1}-{m.score2}"
             winner = f" | winner: {m.winner}" if m.winner else ""
             print(f"{m.date} {m.time} | {m.team1} vs {m.team2} | score {score}{winner} | server {m.server_id}")
-
 
 if __name__ == "__main__":
     ui = MatchUI()

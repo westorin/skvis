@@ -13,8 +13,8 @@ class LogicWrapper:
         self.team_manager = TeamManager(data.teams, data.players)
         self.player_manager.team_manager = self.team_manager  # Link TeamManager to PlayerManager
 
-        self.tournament_manager = TournamentManager(data.tournaments, data.teams)
+        self.tournament_manager = TournamentManager(data.tournaments, data.teams, data.matches)
 
-        #self.match_manager = MatchManager(data.matches)
+        self.match_manager = MatchManager(data.matches)
         #self.search_manager = SearchManager(data.players,data.teams,data.tournaments)
         self.login_manager = LoginManager(data.players, data.roles, data.passwords)
