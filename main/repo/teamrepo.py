@@ -20,7 +20,7 @@ class TeamRepository:
                 players = row[3].split("|") if row[3] else []
                 website_url = row[4]
 
-                t = Team(team_id, name, captain, players, website_url)
+                t = Team(team_id, name, captain, players, website_url,wins=0,losses=0)
                 teams.append(t)
 
         return teams
