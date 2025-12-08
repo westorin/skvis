@@ -53,7 +53,7 @@ class TournamentRepository:
 
             else:
                 continue
-            
+
             teams = teams.split("|") if teams else []
             matches = matches.split("|") if matches else []
 
@@ -67,7 +67,7 @@ class TournamentRepository:
                 teams=teams,
                 matches=matches,
                 winner=winner or None,
-                tournament_id=int(tournament_id) if tournament_id else None,
+                tournament_id=tournament_id if tournament_id else None,
             )
             tournaments.append(tournament)
 
