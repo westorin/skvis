@@ -1,5 +1,7 @@
 from main.IO.IOpy.matchIO import MatchIO
 from main.models.matchmodel import Match
+from main.IO.IOpy.matchtestIO import MatchTestIO
+from main.models.matchtestmodel import MatchTestModel
 
 
 class MatchRepository:
@@ -111,3 +113,23 @@ class MatchRepository:
         match.winner = winner
         self.save_to_file()
         return match
+
+    def get_by_id(self, match_id):
+        for m in self.matches:
+            if str(m.match_id) == str(match_id):
+                return m
+        return None
+    
+    def get_by_tournament(self, tournament_id):
+        result = []
+        for m in self.matches:
+            if str(m.tournament) == str(tournament_id):
+                result.append(m)
+        return result
+    
+    def add_match(self, match: Match) -> None:
+        self.matches.append(match)
+        self.save_to_file()
+
+    def save_all(self):
+        self.save_to_file()
