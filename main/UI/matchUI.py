@@ -43,16 +43,21 @@ class MatchUI:
             winner = f" | winner: {m.winner}" if m.winner else ""
             print(f"{m.date} {m.time} | {m.team1} vs {m.team2} | score {score}{winner} | server {m.server_id}")
 
+# if __name__ == "__main__":
+#     ui = MatchUI()
+#     while True:
+#         print("\n1. Create match\n2. List matches\nq. Quit")
+#         choice = input("Choose: ").strip().lower()
+#         if choice == "1":
+#             ui.create_match_ui()
+#         elif choice == "2":
+#             ui.list_matches_ui()
+#         elif choice == "q":
+#             break
+#         else:
+#             print("Invalid choice.")
+
+# Temporary for testing
 if __name__ == "__main__":
     ui = MatchUI()
-    while True:
-        print("\n1. Create match\n2. List matches\nq. Quit")
-        choice = input("Choose: ").strip().lower()
-        if choice == "1":
-            ui.create_match_ui()
-        elif choice == "2":
-            ui.list_matches_ui()
-        elif choice == "q":
-            break
-        else:
-            print("Invalid choice.")
+    ui.create_match_ui()
