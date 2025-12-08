@@ -50,6 +50,10 @@ class TournamentRepository:
                     matches,
                     winner,
                 ) = row
+                try:
+                    tournament_id = int(tournament_id)
+                except (TypeError, ValueError):
+                    tournament_id = None
 
             else:
                 continue
@@ -102,8 +106,10 @@ class TournamentRepository:
             else:
                 matches = ""
 
+            tournament_id_value = str(t.tournament_id) if t.tournament_id is not None else ""
+
             rows.append([
-                str(t.tournament_id),
+                tournament_id_value,
                 t.name,
                 t.start,
                 t.end,
@@ -135,7 +141,18 @@ class TournamentRepository:
     def get_next_id(self) -> int:
         if not self.tournaments:
             return 1
-        max_id = max(t.tournament_id or 0 for t in self.tournaments)
+        id_values: List[int] = []
+        for t in self.tournaments:
+            try:
+                if t.tournament_id is not None:
+                    id_values.append(int(t.tournament_id))
+            except (TypeError, ValueError):
+                continue
+
+        if not id_values:
+            return 1
+
+        max_id = max(id_values)
         return max_id + 1
     
     def save(self) -> None:

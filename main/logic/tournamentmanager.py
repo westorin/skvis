@@ -1,6 +1,6 @@
 # LL/tournamentmanager.py
 
-from datetime import datetime
+from datetime import datetime, date
 from typing import List, Dict, Optional
 
 from main.models.tournamentmodel import Tournament
@@ -76,20 +76,6 @@ class TournamentManager:
             return False
         return team_name in tournament.teams
     
-    # Date validation
-
-    def validate_dates(self, start: str, end: str) -> tuple[str, str]:
-        try:
-            start_date = datetime.strptime(start.strip(), "%d-%m-%Y").date()
-            end_date = datetime.strptime(end.strip(), "%d-%m-%Y").date()
-        except ValueError:
-            raise ValueError("Invalid date format, use DD-MM-YYYY")
-
-        if end_date < start_date:
-            raise ValueError("End date cannot be before start date")
-
-        return start_date.isoformat(), end_date.isoformat()
-    
     def set_teams_for_tournament(self, tournament_name: str, team_names: List[str]) -> None:
         tournament = self.get_tournament(tournament_name)
         # Tournament should have exactly 16 teams
@@ -108,3 +94,44 @@ class TournamentManager:
 
     def generate_initial_matches(self, tournament_name: str) -> None:
         pass
+    
+    # Date validation
+
+    def validate_dates(self, start: str, end: str) -> tuple[str, str]:
+        try:
+            start_date = datetime.strptime(start.strip(), "%d-%m-%Y").date()
+            end_date = datetime.strptime(end.strip(), "%d-%m-%Y").date()
+        except ValueError:
+            raise ValueError("Invalid date format, use DD-MM-YYYY")
+
+        if end_date < start_date:
+            raise ValueError("End date cannot be before start date")
+
+        return start_date.isoformat(), end_date.isoformat()
+    
+    def analyze_date_string(self, value: str) -> date:
+        """Analyzes stored date strings (ISO or DD-MM-YYYY) and changes them into date objects."""
+        try:
+            return date.fromisoformat(value.strip())
+        except ValueError:
+            return datetime.strptime(value.strip(), "%d-%m-%Y").date()
+
+    def get_timeframe(self, tournament: Tournament, reference_date: Optional[date] = None) -> str:
+        """ - """ # Comment her
+        today = reference_date or date.today()
+        start_date = self.analyze_date_string(tournament.start)
+        end_date = self.analyze_date_string(tournament.end)
+
+        if end_date < today:
+            return "Past"
+        if start_date > today:
+            return "Future"
+        return "On going"
+
+    def group_by_timeframe(self, reference_date: Optional[date] = None) -> Dict[str, List[Tournament]]:
+        """Group tournaments into Past/On going/Future for the UI layer."""
+        group: Dict[str, List[Tournament]] = {"Past": [], "On going": [], "Future": []}
+        for tournament in self.list_tournaments():
+            timeframe = self.get_timeframe(tournament, reference_date)
+            group[timeframe].append(tournament)
+        return group
