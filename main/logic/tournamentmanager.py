@@ -2,6 +2,7 @@
 
 from datetime import datetime, date
 from typing import List, Dict, Optional
+import os
 
 from main.models.tournamentmodel import Tournament
 from main.repo.tournamentrepo import TournamentRepository
@@ -135,3 +136,31 @@ class TournamentManager:
             timeframe = self.get_timeframe(tournament, reference_date)
             group[timeframe].append(tournament)
         return group
+    
+    def export_tournament_results(self, tournament_name: str, base_patch: str) -> None:
+        "Creates a folder for the tournament, inside it creates 16 match folders"
+        "and inside each match folder creates placeholder round files"
+
+        tournament = self.get_tournament(tournament_name)
+        if tournament is None:
+            raise ValueError("Tournament does not exist.")
+        
+        #Create main folder
+        tournament_folder = os.path.join(base_patch, tournament.name)
+        os.makedirs(tournament_folder, exist_ok=True)
+
+        #Create 16 match folders
+        for match_index in range(1, 17):
+            match_folder = os.path.join(tournament_folder, f"Match_{match_index}")
+            os.makedirs(match_folder, exist_ok=True)
+
+            #Create placeholder round files
+            for round_number in range(1, 14):  # Assuming 13 rounds per match
+                round_file_path = os.path.join(match_folder, f"Round_{round_number}.txt")
+                if not os.path.exists(round_file_path):
+                    with open(round_file_path, 'w') as f:
+                        f.write(f"Match {match_index} - Round {round_number}\n")
+                        f.write(f"Winner: TBD\n Loser: TBD\n Bracket: TBD\n")
+        print(f"Tournament results exported to {tournament_folder}")
+        
+        

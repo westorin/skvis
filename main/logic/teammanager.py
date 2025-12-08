@@ -173,3 +173,12 @@ class TeamManager:
     
     def get_team(self, team_name):
         return self.team_repo.get_team(team_name)
+    
+    def does_team_exist(self, team_name):
+        team = self.team_repo.get_team(team_name.lower())
+        if team is None:
+            return False
+        if team .name == team_name:
+            return True
+        
+
