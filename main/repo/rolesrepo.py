@@ -22,7 +22,6 @@ class RoleRepository:
         return roles
     
     def get_role_by_username(self, username:str):
-        print("Debug", [repr(role.username) for role in self.roles], repr(username))
         for role in self.roles:
             if role.username == username:
                 return role

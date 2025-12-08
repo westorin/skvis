@@ -25,7 +25,9 @@ class TeamManager:
             name=name,
             captain=captain_handle,
             players=[captain_handle],
-            website_url=website_url
+            website_url=website_url,
+            wins=0,
+            losses=0
         )
 
         # Add team to repository
@@ -168,3 +170,6 @@ class TeamManager:
     # Get all teams ===========================
     def get_all_teams(self):
         return self.team_repo.teams
+    
+    def get_team(self, team_name):
+        return self.team_repo.get_team(team_name)

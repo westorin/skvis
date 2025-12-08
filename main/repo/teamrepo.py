@@ -20,7 +20,7 @@ class TeamRepository:
                 players = row[3].split("|") if row[3] else []
                 website_url = row[4]
 
-                t = Team(team_id, name, captain, players, website_url)
+                t = Team(team_id, name, captain, players, website_url,wins=0,losses=0)
                 teams.append(t)
 
         return teams
@@ -58,3 +58,10 @@ class TeamRepository:
             if team.name == team_name:
                 return team
         return None
+    
+    def get_all_players_in_team(self) -> list:
+        all_players = []
+        for team in self.teams:
+            for player in team.players:
+                all_players.append(player)
+        return all_players
