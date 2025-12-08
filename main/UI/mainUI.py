@@ -151,10 +151,11 @@ class MainUI():
 
             if(self.current_ui_page == "LIST_OF_PLAYERS"):
                 action = self.__list_of_players_ui.print_list_of_players(self)
+                if(action == "BACK"):
+                    self.current_ui_page = "Homepage"
+                elif(action == "QUIT"):
+                    break
                 
-                
-                print("not implamented")
-                break
 
             if(self.current_ui_page == "ADD_TOURNAMENT"):
                 print("not implamented")

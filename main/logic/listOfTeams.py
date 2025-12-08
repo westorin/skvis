@@ -71,7 +71,7 @@ class ListOfTeamsLogic():
                 list_of_teams_in_pers_of_tens.append(lists_of_ten_teams)
     
             # Here we check if the list of all teams has less then 10 teams
-            elif((len(list_of_teams) // 10 ) == 0 and (len(list_of_teams) % 10) != 1):
+            elif((len(list_of_teams) // 10 ) == 0 and (len(list_of_teams) % 10) != 0):
                 for team in list_of_teams:
                     lists_of_ten_teams.append(team)
                     list_of_teams = list_of_teams[1:]

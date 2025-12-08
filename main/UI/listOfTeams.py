@@ -1,14 +1,23 @@
+from main.wrappers.datawrapper import DataWrapper
+from main.wrappers.logicwrapper import LogicWrapper
+
 from main.logic.listOfTeams import ListOfTeamsLogic
 from main.logic.clearScreenInTerminal import clear_screen
 
 class ListOfTeamsUI():
     def __init__(self):
-        pass
-        
+        data = DataWrapper()
+        logic = LogicWrapper(data)
+        self.tm = logic.team_manager
+
     def print_list_of_teams(self, isAdminFromMain: bool) -> str:
         self.isAdmin = isAdminFromMain
         self.list_of_teams = ListOfTeamsLogic().sort_teams_into_a_list_of_tens()
         list_layer_counters = 1
+
+        data = DataWrapper()
+        logic = LogicWrapper(data)
+        tm = logic.team_manager
 
         if(self.isAdmin == True):
             add_command = """|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
@@ -144,6 +153,9 @@ class ListOfTeamsUI():
                 return "QUIT"
             elif(choice.lower() == "a" and self.isAdmin == True):
                 return "ADD_TE"
+            elif(tm.does_team_exist(choice) == True):
+                print("works")
+                i = input()
             # TODO Need to add show a team
             else:
                 clear_screen()

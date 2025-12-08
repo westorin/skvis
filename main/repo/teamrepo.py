@@ -55,7 +55,8 @@ class TeamRepository:
     # Get team by name
     def get_team(self, team_name):
         for team in self.teams:
-            if team.name == team_name:
+            n = team.name
+            if n.lower() == team_name:
                 return team
         return None
     

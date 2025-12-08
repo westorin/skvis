@@ -178,7 +178,7 @@ class TeamManager:
         team = self.team_repo.get_team(team_name.lower())
         if team is None:
             return False
-        if team .name == team_name:
+        if (team.name).lower() == team_name:
             return True
         
 
