@@ -7,9 +7,10 @@ from main.UI.login import LoginUI
 from main.UI.listOfPlayers import ListOfPlayersUI
 from main.UI.addtournament import AddTournamentUI
 from main.UI.search import SearchUI
+from main.UI.team import TeamUI
 
 class MainUI():
-    def __init__(self, homepage_ui: homepageUI, ptot_ui: PickTimeOfTournamntsUI, leader_board_ui: LeaderBoardUI, list_of_teams_ui: ListOfTeamsUI, list_of_clubs_ui: listOfClubsUI, login_ui: LoginUI, list_of_players_ui: ListOfPlayersUI, add_tournamnet_ui: AddTournamentUI, search_ui: SearchUI):
+    def __init__(self, homepage_ui: homepageUI, ptot_ui: PickTimeOfTournamntsUI, leader_board_ui: LeaderBoardUI, list_of_teams_ui: ListOfTeamsUI, list_of_clubs_ui: listOfClubsUI, login_ui: LoginUI, list_of_players_ui: ListOfPlayersUI, add_tournamnet_ui: AddTournamentUI, search_ui: SearchUI, team_ui: TeamUI):
         self.__homepage_ui = homepage_ui
         self.__ptot_ui = ptot_ui
         self.__leader_board_ui = leader_board_ui
@@ -19,11 +20,13 @@ class MainUI():
         self.__list_of_players_ui = list_of_players_ui
         self.__add_tournament_ui = add_tournamnet_ui
         self.__search_ui = search_ui
+        self.__team_ui = team_ui
 
         self.current_ui_page = "Homepage"
         self.isAdmin = False
         self.isATeamCapt = False
         self.captName = ""
+        self.nameOfATeam = ""
     
     # Here is the function to run the code
     def run(self):
@@ -130,6 +133,9 @@ class MainUI():
                     self.current_ui_page = "ADD_TEAM"
                     print("NOT IMPLAMENTED!!!!!!!!!!!!!!!")
                     break
+                elif(action[0] == "TEAM"):
+                    self.current_ui_page = "A_TEAM"
+                    self.nameOfATeam = action[1]
             
             if(self.current_ui_page == "LIST_OF_CLUBS"):
                 print("not implamented")
@@ -155,7 +161,6 @@ class MainUI():
                     self.current_ui_page = "Homepage"
                 elif(action == "QUIT"):
                     break
-                
 
             if(self.current_ui_page == "ADD_TOURNAMENT"):
                 print("not implamented")
@@ -163,4 +168,9 @@ class MainUI():
 
             if(self.current_ui_page == "PICK_SEARCH"):
                 print("not implamented")
+                break
+
+            if(self.current_ui_page == "A_TEAM"):
+                action = self.__team_ui.print_team(self, self.nameOfATeam)
+                print("not work")
                 break
