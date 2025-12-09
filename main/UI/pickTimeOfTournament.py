@@ -1,6 +1,6 @@
 from main.logic.clearScreenInTerminal import clear_screen
 
-class PickTimeOfTournamntsUI():
+class PickTimeOfTournamentUI():
     def __init__(self):
         pass
     
