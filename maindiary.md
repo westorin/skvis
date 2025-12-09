@@ -131,6 +131,8 @@ Staða á hópnum: Það virðist allt ganga vel. Við erum ágætlega langt kom
 
 # 4/12/2025 - 12:00
 
+## Mæting: Halldór, Einar og Kristján
+
 Staða á verkefni: Player, teams og tournaments er tilbúið. Einar er að vinna í UI-inu, fyrsta síðan er klár ásamt einni annari og allt skipulagt hvernig flæðið á að vera.
 
 ## ToDo:
@@ -158,6 +160,8 @@ Staða á verkefni: Player, teams og tournaments er tilbúið. Einar er að vinn
 Staða á hópnum: Allt virðist ganga vel.
 
 # 5/12/2025 - 12:00
+
+## Mæting: Halldór, Einar og Kristján
 
 Staða á verkefni: Allt gengur vel. Erum komnir með góðann grunn af öllu. Tournaments, Teams, Players, Match, og Login er allt tilbúið með A kröfum, vantar B og C kröfur.
 
@@ -191,6 +195,8 @@ Staða á hópnum: Erum ennþá að vinna í okkar og tengja allt saman. Wrapper
 
 # 8/12/2025
 
+## Mæting: Halldór, Einar og Kristján
+
 Staða á verkefni: Flestar A kröfur eru tilbúnar. Þurfum að fínpússa og tengja kóðann betur saman. Við skiptum Tournament classanum og tókum schedule föllin úr honum og bjuggum til sér skrár fyrir schedule en það þarf að græja það sem fyrst.
 
 ## ToDo:
@@ -212,5 +218,15 @@ Staða á verkefni: Flestar A kröfur eru tilbúnar. Þurfum að fínpússa og t
 
 Staða á hópnum: Erum ennþá að vinna í okkar og tengja allt saman. Wrappers eru tilbúnir.
 
-Staða á hópnum:
+# 9/12/2025
+
+## Mæting: Halldór og Einar
+
+Staða á verkefni: Kristján fór yfir tournaments og gerði breytingar þar. Allar A kröfur ættu að vera kóðaðar, það á bara eftir að bæta þeim í TUI. Núna byrjum við á að bæta við B kröfum, Halldór ætlar að byrja á að græja double elimination tournament.
+
+## ToDo:
+- Halda áfram með UI
+- ... (Fylla inn)
+
+Staða á verkefni:
 
