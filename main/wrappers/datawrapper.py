@@ -25,4 +25,3 @@ class DataWrapper:
         self.clubs = ClubRepository()
         self.passwords = PasswordRepository()
         self.roles = RoleRepository()
-

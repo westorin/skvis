@@ -204,5 +204,4 @@ class TournamentManager:
                         f.write("match,round,winner,loser,bracket\n")
                         f.write(f"{match_index},{round_number},TBD,TBD,TBD\n")
         print(f"Tournament results exported to {tournament_folder}")
-        
-        
+        # ^^^^ Má ekki :(
