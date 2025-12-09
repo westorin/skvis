@@ -43,6 +43,11 @@ class MatchRepository:
                 score2,
             ) = row
 
+            if bracket == "W":
+                bracket = "WB"
+            elif bracket == "L":
+                bracket = "LB"
+
             match = Match(
                 match_id=match_id,
                 team1=team1,

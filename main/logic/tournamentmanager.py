@@ -115,7 +115,7 @@ class TournamentManager:
             match_data = self.match_manager.create_tournament_match(
                 team1 = team1, 
                 team2 = team2,
-                bracket = "W",
+                bracket = "WB",
                 round_number = 1,
                 tournament_id = tournament.tournament_id
                 )
@@ -132,7 +132,7 @@ class TournamentManager:
                 round_path = os.path.join(match_folder, f"round_{round_number}.csv")
                 with open(round_path, 'w', encoding='utf-8') as f:
                     f.write("match_id,round,winner,loser,bracket\n")
-                    f.write(f"{match_data.match_id},{round_number},TBD,TBD,W\n")
+                    f.write(f"{match_data.match_id},{round_number},TBD,TBD,WB\n")
 
         #Save match list into tournament
         tournament.matches = match_ids
@@ -205,3 +205,111 @@ class TournamentManager:
                         f.write(f"{match_index},{round_number},TBD,TBD,TBD\n")
         print(f"Tournament results exported to {tournament_folder}")
         # ^^^^ Má ekki :(
+
+    # Helper methods
+    def _get_matches(self, tournament_id, bracket=None, round_number=None):
+        matches = self.match_manager.repo.get_all()
+        filtered = [m for m in matches if str(m.tournament_id) == str(tournament_id)]
+
+        normalized = []
+        for m in filtered:
+            # Normalize bracket
+            br = m.bracket.strip().upper() if m.bracket else ""
+            if br == "W":
+                br = "WB"
+            if br == "L":
+                br = "LB"
+
+            # Normalize round
+            raw_round = getattr(m, "round", None)
+            try:
+                rn = int(raw_round)
+            except:
+                rn = None
+
+            m._norm_bracket = br
+            m._norm_round = rn
+            normalized.append(m)
+
+        if bracket is not None:
+            bracket = bracket.upper()
+            normalized = [m for m in normalized if m._norm_bracket == bracket]
+
+        if round_number is not None:
+            try:
+                round_number = int(round_number)
+            except:
+                pass
+            normalized = [m for m in normalized if m._norm_round == round_number]
+
+        return normalized
+    
+    def generate_next_rounds(self, tournament_name: str):
+        #Generate WB round 2 and LB round 1 for a 16-team double elimination tournament.
+        tournament = self.get_tournament(tournament_name)
+        if not tournament:
+            raise ValueError("Tournament does not exist.")
+        
+        tid = tournament.tournament_id
+        #WB Round 1
+        wb_r1_matches = self._get_matches(tid, bracket="WB", round_number="1")
+        if len(wb_r1_matches) != 8:
+            raise ValueError("WB Round 1 must have exactly 8 matches.")
+        
+        #Ensure they are all finished
+        if any(m.winner is None or m.loser is None for m in wb_r1_matches):
+            raise ValueError("Not all WB Round 1 matches are completed.")
+        
+        #Sort them by match_id to ensure consistent pairing
+        wb_r1_matches = sorted(wb_r1_matches, key=lambda m: int(m.match_id))
+
+        #Winners go to WB Round 2
+        winners = [m.winner for m in wb_r1_matches]
+        #wb_r2_pairs = [(winners[i], winners[i+1]) for i in range(0, len(winners), 2)]
+        wb_r2_pairs = [
+            (winners[0], winners[1]),
+            (winners[2], winners[3]),
+            (winners[4], winners[5]),
+            (winners[6], winners[7]),
+        ]
+
+        #Losers go to LB Round 1
+        losers = [m.loser for m in wb_r1_matches]
+        lb_r1_pairs = [
+            (losers[0], losers[1]),
+            (losers[2], losers[3]),
+            (losers[4], losers[5]),
+            (losers[6], losers[7]),
+        ]
+
+        #Check if we already have these matches, avoid duplicates
+        existing_wb_r2 = self._get_matches(tid, bracket="WB", round_number=2)
+        existing_lb_r1 = self._get_matches(tid, bracket="LB", round_number=1)
+
+        if existing_wb_r2 or existing_lb_r1:
+            raise ValueError("Next round matches already exist.")
+        
+        #Create WB Round 2 matches
+        for team1, team2 in wb_r2_pairs:
+            self.match_manager.create_tournament_match(
+                team1=team1,
+                team2=team2,
+                bracket="WB",
+                round_number=2,
+                tournament_id=tournament.tournament_id
+            )
+        
+        #Create LB Round 1 matches
+        for team1, team2 in lb_r1_pairs:
+            self.match_manager.create_tournament_match(
+                team1=team1,
+                team2=team2,
+                bracket="LB",
+                round_number=1,
+                tournament_id=tournament.tournament_id
+            )
+
+        #Persist to CSV
+        self.match_manager.repo.save_to_file()
+        print("Next round matches generated successfully.")
+        
