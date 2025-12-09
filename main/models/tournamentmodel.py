@@ -14,7 +14,5 @@ class Tournament:
         self.teams: List[str] = teams or [] # list of team names
         self.matches = matches or [] # fill later when scheduling
         self.winner = winner
-        # self.tournament_type = tournament_type
 
         # Bæta við (type hinting) í __init__
-       

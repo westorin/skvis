@@ -154,5 +154,4 @@ class MatchRepository:
 
     def save_all(self):
         self.save_to_file()
-
         
