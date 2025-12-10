@@ -12,6 +12,7 @@ class Match:
         winner=None,
         loser=None,
         tournament_id=None,
+        tournament_name=None,
         final_score=None,
         total_rounds=0,
         score1=0,
@@ -28,6 +29,7 @@ class Match:
         self.winner = winner
         self.loser = loser
         self.tournament_id = tournament_id
+        self.tournament_name = tournament_name
         self.final_score = final_score
         self.total_rounds = total_rounds
         self.score1 = int(score1) if score1 != "" else 0

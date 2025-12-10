@@ -117,22 +117,23 @@ class TournamentManager:
                 team2 = team2,
                 bracket = "WB",
                 round_number = 1,
-                tournament_id = tournament.tournament_id
+                tournament_id = tournament.tournament_id,
+                tournament_name = tournament.name,
                 )
 
             match_ids.append(match_data.match_id)
 
             #Create the folder automatically inside tournament folder
-            tournament_folder = f"tournament_{tournament.name}"
-            match_folder = os.path.join(tournament_folder, f"match_{match_data.match_id}")
-            os.makedirs(match_folder, exist_ok=True)
+            #tournament_folder = f"main/IO/{tournament.name}"
+            #match_folder = os.path.join(tournament_folder, f"match_{match_data.match_id}")
+            #os.makedirs(match_folder, exist_ok=True)
 
             #Create initial 13 placeholder round CSV files
-            for round_number in range(1, 14):
-                round_path = os.path.join(match_folder, f"round_{round_number}.csv")
-                with open(round_path, 'w', encoding='utf-8') as f:
-                    f.write("match_id,round,winner,loser,bracket\n")
-                    f.write(f"{match_data.match_id},{round_number},TBD,TBD,WB\n")
+            #for round_number in range(1, 14):
+            #    round_path = os.path.join(match_folder, f"round_{round_number}.csv")
+            #    with open(round_path, 'w', encoding='utf-8') as f:
+            #        f.write("match_id,round,winner,loser,bracket\n")
+            #        f.write(f"{match_data.match_id},{round_number},TBD,TBD,WB\n")
 
         #Save match list into tournament
         tournament.matches = match_ids
@@ -179,32 +180,32 @@ class TournamentManager:
             group[timeframe].append(tournament)
         return group
     
-    def export_tournament_results(self, tournament_name: str, base_patch: str) -> None:
-        "Creates a folder for the tournament, inside it creates 16 match folders"
-        "and inside each match folder creates placeholder round files"
+    # def export_tournament_results(self, tournament_name: str, base_patch: str) -> None:
+    #     "Creates a folder for the tournament, inside it creates 16 match folders"
+    #     "and inside each match folder creates placeholder round files"
 
-        tournament = self.get_tournament(tournament_name)
-        if tournament is None:
-            raise ValueError("Tournament does not exist.")
+    #     tournament = self.get_tournament(tournament_name)
+    #     if tournament is None:
+    #         raise ValueError("Tournament does not exist.")
         
-        #Create main folder
-        tournament_folder = os.path.join(base_patch, tournament.name)
-        os.makedirs(tournament_folder, exist_ok=True)
+    #     #Create main folder
+    #     tournament_folder = os.path.join(base_patch, tournament.name)
+    #     os.makedirs(tournament_folder, exist_ok=True)
 
-        #Create 16 match folders
-        for match_index in range(1, 17):
-            match_folder = os.path.join(tournament_folder, f"Match_{match_index}")
-            os.makedirs(match_folder, exist_ok=True)
+    #     #Create 16 match folders
+    #     for match_index in range(1, 17):
+    #         match_folder = os.path.join(tournament_folder, f"Match_{match_index}")
+    #         os.makedirs(match_folder, exist_ok=True)
 
-            #Create placeholder round files
-            for round_number in range(1, 14):  # Assuming 13 rounds per match
-                round_file_path = os.path.join(match_folder, f"Round_{round_number}.csv")
-                if not os.path.exists(round_file_path):
-                    with open(round_file_path, 'w', encoding='utf-8') as f:
-                        f.write("match,round,winner,loser,bracket\n")
-                        f.write(f"{match_index},{round_number},TBD,TBD,TBD\n")
-        print(f"Tournament results exported to {tournament_folder}")
-        # ^^^^ Má ekki :(
+    #         #Create placeholder round files
+    #         for round_number in range(1, 14):  # Assuming 13 rounds per match
+    #             round_file_path = os.path.join(match_folder, f"Round_{round_number}.csv")
+    #             if not os.path.exists(round_file_path):
+    #                 with open(round_file_path, 'w', encoding='utf-8') as f:
+    #                     f.write("match,round,winner,loser,bracket\n")
+    #                     f.write(f"{match_index},{round_number},TBD,TBD,TBD\n")
+    #     print(f"Tournament results exported to {tournament_folder}")
+    #     # ^^^^ Má ekki :(
 
     # Helper methods
     def _get_matches(self, tournament_id, bracket=None, round_number=None):
@@ -214,21 +215,24 @@ class TournamentManager:
         normalized = []
         for m in filtered:
             # Normalize bracket
-            br = m.bracket.strip().upper() if m.bracket else ""
-            if br == "W":
-                br = "WB"
-            if br == "L":
-                br = "LB"
+            raw_bracket = getattr(m, "bracket", None)
+            if raw_bracket is None:
+                m._norm_bracket = None
+            else:
+                b = str(raw_bracket).upper().strip()
+                if b == "W":
+                    b = "WB"
+                elif b == "L":
+                    b = "LB"
+                m._norm_bracket = b
 
             # Normalize round
             raw_round = getattr(m, "round", None)
             try:
-                rn = int(raw_round)
-            except:
-                rn = None
+                m._norm_round = int(raw_round)
+            except (ValueError, TypeError):
+                m._norm_round = None
 
-            m._norm_bracket = br
-            m._norm_round = rn
             normalized.append(m)
 
         if bracket is not None:
@@ -236,10 +240,7 @@ class TournamentManager:
             normalized = [m for m in normalized if m._norm_bracket == bracket]
 
         if round_number is not None:
-            try:
-                round_number = int(round_number)
-            except:
-                pass
+            round_number = int(round_number)
             normalized = [m for m in normalized if m._norm_round == round_number]
 
         return normalized
@@ -252,7 +253,7 @@ class TournamentManager:
         
         tid = tournament.tournament_id
         #WB Round 1
-        wb_r1_matches = self._get_matches(tid, bracket="WB", round_number="1")
+        wb_r1_matches = self._get_matches(tid, bracket="WB", round_number=1)
         if len(wb_r1_matches) != 8:
             raise ValueError("WB Round 1 must have exactly 8 matches.")
         
@@ -296,7 +297,8 @@ class TournamentManager:
                 team2=team2,
                 bracket="WB",
                 round_number=2,
-                tournament_id=tournament.tournament_id
+                tournament_id=tournament.tournament_id,
+                tournament_name = tournament.name,
             )
         
         #Create LB Round 1 matches
@@ -306,10 +308,134 @@ class TournamentManager:
                 team2=team2,
                 bracket="LB",
                 round_number=1,
-                tournament_id=tournament.tournament_id
+                tournament_id=tournament.tournament_id,
+                tournament_name = tournament.name,
             )
 
         #Persist to CSV
         self.match_manager.repo.save_to_file()
         print("Next round matches generated successfully.")
+        
+    def _simulate_round(self, tid, bracket, round_number):
+        matches = self._get_matches(tid, bracket=bracket, round_number=round_number)
+        for match in matches:
+            if match.winner is None:
+                self.match_manager.play_match_random(match.match_id)
+        self.match_manager.repo.save_to_file()
+
+    def generate_wb_round_3(self, tid):
+        tournament = self.tournaments.get_by_id(tid)
+        wb_r2 = self._get_matches(tid, "WB", 2)
+        if len(wb_r2) != 4:
+            raise ValueError("Not enough WB R2 matches to generate WB R3 semifinals.")
+        
+        if any(m.winner is None for m in wb_r2):
+            raise ValueError("Not all WB R2 matches are completed.")
+        
+        wb_r2 = sorted(wb_r2, key=lambda m: int(m.match_id))
+        winners = [m.winner for m in wb_r2]
+
+        pairs = [
+            (winners[0], winners[1]),
+            (winners[2], winners[3]),
+        ]
+
+        for team1, team2 in pairs:
+            self.match_manager.create_tournament_match(
+                team1=team1,
+                team2=team2,
+                bracket="WB",
+                round_number=3,
+                tournament_id=tid,
+                tournament_name = tournament.name,
+            )
+        self.match_manager.repo.save_to_file()
+
+    def generate_wb_final(self, tid, tournament):
+        wb_r3 = self._get_matches(tid, "WB", 3)
+        if len(wb_r3) != 2:
+            raise ValueError("Not enough WB R3 matches to generate WB Final.")
+        
+        if any(m.winner is None for m in wb_r3):
+            raise ValueError("Not all WB R3 matches are completed.")
+        
+        wb_r3 = sorted(wb_r3, key=lambda m: int(m.match_id))
+        winners = [m.winner for m in wb_r3]
+
+        final_match = self.match_manager.create_tournament_match(
+            team1=winners[0],
+            team2=winners[1],
+            bracket="WB",
+            round_number=4,
+            tournament_id=tid,
+            tournament_name = tournament.name,
+        )
+        self.match_manager.repo.save_to_file()
+        return final_match
+    
+    def run_full_simulation(self, tournament):
+        tid = tournament.tournament_id
+        tname = tournament.name
+
+        #0 Ensure WB round 1 matches exist
+        wb_r1 = self._get_matches(tid, "WB", 1)
+        if not wb_r1:
+            print("No WB round 1 matches found")
+            self.generate_initial_matches(tname)
+            wb_r1 = self._get_matches(tid, "WB", 1)
+
+        #1 Simulate WB Round 1
+        print("\nSimulating WB Round 1 matches...")
+        self._simulate_round(tid, "WB", 1)
+
+        #2 Generate WB round 2 matches and LB round 1 matches
+        existing_wb_r2 = self._get_matches(tid, "WB", 2)
+        if not existing_wb_r2:
+            print("\nGenerating WB Round 2 and LB Round 1 matches...")
+            self.generate_next_rounds(tname)
+        else:
+            print("WB Round 2 and LB Round 1 matches already exist.")
+
+        #3 Simulate WB round 2 matches and LB round 1 matches
+        print("\nSimulating WB Round 2 matches...")
+        self._simulate_round(tid, "WB", 2)
+
+        print("\nSimulating LB Round 1 matches...")
+        self._simulate_round(tid, "LB", 1)
+
+        #4 Generate WB round 3 matches
+        existing_wb_r3 = self._get_matches(tid, "WB", 3)
+        if not existing_wb_r3:
+            print("\nGenerating WB Round 3 matches...")
+            self.generate_wb_round_3(tid)
+        else:
+            print("WB Round 3 matches already exist.")
+
+        #5 Simulate WB round 3 matches
+        print("\nSimulating WB Round 3 matches...")
+        self._simulate_round(tid, "WB", 3)
+
+        #6 Generate WB final match
+        existing_wb_final = self._get_matches(tid, "WB", 4)
+        if not existing_wb_final:
+            print("\nGenerating WB Final match...")
+            final_match = self.generate_wb_final(tid,tournament)
+        else:
+            print("WB Final match already exists.")
+            final_match = existing_wb_final[0]
+
+        #7 Simulate WB final match
+        self._simulate_round(tid, "WB", 4)
+
+        final_matches = self._get_matches(tid, "WB", 4)
+        fm = final_matches[0]
+        fm = self.match_manager.repo.get_by_match_id(fm.match_id)
+
+        return {
+            "champion": fm.winner,
+            "runner_up": fm.loser,
+            "final_score": fm.final_score,
+            "total_rounds": fm.total_rounds,
+        }
+
         

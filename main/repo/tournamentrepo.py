@@ -138,6 +138,12 @@ class TournamentRepository:
                 return t
         return None
     
+    def get_by_id(self, tournament_id: int) -> Optional[Tournament]:
+        for t in self.tournaments:
+            if t.tournament_id == tournament_id:
+                return t
+        return None
+    
     def get_next_id(self) -> int:
         if not self.tournaments:
             return 1
