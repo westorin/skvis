@@ -153,7 +153,7 @@ class ListOfTeamsUI():
                 return "QUIT"
             elif(choice.lower() == "a" and self.isAdmin == True):
                 return "ADD_TE"
-            elif(tm.does_team_exist(choice) == True):
+            elif(tm.does_team_exist(choice.lower()) == True):
                 return "TEAM", choice
 
             else:

@@ -1,6 +1,6 @@
 from main.wrappers.datawrapper import DataWrapper
 from main.wrappers.logicwrapper import LogicWrapper
-
+from main.repo.playerrepo import PlayerRepository
 from main.logic.clearScreenInTerminal import clear_screen
 
 
@@ -14,6 +14,7 @@ class LoginUI():
     def print_login(self) -> tuple:
         data = DataWrapper()
         logic = LogicWrapper(data)
+        pr =PlayerRepository()
         self.login_manager = logic.login_manager
         
         self.username = ""
@@ -143,13 +144,15 @@ class LoginUI():
                     choice = str(input(">>>>"))
                     return "ADMIN"
                 elif(role == "captain"):
+                    team_name = pr.get_by_handle(self.username)
                     clear_screen()
                     print(header_text)
                     print(login_pop_up_text)
                     print(user_inputs_text)
                     print(commands_text)
+                    print(team_name.team)
                     choice = str(input(">>>>"))
-                    return "CAPT", self.username
+                    return "CAPT", team_name.team
                 else:
                     print("error in the login checker")
                     

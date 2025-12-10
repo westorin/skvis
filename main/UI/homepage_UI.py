@@ -44,29 +44,29 @@ class homepageUI():
 |\t\t\t\t\t\t\t                          \033[31m*************\033[0m                        \t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t                         \033[31m**************\033[0m                        \t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t                             \033[31m*****\033[0m                             \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t                          \033[31m\033[1mE-SPORTS\033[0m                             \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\033[30m+-------------------------------------------------------------+\033[0m\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|                 Enter the command you want...               |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+====================+===================+====================+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t| 1. Tournaments     | 2. Leader Board   | 3. Teams           |\t\t\t\t\t\t\t\t|"""
+|\t\t\t\t\t\t\t                          \033[31m\033[1m\033[4mE-SPORTS\033[0m                             \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m+-------------------------------------------------------------+\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m                 Enter the command you want...               \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m+====================+===================+====================+\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m 1. Tournaments     \033[30m\033[1m|\033[0m 2. Leader Board   \033[30m\033[1m|\033[0m 3. Teams           \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|"""
 
         error_text ="""|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|     ^                                                       |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|    / \       You have entered an invalied input             |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|   / | \                                                     |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|  /  .  \     Enter Y. if you want to try again              |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t| /_______\        or q. if you want to quit.                 |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|     \x1b[33m^\x1b[0m                                                       |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|    \x1b[33m/ \ \x1b[0m       You have entered an invalied input            |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|   \x1b[33m/\x1b[0m \033[31m\033[1m|\033[0m \x1b[33m\ \x1b[0m                                                    |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|  \x1b[33m/\x1b[0m  \033[31m\033[1m.\033[0m  \x1b[33m\  \x1b[0m   Enter Y. if you want to try again              |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t| \x1b[33m/_______\ \x1b[0m       or q. if you want to quit.                 |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|"""
 
-        footer = f"""|\t\t\t\t\t\t\t+--------------------+-------------------+--------------------+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t| 4. Clubs           | {var1} | 6. Players         |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+--------------------+-------------------+--------------------+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t| {var2} | 8. Search         |                    |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+====================+===================+====================+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|                         q. quit                             |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
+        footer = f"""|\t\t\t\t\t\t\t\033[30m\033[1m+--------------------+-------------------+--------------------+\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m 4. Clubs           \033[30m\033[1m|\033[0m {var1} \033[30m\033[1m|\033[0m 6. Players         \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m+--------------------+-------------------+--------------------+\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m {var2} \033[30m\033[1m|\033[0m 8. Search         \033[30m\033[1m|\033[0m                    \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m+====================+===================+====================+\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m                         q. quit                             \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m+-------------------------------------------------------------+\033[0m\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|

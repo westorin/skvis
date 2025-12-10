@@ -1,12 +1,17 @@
 playerID,name,dob,address,phone,email,url,username,team
 1,Siggi,23-05-2003,Nei,8848479,haha@email.com,njkfg,siggi,Faze
-2,Halldor,26-03-2003,Keflavik 3,888-6969,dori@email.com,ja.is,haalldor,Faze
+2,Halldor,26-03-2003,Keflavik 3,8886969,dori@email.com,ja.is,haalldor,Faze
 3,Kiddi,12-05-2003,Reykjavik 18,8886969,kiddi@kiddi.is,blush.is,kiddi03,
-4,Einar,28-09-2003,Smáralind 4,8886969,einar@ui.com,ja.is,einar,Lego Fans
-5,Kristján,28-11-2003,Elko,8886969,kristjan@elko.is,leikjanet.com,westorin,MOUZ
+4,Einar,23-08-2003,Njarðvík 4,8886969,einar@ui.com,ja.is,einar,Lego Fans
+5,Kristján,28-11-2003,Elko,8886969,kristjan@elko.is,leikjanet.com,westorin,Jolasveinarnir
 6,Ari,16-02-2003,Egilstaðir 19,5812345,ari@nari.is,wikihow.com,aribesti123,
 7,NiKo,11-11-1111,address1,1111111,email,url,NiKo,Falcons
 8,TeSeS,11-11-1111,address,phone,email,url,TeSes,
 9,m0NESY,11-11-1111,address,phone,email,url,m0NESY,
 10,kyxsan,11-11-1111,address,phone,email,url,kyxsan,FURIA
 11,kyousuke,11-11-1111,address,phone,email,url,kyousuke,Vitality
+12,Napoleon Bonaparte,15-08-1769,France,1223442,napol.e@hotmail.com,url,napoleon,Le France
+13,Charles M. de Talleyrand,02-02-1754,France 2,3332467,talley@rand.com,url,talleyrand,Le France
+14,Jean-Baptiste j. Bernadotte,26-01-1763,France 3,6767676,berne@dott.com,url,bernadotte,Le France
+15,Alexsander III of Macedon,01-01-0001,Greek,6786799,alex@great.com,url,alexsander the great,Greek
+16,gaymerz,12-12-1967,Laymerz,8967123,g@mailer.com,url,gaymerz,MOUZ
