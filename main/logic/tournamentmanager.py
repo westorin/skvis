@@ -1,5 +1,5 @@
 from datetime import datetime, date
-from typing import List, Dict, Optional
+from typing import List, Dict, Tuple, Optional
 import os
 import csv
 import random
@@ -166,7 +166,7 @@ class TournamentManager:
             return datetime.strptime(value.strip(), "%d-%m-%Y").date()
 
     def get_timeframe(self, tournament: Tournament, reference_date: Optional[date] = None) -> str:
-        """ - """ # Comment her
+        """Return Past / Ongoing / Future for a given tournament."""
         today = reference_date or date.today()
         start_date = self.analyze_date_string(tournament.start)
         end_date = self.analyze_date_string(tournament.end)
@@ -198,6 +198,25 @@ class TournamentManager:
 
     def list_future_tournaments(self, reference_date: Optional[date] = None) -> list[Tournament]:
         return self.group_by_timeframe(reference_date)["Future"]
+
+    def list_tournaments_basic_info(self) -> List[List[str]]:
+        """Return [name, start, end] for all tournaments as simple lists."""
+        rows: List[List[str]] = []
+        for t in self.list_tournaments():
+            rows.append([t.name, t.start, t.end])
+        return rows
+
+    def list_tournaments_basic_info_by_timeframe(self, timeframe: str, reference_date: Optional[date] = None) -> List[List[str]]:
+        """Return (name, start, end) for tournaments in a specific timeframe. Timeframe must be: 'Past', 'Ongoing', or 'Future'."""
+        grouped = self.group_by_timeframe(reference_date)
+
+        if timeframe not in grouped:
+            raise ValueError("Invalid timeframe. Use 'Past', 'Ongoing' or 'Future'.")
+
+        rows: List[List[str]] = []
+        for t in grouped[timeframe]:
+            rows.append([t.name, t.start, t.end])
+        return rows
 
     def export_tournament_results(self, tournament_name: str, base_patch: str) -> None:
         "Creates a folder for the tournament, inside it creates 16 match folders"
