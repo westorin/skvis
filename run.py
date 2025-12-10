@@ -1,7 +1,7 @@
 from main.UI.mainUI import MainUI
 from main.UI.homepage_UI import homepageUI 
 from main.UI.pickTimeOfTournament import PickTimeOfTournamentUI
-from main.UI.leaderboardUI import LeaderBoardUI
+from main.UI.teamLeaderBoardUI import TeamLeaderBoardUI
 from main.UI.listOfTeams import ListOfTeamsUI
 from main.UI.listOfClubs import listOfClubsUI
 from main.UI.login import LoginUI
@@ -17,7 +17,7 @@ from main.UI.pickLeaderBoard import PickLeaderBoardUI
 
 run_program = MainUI(homepageUI, 
                      PickTimeOfTournamentUI, 
-                     LeaderBoardUI, 
+                     PickLeaderBoardUI, 
                      ListOfTeamsUI, 
                      listOfClubsUI, 
                      LoginUI, 
@@ -28,5 +28,5 @@ run_program = MainUI(homepageUI,
                      TeamAllInfoUI, 
                      PastTournamentsUI, 
                      AddTeamUI, 
-                     PickLeaderBoardUI)
+                     TeamLeaderBoardUI)
 run_program.run()
