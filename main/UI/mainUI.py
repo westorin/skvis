@@ -1,5 +1,5 @@
 from main.UI.homepage_UI import homepageUI
-from main.UI.pickTimeOfTournament import PickTimeOfTournamntsUI
+from main.UI.pickTimeOfTournament import PickTimeOfTournamentUI
 from main.UI.leaderboard import LeaderBoardUI
 from main.UI.listOfTeams import ListOfTeamsUI
 from main.UI.listOfClubs import listOfClubsUI
@@ -8,9 +8,10 @@ from main.UI.listOfPlayers import ListOfPlayersUI
 from main.UI.addtournament import AddTournamentUI
 from main.UI.search import SearchUI
 from main.UI.team import TeamUI
+from main.UI.teamAllInfo import TeamAllInfoUI
 
 class MainUI():
-    def __init__(self, homepage_ui: homepageUI, ptot_ui: PickTimeOfTournamntsUI, leader_board_ui: LeaderBoardUI, list_of_teams_ui: ListOfTeamsUI, list_of_clubs_ui: listOfClubsUI, login_ui: LoginUI, list_of_players_ui: ListOfPlayersUI, add_tournamnet_ui: AddTournamentUI, search_ui: SearchUI, team_ui: TeamUI):
+    def __init__(self, homepage_ui: homepageUI, ptot_ui: PickTimeOfTournamentUI, leader_board_ui: LeaderBoardUI, list_of_teams_ui: ListOfTeamsUI, list_of_clubs_ui: listOfClubsUI, login_ui: LoginUI, list_of_players_ui: ListOfPlayersUI, add_tournamnet_ui: AddTournamentUI, search_ui: SearchUI, team_ui: TeamUI, team_all_info_ui: TeamAllInfoUI):
         self.__homepage_ui = homepage_ui
         self.__ptot_ui = ptot_ui
         self.__leader_board_ui = leader_board_ui
@@ -21,11 +22,12 @@ class MainUI():
         self.__add_tournament_ui = add_tournamnet_ui
         self.__search_ui = search_ui
         self.__team_ui = team_ui
+        self.__team_all_info_ui = team_all_info_ui
 
         self.current_ui_page = "Homepage"
         self.isAdmin = False
         self.isATeamCapt = False
-        self.captName = ""
+        self.nameOfTeamCaptTeamsName = ""
         self.nameOfATeam = ""
     
     # Here is the function to run the code
@@ -171,7 +173,10 @@ class MainUI():
                 break
 
             if(self.current_ui_page == "A_TEAM"):
-                action = self.__team_ui.print_team(self, self.nameOfATeam)
+                if((self.nameOfTeamCaptTeamsName.lower() == self.nameOfATeam.lower() and self.isATeamCapt == True) or self.isAdmin == True):
+                    action = self.__team_all_info_ui.print_team_info(self, self.nameOfATeam, self.isAdmin, self.isATeamCapt)
+                else:
+                    action = self.__team_ui.print_team(self, self.nameOfATeam)
                 if(action == "BACK"):
                     self.nameOfATeam = ""
                     self.current_ui_page = "LIST_OF_TEAMS"

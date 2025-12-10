@@ -43,3 +43,10 @@ class PlayerManager:
 
         self.player_repo.update_player(player)
         return player
+    
+    def does_player_exist(self, player_name):
+        team = self.player_repo.get_by_handle(player_name.lower())
+        if team is None:
+            return False
+        if (team.name).lower() == player_name.lower():
+            return True

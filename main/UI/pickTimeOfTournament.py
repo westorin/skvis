@@ -27,8 +27,7 @@ class PickTimeOfTournamentUI():
 |\t\t\t\t\t\t\t               *********************************               \t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t                *********   *******************                \t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t                 ****      ************* *****                 \t\t\t\t\t\t\t\t|""" 
-
-        # TODO Shoud entering q in the error massage sent to back or close the program ???? 
+ 
         error_text ="""|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|     ^                                                       |\t\t\t\t\t\t\t\t|

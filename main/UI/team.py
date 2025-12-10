@@ -70,7 +70,7 @@ class TeamUI():
         print(center_text)
         print(footer_text)
 
-        choice = str(input())
+        choice = str(input(">>>> "))
 
         while True:
             if(choice.lower() == "b"):
