@@ -39,13 +39,13 @@ def get_matches_for_tournament(tournament_id):
 
 #Helper: get all WB matches for this tournament and round
 #TournamentManager
-def get_wb_round_matches(tournament_id, round_str: str):
+def get_wb_round_matches(tournament_id, round_number: int):
     all_matches = logic.match_manager.repo.get_all()
     return [
         m for m in all_matches
         if str(m.tournament_id) == str(tournament_id)
         and m.bracket == "WB"
-        and str(m.round) == round_str
+        and str(m.round) == round_number
     ]
 
 #Helper: simulate all matches that have no winner yet
@@ -79,7 +79,7 @@ simulate_open_matches("WB Round 1")
 
 #4 Generate WB Round 2 matches and LB Round 1 matches
 print("\nGenerating WB Round 2 and LB Round 1 matches...")
-existing_wb_r2 = get_wb_round_matches(tid, "2")
+existing_wb_r2 = get_wb_round_matches(tid, 2)
 if not existing_wb_r2:
     print("\nGenerating WB Round 2 matches...")
     logic.tournament_manager.generate_next_rounds(tname)
@@ -91,7 +91,7 @@ else:
 simulate_open_matches("WB Round 2 and LB Round 1")
 
 #6 Generate WB Round 3 semifinals from WB Round 2 winners
-wb_r2 = get_wb_round_matches(tid, "2")
+wb_r2 = get_wb_round_matches(tid, 2)
 if len(wb_r2) != 4:
     print("Not enough WB R2 matches to generate WB R3 semifinals.")
     exit()
@@ -118,7 +118,7 @@ for team1, team2 in wb3_pairs:
 logic.match_manager.repo.save_to_file()
 
 #7 Generate WB Final from WB R3 winners
-wb_r3 = get_wb_round_matches(tid, "3")
+wb_r3 = get_wb_round_matches(tid, 3)
 if len(wb_r3) != 2:
     print("Not enough WB R3 matches to generate WB Final.")
     exit()

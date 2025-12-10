@@ -1,6 +1,6 @@
 from main.logic.clearScreenInTerminal import clear_screen
 
-class PickTimeOfTournamntsUI():
+class PickTimeOfTournamentUI():
     def __init__(self):
         pass
     
@@ -49,7 +49,7 @@ class PickTimeOfTournamntsUI():
 |\t\t\t\t\t\t\t+====================+===================+====================+\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|                    |                   |                    |\t\t\t\t\t\t\t\t|"""
 
-        footer_text = """|\t\t\t\t\t\t\t|   1.   Past        |  2. On going      | 3.  Future         |\t\t\t\t\t\t\t\t|
+        footer_text = """|\t\t\t\t\t\t\t|   1.   Past        |  2. Ongoing       | 3.  Future         |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|     tournaments    |    tournamets     |    tournaments     |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|                    |                   |                    |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+====================+========+==========+====================+\t\t\t\t\t\t\t\t|
@@ -73,7 +73,7 @@ class PickTimeOfTournamntsUI():
             if(choice == "1"):
                 return "Past"
             elif(choice == "2"):
-                return "On going"
+                return "Ongoing"
             elif(choice == "3"):
                 return "Future"
             elif(choice.lower() == "b"):

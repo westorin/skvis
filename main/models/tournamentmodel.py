@@ -1,6 +1,6 @@
 # main/models/tournamentmodel.py
 
-from typing import List, Optional # Má nota optional?
+from typing import List, Optional
 
 class Tournament:
     def __init__(self, name: str, start: str, end: str, location: str, contact_email: str, contact_phone: str, teams: Optional[List[str]] = None, matches: Optional[list] = None, winner: Optional[str] = None, tournament_id: Optional[int] = None) -> None:

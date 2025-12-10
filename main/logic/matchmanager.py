@@ -36,7 +36,7 @@ class MatchManager:
         self.repo.add_match(match)
         return match
 
-    def create_tournament_match(self, team1, team2, bracket, round_number, tournament_id):
+    def create_tournament_match(self, team1, team2, bracket, round_number, tournament_id, tournament_name):
         match_id = self.repo.get_next_id()
         
         match = Match(
@@ -51,6 +51,7 @@ class MatchManager:
             winner=None,
             loser=None,
             tournament_id=tournament_id,
+            tournament_name=tournament_name,
             final_score=None,
             total_rounds=0,
             score1=0,
@@ -132,19 +133,16 @@ class MatchManager:
         match.total_rounds = total_rounds
 
         # --- Folder creation chain (correct order) ---
-        root_results = "main/IO"
-        os.makedirs(root_results, exist_ok=True)
+        tname = match.tournament_name
+        if not tname:
+            tname = str(match.tournament_id)
 
         # Tournament folder
-        tournament_folder = f"{root_results}/{match.tournament_id}"
+        tournament_folder = f"main/IO/{tname}"
         os.makedirs(tournament_folder, exist_ok=True)
 
-        # Matches folder
-        matches_folder = f"{tournament_folder}"
-        os.makedirs(matches_folder, exist_ok=True)
-
         # Individual match folder
-        match_folder = f"{matches_folder}/match_{match.match_id}"
+        match_folder = f"{tournament_folder}/match_{match.match_id}"
         os.makedirs(match_folder, exist_ok=True)
 
         print("Match folder created:", os.path.abspath(match_folder))
@@ -166,6 +164,30 @@ class MatchManager:
 
         self.repo.save_to_file()
         return match
+
+    def simulate_round(self, matches):
+        for m in matches:
+            if m.winner is None:
+                self.play_match_random(m.match_id)
+        self.repo.save_to_file()
+
+    def get_winner(self, match_id):
+        match = self.repo.get_by_match_id(match_id)
+        return match.winner
+
+    def get_loser(self, match_id):
+        match = self.repo.get_by_match_id(match_id)
+        return match.loser
+
+    def create_and_play(self,team1,team2,bracket,round_number,tournament_id):
+        match = self.create_tournament_match(team1=team1,team2=team2,bracket=bracket,round_number=round_number,tournament_id=tournament_id)
+        return self.play_match_random(match.match_id)
+
+    def get_unfinished_matches(self):
+        return [m for m in self.repo.get_all() if m.winner is None]
+    
+    def unfinished_in_round(self, matches):
+        return [m for m in matches if m.winner is None]
 
     #round-by-round manual score input
     def play_match_manual(self,match_id):
