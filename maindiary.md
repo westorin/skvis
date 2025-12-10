@@ -231,7 +231,7 @@ Staða á verkefni: Kristján fór yfir tournaments og gerði breytingar þar. A
 - Allir notendur - Hugbúnaðurinn má ekki crasha (Use Case 27)
 - Tournaments: Klára allt - stigagjöf, knockout tournament, double knockout tournaments, events (leikir)
 
-Staða á verkefni: Gengur vel.
+Staða á hópnum: Við erum bara góðir.
 
 # 10/12/2025 - 12:00
 
@@ -257,4 +257,4 @@ B kröfur
 - Tölfræði fyrir leikmenn/lið/Clubs
 - Player history
 
-Staða á verkefni:
+Staða á hópnum: All good in the hood. Þurfum að fara huga að því að uppfæra skýrsluna, Kristján er búinn að uppfæra Class Diagram.
