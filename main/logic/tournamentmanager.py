@@ -82,7 +82,11 @@ class TournamentManager:
         # Tournament should have exactly 16 teams
         if len(team_names) != 16:
             raise ValueError("Exactly 16 teams are required for the tournament.")
-        
+        unique_names = list(dict.fromkeys(team_names))
+        if len(unique_names) != 16:
+            raise ValueError("Team names must be unique.")
+        tournament.teams = unique_names
+
         # Verify all teams exist
         for name in team_names:
             if self.teams.get_team(name) is None:
@@ -170,11 +174,11 @@ class TournamentManager:
             return "Past"
         if start_date > today:
             return "Future"
-        return "On going"
+        return "Ongoing"
 
     def group_by_timeframe(self, reference_date: Optional[date] = None) -> Dict[str, List[Tournament]]:
-        """Group tournaments into Past/On going/Future for the UI layer."""
-        group: Dict[str, List[Tournament]] = {"Past": [], "On going": [], "Future": []}
+        """Group tournaments into Past/Ongoing/Future for the UI layer."""
+        group: Dict[str, List[Tournament]] = {"Past": [], "Ongoing": [], "Future": []}
         for tournament in self.list_tournaments():
             timeframe = self.get_timeframe(tournament, reference_date)
             group[timeframe].append(tournament)
@@ -183,6 +187,20 @@ class TournamentManager:
     # def export_tournament_results(self, tournament_name: str, base_patch: str) -> None:
     #     "Creates a folder for the tournament, inside it creates 16 match folders"
     #     "and inside each match folder creates placeholder round files"
+    # Past, Ongoing and Future - lists
+    
+    def list_past_tournaments(self, reference_date: Optional[date] = None) -> list[Tournament]:
+        return self.group_by_timeframe(reference_date)["Past"]
+
+    def list_ongoing_tournaments(self, reference_date: Optional[date] = None) -> list[Tournament]:
+        return self.group_by_timeframe(reference_date)["Ongoing"]
+
+    def list_future_tournaments(self, reference_date: Optional[date] = None) -> list[Tournament]:
+        return self.group_by_timeframe(reference_date)["Future"]
+
+    def export_tournament_results(self, tournament_name: str, base_patch: str) -> None:
+        "Creates a folder for the tournament, inside it creates 16 match folders"
+        "and inside each match folder creates placeholder round files"
 
     #     tournament = self.get_tournament(tournament_name)
     #     if tournament is None:

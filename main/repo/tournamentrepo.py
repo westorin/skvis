@@ -1,4 +1,4 @@
-from typing import List, Optional # Má nota optional?
+from typing import List, Optional
 from main.IO.IOpy.tournamentIO import TournamentIO
 from main.models.tournamentmodel import Tournament
 
@@ -173,7 +173,4 @@ class TournamentRepository:
                 return
             
     def get_tournament(self, tournament_name: str) -> Optional[Tournament]:
-        for tournament in self.tournaments:
-            if tournament.name == tournament_name:
-                return tournament
-        return None
+        return self.get_by_name(tournament_name)

@@ -20,6 +20,8 @@ class ListOfTeamsLogic():
 
         print(teams[0].name)
         print(len(teams) % 10)
+        # ^^^ má ekki :(
+
 
     def make_list_of_all_teams(self) -> list:
         all_teams_data = ListOfTeamsLogic().get_all_teams()
