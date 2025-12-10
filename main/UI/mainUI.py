@@ -9,9 +9,10 @@ from main.UI.addtournament import AddTournamentUI
 from main.UI.search import SearchUI
 from main.UI.team import TeamUI
 from main.UI.teamAllInfo import TeamAllInfoUI
+from main.UI.pastTournamentsList import PastTournamentsUI
 
 class MainUI():
-    def __init__(self, homepage_ui: homepageUI, ptot_ui: PickTimeOfTournamentUI, leader_board_ui: LeaderBoardUI, list_of_teams_ui: ListOfTeamsUI, list_of_clubs_ui: listOfClubsUI, login_ui: LoginUI, list_of_players_ui: ListOfPlayersUI, add_tournamnet_ui: AddTournamentUI, search_ui: SearchUI, team_ui: TeamUI, team_all_info_ui: TeamAllInfoUI):
+    def __init__(self, homepage_ui: homepageUI, ptot_ui: PickTimeOfTournamentUI, leader_board_ui: LeaderBoardUI, list_of_teams_ui: ListOfTeamsUI, list_of_clubs_ui: listOfClubsUI, login_ui: LoginUI, list_of_players_ui: ListOfPlayersUI, add_tournamnet_ui: AddTournamentUI, search_ui: SearchUI, team_ui: TeamUI, team_all_info_ui: TeamAllInfoUI, past_tournaments_list_ui: PastTournamentsUI):
         self.__homepage_ui = homepage_ui
         self.__ptot_ui = ptot_ui
         self.__leader_board_ui = leader_board_ui
@@ -23,6 +24,7 @@ class MainUI():
         self.__search_ui = search_ui
         self.__team_ui = team_ui
         self.__team_all_info_ui = team_all_info_ui
+        self.__past_tournaments_list_ui = past_tournaments_list_ui
 
         self.current_ui_page = "Homepage"
         self.isAdmin = False
@@ -94,8 +96,7 @@ class MainUI():
                 # Here you're set to the page that holds all the old tournaments
                 if(action == "Past"):
                     self.current_ui_page = "Past_Tournamnets"
-                    print("not implamented")
-                    break
+                    
                 # Here you're set to the page that holds all the tournaments that are still on going
                 elif(action == "On going"):
                     self.current_ui_page = "On_Going_Tournaments"
@@ -183,3 +184,7 @@ class MainUI():
 
                 elif(action == "QUIT"):
                     break
+
+            if(self.current_ui_page == "Past_Tournamnets"):
+                action = self.__past_tournaments_list_ui.print_tournaments(self)
+                break

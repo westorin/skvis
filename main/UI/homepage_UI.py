@@ -24,7 +24,7 @@ class homepageUI():
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t                       \033[31m*****         ***\033[0m                       \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t                       \033[31m\033[5m*****         ***\033[0m                       \t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t                     \033[31m*********************\033[0m                     \t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t                   \033[31m**************************\033[0m                  \t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t                 \033[31m*****************************\033[0m                 \t\t\t\t\t\t\t\t|

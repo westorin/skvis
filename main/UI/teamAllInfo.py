@@ -11,6 +11,7 @@ class TeamAllInfoUI():
         data = DataWrapper()
         logic = LogicWrapper(data)
         self.player = logic.player_manager
+        self.team = logic.team_manager
 
 
     def print_team_info(self, team_name: str, isAAdmin: bool, isATeamCapt: bool) -> str:
@@ -137,6 +138,8 @@ class TeamAllInfoUI():
             return "QUIT"
         elif(choice.lower() == "b"):
             return "BACK"
+        elif(choice.lower() == "a" and (isAAdmin == True or isATeamCapt == True)):
+            return "ADD_PLAYER_TO_TEAM", team_name
         elif(choice.lower() == "u" and isAAdmin == True):
             username_input = ""
             command_for_user_change = "JUST_BACK"
@@ -156,7 +159,7 @@ class TeamAllInfoUI():
 |\t\t\t\t\t\t\t+=============================================================+\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|       username:                                             |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|     +-----------------------------------------------+       |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|     | {username_input + " "*(45 -len(username_input))} |       |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|     | {username_input + " "*(45 -len(username_input)) } |       |\t\t\t\t\t\t\t\t|
 {change_commands}"""
                 
                 print(header_text)
@@ -175,3 +178,77 @@ class TeamAllInfoUI():
                     command_for_user_change = "JUST_BACK"
                 elif(command_for_user_change == "BACK_CHANGE_USER_ENTER" and choice.lower() == "e" and self.player.does_player_exist(username_input) == True):
                     return "UPDATE_PLAYER", username_input
+                else:
+                    clear_screen()
+
+                    print(header_text)
+                    print(error_text)
+                    print(footer_text)
+
+                    choice = str(input(">>>> "))
+
+                    if(choice.lower() == "q"):
+                        return "BACK"
+
+        elif(choice.lower() == "r" and (isAAdmin == True or isATeamCapt == True)):
+            username_input = ""
+            command_for_user_change = "JUST_BACK"
+            while True:
+                if(command_for_user_change == "JUST_BACK"):
+                    change_commands = """|\t\t\t\t\t\t\t+=====+===============================================+=======+\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|                     b. Go back                              |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|"""
+                
+                elif(command_for_user_change == "BACK_CHANGE_USER_ENTER"):
+                    change_commands = """|\t\t\t\t\t\t\t+=====+===================+==================+========+=======+\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t| d. enter diffrent user  | e. Remove user   | b. Go back     |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t+-------------------------+------------------+----------------+\t\t\t\t\t\t\t\t|"""
+
+                user_input_text =f"""|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|                   Enter the username...                     |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t+=============================================================+\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|       username:                                             |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|     +-----------------------------------------------+       |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|     | {username_input + " "*(45 -len(username_input)) } |       |\t\t\t\t\t\t\t\t|
+{change_commands}"""
+                
+                print(header_text)
+                print(user_input_text)
+                print(footer_text)
+
+                choice = str(input(">>>> "))
+
+                if(choice.lower() == "b"):
+                    break
+                elif(username_input == "" and len(choice) < 46):
+                    username_input = choice
+                    command_for_user_change = "BACK_CHANGE_USER_ENTER"
+                elif(command_for_user_change == "BACK_CHANGE_USER_ENTER" and choice.lower() == "d"):
+                    username_input = ""
+                    command_for_user_change = "JUST_BACK"
+                elif(command_for_user_change == "BACK_CHANGE_USER_ENTER" and choice.lower() == "e" and self.player.does_player_exist(username_input) == True):
+                    self.team.remove_player_from_team(team_name, username_input)
+                    break
+                else:
+                    clear_screen()
+
+                    print(header_text)
+                    print(error_text)
+                    print(footer_text)
+
+                    choice = str(input(">>>> "))
+
+                    if(choice.lower() == "q"):
+                        return "BACK"
+                        
+        else:
+            clear_screen()
+
+            print(header_text)
+            print(error_text)
+            print(footer_text)
+
+            choice = str(input(">>>> "))
+
+            if(choice.lower() == "q"):
+                return "BACK"

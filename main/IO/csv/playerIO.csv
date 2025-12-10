@@ -1,13 +1,13 @@
 playerID,name,dob,address,phone,email,url,username,team
 1,Siggi,23-05-2003,Nei,8848479,haha@email.com,njkfg,siggi,Faze
 2,Halldor,26-03-2003,Keflavik 3,8886969,dori@email.com,ja.is,haalldor,Faze
-3,Kiddi,12-05-2003,Reykjavik 18,8886969,kiddi@kiddi.is,blush.is,kiddi03,
+3,Kiddi,12-05-2003,Reykjavik 18,8886969,kiddi@kiddi.is,blush.is,kiddi03,Faze
 4,Einar,23-08-2003,Njarðvík 4,8886969,einar@ui.com,ja.is,einar,Lego Fans
 5,Kristján,28-11-2003,Elko,8886969,kristjan@elko.is,leikjanet.com,westorin,Jolasveinarnir
-6,Ari,16-02-2003,Egilstaðir 19,5812345,ari@nari.is,wikihow.com,aribesti123,
+6,Ari,16-02-2003,Egilstaðir 19,5812345,ari@nari.is,wikihow.com,aribesti123,Lego Fans
 7,NiKo,11-11-1111,address1,1111111,email,url,NiKo,Falcons
-8,TeSeS,11-11-1111,address,phone,email,url,TeSes,
-9,m0NESY,11-11-1111,address,phone,email,url,m0NESY,
+8,TeSeS,11-11-1111,address,phone,email,url,TeSes,Lego Fans
+9,m0NESY,11-11-1111,address,phone,email,url,m0NESY,Jolasveinarnir
 10,kyxsan,11-11-1111,address,phone,email,url,kyxsan,FURIA
 11,kyousuke,11-11-1111,address,phone,email,url,kyousuke,Vitality
 12,Napoleon Bonaparte,15-08-1769,France,1223442,napol.e@hotmail.com,url,napoleon,Le France
@@ -15,3 +15,35 @@ playerID,name,dob,address,phone,email,url,username,team
 14,Jean-Baptiste j. Bernadotte,26-01-1763,France 3,6767676,berne@dott.com,url,bernadotte,Le France
 15,Alexsander III of Macedon,01-01-0001,Greek,6786799,alex@great.com,url,alexsander the great,Greek
 16,gaymerz,12-12-1967,Laymerz,8967123,g@mailer.com,url,gaymerz,MOUZ
+17,Helgi,04-11-2001,held ekki,6347822,lol@uk.is,team.is,helgiminn,Jolasveinarnir
+18,Aron,31-12-2000,Vopnafjörður,6237842,okok@okei.is,okei.is,aronhver,Hrútar
+19,Fannar,20-12-1999,Blönduós,3475923,blondo@pondo.is,hvar.com,fannsiboy,Hrútar
+20,Teitur,13-03-2002,Akureyri 3,6547343,akcity@akcity,hotel.com,teiturerfeitur,Hrútar
+21,Ivor,10-02-2000,Vopnafjörður 5,5783435,whereisivor@huh.com,whereareyou.com,ivorekkimaettur,Taco
+22,Pepe,24-12-1988,Hliðarnar,6578437,hlidar@email.is,hlidar.is,pepebebe,Taco
+23,Kim Kardashian,02-03-1980,Kardashian House,6539724,kim@kardashian.com,kardashian.com,kimk,Taco
+24,Khloe Kardashian,03-03-2003,Khloe House,7458933,khloe@kardashian.com,khloespoe.com,khloek,Greek
+25,Kylie Kardashian,31-10-1998,Hollywood 34,7895342,kylie@kardashian.com,kylie.com,kyliebiglips,Greek
+26,Robert,23-04-2001,Segi ekki,6748533,rob@bert.is,robert.is,robob,Falcons
+27,Vera,10-02-1978,Reykjavik 54,7383274,vera@pera.is,ok.com,geimvera,Falcons
+28,Arni,12-06-2001,Dalsbraut 32,6473894,arni@arni.is,neitakk.com,arniparni,FURIA
+29,Max,04-07-2009,Leirdalur 53,5743023,mad@max.is,mad.is,madmax,FURIA
+30,Katrin,14-09-2001,Hringbraut 26,6758349,katrin@email.com,katrin.is,katieg,Vitality
+31,Isabella,08-11-2000,Sandgerði,5673243,iso@gamer.is,gamer.com,isoskviso,Vitality
+32,Bjarni,04-01-2003,Keflavik,5743628,bjarni@email.is,boobs.com,boobs,MOUZ
+33,Vigdis,10-10-2001,Grænalaut 43,7458933,vigdis@hi.is,wheremywigat.com,vigga,MOUZ
+34,Eva,04-08-2003,Grænabraut 42,7483432,eva@skleva.is,best.com,skleva55,Spirit
+35,Steinunn,26-04-2001,Skogarbraut 16,5748394,jebb@steinunn.is,hehe.com,steinnerekkineinn,Spirit
+36,Jón,23-08-1964,Foldafold 45,6643234,jon@si.is,ekkieg.is,jonsi50,Spirit
+37,Valur,24-12-2005,Hafnarfjörður,4573984,valur@svalur.is,svali.is,valursvalur,Liquid
+38,Gunnar,12-05-2004,Njardik,7648345,gunnar@gunner.is,gunnsi.is,gunniminn,Liquid
+39,Baldur,30-10-2000,Berlin,3249570,balduriberlin@berlin.is,wigs.com,baldbaldur,Liquid
+40,Rúnar,10-10-2010,Ja haha,4537894,runar@sklunar.is,run.is,runsipungsi,Aurora
+41,Baldvin,23-08-1978,Baldurgata 43,4573894,baldvin@jea.is,baldvinurminn.is,baldvin,Aurora
+42,Albert,07-12-2007,Einstein street 41,5483094,albert@einstein,smart.de,einstein,Aurora
+43,Oddur,05-10-1956,Oddagata 69,7439843,oddur@broddur.is,broddur.is,oddurbroddur,Legacy
+44,Ómar,30-12-1964,Birkidalur 12,4573923,omar@jeje.is,imomar.is,omarrr,Legacy
+45,Óskar,12-09-1987,Wish Well 43,4598035,oskar@makeawish.is,wishwell.is,oskaduther,Legacy
+46,Nenni,04-04-2004,Man ekki,4637896,nenni@ekki.is,nennis.is,NonniNennir,G2
+47,Marius,12-07-1990,Selfoss 43,5763489,marius@flottur.is,mariamey.is,mariushaha,G2
+48,Leo,31-03-1990,Foldahver 112,4573034,leo@spleo.is,bucea.com,leobuscea,G2
