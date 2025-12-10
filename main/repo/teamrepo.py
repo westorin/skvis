@@ -66,3 +66,6 @@ class TeamRepository:
             for player in team.players:
                 all_players.append(player)
         return all_players
+    
+    def get_all(self):
+        return list(self.teams)

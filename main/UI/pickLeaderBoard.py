@@ -70,11 +70,11 @@ class PickTimeOfTournamntsUI():
             choice = str(input(">>>>"))
 
             if(choice == "1"):
-                return "Past"
+                return "Player"
             elif(choice == "2"):
-                return "On going"
+                return "Team"
             elif(choice == "3"):
-                return "Future"
+                return "Club"
             elif(choice.lower() == "b"):
                 return "BACK"
             elif choice.lower() == "q":

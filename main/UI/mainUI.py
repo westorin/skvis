@@ -1,6 +1,6 @@
 from main.UI.homepage_UI import homepageUI
 from main.UI.pickTimeOfTournament import PickTimeOfTournamentUI
-from main.UI.leaderboard import LeaderBoardUI
+from main.UI.leaderboardUI import LeaderBoardUI
 from main.UI.listOfTeams import ListOfTeamsUI
 from main.UI.listOfClubs import listOfClubsUI
 from main.UI.login import LoginUI
