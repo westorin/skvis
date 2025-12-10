@@ -5,7 +5,6 @@ A kröfur
 - UI fyrir "View schedule"
 - Vantar kannski schedule líka?
 - Passa að það séu bara 3-5 í liði
-- Filtera persónuupplýsingar (Admin og Team Captain geta séð meira en almennir notandendur) - If not admin or captain -> hide email, phone, address
 - Start og end date validation (A9)
 - Lið getur ekki spilað tvo leiki samtímis
 - Ekkert crash - Passa að það sé hægt að slá inn vitlaust input án þess að allt crashar

@@ -203,30 +203,58 @@ Staða á verkefni: Flestar A kröfur eru tilbúnar. Þurfum að fínpússa og t
 - Halda áfram með UI
 - Klára allar A kröfur:
 - Schedule
-- Admin - Skipuleggja útsláttarkeppni (Use Case 1)
+- ✅ Admin - Skipuleggja útsláttarkeppni (Use Case 1)
 - Allir notendur - Skoða stöðu og dagskrá (Use Case 6)
-- Admin - Stjórna keppnum (Use Case 7)
+- ✅  Admin - Stjórna keppnum (Use Case 7)
 - Allir notendur - Persónuupplýsingar leikmanna (Use Case 8)
-- Admin - Skráning leikja (Use Case 9)
-- Admin - Fjöldi leikja sem eru samtímis (Use Case 13)
+- ✅ Admin - Skráning leikja (Use Case 9)
+- ✅ Admin - Fjöldi leikja sem eru samtímis (Use Case 13)
 - Notandi, Admin - Prenta leikjadagskrá (Use Case 14)
-- Admin - Leikjaniðurstöður (Use Case 15)
+- ✅ Admin - Leikjaniðurstöður (Use Case 15)
 - Allir notendur - Hugbúnaðurinn má ekki crasha (Use Case 27)
-- Kerfið - Geyma gögn í textaskrám (Use Case 28) - # SO FAR SO GOOD
-- ? API
+- ✅ Kerfið - Geyma gögn í textaskrám (Use Case 28) - # SO FAR SO GOOD
 - Tournaments: Klára allt - stigagjöf, knockout tournament, double knockout tournaments, events (leikir)
 
 Staða á hópnum: Erum ennþá að vinna í okkar og tengja allt saman. Wrappers eru tilbúnir.
 
-# 9/12/2025
+# 9/12/2025 - 11:00
 
-## Mæting: Halldór og Einar
+## Mæting: Halldór og Einar (Kristján online)
 
 Staða á verkefni: Kristján fór yfir tournaments og gerði breytingar þar. Allar A kröfur ættu að vera kóðaðar, það á bara eftir að bæta þeim í TUI. Núna byrjum við á að bæta við B kröfum, Halldór ætlar að byrja á að græja double elimination tournament.
 
 ## ToDo:
 - Halda áfram með UI
-- ... (Fylla inn)
+- Allir notendur - Skoða stöðu og dagskrá (Use Case 6)
+- Allir notendur - Persónuupplýsingar leikmanna (Use Case 8)
+- Notandi, Admin - Prenta leikjadagskrá (Use Case 14)
+- Allir notendur - Hugbúnaðurinn má ekki crasha (Use Case 27)
+- Tournaments: Klára allt - stigagjöf, knockout tournament, double knockout tournaments, events (leikir)
+
+Staða á verkefni: Gengur vel.
+
+# 10/12/2025 - 12:00
+
+## Mæting: Halldór, Einar og Kristján
+
+Staða á verkefni: Eftir nánari athugun sjáum við að ekki alveg allar A kröfur eru komnar en það vantar helst bara að fínpússa smá og þá ættu þær að vera tilbúnar. Klárum það í dag og vonandi nokkrar B kröfur líka.
+
+## ToDo:
+A kröfur
+- Vantar kóða til að passa árekstra í schedule (schedule conflicts) - scheduling logic
+- UI fyrir "View schedule"
+- Vantar kannski schedule líka?
+- Passa að það séu bara 3-5 í liði
+- Start og end date validation (A9)
+- Lið getur ekki spilað tvo leiki samtímis
+- Ekkert crash - Passa að það sé hægt að slá inn vitlaust input án þess að allt crashar
+
+B kröfur
+- Multi-event tournament
+- Scheduling sem virðir multi-event tournament
+- Clubs
+- Stigagjöf
+- Tölfræði fyrir leikmenn/lið/Clubs
+- Player history
 
 Staða á verkefni:
-
