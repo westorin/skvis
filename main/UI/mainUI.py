@@ -172,5 +172,9 @@ class MainUI():
 
             if(self.current_ui_page == "A_TEAM"):
                 action = self.__team_ui.print_team(self, self.nameOfATeam)
-                print("not work")
-                break
+                if(action == "BACK"):
+                    self.nameOfATeam = ""
+                    self.current_ui_page = "LIST_OF_TEAMS"
+
+                elif(action == "QUIT"):
+                    break
