@@ -1,11 +1,11 @@
 from main.logic.clearScreenInTerminal import clear_screen
 
-class PickTimeOfTournamntsUI():
+class PickLeaderBoardUI():
     def __init__(self):
         pass
     
 
-    def print_ptot_ui(self):
+    def print_plb_ui(self):
 
         header_text = """+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
@@ -47,13 +47,14 @@ class PickTimeOfTournamntsUI():
 |\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|                 Enter the command you want...               |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+==============================+==============================+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|    1. Player leader board    | 2. Team leader board         |\t\t\t\t\t\t\t\t|"""
+|\t\t\t\t\t\t\t|                              |                              |\t\t\t\t\t\t\t\t|"""
 
-        footer_text = """|\t\t\t\t\t\t\t+------------------------------+------------------------------+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|                    3. Clubs leader borad                    |\t\t\t\t\t\t\t\t|
+        footer_text = """|\t\t\t\t\t\t\t|    1. Teams leader board     | 2. Clubs leader board        |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|                              |                              |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+==============================+==============================+\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|         b. To go back        |   q. To quit  the program    |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+------------------------------+------------------------------+\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
@@ -70,11 +71,9 @@ class PickTimeOfTournamntsUI():
             choice = str(input(">>>>"))
 
             if(choice == "1"):
-                return "Player"
+                return "TEAM"
             elif(choice == "2"):
-                return "Team"
-            elif(choice == "3"):
-                return "Club"
+                return "CLUB"
             elif(choice.lower() == "b"):
                 return "BACK"
             elif choice.lower() == "q":
