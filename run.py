@@ -11,8 +11,22 @@ from main.UI.search import SearchUI
 from main.UI.team import TeamUI
 from main.UI.teamAllInfo import TeamAllInfoUI
 from main.UI.pastTournamentsList import PastTournamentsUI
+from main.UI.addTeam import AddTeamUI
+from main.UI.pickLeaderBoard import PickLeaderBoardUI
 
 
-
-run_program = MainUI(homepageUI, PickTimeOfTournamentUI, LeaderBoardUI, ListOfTeamsUI, listOfClubsUI, LoginUI, ListOfPlayersUI, AddTournamentUI, SearchUI, TeamUI, TeamAllInfoUI, PastTournamentsUI)
+run_program = MainUI(homepageUI, 
+                     PickTimeOfTournamentUI, 
+                     LeaderBoardUI, 
+                     ListOfTeamsUI, 
+                     listOfClubsUI, 
+                     LoginUI, 
+                     ListOfPlayersUI, 
+                     AddTournamentUI, 
+                     SearchUI, 
+                     TeamUI, 
+                     TeamAllInfoUI, 
+                     PastTournamentsUI, 
+                     AddTeamUI, 
+                     PickLeaderBoardUI)
 run_program.run()

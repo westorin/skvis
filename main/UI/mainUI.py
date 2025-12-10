@@ -10,9 +10,12 @@ from main.UI.search import SearchUI
 from main.UI.team import TeamUI
 from main.UI.teamAllInfo import TeamAllInfoUI
 from main.UI.pastTournamentsList import PastTournamentsUI
+from main.UI.addTeam import AddTeamUI
+from main.UI.pickLeaderBoard import PickLeaderBoardUI
+
 
 class MainUI():
-    def __init__(self, homepage_ui: homepageUI, ptot_ui: PickTimeOfTournamentUI, leader_board_ui: LeaderBoardUI, list_of_teams_ui: ListOfTeamsUI, list_of_clubs_ui: listOfClubsUI, login_ui: LoginUI, list_of_players_ui: ListOfPlayersUI, add_tournamnet_ui: AddTournamentUI, search_ui: SearchUI, team_ui: TeamUI, team_all_info_ui: TeamAllInfoUI, past_tournaments_list_ui: PastTournamentsUI):
+    def __init__(self, homepage_ui: homepageUI, ptot_ui: PickTimeOfTournamentUI, leader_board_ui: LeaderBoardUI, list_of_teams_ui: ListOfTeamsUI, list_of_clubs_ui: listOfClubsUI, login_ui: LoginUI, list_of_players_ui: ListOfPlayersUI, add_tournamnet_ui: AddTournamentUI, search_ui: SearchUI, team_ui: TeamUI, team_all_info_ui: TeamAllInfoUI, past_tournaments_list_ui: PastTournamentsUI, add_team_ui: AddTeamUI, pick_leader_board_ui: PickLeaderBoardUI):
         self.__homepage_ui = homepage_ui
         self.__ptot_ui = ptot_ui
         self.__leader_board_ui = leader_board_ui
@@ -25,6 +28,8 @@ class MainUI():
         self.__team_ui = team_ui
         self.__team_all_info_ui = team_all_info_ui
         self.__past_tournaments_list_ui = past_tournaments_list_ui
+        self.__add_team_ui = add_team_ui
+        self.__pick_leader_board_ui = pick_leader_board_ui
 
         self.current_ui_page = "Homepage"
         self.isAdmin = False
@@ -46,7 +51,7 @@ class MainUI():
                 
                 # Here we put set you to the page that shows you the leader board for all teams and tournaments
                 elif(action == "LEADER"):
-                    self.current_ui_page = "LEADER_BOARD"
+                    self.current_ui_page = "PICK_LEADER_BOARD"
                 
                 # Here we put set you to the page that show you a list of all the teams
                 elif(action == "TEAMS"):
@@ -122,9 +127,12 @@ class MainUI():
                     print("Error in main UI. not sent to the currect UI page in Ptot")
                     break
             
-            if(self.current_ui_page == "LEADER_BOARD"):
-                print("not implamented")
-                break
+            if(self.current_ui_page == "PICK_LEADER_BOARD"):
+                action = self.__pick_leader_board_ui.print_plb_ui(self)
+                if(action == "QUIT"):
+                    break
+                elif(action == "BACK"):
+                    self.current_ui_page = "Homepage"
 
             if(self.current_ui_page == "LIST_OF_TEAMS"):
                 action = self.__list_of_teams_ui.print_list_of_teams(self, self.isAdmin)
