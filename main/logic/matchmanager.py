@@ -145,8 +145,6 @@ class MatchManager:
         match_folder = f"{tournament_folder}/match_{match.match_id}"
         os.makedirs(match_folder, exist_ok=True)
 
-        print("Match folder created:", os.path.abspath(match_folder))
-
         #Write round files
         for rnum, rwinner in round_logs:
             round_path = f"{match_folder}/round_{rnum}.csv"
