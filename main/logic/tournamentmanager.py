@@ -1,6 +1,7 @@
 from datetime import datetime, date
 from typing import List, Dict, Optional
 import os
+import csv
 import random
 
 from main.models.tournamentmodel import Tournament
@@ -188,7 +189,7 @@ class TournamentManager:
     #     "Creates a folder for the tournament, inside it creates 16 match folders"
     #     "and inside each match folder creates placeholder round files"
     # Past, Ongoing and Future - lists
-    
+
     def list_past_tournaments(self, reference_date: Optional[date] = None) -> list[Tournament]:
         return self.group_by_timeframe(reference_date)["Past"]
 
@@ -449,11 +450,169 @@ class TournamentManager:
         fm = final_matches[0]
         fm = self.match_manager.repo.get_by_match_id(fm.match_id)
 
-        return {
+        summary = {
             "champion": fm.winner,
             "runner_up": fm.loser,
             "final_score": fm.final_score,
             "total_rounds": fm.total_rounds,
         }
+        self.export_full_results(tournament, summary)
+        return summary
 
+    def export_full_results(self, tournamet, summary: dict) -> None:
+        """
+        Export full tournament results for a single tournament in to one CSV file
+
+
+        The CSV will contain:
+        - Summary (tournament, champion, runner-up, final score, total rounds)
+        - Final standing
+        - Team performance
+        - Match summary (per match)        
+        """
+        tid = tournamet.tournament_id
+        tname = tournamet.name
+
+        #Ensure base directory
+        base_dir = os.path.join("main", "IO", tname)
+        os.makedirs(base_dir, exist_ok=True)
+
+
+        #Load matches
+        matches = self._get_matches(tid)
+
+        #Build team stats
+        team_stats = {}
+
+        def ensure_team(team_name: str):
+            if team_name not in team_stats:
+                team_stats[team_name] = {
+                    "matches_played": 0,
+                    "wins": 0,
+                    "losses": 0,
+                    "rounds_won": 0,
+                    "rounds_lost": 0,
+                }
+
+        for m in matches:
+            team1, team2 = m.team1, m.team2
+            ensure_team(team1)
+            ensure_team(team2)
+
+            team_stats[team1]["matches_played"] += 1
+            team_stats[team2]["matches_played"] += 1
+
+            if m.winner and m.loser:
+                ensure_team(m.winner)
+                ensure_team(m.loser)
+                team_stats[m.winner]["wins"] += 1
+                team_stats[m.loser]["losses"] += 1
+
+            #Rounds from final_score
+            if m.final_score:
+                try:
+                    t1_score, t2_score = str(m.final_score).split("-")
+                    t1,t2 = int(t1_score), int(t2_score)
+                    team_stats[team1]["rounds_won"] += t1
+                    team_stats[team1]["rounds_lost"] += t2
+                    team_stats[team2]["rounds_won"] += t2
+                    team_stats[team2]["rounds_lost"] += t1
+                except:
+                    pass
         
+        #Determine standings 1-N
+        champion = summary.get("champion")
+        runner_up = summary.get("runner_up")
+
+        all_teams = list(team_stats.keys())
+
+        #Compute round diff for sorting
+        def round_diff(team):
+            stats = team_stats[team]
+            return stats["rounds_won"] - stats["rounds_lost"]
+        
+        #Remove champion and runner-up from the pool if present
+        others = [t for t in all_teams if t not in (champion, runner_up)]
+
+        #Sort the rest by wins, round_diff, losses, name
+        others_sorted = sorted(
+            others,
+            key=lambda t: (
+                -team_stats[t]["wins"],
+                -round_diff(t),
+                team_stats[t]["losses"],
+                t.lower()
+            )
+        )
+
+        standings = []
+        if champion:
+            standings.append(champion)
+        if runner_up and runner_up != champion:
+            standings.append(runner_up)
+        standings.extend(others_sorted)
+
+        #Write summary CSV
+        summary_path = os.path.join(base_dir, "summary.csv")
+        with open(summary_path, 'w', encoding='utf-8', newline='') as f:
+            writer = csv.writer(f)
+
+            writer.writerow(["field","value"])
+            writer.writerow(["tournament", tname])
+            writer.writerow(["champion", summary.get("champion")])
+            writer.writerow(["runner_up", summary.get("runner_up")])
+            writer.writerow(["final_score", summary.get("final_score")])
+            writer.writerow(["total_rounds", summary.get("total_rounds")])
+        #Write standings
+        standings_path = os.path.join(base_dir, "standings.csv")
+        with open(standings_path, 'w', encoding='utf-8', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(["rank","team"])
+
+            for idx, team in enumerate(standings, start=1):
+                writer.writerow([idx, team])
+
+        #Write team performance
+        performance_path = os.path.join(base_dir, "performance.csv")
+        with open(performance_path, 'w', encoding='utf-8', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(["team","matches_played","wins","losses","rounds_won","rounds_lost","round_diff"])
+
+            for team in standings:
+                stats = team_stats[team]
+                rd = stats["rounds_won"] - stats["rounds_lost"]
+                writer.writerow([
+                    team,
+                    stats["matches_played"],
+                    stats["wins"],
+                    stats["losses"],
+                    stats["rounds_won"],
+                    stats["rounds_lost"],
+                    rd,
+                ])
+
+        #Write match summary
+        match_summary_path = os.path.join(base_dir, "match_summary.csv")
+        def sort_key(m):
+            try:
+                return int(m.match_id)
+            except Exception:
+                return 0
+                
+        with open(match_summary_path, 'w', encoding='utf-8', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(["match_id","round","bracket","team1","team2","winner","loser","final_score","total_rounds"])
+
+            for m in sorted(matches, key=sort_key):
+                writer.writerow([
+                    m.match_id,
+                    m.round,
+                    m.bracket,
+                    m.team1,
+                    m.team2,
+                    m.winner,
+                    m.loser,
+                    m.final_score,
+                    m.total_rounds,
+                    ])
+        print(f"Tournament results exported to {base_dir}")

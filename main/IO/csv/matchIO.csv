@@ -1,20 +1,20 @@
 match_id,team1,team2,date,time,server_id,round,bracket,winner,loser,tournament_id,final_score,total_rounds,score1,score2
-1,Faze,FURIA,,,1_match_1,1,WB,FURIA,Faze,1,11-13,24,0,0
-2,Liquid,Greek,,,1_match_2,1,WB,Greek,Liquid,1,9-13,22,0,0
-3,Lego Fans,Spirit,,,1_match_3,1,WB,Spirit,Lego Fans,1,7-13,20,0,0
-4,Taco,Vitality,,,1_match_4,1,WB,Taco,Vitality,1,13-12,25,0,0
-5,G2,Falcons,,,1_match_5,1,WB,G2,Falcons,1,13-11,24,0,0
-6,Le France,Aurora,,,1_match_6,1,WB,Aurora,Le France,1,10-13,23,0,0
-7,MOUZ,Hrútar,,,1_match_7,1,WB,MOUZ,Hrútar,1,13-10,23,0,0
-8,Legacy,Jolasveinarnir,,,1_match_8,1,WB,Jolasveinarnir,Legacy,1,12-13,25,0,0
-9,FURIA,Greek,,,1_match_9,2,WB,FURIA,Greek,1,13-2,15,0,0
-10,Spirit,Taco,,,1_match_10,2,WB,Taco,Spirit,1,9-13,22,0,0
-11,G2,Aurora,,,1_match_11,2,WB,G2,Aurora,1,13-6,19,0,0
-12,MOUZ,Jolasveinarnir,,,1_match_12,2,WB,MOUZ,Jolasveinarnir,1,13-11,24,0,0
-13,Faze,Liquid,,,1_match_13,1,LB,Faze,Liquid,1,13-10,23,0,0
-14,Lego Fans,Vitality,,,1_match_14,1,LB,Lego Fans,Vitality,1,13-8,21,0,0
-15,Falcons,Le France,,,1_match_15,1,LB,Le France,Falcons,1,7-13,20,0,0
-16,Hrútar,Legacy,,,1_match_16,1,LB,Legacy,Hrútar,1,5-13,18,0,0
-17,FURIA,Taco,,,1_match_17,3,WB,Taco,FURIA,1,10-13,23,0,0
-18,G2,MOUZ,,,1_match_18,3,WB,G2,MOUZ,1,13-8,21,0,0
-19,Taco,G2,,,1_match_19,4,WB,G2,Taco,1,9-13,22,0,0
+1,Vitality,Taco,,,1_match_1,1,WB,Taco,Vitality,1,9-13,22,0,0
+2,Falcons,Faze,,,1_match_2,1,WB,Falcons,Faze,1,13-11,24,0,0
+3,Legacy,Greek,,,1_match_3,1,WB,Greek,Legacy,1,12-13,25,0,0
+4,MOUZ,Aurora,,,1_match_4,1,WB,Aurora,MOUZ,1,5-13,18,0,0
+5,Hrútar,Jolasveinarnir,,,1_match_5,1,WB,Jolasveinarnir,Hrútar,1,9-13,22,0,0
+6,Lego Fans,Le France,,,1_match_6,1,WB,Le France,Lego Fans,1,2-13,15,0,0
+7,Spirit,FURIA,,,1_match_7,1,WB,Spirit,FURIA,1,13-7,20,0,0
+8,Liquid,G2,,,1_match_8,1,WB,Liquid,G2,1,13-10,23,0,0
+9,Taco,Falcons,,,1_match_9,2,WB,Falcons,Taco,1,8-13,21,0,0
+10,Greek,Aurora,,,1_match_10,2,WB,Aurora,Greek,1,9-13,22,0,0
+11,Jolasveinarnir,Le France,,,1_match_11,2,WB,Le France,Jolasveinarnir,1,9-13,22,0,0
+12,Spirit,Liquid,,,1_match_12,2,WB,Liquid,Spirit,1,11-13,24,0,0
+13,Vitality,Faze,,,1_match_13,1,LB,Vitality,Faze,1,13-7,20,0,0
+14,Legacy,MOUZ,,,1_match_14,1,LB,Legacy,MOUZ,1,13-10,23,0,0
+15,Hrútar,Lego Fans,,,1_match_15,1,LB,Lego Fans,Hrútar,1,10-13,23,0,0
+16,FURIA,G2,,,1_match_16,1,LB,G2,FURIA,1,12-13,25,0,0
+17,Falcons,Aurora,,,1_match_17,3,WB,Falcons,Aurora,1,13-10,23,0,0
+18,Le France,Liquid,,,1_match_18,3,WB,Le France,Liquid,1,13-11,24,0,0
+19,Falcons,Le France,,,1_match_19,4,WB,Le France,Falcons,1,12-13,25,0,0
