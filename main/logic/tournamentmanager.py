@@ -223,7 +223,7 @@ class TournamentManager:
     #                 with open(round_file_path, 'w', encoding='utf-8') as f:
     #                     f.write("match,round,winner,loser,bracket\n")
     #                     f.write(f"{match_index},{round_number},TBD,TBD,TBD\n")
-    #     print(f"Tournament results exported to {tournament_folder}")
+    #     return (f"Tournament results exported to {tournament_folder}")
     #     # ^^^^ Má ekki :(
 
     # Helper methods
@@ -333,7 +333,6 @@ class TournamentManager:
 
         #Persist to CSV
         self.match_manager.repo.save_to_file()
-        print("Next round matches generated successfully.")
         
     def _simulate_round(self, tid, bracket, round_number):
         matches = self._get_matches(tid, bracket=bracket, round_number=round_number)
@@ -399,48 +398,38 @@ class TournamentManager:
         #0 Ensure WB round 1 matches exist
         wb_r1 = self._get_matches(tid, "WB", 1)
         if not wb_r1:
-            print("No WB round 1 matches found")
             self.generate_initial_matches(tname)
             wb_r1 = self._get_matches(tid, "WB", 1)
 
         #1 Simulate WB Round 1
-        print("\nSimulating WB Round 1 matches...")
         self._simulate_round(tid, "WB", 1)
 
         #2 Generate WB round 2 matches and LB round 1 matches
         existing_wb_r2 = self._get_matches(tid, "WB", 2)
         if not existing_wb_r2:
-            print("\nGenerating WB Round 2 and LB Round 1 matches...")
             self.generate_next_rounds(tname)
         else:
-            print("WB Round 2 and LB Round 1 matches already exist.")
+            return "WB Round 2 and LB Round 1 matches already exist."
 
         #3 Simulate WB round 2 matches and LB round 1 matches
-        print("\nSimulating WB Round 2 matches...")
         self._simulate_round(tid, "WB", 2)
-
-        print("\nSimulating LB Round 1 matches...")
         self._simulate_round(tid, "LB", 1)
 
         #4 Generate WB round 3 matches
         existing_wb_r3 = self._get_matches(tid, "WB", 3)
         if not existing_wb_r3:
-            print("\nGenerating WB Round 3 matches...")
             self.generate_wb_round_3(tid)
         else:
-            print("WB Round 3 matches already exist.")
+            return "WB Round 3 matches already exist."
 
         #5 Simulate WB round 3 matches
-        print("\nSimulating WB Round 3 matches...")
         self._simulate_round(tid, "WB", 3)
 
         #6 Generate WB final match
         existing_wb_final = self._get_matches(tid, "WB", 4)
         if not existing_wb_final:
-            print("\nGenerating WB Final match...")
             final_match = self.generate_wb_final(tid,tournament)
         else:
-            print("WB Final match already exists.")
             final_match = existing_wb_final[0]
 
         #7 Simulate WB final match
@@ -615,4 +604,3 @@ class TournamentManager:
                     m.final_score,
                     m.total_rounds,
                     ])
-        print(f"Tournament results exported to {base_dir}")
