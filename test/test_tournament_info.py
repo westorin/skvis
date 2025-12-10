@@ -2,13 +2,13 @@ from main.wrappers.datawrapper import DataWrapper
 from main.wrappers.logicwrapper import LogicWrapper
 
 # Finnur það í logic layer undir "tournamentmanager.py" í TournamentManager classanum
-# Getur kallað á það með:
-# logic.tournament_manager.list_tournaments_basic_info()
+# Til að kalla á það:
+# logic.tournament_manager.list_tournaments_basic_info() <- Þetta eru ÖLL tournaments ever ef að við skyldum þurfa það einhversstaðar
 # logic.tournament_manager.list_tournaments_basic_info_by_timeframe("Past")
 # logic.tournament_manager.list_tournaments_basic_info_by_timeframe("Ongoing")
 # logic.tournament_manager.list_tournaments_basic_info_by_timeframe("Future")
 
-# og það returnar lista [name, start_date, end_date]
+# hvert og eitt returnar lista [name, start_date, end_date]
 
 # Kannski hægt að skrifa það einhvernveginn svona fyrir UI:
 
