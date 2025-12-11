@@ -3,7 +3,7 @@ from main.wrappers.logicwrapper import LogicWrapper
 from main.logic.tournamentsList import TournamentsListLogic
 from main.logic.clearScreenInTerminal import clear_screen
 
-class PastTournamentsUI():
+class FutureTournamentsUI():
     def __init__(self):
         pass
 
@@ -13,16 +13,16 @@ class PastTournamentsUI():
         logic = LogicWrapper(data)
         tm = logic.tournament_manager
 
-        tournaments_list = TournamentsListLogic().sort_past_tournaments_list()
+        tournaments_list = TournamentsListLogic().sort_future_tournaments_list()
 
         current_page = 1
 
         header_text = f"""+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|\t\t\t\t\t\t\t\t+-------------------------------------------------+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t| ╔═╗┌─┐┌─┐┌┬┐  ╔╦╗┌─┐┬ ┬┬─┐┌┐┌┌─┐┌┬┐┌─┐┌┐┌┌┬┐┌─┐ |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t| ╠═╝├─┤└─┐ │    ║ │ ││ │├┬┘│││├─┤│││├┤ │││ │ └─┐ |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t| ╩  ┴ ┴└─┘ ┴    ╩ └─┘└─┘┴└─┘└┘┴ ┴┴ ┴└─┘┘└┘ ┴ └─┘ |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t+-------------------------------------------------+\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t+-------------------------------------------------------+\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t| ╔═╗┬ ┬┌┬┐┬ ┬┬─┐┌─┐  ╔╦╗┌─┐┬ ┬┬─┐┌┐┌┌─┐┌┬┐┌─┐┌┐┌┌┬┐┌─┐ |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t| ╠╣ │ │ │ │ │├┬┘├┤    ║ │ ││ │├┬┘│││├─┤│││├┤ │││ │ └─┐ |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t| ╚  └─┘ ┴ └─┘┴└─└─┘   ╩ └─┘└─┘┴└─┘└┘┴ ┴┴ ┴└─┘┘└┘ ┴ └─┘ |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t+-------------------------------------------------------+\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t+----------------------+------------+------------+\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t|  Name of tournament  | Start date | End date   |\t\t\t\t\t\t\t\t|

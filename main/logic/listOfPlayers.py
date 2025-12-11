@@ -14,9 +14,20 @@ class ListOfPlayersLogic():
 
         for player in all_players_data:
             list_of_one_player = []
-            list_of_one_player.append(player.name)
-            list_of_one_player.append(player.username)
-            list_of_one_player.append(player.team)
+            if(len(player.name) > 20):
+                list_of_one_player.append(player.name[0:17] + "...")
+            else:
+                list_of_one_player.append(player.name)
+
+            if(len(player.username) > 20):
+                list_of_one_player.append(player.username[0:17] + "...")
+            else:
+                list_of_one_player.append(player.username)
+            
+            if(len(player.team) > 20):
+                list_of_one_player.append(player.team[0:17] + "...")
+            else:
+                list_of_one_player.append(player.team)
 
             list_of_players.append(list_of_one_player)
         

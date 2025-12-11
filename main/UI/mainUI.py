@@ -14,6 +14,8 @@ from main.UI.pastTournamentsList import PastTournamentsUI
 from main.UI.addTeam import AddTeamUI
 from main.UI.pickLeaderBoard import PickLeaderBoardUI
 from main.UI.addTeam import AddTeamUI
+from main.UI.onGoingTournamentsList import OnGoingTournamentsUI
+from main.UI.futureTournamentsList import FutureTournamentsUI
 
 class MainUI():
     def __init__(self):
@@ -32,6 +34,8 @@ class MainUI():
         self.__add_team_ui = AddTeamUI()
         self.__team_leader_board_ui = TeamLeaderBoardUI()
         self.__add_team_ui = AddTeamUI()
+        self.__on_going_tournaments_ui = OnGoingTournamentsUI()
+        self.__future_tournaments_ui = FutureTournamentsUI()
 
         self.current_ui_page = "Homepage"
         self.isAdmin = False
@@ -101,18 +105,16 @@ class MainUI():
                 action = self.__ptot_ui.print_ptot_ui()
                 
                 # Here you're set to the page that holds all the old tournaments
-                if(action == "Past"):
-                    self.current_ui_page = "Past_Tournamnets"
+                if(action == "PAST"):
+                    self.current_ui_page = "PAST_TOURNAMENTS"
                     
                 # Here you're set to the page that holds all the tournaments that are still on going
-                elif(action == "On going"):
-                    self.current_ui_page = "On_Going_Tournaments"
-                    print("not implamented")
-                    break
+                elif(action == "ON_GOING"):
+                    self.current_ui_page = "ON_GOING_TOURNAMENTS"
                 
                 # Here you're set to the page that holds all the tournaments that in the future
-                elif(action == "Future"):
-                    self.current_ui_page = "Future_Tournaments"
+                elif(action == "FUTURE"):
+                    self.current_ui_page = "FUTURE_TOURNAMENTS"
                     print("not implamented")
                     break
                 
@@ -210,6 +212,23 @@ class MainUI():
                 elif(action == "QUIT"):
                     break
 
-            if(self.current_ui_page == "Past_Tournamnets"):
+            if(self.current_ui_page == "PAST_TOURNAMENTS"):
                 action = self.__past_tournaments_list_ui.print_tournaments()
-                break
+                if(action == "QUIT"):
+                    break
+                elif(action == "BACK"):
+                    self.current_ui_page = "TIME_OF_TOURNAMENTS"
+
+            if(self.current_ui_page == "ON_GOING_TOURNAMENTS"):
+                action = self.__on_going_tournaments_ui.print_tournaments()
+                if(action == "QUIT"):
+                    break
+                elif(action == "BACK"):
+                    self.current_ui_page = "TIME_OF_TOURNAMENTS"
+
+            if(self.current_ui_page == "FUTURE_TOURNAMENTS"):
+                action = self.__future_tournaments_ui.print_tournaments()
+                if(action == "QUIT"):
+                    break
+                elif(action == "BACK"):
+                    self.current_ui_page = "TIME_OF_TOURNAMENTS"
