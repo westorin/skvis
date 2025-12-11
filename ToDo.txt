@@ -16,3 +16,33 @@ B kröfur
 - Stigagjöf
 - Tölfræði fyrir leikmenn/lið/Clubs
 - Player history
+
+
+UI
+- A 
+  - add team and 3players
+  - display list of tournaments for past, on going and future
+  - add tournament
+  - tournament's schedule
+  - list of all Players in the tournament(???)
+  - leader board of the tournament(???)
+  - update match
+  - update team
+  - add Player to team
+  - Display knockout tournament
+
+- B 
+  - List of Clubs
+  - Player history
+  - Add Club
+  - club info
+  - Add team to club
+  - Display double elimantion tournament
+  - Clubs leader board
+
+- C 
+  - Search
+    - Team
+    - club
+    - Player
+    - Tournament

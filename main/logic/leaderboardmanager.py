@@ -62,7 +62,7 @@ class LeaderboardManager:
 
         #Add place numbers
         for i, entry in enumerate(leaderboard, start=1):
-            entry["place"] = i + 0
+            entry["place"] = str(i + 0)
         
         return leaderboard
     

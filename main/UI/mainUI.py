@@ -139,6 +139,10 @@ class MainUI():
 
             if(self.current_ui_page == "TEAM_LEADER_BOARD"):
                 action = self.__team_leader_board_ui.print_team_leader_board(self)
+                if(action == "BACK"):
+                    self.current_ui_page = "PICK_LEADER_BOARD"
+                if(action == "QUIT"):
+                    break
 
             if(self.current_ui_page == "LIST_OF_TEAMS"):
                 action = self.__list_of_teams_ui.print_list_of_teams(self, self.isAdmin)
@@ -148,11 +152,12 @@ class MainUI():
                     break
                 elif(action == "ADD_TE"):
                     self.current_ui_page = "ADD_TEAM"
-                    print("NOT IMPLAMENTED!!!!!!!!!!!!!!!")
-                    break
                 elif(action[0] == "TEAM"):
                     self.current_ui_page = "A_TEAM"
                     self.nameOfATeam = action[1]
+
+            if(self.current_ui_page == "ADD_TEAM"):
+                pass
             
             if(self.current_ui_page == "LIST_OF_CLUBS"):
                 print("not implamented")
