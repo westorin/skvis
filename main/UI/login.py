@@ -116,7 +116,7 @@ class LoginUI():
             print(user_inputs_text)
             print(commands_text)
             
-            choice = str(input(">>>>"))
+            choice = str(input(">>>> "))
             
             if(choice.lower() == "q"):
                 return "QUIT"
@@ -142,7 +142,7 @@ class LoginUI():
                     print(login_pop_up_text)
                     print(user_inputs_text)
                     print(commands_text)
-                    choice = str(input(">>>>"))
+                    choice = str(input(">>>> "))
                     return "ADMIN"
                 elif(role == "captain"):
                     team_name = pr.get_by_handle(self.username) #<-- This needs to go
@@ -171,7 +171,7 @@ class LoginUI():
                 print(user_inputs_text)
                 print(commands_text)
                 
-                choice = str(input(">>>>"))
+                choice = str(input(">>>> "))
 
                 if(choice.lower() == "q"):
                     return "BACK"

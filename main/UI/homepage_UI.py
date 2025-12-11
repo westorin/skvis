@@ -78,7 +78,7 @@ class homepageUI():
             print(center_text)
             print(footer)
 
-            choice = str(input(">>>>"))
+            choice = str(input(">>>> "))
 
             if choice == "1":
                 return "TIME"
@@ -108,8 +108,6 @@ class homepageUI():
                 print(error_text)
                 print(footer)
                 
-                choice_error = input(">>>>")
+                choice_error = input(">>>> ")
                 if( choice_error.lower() == "q"):
                     return "QUIT"
-                else:
-                    clear_screen()

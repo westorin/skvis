@@ -243,7 +243,7 @@ Staða á verkefni: Eftir nánari athugun sjáum við að ekki alveg allar A kr�
 A kröfur
 - Vantar kóða til að passa árekstra í schedule (schedule conflicts) - scheduling logic
 - UI fyrir "View schedule"
-- Vantar kannski schedule líka?
+- ✅ Vantar kannski schedule líka?
 - Passa að það séu bara 3-5 í liði
 - Start og end date validation (A9)
 - Lið getur ekki spilað tvo leiki samtímis
@@ -258,3 +258,111 @@ B kröfur
 - Player history
 
 Staða á hópnum: All good in the hood. Þurfum að fara huga að því að uppfæra skýrsluna, Kristján er búinn að uppfæra Class Diagram.
+
+# 10/12/2025 - 12:00
+
+## Mæting: Halldór, Einar og Kristján
+
+Staða á verkefni: Eftir nánari athugun sjáum við að ekki alveg allar A kröfur eru komnar en það vantar helst bara að fínpússa smá og þá ættu þær að vera tilbúnar. Klárum það í dag og vonandi nokkrar B kröfur líka.
+
+## ToDo:
+A kröfur
+- Vantar kóða til að passa árekstra í schedule (schedule conflicts) - scheduling logic
+- UI fyrir "View schedule"
+- ✅ Vantar kannski schedule líka?
+- Passa að það séu bara 3-5 í liði
+- Start og end date validation (A9)
+- Lið getur ekki spilað tvo leiki samtímis
+- Ekkert crash - Passa að það sé hægt að slá inn vitlaust input án þess að allt crashar
+
+B kröfur
+- Multi-event tournament
+- Scheduling sem virðir multi-event tournament
+- Clubs
+- Stigagjöf
+- Tölfræði fyrir leikmenn/lið/Clubs
+- Player history
+
+Staða á hópnum: All good in the hood. Þurfum að fara huga að því að uppfæra skýrsluna, Kristján er búinn að uppfæra Class Diagram.
+
+# 10/12/2025 - 12:00
+
+## Mæting: Halldór, Einar og Kristján
+
+Staða á verkefni: Eftir nánari athugun sjáum við að ekki alveg allar A kröfur eru komnar en það vantar helst bara að fínpússa smá og þá ættu þær að vera tilbúnar. Klárum það í dag og vonandi nokkrar B kröfur líka.
+
+## ToDo:
+A kröfur
+- Vantar kóða til að passa árekstra í schedule (schedule conflicts) - scheduling logic
+- UI fyrir "View schedule"
+- ✅ Vantar kannski schedule líka?
+- Passa að það séu bara 3-5 í liði
+- Start og end date validation (A9)
+- Lið getur ekki spilað tvo leiki samtímis
+- Ekkert crash - Passa að það sé hægt að slá inn vitlaust input án þess að allt crashar
+
+B kröfur
+- Multi-event tournament
+- Scheduling sem virðir multi-event tournament
+- Clubs
+- Stigagjöf
+- Tölfræði fyrir leikmenn/lið/Clubs
+- Player history
+
+Staða á hópnum: All good in the hood. Þurfum að fara huga að því að uppfæra skýrsluna, Kristján er búinn að uppfæra Class Diagram.
+
+# 11/12/2025 - 12:00
+
+## Mæting: Halldór og Einar
+
+Staða á verkefni: Nóg að gera í dag. Það þarf virkilega að klára allar A-kröfur og helst allar B-kröfur líka. Svo við getum einbeitt okkur að skýrslunni og fínpússa allt saman á morgun.
+
+## ToDo:
+A kröfur
+- Vantar kóða til að passa árekstra í schedule (schedule conflicts) - scheduling logic
+- UI fyrir "View schedule"
+- Passa að það séu bara 3-5 í liði
+- Start og end date validation (A9)
+- Lið getur ekki spilað tvo leiki samtímis
+- Type hintea ALLT saman og gera comment þar sem vantar
+- Ekkert crash - Passa að það sé hægt að slá inn vitlaust input án þess að allt crashar
+- Team Captain er með automatic password til að logga sig inn
+
+B kröfur
+- Multi-event tournament
+- Scheduling sem virðir multi-event tournament
+- Clubs
+- Stigagjöf
+- Tölfræði fyrir leikmenn/lið/Clubs
+- Player history
+
+ToDo UI:
+- A 
+  - add team and 3players
+  - display list of tournaments for past, on going and future
+  - add tournament
+  - tournament's schedule
+  - list of all Players in the tournament(???)
+  - leader board of the tournament(???)
+  - update match
+  - update team
+  - add Player to team
+  - Display knockout tournament
+
+- B 
+  - List of Clubs
+  - Player history
+  - Add Club
+  - club info
+  - Add team to club
+  - Display double elimantion tournament
+  - Clubs leader board
+
+- C 
+  - Search
+    - Team
+    - club
+    - Player
+    - Tournament
+
+Staða á hópnum:
