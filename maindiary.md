@@ -311,7 +311,7 @@ B kröfur
 
 Staða á hópnum: All good in the hood. Þurfum að fara huga að því að uppfæra skýrsluna, Kristján er búinn að uppfæra Class Diagram.
 
-# 10/12/2025 - 12:00
+# 11/12/2025 - 12:00
 
 ## Mæting: Halldór og Einar
 
