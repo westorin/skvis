@@ -181,6 +181,12 @@ class TeamManager:
             return True
         
 
+    def sort_teams_into_a_list_of_tens(self) -> list:
+        from main.logic.listOfTeams import ListOfTeamsLogic
+        logic = ListOfTeamsLogic()
+        return logic.sort_teams_into_a_list_of_tens()
+        
+
     # # Get all teams ===========================
     # def get_all_teams(self):
     #     return self.team_repo.teams
