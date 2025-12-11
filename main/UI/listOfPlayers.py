@@ -125,7 +125,7 @@ class ListOfPlayersUI():
             print(center_text)
             print(footer_text)   
             
-            choice = str(input(">>>>"))
+            choice = str(input(">>>> "))
             
             if(choice.lower() == "u" and 1 < list_layer_counters):
                 list_layer_counters -= 1

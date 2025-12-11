@@ -163,7 +163,7 @@ class ListOfTeamsUI():
                 print(error_text)
                 print(footer_text)
 
-                choice = str(input(">>>>"))
+                choice = str(input(">>>> "))
 
                 if(choice.lower() == "q"):
                     return "BACK"
