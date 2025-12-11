@@ -338,8 +338,6 @@ B kröfur
 
 ToDo UI:
 - A 
-  - add team and 3players
-  - display list of tournaments for past, on going and future
   - add tournament
   - tournament's schedule
   - list of all Players in the tournament(???)

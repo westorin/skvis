@@ -17,6 +17,7 @@ from main.UI.addTeam import AddTeamUI
 from main.UI.onGoingTournamentsList import OnGoingTournamentsUI
 from main.UI.futureTournamentsList import FutureTournamentsUI
 from main.UI.tournamentInfo import TournamentInfoUI
+from main.UI.schedule import ScheduleUI
 
 class MainUI():
     def __init__(self):
@@ -38,6 +39,7 @@ class MainUI():
         self.__on_going_tournaments_ui = OnGoingTournamentsUI()
         self.__future_tournaments_ui = FutureTournamentsUI()
         self.__tournament_info_ui = TournamentInfoUI()
+        self.__schedule_ui = ScheduleUI()
 
         self.current_ui_page = "Homepage"
         self.isAdmin = False
@@ -245,4 +247,17 @@ class MainUI():
 
             if(self.current_ui_page == "TOURNAMENT_INFO"):
                 action = self.__tournament_info_ui.print_info(self.nameOfATournament, self.isAdmin)
-                break
+                if(action == "QUIT"):
+                    break
+                elif(action == "BACK"):
+                    self.current_ui_page = "TIME_OF_TOURNAMENTS"
+                    self.nameOfATournament = ""
+                elif(action == "SCHEDULE"):
+                    self.current_ui_page = "TOURNAMENT_SCHEDULE"
+
+            if(self.current_ui_page == "TOURNAMENT_SCHEDULE"):
+                action = self.__schedule_ui(self.nameOfATournament)
+                if(action == "QUIT"):
+                    break
+                elif(action == "BACK"):
+                    self.current_ui_page = "TOURNAMENTS_INFO"
