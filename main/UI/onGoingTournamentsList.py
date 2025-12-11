@@ -11,6 +11,8 @@ class OnGoingTournamentsUI():
     def print_tournaments(self) -> None:
         data = DataWrapper()
         logic = LogicWrapper(data)
+
+        tr = data.tournaments
         tm = logic.tournament_manager
 
         tournaments_list = TournamentsListLogic().sort_on_going_tournaments_list()
@@ -125,7 +127,8 @@ class OnGoingTournamentsUI():
             print(bottum_list)
             print(footer_text)
             choice = str(input(">>>> "))
-               
+            
+            tournament_check = tr.get_by_name(choice.lower())
                
             if(choice.lower() == "u" and 1 < current_page):
                 current_page -= 1
@@ -135,6 +138,8 @@ class OnGoingTournamentsUI():
                 return "BACK"
             elif(choice.lower() == "q"):
                 return "QUIT"
+            elif(tournament_check.name.lower() == choice.lower()):
+                return "TOUR_INFO", tournament_check.name
             else:
                 clear_screen()
                 print(header_text)

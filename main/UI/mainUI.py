@@ -16,6 +16,7 @@ from main.UI.pickLeaderBoard import PickLeaderBoardUI
 from main.UI.addTeam import AddTeamUI
 from main.UI.onGoingTournamentsList import OnGoingTournamentsUI
 from main.UI.futureTournamentsList import FutureTournamentsUI
+from main.UI.tournamentInfo import TournamentInfoUI
 
 class MainUI():
     def __init__(self):
@@ -36,12 +37,14 @@ class MainUI():
         self.__add_team_ui = AddTeamUI()
         self.__on_going_tournaments_ui = OnGoingTournamentsUI()
         self.__future_tournaments_ui = FutureTournamentsUI()
+        self.__tournament_info_ui = TournamentInfoUI()
 
         self.current_ui_page = "Homepage"
         self.isAdmin = False
         self.isATeamCapt = False
         self.nameOfTeamCaptTeamsName = ""
         self.nameOfATeam = ""
+        self.nameOfATournament = ""
     
     # Here is the function to run the code
     def run(self):
@@ -115,8 +118,6 @@ class MainUI():
                 # Here you're set to the page that holds all the tournaments that in the future
                 elif(action == "FUTURE"):
                     self.current_ui_page = "FUTURE_TOURNAMENTS"
-                    print("not implamented")
-                    break
                 
                 # Here you're set to the page you where just on
                 elif(action == "BACK"):
@@ -218,6 +219,9 @@ class MainUI():
                     break
                 elif(action == "BACK"):
                     self.current_ui_page = "TIME_OF_TOURNAMENTS"
+                elif(action[0] == "TOUR_INFO"):
+                    self.nameOfATournament = action[1]
+                    self.current_ui_page = "TOURNAMENT_INFO"
 
             if(self.current_ui_page == "ON_GOING_TOURNAMENTS"):
                 action = self.__on_going_tournaments_ui.print_tournaments()
@@ -225,6 +229,9 @@ class MainUI():
                     break
                 elif(action == "BACK"):
                     self.current_ui_page = "TIME_OF_TOURNAMENTS"
+                elif(action[0] == "TOUR_INFO"):
+                    self.nameOfATournament = action[1]
+                    self.current_ui_page = "TOURNAMENT_INFO"
 
             if(self.current_ui_page == "FUTURE_TOURNAMENTS"):
                 action = self.__future_tournaments_ui.print_tournaments()
@@ -232,3 +239,10 @@ class MainUI():
                     break
                 elif(action == "BACK"):
                     self.current_ui_page = "TIME_OF_TOURNAMENTS"
+                elif(action[0] == "TOUR_INFO"):
+                    self.nameOfATournament = action[1]
+                    self.current_ui_page = "TOURNAMENT_INFO"
+
+            if(self.current_ui_page == "TOURNAMENT_INFO"):
+                action = self.__tournament_info_ui.print_info(self.nameOfATournament, self.isAdmin)
+                break
