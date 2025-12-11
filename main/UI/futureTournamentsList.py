@@ -3,7 +3,7 @@ from main.wrappers.logicwrapper import LogicWrapper
 from main.logic.tournamentsList import TournamentsListLogic
 from main.logic.clearScreenInTerminal import clear_screen
 
-class PastTournamentsUI():
+class FutureTournamentsUI():
     def __init__(self):
         pass
 
@@ -11,19 +11,20 @@ class PastTournamentsUI():
     def print_tournaments(self) -> None:
         data = DataWrapper()
         logic = LogicWrapper(data)
+
         tr = data.tournaments
         tm = logic.tournament_manager
 
-        tournaments_list = TournamentsListLogic().sort_past_tournaments_list()
+        tournaments_list = TournamentsListLogic().sort_future_tournaments_list()
 
         current_page = 1
 
         header_text = f"""+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|\t\t\t\t\t\t\t\t+-------------------------------------------------+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t| ╔═╗┌─┐┌─┐┌┬┐  ╔╦╗┌─┐┬ ┬┬─┐┌┐┌┌─┐┌┬┐┌─┐┌┐┌┌┬┐┌─┐ |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t| ╠═╝├─┤└─┐ │    ║ │ ││ │├┬┘│││├─┤│││├┤ │││ │ └─┐ |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t| ╩  ┴ ┴└─┘ ┴    ╩ └─┘└─┘┴└─┘└┘┴ ┴┴ ┴└─┘┘└┘ ┴ └─┘ |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t+-------------------------------------------------+\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t+-------------------------------------------------------+\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t| ╔═╗┬ ┬┌┬┐┬ ┬┬─┐┌─┐  ╔╦╗┌─┐┬ ┬┬─┐┌┐┌┌─┐┌┬┐┌─┐┌┐┌┌┬┐┌─┐ |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t| ╠╣ │ │ │ │ │├┬┘├┤    ║ │ ││ │├┬┘│││├─┤│││├┤ │││ │ └─┐ |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t| ╚  └─┘ ┴ └─┘┴└─└─┘   ╩ └─┘└─┘┴└─┘└┘┴ ┴┴ ┴└─┘┘└┘ ┴ └─┘ |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t+-------------------------------------------------------+\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t+----------------------+------------+------------+\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t|  Name of tournament  | Start date | End date   |\t\t\t\t\t\t\t\t|
@@ -125,10 +126,9 @@ class PastTournamentsUI():
             print(center_list)
             print(bottum_list)
             print(footer_text)
-            
             choice = str(input(">>>> "))
 
-            tournament_check = tr.get_by_name(choice.lower())
+            tournament_check = tr.get_by_name(choice.lower())   
                
             if(choice.lower() == "u" and 1 < current_page):
                 current_page -= 1

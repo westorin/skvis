@@ -187,3 +187,26 @@ class TeamManager:
         if (team.name).lower() == team_name.lower():
             return True
         
+
+    def sort_teams_into_a_list_of_tens(self) -> list:
+        from main.logic.listOfTeams import ListOfTeamsLogic
+        logic = ListOfTeamsLogic()
+        return logic.sort_teams_into_a_list_of_tens()
+        
+
+    # # Get all teams ===========================
+    # def get_all_teams(self):
+    #     return self.team_repo.teams
+    
+    # def get_team(self, team_name):
+    #     return self.team_repo.get_team(team_name)
+    
+    # def does_team_exist(self, team_name):
+    #     team = self.team_repo.get_team(team_name.lower())
+    #     if team is None:
+    #         return False
+    #     if (team.name).lower() == team_name:
+    #         return True
+        
+
+

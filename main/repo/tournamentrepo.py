@@ -134,7 +134,7 @@ class TournamentRepository:
 
     def get_by_name(self, name: str) -> Optional[Tournament]:
         for t in self.tournaments:
-            if t.name == name:
+            if t.name.lower() == name.lower():
                 return t
         return None
     

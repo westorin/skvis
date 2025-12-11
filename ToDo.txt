@@ -21,14 +21,15 @@ B kröfur
 UI
 - A 
   - add team and 3players ( done )
-  - display list of tournaments for past, on going and future
+  - display list of tournaments for past, on going and future (done)
+  - Tournament info
   - add tournament
   - tournament's schedule
   - list of all Players in the tournament(???)
   - leader board of the tournament(???)
   - update match
   - update team
-  - add Player to team
+  - add/create Player to team
   - Display knockout tournament
 
 - B 
