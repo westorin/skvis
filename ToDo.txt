@@ -19,10 +19,12 @@ B kröfur
 
 
 UI
+- Add colour text
+
 - A 
   - add team and 3players ( done )
   - display list of tournaments for past, on going and future (done)
-  - Tournament info
+  - Tournament info (working on)
   - add tournament
   - tournament's schedule
   - list of all Players in the tournament(???)
