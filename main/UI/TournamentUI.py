@@ -15,7 +15,20 @@ choice = int(choice) - 1
 selected_tournament = tournaments[choice]
 tname = selected_tournament.name
 
-result = logic.tournament_manager.run_full_simulation(selected_tournament)
+print("\nChoose tournament format")
+print("1. Double Elimination")
+print("2. Single Elimination (Knockout)")
+fmt = input("Select tournament format:")
+
+if fmt == "1":
+    result = logic.tournament_manager.run_full_simulation(selected_tournament)
+elif fmt == "2":
+    result = logic.tournament_manager.run_single_elimination(selected_tournament)
+else:
+    print("Invalid format selected.")
+    exit()
+
+
 champion = result["champion"]
 runner_up = result["runner_up"]
 final_score = result["final_score"]
