@@ -1,6 +1,7 @@
+#UI -> LogicWrapper -> Logic -> Repository -> IO -> CSV
 from main.wrappers.datawrapper import DataWrapper
 from main.wrappers.logicwrapper import LogicWrapper
-from main.repo.playerrepo import PlayerRepository
+from main.repo.playerrepo import PlayerRepository #<-- This needs to go
 from main.logic.clearScreenInTerminal import clear_screen
 
 
@@ -14,7 +15,7 @@ class LoginUI():
     def print_login(self) -> tuple:
         data = DataWrapper()
         logic = LogicWrapper(data)
-        pr =PlayerRepository()
+        pr =PlayerRepository() #<-- This needs to go
         self.login_manager = logic.login_manager
         
         self.username = ""
@@ -144,15 +145,22 @@ class LoginUI():
                     choice = str(input(">>>> "))
                     return "ADMIN"
                 elif(role == "captain"):
-                    team_name = pr.get_by_handle(self.username)
+                    team_name = pr.get_by_handle(self.username) #<-- This needs to go
+                    #player = logic.player_manager.get_player_by_handle(self.username)
+                    #team_name = player.team if player else None
+                    #Can replace it with the two lines above
                     clear_screen()
                     print(header_text)
                     print(login_pop_up_text)
                     print(user_inputs_text)
                     print(commands_text)
-                    print(team_name.team)
-                    choice = str(input(">>>> "))
-                    return "CAPT", team_name.team
+                    print(team_name.team) #<-- This needs to go
+                    #print(team_name) 
+                    # Can replace it with the line above
+                    choice = str(input(">>>>"))
+                    return "CAPT", team_name.team #<-- This needs to go
+                    #return "CAPT", team_name 
+                    # Can replace it with this line above
                 else:
                     print("error in the login checker")
                     

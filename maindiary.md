@@ -326,6 +326,7 @@ A kröfur
 - Lið getur ekki spilað tvo leiki samtímis
 - Type hintea ALLT saman og gera comment þar sem vantar
 - Ekkert crash - Passa að það sé hægt að slá inn vitlaust input án þess að allt crashar
+- Team Captain er með automatic password til að logga sig inn
 
 B kröfur
 - Multi-event tournament

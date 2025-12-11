@@ -16,12 +16,6 @@ class DataWrapper:
         self.teams = TeamRepository()
         self.tournaments = TournamentRepository()
         self.matches = MatchRepository()
-
-        self.match_manager = MatchManager(self.matches)
-        self.tournament_manager = TournamentManager(self.tournaments, 
-                                                    self.teams, 
-                                                    self.match_manager)
-
         self.clubs = ClubRepository()
         self.passwords = PasswordRepository()
         self.roles = RoleRepository()

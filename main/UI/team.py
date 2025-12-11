@@ -1,11 +1,15 @@
-from main.logic.team import TeamLogic
+from main.logic.team import TeamLogic #<-- This has to go
+from main.wrappers.logicwrapper import LogicWrapper
 from main.logic.clearScreenInTerminal import clear_screen
 import math
 
 
 class TeamUI():
     def __init__(self):
-        pass
+        #self.logic = LogicWrapper()
+        #Can replace with the line above
+        pass #<-- This can go
+
 
     def print_team(self, team_name: str) -> str:
         self.team_name = team_name
