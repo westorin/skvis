@@ -1,8 +1,76 @@
 from main.logic.clearScreenInTerminal import clear_screen
 from main.wrappers.datawrapper import DataWrapper
+from main.models.playermodel import Player
+from main.models.teammodel import Team
 import math
 
 class AddTeamUI():
+
+    def save_new_team_and_players(
+        self,
+        data: DataWrapper,
+        name_of_team: str,
+        team_url: str,
+        tag: str,
+        capt_username: str,
+        capt_name: str,
+        capt_dob: str,
+        capt_address: str,
+        capt_phone: str,
+        capt_email: str,
+        capt_url: str,
+        player_1_username: str,
+        player_1_name: str,
+        player_1_dob: str,
+        player_1_address: str,
+        player_1_phone: str,
+        player_1_email: str,
+        player_1_url: str,
+        player_2_username: str,
+        player_2_name: str,
+        player_2_dob: str,
+        player_2_address: str,
+        player_2_phone: str,
+        player_2_email: str,
+        player_2_url: str,
+    ) -> None:
+        """Create a new team + 3 players and save tem to CSV."""
+
+        # Create Team
+        team_id = data.teams.get_next_id()
+        player_usernames = [capt_username, player_1_username, player_2_username]
+
+        team = Team(
+            str(team_id),
+            name_of_team,
+            capt_username,
+            player_usernames,
+            team_url,
+            tag,
+            wins=0,
+            losses=0,
+        )
+        data.teams.add_team(team)
+
+        # Helper to add a single player
+        def add_player(username, name, dob, address, phone, email, url):
+            player_id = data.players.get_next_id()
+            player = Player(
+                str(player_id),
+                name,
+                dob,
+                address,
+                phone,
+                email,
+                url,
+                username,
+                name_of_team,
+            )
+            data.players.add_player(player) # This also calls save_players()
+
+        add_player(capt_username, capt_name, capt_dob, capt_address, capt_phone, capt_email, capt_url)
+        add_player(player_1_username, player_1_name, player_1_dob, player_1_address, player_1_phone, player_1_email, player_1_url)
+        add_player(player_2_username, player_2_name, player_2_dob, player_2_address, player_2_phone, player_2_email, player_2_url)
 
     def print_add_team(self):
         
@@ -11,7 +79,7 @@ class AddTeamUI():
         name_of_team = ""
         capt_username = ""
         team_url = ""
-        team_tag = "****"
+        tag = "****"
 
         capt_name = ""
         capt_dob = ""
@@ -69,7 +137,7 @@ class AddTeamUI():
 |\t\t\t\t\t\t| {name_of_team + " "*(20 -len(name_of_team))
                 } | {capt_username + " "*(20 - len(capt_username))
                      } | {team_url + " "*(20 -len(team_url))
-                          } |     [{team_tag}]      |\t\t\t\t\t|
+                          } |     [{tag}]      |\t\t\t\t\t|
 |\t\t\t\t\t\t+----------------------+----------------------+----------------------+-----------------+\t\t\t\t\t|"""
             players_info = f"""|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t+----------------------+----------------------+---------------+----------------------+----------+----------------------+----------------------+\t\t\t|
@@ -160,15 +228,15 @@ class AddTeamUI():
                     isError = True
                     error_text = "Please make sure the url isn't longer then 20"
 
-            elif(team_url != "" and team_tag == "****"):
+            elif(team_url != "" and tag == "****"):
                 if(len(choice) == 4):
-                    team_tag = choice
+                    tag = choice
                     enter_what = "Enter the name of the team captain"
                 else:
                     isError = True
                     error_text = "Please make sure the tag isn't longer or shorter then 4"                    
 
-            elif(team_tag != "****" and capt_name == ""):
+            elif(tag != "****" and capt_name == ""):
                 if(len(choice) < 21):
                     capt_name = choice
                     enter_what = "Enter the date of birth of the team captain (dd-mm-yyyy)"
@@ -334,7 +402,33 @@ class AddTeamUI():
                     error_text = "Please make sure the name isn't longer then 20"
             
             elif(player_2_url != "" and choice.lower() == "s"):
-                # TODO Call to make team and players
+                self.save_new_team_and_players(
+                    data,
+                    name_of_team,
+                    team_url,
+                    tag,
+                    capt_username,
+                    capt_name,
+                    capt_dob,
+                    capt_address,
+                    capt_phone,
+                    capt_email,
+                    capt_url,
+                    player_1_username,
+                    player_1_name,
+                    player_1_dob,
+                    player_1_address,
+                    player_1_phone,
+                    player_1_email,
+                    player_1_url,
+                    player_2_username,
+                    player_2_name,
+                    player_2_dob,
+                    player_2_address,
+                    player_2_phone,
+                    player_2_email,
+                    player_2_url,
+                )
                 return "BACK"
 
             error_message_text =f"""|\t\t\t\t\t\t+------------------------------------------------------------------------------+\t\t\t\t\t\t|

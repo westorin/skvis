@@ -21,16 +21,22 @@ class MatchManager:
             raise ValueError("A team cannot play against itself")
 
         match = Match(
+            match_id=self.repo.get_next_id(),
+            team1=data["team1"],
+            team2=data["team2"],
             date=data["date"],
             time=data["time"],
             server_id=server_id,
-            team1=data["team1"],
-            team2=data["team2"],
+            round=data.get("round"),
+            bracket=data.get("bracket"),
+            winner=data.get("winner"),
+            loser=data.get("loser"),
+            tournament_id=data.get("tournament_id"),
+            tournament_name=data.get("tournament_name"),
+            final_score=data.get("final_score"),
+            total_rounds=data.get("total_rounds", 0),
             score1=data.get("score1", 0),
             score2=data.get("score2", 0),
-            winner=data.get("winner"),
-            round=data.get("round"),
-            tournament=data.get("tournament"),
         )
 
         self.repo.add_match(match)
@@ -110,6 +116,31 @@ class MatchManager:
 
         return final_winner, final_loser, total_rounds, final_score, round_logs
 
+    def _apply_result(self, match: Match, score1: int | str, score2: int | str) -> None:
+        """Set winner/loser and score fields on a match."""
+        s1 = int(score1)
+        s2 = int(score2)
+
+        if s1 < 0 or s2 < 0:
+            raise ValueError("Scores must be non-negative")
+
+        if s1 == s2:
+            # Assuming no draws in this game
+            raise ValueError("Match cannot end in a draw. One team must win.")
+
+        match.score1 = s1
+        match.score2 = s2
+        match.final_score = f"{s1}-{s2}"
+        match.total_rounds = s1 + s2
+
+        if s1 > s2:
+            match.winner = match.team1
+            match.loser = match.team2
+        else:
+            match.winner = match.team2
+            match.loser = match.team1
+
+
     def automate_all_matches(self):
         all_matches = self.repo.get_all()
         for match in all_matches:
@@ -188,8 +219,43 @@ class MatchManager:
         return [m for m in matches if m.winner is None]
 
     #round-by-round manual score input
-    def play_match_manual(self,match_id):
-        pass
+    def play_match_manual(self,match_id, score1, score2):
+        match = self.repo.get_by_match_id(match_id)
+
+        if match is None:
+            raise ValueError("Match not found")
+
+        if match.winner is not None:
+            raise ValueError("Result already registered for this match")
+
+        # Update match object with scores + winner/loser
+        self._apply_result(match, score1, score2)
+
+        # Keep folder/result CSV behaviour consistent with random simulation
+        tname = match.tournament_name if match.tournament_name else str(match.tournament_id)
+
+        tournament_folder = f"main/IO/{tname}"
+        os.makedirs(tournament_folder, exist_ok=True)
+
+        match_folder = f"{tournament_folder}/match_{match.match_id}"
+        os.makedirs(match_folder, exist_ok=True)
+
+        result_path = f"{match_folder}/match_results.csv"
+        with open(result_path, mode="w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow(["match_id", "team1", "team2", "winner", "loser", "final_score", "total_rounds"])
+            writer.writerow([
+                match.match_id,
+                match.team1,
+                match.team2,
+                match.winner,
+                match.loser,
+                match.final_score,
+                match.total_rounds,
+            ])
+
+        self.repo.save_to_file()
+        return match
 
     #Update CSV, team stats, bracket advancement
     def finalize_match(self,winner,loser):

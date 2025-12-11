@@ -19,8 +19,9 @@ class TeamRepository:
                 captain = row[2]
                 players = row[3].split("|") if row[3] else []
                 website_url = row[4]
+                tag = row[5] if len(row) > 5 else ""
 
-                t = Team(team_id, name, captain, players, website_url,wins=0,losses=0)
+                t = Team(team_id, name, captain, players, website_url, tag, wins=0, losses=0)
                 teams.append(t)
 
         return teams
@@ -35,7 +36,8 @@ class TeamRepository:
                 t.name,
                 t.captain,
                 player_string,
-                t.website_url
+                t.website_url,
+                t.tag,
             ])
         self.io.write_file(rows)
 
