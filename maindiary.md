@@ -315,7 +315,7 @@ Staða á hópnum: All good in the hood. Þurfum að fara huga að því að upp
 
 ## Mæting: Halldór og Einar
 
-Staða á verkefni: 
+Staða á verkefni: Nóg að gera í dag. Það þarf virkilega að klára allar A-kröfur og helst allar B-kröfur líka. Svo við getum einbeitt okkur að skýrslunni og fínpússa allt saman á morgun.
 
 ## ToDo:
 A kröfur
