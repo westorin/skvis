@@ -1,4 +1,4 @@
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from typing import List, Dict, Tuple, Optional
 import os
 import csv
@@ -254,6 +254,62 @@ class TournamentManager:
         
         return pages
 
+    def schedule_matches(self, tournament_name: str, start_date: str, start_time: str, servers: int, slot_minutes: int = 60) -> None:
+        """Assign date, time and server_id to all matches in a tournament"""
+
+        if servers <= 0:
+            raise ValueError("Servers must be at least 1.")
+        
+        tournament = self.get_tournament(tournament_name)
+        if tournament is None:
+            raise ValueError("Tournament does not exist.")
+        
+        try:
+            base_date = datetime.strptime(start_date.strip(), "%d-%m-%Y").date()
+            base_time = datetime.strptime(start_time.strip(), "%H:%M").time()
+        except ValueError:
+            raise ValueError("Invalid date or time format. Use DD-MM-YYYY and HH:MM.")
+        
+        base_dt = datetime.combine(base_date, base_time)
+
+        # Get all matches for this tournament
+        matches = [
+            m for m in self.match_manager.repo.get_all()
+            if str(m.tournament_id) == str(tournament.tournament_id)
+        ]
+
+        if not matches:
+            raise ValueError("No matches found for this tournament.")
+        
+        # Sort by [round, bracket, match_id] for a stable, bracket-respecting order
+        def sort_key(m):
+            try:
+                rnd = int(m.round) if m.round is not None else 0
+            except (ValueError, TypeError):
+                rnd = 0
+            br = (m.bracket or "").upper()
+            try:
+                mid = int(m.match_id)
+            except Exception:
+                mid = 0
+            return [rnd, br, mid]
+        
+        matches = sorted(matches, key=sort_key)
+
+        # Assign slots
+        for idx, match in enumerate(matches):
+            slot_index = idx // servers
+            server_index = (idx % servers) + 1
+
+            match_dt = base_dt + timedelta(minutes=slot_index * slot_minutes)
+
+            match.date = match_dt.date().isoformat()
+            match.time = match_dt.strftime("%H:%M")
+            match.server_id = f"SRV-{server_index}"
+        
+        # Persist changes
+        self.match_manager.repo.save_to_file()
+        
     def get_schedule_basic(self, tournament_name: str) -> List[List[str]]:
         """Returns a schedule for one tournament, each row is: [game_nr, team_a, team_b, date, start_time, location]"""
         tournament = self.get_tournament(tournament_name)
@@ -315,6 +371,19 @@ class TournamentManager:
         rows = self.get_results_basic(tournament_name)
         return self.sort_into_rows_of_tens(rows, columns=9)
 
+    def list_tournaments_for_team(self, team_name: str):
+        """Return all tournaments where this team is registered."""
+        team_name = team_name.strip()
+        result = []
+        for t in self.tournaments.get_all():
+            if team_name in getattr(t, "teams", []):
+                result.append(t)
+        return result
+    
+    def list_tournament_names_for_team(self, team_name: str):
+        """Convenience: just the tournament names for a given team."""
+        return [t.name for t in self.list_tournaments_for_team(team_name)]
+
     def export_tournament_results(self, tournament_name: str, base_patch: str) -> None:
         "Creates a folder for the tournament, inside it creates 16 match folders"
         "and inside each match folder creates placeholder round files"
@@ -342,6 +411,7 @@ class TournamentManager:
     #     return (f"Tournament results exported to {tournament_folder}")
 
     # Helper methods
+
     def _get_matches(self, tournament_id, bracket=None, round_number=None):
         matches = self.match_manager.repo.get_all()
         filtered = [m for m in matches if str(m.tournament_id) == str(tournament_id)]
