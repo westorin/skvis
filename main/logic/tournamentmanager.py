@@ -316,26 +316,37 @@ class TournamentManager:
         if tournament is None:
             raise ValueError("Tournament does not exist.")
         
-        # Get all matches for this tournament
-        matches = [
-            m for m in self.match_manager.repo.get_all()
-            if str(m.tournament_id) == str(tournament.tournament_id)
-        ]
+        tid = tournament.tournament_id
 
-        # Sort by match_id so order is stable
+        matches = self._get_matches(tid)
+
         matches = sorted(matches, key=lambda m: int(m.match_id))
 
         rows: List[List[str]] = []
+
         for idx, m in enumerate(matches, start=1):
+            date_val = getattr(m, "date", "") or ""
+            if not date_val:
+                date_val = getattr(tournament, "start", "") or ""
+        
+            time_val = getattr(m, "time", "") or ""
+            if not time_val:
+                time_val = "18:00" # Default time for all matches
+        
+            location_val = getattr(m, "location", None)
+            if not location_val:
+                location_val = getattr(tournament, "location", "") or ""
+
             rows.append([
-                str(idx), # Game number (1, 2, 3, 4, ...)
-                m.team1,
-                m.team2,
-                m.date or "",
-                m.time or "",
-                tournament.location or "",
+                str(idx),
+                m.team1 or "",
+                m.team2 or "",
+                date_val,
+                time_val,
+                location_val,
             ])
-        return rows
+    
+        return rows 
     
     def get_schedule_pages(self, tournament_name: str) -> List[List[List[str]]]:
         rows = self.get_schedule_basic(tournament_name)
