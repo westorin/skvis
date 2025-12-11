@@ -166,6 +166,13 @@ class TeamManager:
         # Save updated teams
         self.team_repo.save_teams()
 
+    def get_team_by_captain(self, captain_handle: str):
+        """Return the team where this username is captain or None."""
+        for team in self.team_repo.teams:
+            if team.captain == captain_handle:
+                return team
+        return None
+
     # Get all teams ===========================
     def get_all_teams(self):
         return self.team_repo.teams
@@ -180,20 +187,3 @@ class TeamManager:
         if (team.name).lower() == team_name.lower():
             return True
         
-
-    # # Get all teams ===========================
-    # def get_all_teams(self):
-    #     return self.team_repo.teams
-    
-    # def get_team(self, team_name):
-    #     return self.team_repo.get_team(team_name)
-    
-    # def does_team_exist(self, team_name):
-    #     team = self.team_repo.get_team(team_name.lower())
-    #     if team is None:
-    #         return False
-    #     if (team.name).lower() == team_name:
-    #         return True
-        
-
-
