@@ -324,6 +324,7 @@ A kröfur
 - Passa að það séu bara 3-5 í liði
 - Start og end date validation (A9)
 - Lið getur ekki spilað tvo leiki samtímis
+- Type hintea ALLT saman og gera comment þar sem vantar
 - Ekkert crash - Passa að það sé hægt að slá inn vitlaust input án þess að allt crashar
 
 B kröfur
