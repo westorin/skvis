@@ -15,7 +15,6 @@ class TeamManager:
             print("DEBUG PLAYERS:", [(p.username) for p in self.player_repo.players])
             raise ValueError("Captain must be a registered player")
             
-
         # Team name must be unique
         if self.team_repo.get_team(name):
             raise ValueError("Team name must be unique")

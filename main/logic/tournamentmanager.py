@@ -218,6 +218,103 @@ class TournamentManager:
             rows.append([t.name, t.start, t.end])
         return rows
 
+    def sort_into_rows_of_tens(self, rows: List[List[str]], columns: int) -> List[List[List[str]]]:
+        """Split rows into pages of 10 rows each. Pads the last page with placeholder rows"""
+        remaining_rows = list(rows)
+        pages: List[List[List[str]]] = []
+
+        # Determine page count
+        if len(remaining_rows) % 10 == 0:
+            page_count = len(remaining_rows) // 10
+        else:
+            page_count = (len(remaining_rows) // 10) + 1
+        
+        for _ in range(page_count):
+            current_page: List[List[str]] = []
+
+            if (len(remaining_rows) // 10) > 0:
+                # Fulll page
+                for _ in range(10):
+                    current_page.append(remaining_rows[0])
+                    remaining_rows = remaining_rows[1:]
+                pages.append(current_page)
+            
+            elif (len(remaining_rows) // 10) == 0 and len(remaining_rows) % 10 != 0:
+                # Partial page
+                for row in remaining_rows:
+                    current_page.append(row)
+                remaining_rows = []
+
+                # Pad with empty rows
+                missing = 10 - len(current_page)
+                for _ in range(missing):
+                    current_page.append([""] * columns)
+                
+                pages.append(current_page)
+        
+        return pages
+
+    def get_schedule_basic(self, tournament_name: str) -> List[List[str]]:
+        """Returns a schedule for one tournament, each row is: [game_nr, team_a, team_b, date, start_time, location]"""
+        tournament = self.get_tournament(tournament_name)
+        if tournament is None:
+            raise ValueError("Tournament does not exist.")
+        
+        # Get all matches for this tournament
+        matches = [
+            m for m in self.match_manager.repo.get_all()
+            if str(m.tournament_id) == str(tournament.tournament_id)
+        ]
+
+        # Sort by match_id so order is stable
+        matches = sorted(matches, key=lambda m: int(m.match_id))
+
+        rows: List[List[str]] = []
+        for idx, m in enumerate(matches, start=1):
+            rows.append([
+                str(idx), # Game number (1, 2, 3, 4, ...)
+                m.team1,
+                m.team2,
+                m.date or "",
+                m.time or "",
+                tournament.location or "",
+            ])
+        return rows
+    
+    def get_schedule_pages(self, tournament_name: str) -> List[List[List[str]]]:
+        rows = self.get_schedule_basic(tournament_name)
+        return self.sort_into_rows_of_tens(rows, columns=6)
+
+    def get_results_basic(self, tournament_name: str) -> List[List[str]]:
+        """Return a list of match results for one tournament. Each row is [match_id, round, bracket, team1, team2, winner, loser, final_score, total_rounds]."""
+        tournament = self.get_tournament(tournament_name)
+        if tournament is None:
+            raise ValueError("Tournament does not exist.")
+        
+        matches = [
+            m for m in self.match_manager.repo.get_all()
+            if str(m.tournament_id) == str(tournament.tournament_id)
+        ]
+
+        rows: List[List[str]] = []
+        for m in matches:
+            rows.append([
+                str(m.match_id),
+                "" if m.round is None else str(m.round),
+                "" if m.bracket is None else str(m.bracket),
+                m.team1,
+                m.team2,
+                m.winner or "",
+                m.loser or "",
+                m.final_score or "",
+                str(m.total_rounds or 0),
+            ])
+        return rows
+    
+    def get_results_pages(self, tournament_name: str) -> List[List[List[str]]]:
+        rows = self.get_results_basic(tournament_name)
+        return self.sort_into_rows_of_tens(rows, columns=9)
+
     def export_tournament_results(self, tournament_name: str, base_patch: str) -> None:
         "Creates a folder for the tournament, inside it creates 16 match folders"
         "and inside each match folder creates placeholder round files"
@@ -243,7 +340,6 @@ class TournamentManager:
     #                     f.write("match,round,winner,loser,bracket\n")
     #                     f.write(f"{match_index},{round_number},TBD,TBD,TBD\n")
     #     return (f"Tournament results exported to {tournament_folder}")
-    #     # ^^^^ Má ekki :(
 
     # Helper methods
     def _get_matches(self, tournament_id, bracket=None, round_number=None):
