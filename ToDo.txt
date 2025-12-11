@@ -20,7 +20,7 @@ B kröfur
 
 UI
 - A 
-  - add team and 3players
+  - add team and 3players ( done )
   - display list of tournaments for past, on going and future
   - add tournament
   - tournament's schedule

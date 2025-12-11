@@ -219,7 +219,7 @@ class AddTeamUI():
                 # Player 1 info 
 
             elif(capt_url != "" and player_1_username == ""):
-                if(len(choice) < 21 and data.players.get_by_handle(choice) == None):
+                if(len(choice) < 21 and data.players.get_by_handle(choice) == None and choice != capt_username):
                     player_1_username = choice
                     enter_what = "Enter the name of the play"
                 else:
@@ -277,7 +277,7 @@ class AddTeamUI():
                 # Player 2 info
 
             elif(player_1_url != "" and player_2_username == ""):
-                if(len(choice) < 21 and data.players.get_by_handle(choice) == None):
+                if(len(choice) < 21 and data.players.get_by_handle(choice) == None and choice != player_1_username and choice != capt_username):
                     player_2_username = choice
                     enter_what = "Enter the name of the play"
                 else:
