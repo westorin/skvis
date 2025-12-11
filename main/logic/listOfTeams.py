@@ -52,7 +52,7 @@ class ListOfTeamsLogic():
             
 
     def sort_teams_into_a_list_of_tens(self) -> list:
-        list_of_teams = ListOfTeamsLogic().make_list_of_all_teams()
+        list_of_teams = self.make_list_of_all_teams()
         
         list_of_teams_in_pers_of_tens = []
         
