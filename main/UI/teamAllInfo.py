@@ -1,15 +1,17 @@
 from main.wrappers.datawrapper import DataWrapper
 from main.wrappers.logicwrapper import LogicWrapper
 
-from main.logic.team import TeamLogic
+from main.logic.team import TeamLogic #<-- This has to go
 from main.logic.clearScreenInTerminal import clear_screen
 import math
 
 
 class TeamAllInfoUI():
-    def __init__(self):
-        data = DataWrapper()
-        logic = LogicWrapper(data)
+    def __init__(self): #Need to add: logic in the init
+        data = DataWrapper() #<-- This can go
+        logic = LogicWrapper(data) #<-- This can go
+        #self.logic = logic
+        #Add the line above
         self.player = logic.player_manager
         self.team = logic.team_manager
 

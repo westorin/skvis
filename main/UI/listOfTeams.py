@@ -1,7 +1,7 @@
 from main.wrappers.datawrapper import DataWrapper
 from main.wrappers.logicwrapper import LogicWrapper
 
-from main.logic.listOfTeams import ListOfTeamsLogic
+from main.logic.listOfTeams import ListOfTeamsLogic #<-- This needs to go
 from main.logic.clearScreenInTerminal import clear_screen
 
 class ListOfTeamsUI():
@@ -13,6 +13,7 @@ class ListOfTeamsUI():
     def print_list_of_teams(self, isAdminFromMain: bool) -> str:
         self.isAdmin = isAdminFromMain
         self.list_of_teams = ListOfTeamsLogic().sort_teams_into_a_list_of_tens()
+        self.list_of_teams = self.tm.sort_teams_into_a_list_of_tens() #<-- This needs to go. Can replace it with the code above
         list_layer_counters = 1
 
         data = DataWrapper()
@@ -153,7 +154,8 @@ class ListOfTeamsUI():
                 return "QUIT"
             elif(choice.lower() == "a" and self.isAdmin == True):
                 return "ADD_TE"
-            elif(tm.does_team_exist(choice.lower()) == True):
+            #elif(self.tm.does_team_exist(choice.lower()) == True): 
+            elif(tm.does_team_exist(choice.lower()) == True): # <-- This needs to go. Can replace it with the code above
                 return "TEAM", choice
 
             else:
