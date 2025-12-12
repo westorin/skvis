@@ -13,8 +13,6 @@ class TeamLeaderBoardUI():
           data = DataWrapper()
           leaderboard_manager = LeaderboardManager(data)
 
-          teams = leaderboard_manager.get_team_leaderboard()
-
           page = leaderboard_manager.sort_leaderboard_into_a_list_of_tens()
           current_page = 1
 
