@@ -327,7 +327,6 @@ A kröfur
 - Type hintea ALLT saman og gera comment þar sem vantar
 - Ekkert crash - Passa að það sé hægt að slá inn vitlaust input án þess að allt crashar
 - Team Captain er með automatic password til að logga sig inn
-- Laga schedule
 
 B kröfur
 - Multi-event tournament
@@ -365,3 +364,32 @@ ToDo UI:
     - Tournament
 
 Staða á hópnum: Það er næstum því búið að kóða allt fyrir Logic og Data layerana. Þurfum að passa að allar A kröfur virka á morgun og ætlum að spurja hvort við megum sleppa einhverjum B kröfum því þær eru tímafrekar og eigum eftir að græja TUI, skýrslu og myndband.
+
+# 12/12/2025 - 13:00
+
+## Mæting: Halldór, Einar og Kristján
+
+Staða á verkefni: Við spurðum hvort það mætti sleppa Clubs og það má víst, svo við giskum á að sleppa öllum B og C kröfum til að vera vissir um að allar A kröfur virka fullkomlega.
+
+## ToDo:
+- Vantar kóða til að passa árekstra í schedule (schedule conflicts) - scheduling logic
+- Passa að það séu bara 3-5 í liði
+- Start og end date validation (A9)
+- Lið getur ekki spilað tvo leiki samtímis
+- Type hintea ALLT saman og gera comment þar sem vantar
+- Ekkert crash - Passa að það sé hægt að slá inn vitlaust input án þess að allt crashar
+- Team Captain er með automatic password til að logga sig inn
+- Laga schedule
+
+ToDo UI:
+- A 
+  - add tournament
+  - tournament's schedule
+  - list of all Players in the tournament(???)
+  - leader board of the tournament(???)
+  - update match
+  - update team
+  - add Player to team
+  - Display knockout tournament
+
+Staða á hópnum: 
