@@ -127,7 +127,7 @@ class PastTournamentsUI():
             print(footer_text)
             
             choice = str(input(">>>> "))
-            # TODO fix
+            
             tournament_check = tr.get_by_name(choice.lower())
                
             if(choice.lower() == "u" and 1 < current_page):
