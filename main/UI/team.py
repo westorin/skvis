@@ -5,9 +5,10 @@ import math
 
 
 class TeamUI():
-    def __init__(self,logic) -> None:
+    def __init__(self, logic):
+        #self.logic = LogicWrapper()
+        #Can replace with the line above
         self.logic = logic
-
 
 
     def print_team(self, team_name: str) -> str:

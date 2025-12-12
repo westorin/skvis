@@ -4,6 +4,9 @@ from main.logic.clearScreenInTerminal import clear_screen
 import math
 
 class TournamentInfoUI():
+    def __init__(self, logic):
+        self.logic = logic
+
     def print_info(self, tournament_name: str, is_admin: bool):
         data = DataWrapper()
         logic = LogicWrapper(data)

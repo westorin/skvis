@@ -1,8 +1,7 @@
 from main.logic.matchmanager import MatchManager
 
 class MatchUI:
-    def __init__(self, logic) -> None:
-        self.logic = logic
+    def __init__(self) -> None:
         self.mm = MatchManager()
 
     def create_match_ui(self):

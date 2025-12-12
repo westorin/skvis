@@ -8,8 +8,9 @@ python3 -m main.UI.createteamUI
 '''
 
 class CreateTeamUI:
-    def __init__(self, logic) -> None:
-        self.logic = logic
+    def __init__(self) -> None:
+        data = DataWrapper()
+        logic = LogicWrapper(data)
         self.tm = logic.team_manager
 
     def add_team_ui(self) -> None:

@@ -1,6 +1,5 @@
 class RemovePlayerfromTeamUI:
-    def __init__(self, logic, team_manager, current_user):
-        self.logic = logic
+    def __init__(self, team_manager, current_user):
         self.team_manager = team_manager
         self.current_user = current_user
 
