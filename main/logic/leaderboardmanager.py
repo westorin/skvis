@@ -7,8 +7,11 @@ class LeaderboardManager:
         self.match_repo = data.matches
         self.team_repo = data.teams
 
-    def get_team_leaderboard(self) -> List[Dict]:
-        matches = self.match_repo.get_all()
+    def _normalize(self, name: str) -> str:
+        return name.strip().lower().replace("-", "")
+
+    def get_team_leaderboard(self, tournament_name: str | None = None) -> List[Dict]:
+        matches = self.get_tournament_for_leaderboard(tournament_name)
         teams = self.team_repo.get_all()
 
         #Build stats dictionary
@@ -16,7 +19,7 @@ class LeaderboardManager:
 
         #Initialize stats for each team
         for team in teams:
-            key = team.name.lower()
+            key = self._normalize(team.name)
             stats[key] = {
                 "team": team.name,
                 "matches": 0,
@@ -26,8 +29,8 @@ class LeaderboardManager:
 
         #Aggregate stats from matches
         for match in matches:
-            t1 = match.team1.lower()
-            t2 = match.team2.lower()
+            t1 = self._normalize(match.team1)
+            t2 = self._normalize(match.team2)
 
             if t1 not in stats:
                 stats[t1] = {"team": match.team1, "matches": 0, "wins": 0, "losses": 0}
@@ -38,8 +41,8 @@ class LeaderboardManager:
             stats[t2]["matches"] += 1
 
             if match.winner and match.loser:
-                winner_key = match.winner.lower()
-                loser_key = match.loser.lower()
+                winner_key = self._normalize(match.winner)
+                loser_key = self._normalize(match.loser)
 
                 if winner_key in stats:
                     stats[winner_key]["wins"] += 1
@@ -53,7 +56,7 @@ class LeaderboardManager:
             winrate = (stats["wins"] / total * 100) if total > 0 else 0.0
 
             leaderboard.append({
-                "team": team,
+                "team": stats["team"],
                 "matches": stats["matches"],
                 "wins": stats["wins"],
                 "losses": stats["losses"],
@@ -72,8 +75,8 @@ class LeaderboardManager:
         return leaderboard
     
 
-    def sort_leaderboard_into_a_list_of_tens(self) -> list:
-        list_of_teams = self.get_team_leaderboard()
+    def sort_leaderboard_into_a_list_of_tens(self, tournament_name: str | None = None) -> list:
+        list_of_teams = self.get_team_leaderboard(tournament_name)
         
         list_of_teams_in_pers_of_tens = []
         
@@ -116,7 +119,82 @@ class LeaderboardManager:
 
         return list_of_teams_in_pers_of_tens
 
-    def get_tournament_for_leaderboard(self, tournament_name: str | None = None) -> List[Dict]:
-        if tournament_name is not None:
-            matches= []
-            pass
+    def get_tournament_for_leaderboard(self, tournament_name: str | None = None):
+        matches = self.match_repo.get_all()
+
+        if tournament_name is None:
+            return matches
+        
+        tournament = self.data.tournaments.get_by_name(tournament_name)
+        if not tournament:
+            return []
+        
+        tid = tournament.tournament_id
+        return [m for m in matches if m.tournament_id == tid]
+
+    def get_tournament_leaderboard_from_performance(self, tournament_name: str) -> List[Dict]:
+        import csv
+        import os
+        
+        base_path = "main/IO"
+        tournament_path = os.path.join(base_path, tournament_name)
+        performance_file = os.path.join(tournament_path, "performance.csv")
+
+        if not os.path.exists(performance_file):
+            return []
+
+        leaderboard: List[Dict] = []
+        with open(performance_file, mode="r", newline="", encoding="utf-8") as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                wins = int(row.get("wins", 0))
+                losses = int(row.get("losses", 0))
+                matches = int(row.get("matches", wins + losses))
+                winrate = (wins / matches * 100) if matches > 0 else 0.0
+
+                leaderboard.append({
+                    "team": row["team"],
+                    "matches": matches,
+                    "wins": wins,
+                    "losses": losses,
+                    "winrate": round(winrate, 2)
+                })
+
+        leaderboard.sort(
+            key=lambda x: (-x["winrate"], x["losses"], x["team"].lower())
+        )
+
+        for i, entry in enumerate(leaderboard, start=1):
+            entry["place"] = str(i)
+
+        return leaderboard  
+            
+    def _sort_tournament_leaderboard_into_a_list_of_tens(self, tournament_name: str):
+        list_of_teams = self.get_tournament_leaderboard_from_performance(tournament_name)
+
+        list_of_teams_in_pers_of_tens = []
+
+        if len(list_of_teams) % 10 == 0:
+            ten_teams_counter = len(list_of_teams) // 10
+        else:
+            ten_teams_counter = (len(list_of_teams) // 10) + 1
+
+        for _ in range(ten_teams_counter):
+            page = []
+
+            for _ in range(min(10, len(list_of_teams))):
+                page.append(list_of_teams.pop(0))
+
+            while len(page) < 10:
+                page.append({
+                    "place": "",
+                    "team": "",
+                    "matches": "",
+                    "wins": "",
+                    "losses": "",
+                    "winrate": ""
+                })
+
+            list_of_teams_in_pers_of_tens.append(page)
+
+        return list_of_teams_in_pers_of_tens

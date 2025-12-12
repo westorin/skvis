@@ -9,7 +9,7 @@ class TournamentLeaderBoardUI():
 
         leaderboard_manager = self.logic.leaderboard_manager
 
-        page = leaderboard_manager.sort_leaderboard_into_a_list_of_tens()
+        page = leaderboard_manager._sort_tournament_leaderboard_into_a_list_of_tens(tournament_name)
         current_page = 1
 
         header_text = """+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
