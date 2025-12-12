@@ -9,6 +9,7 @@ class TournamentMatchsUI():
     def print_matchs(self, tournament_name: str) -> str:
         print("lol")
 
+        self.logic.clear_screen.clear_screen()
 
 
         header_text = f""" 
