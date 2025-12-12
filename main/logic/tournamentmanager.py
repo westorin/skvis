@@ -80,22 +80,34 @@ class TournamentManager:
     
     def set_teams_for_tournament(self, tournament_name: str, team_names: List[str]) -> None:
         tournament = self.get_tournament(tournament_name)
-        # Tournament should have exactly 16 teams
+        if tournament is None:
+            raise ValueError("Tournament does not exist.")
+
+        # Exactly 16 teams are required
         if len(team_names) != 16:
             raise ValueError("Exactly 16 teams are required for the tournament.")
+
+        # Remove duplicates while preserving order
         unique_names = list(dict.fromkeys(team_names))
         if len(unique_names) != 16:
             raise ValueError("Team names must be unique.")
-        tournament.teams = unique_names
 
-        # Verify all teams exist
-        for name in team_names:
-            if self.teams.get_team(name) is None:
+        # Verify all teams exist and have 3-5 players
+        checked_names: list[str] = []
+        for name in unique_names:
+            team = self.teams.get_team(name)
+            if team is None:
                 raise ValueError(f"Team '{name}' does not exist.")
-            
-        # Remove duplicates while preserving order
-        tournament.teams = list(dict.fromkeys(team_names))
 
+            player_count = len(team.players)
+            if player_count < 3 or player_count > 5:
+                raise ValueError(
+                    f"Team '{name}' must have between 3 and 5 players."
+                    f"(currently {player_count})."
+                )        
+            checked_names.append(name)
+        
+        tournament.teams = checked_names
         self.tournaments.update_tournament(tournament)
 
     def generate_initial_matches(self, tournament_name: str) -> None:
@@ -290,25 +302,70 @@ class TournamentManager:
             br = (m.bracket or "").upper()
             try:
                 mid = int(m.match_id)
-            except Exception:
+            except:
                 mid = 0
             return [rnd, br, mid]
         
         matches = sorted(matches, key=sort_key)
 
-        # Assign slots
-        for idx, match in enumerate(matches):
-            slot_index = idx // servers
-            server_index = (idx % servers) + 1
+        # slot_index -> list of [match, server_index]
+        slots: dict[int, list[list]] = {}
 
+        for match in matches:
+            slot_index = 0
+            while True:
+                slot_matches = slots.get(slot_index, [])
+
+                # Check the server capacity
+                if len(slot_matches) < servers:
+
+                    # Check team conflict
+                    conflict = False
+                    for existing_match, _ in slot_matches:
+                        if (
+                            existing_match.team1 in (match.team1, match.team2)
+                            or existing_match.team2 in (match.team1, match.team2)
+                        ):
+                            conflict = True
+                            break
+                    
+                    if not conflict:
+                        server_index = len(slot_matches) + 1
+                        slot_matches.append([match, server_index])
+                        slots[slot_index] = slot_matches
+                        break
+                
+                slot_index += 1
+        
+        # Assign date/time/server_id
+        result_rows = []
+
+        for slot_index in sorted(slots.keys()):
             match_dt = base_dt + timedelta(minutes=slot_index * slot_minutes)
+            date_str = match_dt.date().isoformat()
+            time_str = match_dt.strftime("%H:%M")
 
-            match.date = match_dt.date().isoformat()
-            match.time = match_dt.strftime("%H:%M")
-            match.server_id = f"SRV-{server_index}"
+            for pair in slots[slot_index]:
+                match = pair[0]
+                server_index = pair[1]
+
+                match.date = date_str
+                match.time = time_str
+                match.server_id = f"SRV-{server_index}"
+
+                result_rows.append([
+                    match.match_id,
+                    match.team1,
+                    match.team2,
+                    match.date,
+                    match.time,
+                    match.server_id
+                ])
         
         # Persist changes
         self.match_manager.repo.save_to_file()
+
+        return result_rows
         
     def get_schedule_basic(self, tournament_name: str) -> List[List[str]]:
         """Returns a schedule for one tournament, each row is: [game_nr, team_a, team_b, date, start_time, location]"""

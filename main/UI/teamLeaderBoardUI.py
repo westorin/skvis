@@ -19,127 +19,127 @@ class TeamLeaderBoardUI():
           current_page = 1
 
           header_text = """+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|\t\t\t\t\t\t\t\t+---------------------------------------------------+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t| ╔╦╗┌─┐┌─┐┌┬┐  ╦  ┌─┐┌─┐┌┬┐┌─┐┬─┐  ╔╗ ┌─┐┌─┐┬─┐┌┬┐ |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t|  ║ ├┤ ├─┤│││  ║  ├┤ ├─┤ ││├┤ ├┬┘  ╠╩╗│ │├─┤├┬┘ ││ |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t|  ╩ └─┘┴ ┴┴ ┴  ╩═╝└─┘┴ ┴─┴┘└─┘┴└─  ╚═╝└─┘┴ ┴┴└──┴┘ |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t+---------------------------------------------------+\t\t\t\t\t\t\t\t|"""
+|\t\t\t\t\t\t\t\t\t\033[96m\033[1m+-------------------------------------+\033[0m\t\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\t\t\033[96m\033[1m|\033[0m ╦  ┌─┐┌─┐┌┬┐┌─┐┬─┐  ╔╗ ┌─┐┌─┐┬─┐┌┬┐ \033[96m\033[1m|\033[0m\t\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\t\t\033[96m\033[1m|\033[0m ║  ├┤ ├─┤ ││├┤ ├┬┘  ╠╩╗│ │├─┤├┬┘ ││ \033[96m\033[1m|\033[0m\t\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\t\t\033[96m\033[1m|\033[0m ╩═╝└─┘┴ ┴─┴┘└─┘┴└─  ╚═╝└─┘┴ ┴┴└──┴┘ \033[96m\033[1m|\033[0m\t\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\t\t\033[96m\033[1m+-------------------------------------+\033[0m\t\t\t\t\t\t\t\t\t|"""
 
           error_text ="""|\t\t\t\t\t\t+------------------------------------------------------------------------------+\t\t\t\t\t\t|
 |\t\t\t\t\t\t|                                                                              |\t\t\t\t\t\t|
-|\t\t\t\t\t\t|     ^                                                                        |\t\t\t\t\t\t|
-|\t\t\t\t\t\t|    / \             You have entered an invalid input                         |\t\t\t\t\t\t|
-|\t\t\t\t\t\t|   / | \                                                                      |\t\t\t\t\t\t|
-|\t\t\t\t\t\t|  /  .  \            Enter Y. if you want to try again                        |\t\t\t\t\t\t|
-|\t\t\t\t\t\t| /_______\               or q. if you want to quit.                           |\t\t\t\t\t\t|
+|\t\t\t\t\t\t|     \x1b[33m^\x1b[0m                                                                        |\t\t\t\t\t\t|
+|\t\t\t\t\t\t|    \x1b[33m/ \ \x1b[0m             You have entered an invalid input                        |\t\t\t\t\t\t|
+|\t\t\t\t\t\t|   \x1b[33m/\x1b[0m \033[31m\033[1m|\033[0m \x1b[33m\ \x1b[0m                                                                     |\t\t\t\t\t\t|
+|\t\t\t\t\t\t|  \x1b[33m/\x1b[0m  \033[31m\033[1m.\033[0m  \x1b[33m\  \x1b[0m            Enter Y. if you want to try again                      |\t\t\t\t\t\t|
+|\t\t\t\t\t\t| \x1b[33m/_______\ \x1b[0m               or q. if you want to quit.                          |\t\t\t\t\t\t|
 |\t\t\t\t\t\t|                                                                              |\t\t\t\t\t\t|
 |\t\t\t\t\t\t+------------------------------------------------------------------------------+\t\t\t\t\t\t|"""
 
           while True:
 
-               top_leader_board_text = f"""|\t\t\t\t\t\t+------+----------------------+-----------+-----------+-----------+------------+\t\t\t\t\t\t|
-|\t\t\t\t\t\t| Nr.  | Team name            | Matches   | wins      | Losses    | Win rate % |\t\t\t\t\t\t|
-|\t\t\t\t\t\t+======+======================+===========+===========+===========+============+\t\t\t\t\t\t|
-|\t\t\t\t\t\t| {page[(current_page - 1)][0]["place"] + " "*(4 -len(page[(current_page - 1)][0]["place"]))
-                } | {page[(current_page - 1)][0]["team"] + " "*(20 -len(page[(current_page - 1)][0]["team"]))
-                     } | {str(page[(current_page - 1)][0]["matches"]) + " "*(9 -len(str(page[(current_page - 1)][0]["matches"])))
-                          } | {str(page[(current_page - 1)][0]["wins"]) + " "*(9 -len(str(page[(current_page - 1)][0]["wins"])))
-                               } | {str(page[(current_page - 1)][0]["losses"]) + " "*(9 -len(str(page[(current_page - 1)][0]["losses"])))
-                                    } | {str(page[(current_page - 1)][0]["winrate"]) + " "*(10 -len(str(page[(current_page - 1)][0]["winrate"])))} |\t\t\t\t\t\t|
-|\t\t\t\t\t\t+------+----------------------+-----------+-----------+-----------+------------+\t\t\t\t\t\t|
-|\t\t\t\t\t\t| {page[(current_page - 1)][1]["place"] + " "*(4 -len(page[(current_page - 1)][1]["place"]))
-                } | {page[(current_page - 1)][1]["team"] + " "*(20 -len(page[(current_page - 1)][1]["team"]))
-                     } | {str(page[(current_page - 1)][1]["matches"]) + " "*(9 -len(str(page[(current_page - 1)][1]["matches"])))
-                          } | {str(page[(current_page - 1)][1]["wins"]) + " "*(9 -len(str(page[(current_page - 1)][1]["wins"])))
-                               } | {str(page[(current_page - 1)][1]["losses"]) + " "*(9 -len(str(page[(current_page - 1)][1]["losses"])))
-                                    } | {str(page[(current_page - 1)][1]["winrate"]) + " "*(10 -len(str(page[(current_page - 1)][1]["winrate"])))} |\t\t\t\t\t\t|
-|\t\t\t\t\t\t+------+----------------------+-----------+-----------+-----------+------------+\t\t\t\t\t\t|""" 
+               top_leader_board_text = f"""|\t\t\t\t\t\t\033[96m\033[1m+------+----------------------+-----------+-----------+-----------+------------+\033[0m\t\t\t\t\t\t|
+|\t\t\t\t\t\t\033[96m\033[1m|\033[0m Nr.  \033[96m\033[1m|\033[0m Team name            \033[96m\033[1m|\033[0m Matches   \033[96m\033[1m|\033[0m wins      \033[96m\033[1m|\033[0m Losses    \033[96m\033[1m|\033[0m Win rate % \033[96m\033[1m|\033[0m\t\t\t\t\t\t|
+|\t\t\t\t\t\t\033[96m\033[1m+======+======================+===========+===========+===========+============+\033[0m\t\t\t\t\t\t|
+|\t\t\t\t\t\t\033[96m\033[1m|\033[0m {page[(current_page - 1)][0]["place"] + " "*(4 -len(page[(current_page - 1)][0]["place"]))
+                } \033[96m\033[1m|\033[0m {page[(current_page - 1)][0]["team"] + " "*(20 -len(page[(current_page - 1)][0]["team"]))
+                     } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][0]["matches"]) + " "*(9 -len(str(page[(current_page - 1)][0]["matches"])))
+                          } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][0]["wins"]) + " "*(9 -len(str(page[(current_page - 1)][0]["wins"])))
+                               } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][0]["losses"]) + " "*(9 -len(str(page[(current_page - 1)][0]["losses"])))
+                                    } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][0]["winrate"]) + " "*(10 -len(str(page[(current_page - 1)][0]["winrate"])))} \033[96m\033[1m|\033[0m\t\t\t\t\t\t|
+|\t\t\t\t\t\t\033[96m\033[1m+------+----------------------+-----------+-----------+-----------+------------+\033[0m\t\t\t\t\t\t|
+|\t\t\t\t\t\t\033[96m\033[1m|\033[0m {page[(current_page - 1)][1]["place"] + " "*(4 -len(page[(current_page - 1)][1]["place"]))
+                } \033[96m\033[1m|\033[0m {page[(current_page - 1)][1]["team"] + " "*(20 -len(page[(current_page - 1)][1]["team"]))
+                     } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][1]["matches"]) + " "*(9 -len(str(page[(current_page - 1)][1]["matches"])))
+                          } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][1]["wins"]) + " "*(9 -len(str(page[(current_page - 1)][1]["wins"])))
+                               } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][1]["losses"]) + " "*(9 -len(str(page[(current_page - 1)][1]["losses"])))
+                                    } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][1]["winrate"]) + " "*(10 -len(str(page[(current_page - 1)][1]["winrate"])))} \033[96m\033[1m|\033[0m\t\t\t\t\t\t|
+|\t\t\t\t\t\t\033[96m\033[1m+------+----------------------+-----------+-----------+-----------+------------+\033[0m\t\t\t\t\t\t|""" 
           
-               center_leader_board_teaxt = f"""|\t\t\t\t\t\t| {page[(current_page - 1)][2]["place"] + " "*(4 -len(page[(current_page - 1)][2]["place"]))
-                                                               } | {page[(current_page - 1)][2]["team"] + " "*(20 -len(page[(current_page - 1)][2]["team"]))
-                                                                    } | {str(page[(current_page - 1)][2]["matches"]) + " "*(9 -len(str(page[(current_page - 1)][2]["matches"])))
-                                                                         } | {str(page[(current_page - 1)][2]["wins"]) + " "*(9 -len(str(page[(current_page - 1)][2]["wins"])))
-                                                                              } | {str(page[(current_page - 1)][2]["losses"]) + " "*(9 -len(str(page[(current_page - 1)][2]["losses"])))
-                                                                                   } | {str(page[(current_page - 1)][2]["winrate"]) + " "*(10 -len(str(page[(current_page - 1)][2]["winrate"])))} |\t\t\t\t\t\t|
-|\t\t\t\t\t\t+------+----------------------+-----------+-----------+-----------+------------+\t\t\t\t\t\t|
-|\t\t\t\t\t\t| {page[(current_page - 1)][3]["place"] + " "*(4 -len(page[(current_page - 1)][3]["place"]))
-                } | {page[(current_page - 1)][3]["team"] + " "*(20 -len(page[(current_page - 1)][3]["team"]))
-                     } | {str(page[(current_page - 1)][3]["matches"]) + " "*(9 -len(str(page[(current_page - 1)][3]["matches"])))
-                          } | {str(page[(current_page - 1)][3]["wins"]) + " "*(9 -len(str(page[(current_page - 1)][3]["wins"])))
-                               } | {str(page[(current_page - 1)][3]["losses"]) + " "*(9 -len(str(page[(current_page - 1)][3]["losses"])))
-                                    } | {str(page[(current_page - 1)][3]["winrate"]) + " "*(10 -len(str(page[(current_page - 1)][3]["winrate"])))} |\t\t\t\t\t\t|
-|\t\t\t\t\t\t+------+----------------------+-----------+-----------+-----------+------------+\t\t\t\t\t\t|
-|\t\t\t\t\t\t| {page[(current_page - 1)][4]["place"] + " "*(4 -len(page[(current_page - 1)][4]["place"]))
-                } | {page[(current_page - 1)][4]["team"] + " "*(20 -len(page[(current_page - 1)][4]["team"]))
-                     } | {str(page[(current_page - 1)][4]["matches"]) + " "*(9 -len(str(page[(current_page - 1)][4]["matches"])))
-                          } | {str(page[(current_page - 1)][4]["wins"]) + " "*(9 -len(str(page[(current_page - 1)][4]["wins"])))
-                               } | {str(page[(current_page - 1)][4]["losses"]) + " "*(9 -len(str(page[(current_page - 1)][4]["losses"])))
-                                    } | {str(page[(current_page - 1)][4]["winrate"]) + " "*(10 -len(str(page[(current_page - 1)][4]["winrate"])))} |\t\t\t\t\t\t|
-|\t\t\t\t\t\t+------+----------------------+-----------+-----------+-----------+------------+\t\t\t\t\t\t|
-|\t\t\t\t\t\t| {page[(current_page - 1)][5]["place"] + " "*(4 -len(page[(current_page - 1)][5]["place"]))
-                } | {page[(current_page - 1)][5]["team"] + " "*(20 -len(page[(current_page - 1)][5]["team"]))
-                     } | {str(page[(current_page - 1)][5]["matches"]) + " "*(9 -len(str(page[(current_page - 1)][5]["matches"])))
-                          } | {str(page[(current_page - 1)][5]["wins"]) + " "*(9 -len(str(page[(current_page - 1)][5]["wins"])))
-                               } | {str(page[(current_page - 1)][5]["losses"]) + " "*(9 -len(str(page[(current_page - 1)][5]["losses"])))
-                                    } | {str(page[(current_page - 1)][5]["winrate"]) + " "*(10 -len(str(page[(current_page - 1)][5]["winrate"])))} |\t\t\t\t\t\t|
-|\t\t\t\t\t\t+------+----------------------+-----------+-----------+-----------+------------+\t\t\t\t\t\t|
-|\t\t\t\t\t\t| {page[(current_page - 1)][6]["place"] + " "*(4 -len(page[(current_page - 1)][6]["place"]))
-                } | {page[(current_page - 1)][6]["team"] + " "*(20 -len(page[(current_page - 1)][6]["team"]))
-                     } | {str(page[(current_page - 1)][6]["matches"]) + " "*(9 -len(str(page[(current_page - 1)][6]["matches"])))
-                          } | {str(page[(current_page - 1)][6]["wins"]) + " "*(9 -len(str(page[(current_page - 1)][6]["wins"])))
-                               } | {str(page[(current_page - 1)][6]["losses"]) + " "*(9 -len(str(page[(current_page - 1)][6]["losses"])))
-                                    } | {str(page[(current_page - 1)][6]["winrate"]) + " "*(10 -len(str(page[(current_page - 1)][6]["winrate"])))} |\t\t\t\t\t\t|""" 
+               center_leader_board_teaxt = f"""|\t\t\t\t\t\t\033[96m\033[1m|\033[0m {page[(current_page - 1)][2]["place"] + " "*(4 -len(page[(current_page - 1)][2]["place"]))
+                                                               } \033[96m\033[1m|\033[0m {page[(current_page - 1)][2]["team"] + " "*(20 -len(page[(current_page - 1)][2]["team"]))
+                                                                    } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][2]["matches"]) + " "*(9 -len(str(page[(current_page - 1)][2]["matches"])))
+                                                                         } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][2]["wins"]) + " "*(9 -len(str(page[(current_page - 1)][2]["wins"])))
+                                                                              } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][2]["losses"]) + " "*(9 -len(str(page[(current_page - 1)][2]["losses"])))
+                                                                                   } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][2]["winrate"]) + " "*(10 -len(str(page[(current_page - 1)][2]["winrate"])))} \033[96m\033[1m|\033[0m\t\t\t\t\t\t|
+|\t\t\t\t\t\t\033[96m\033[1m+------+----------------------+-----------+-----------+-----------+------------+\033[0m\t\t\t\t\t\t|
+|\t\t\t\t\t\t\033[96m\033[1m|\033[0m {page[(current_page - 1)][3]["place"] + " "*(4 -len(page[(current_page - 1)][3]["place"]))
+                } \033[96m\033[1m|\033[0m {page[(current_page - 1)][3]["team"] + " "*(20 -len(page[(current_page - 1)][3]["team"]))
+                     } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][3]["matches"]) + " "*(9 -len(str(page[(current_page - 1)][3]["matches"])))
+                          } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][3]["wins"]) + " "*(9 -len(str(page[(current_page - 1)][3]["wins"])))
+                               } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][3]["losses"]) + " "*(9 -len(str(page[(current_page - 1)][3]["losses"])))
+                                    } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][3]["winrate"]) + " "*(10 -len(str(page[(current_page - 1)][3]["winrate"])))} \033[96m\033[1m|\033[0m\t\t\t\t\t\t|
+|\t\t\t\t\t\t\033[96m\033[1m+------+----------------------+-----------+-----------+-----------+------------+\033[0m\t\t\t\t\t\t|
+|\t\t\t\t\t\t\033[96m\033[1m|\033[0m {page[(current_page - 1)][4]["place"] + " "*(4 -len(page[(current_page - 1)][4]["place"]))
+                } \033[96m\033[1m|\033[0m {page[(current_page - 1)][4]["team"] + " "*(20 -len(page[(current_page - 1)][4]["team"]))
+                     } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][4]["matches"]) + " "*(9 -len(str(page[(current_page - 1)][4]["matches"])))
+                          } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][4]["wins"]) + " "*(9 -len(str(page[(current_page - 1)][4]["wins"])))
+                               } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][4]["losses"]) + " "*(9 -len(str(page[(current_page - 1)][4]["losses"])))
+                                    } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][4]["winrate"]) + " "*(10 -len(str(page[(current_page - 1)][4]["winrate"])))} \033[96m\033[1m|\033[0m\t\t\t\t\t\t|
+|\t\t\t\t\t\t\033[96m\033[1m+------+----------------------+-----------+-----------+-----------+------------+\033[0m\t\t\t\t\t\t|
+|\t\t\t\t\t\t\033[96m\033[1m|\033[0m {page[(current_page - 1)][5]["place"] + " "*(4 -len(page[(current_page - 1)][5]["place"]))
+                } \033[96m\033[1m|\033[0m {page[(current_page - 1)][5]["team"] + " "*(20 -len(page[(current_page - 1)][5]["team"]))
+                     } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][5]["matches"]) + " "*(9 -len(str(page[(current_page - 1)][5]["matches"])))
+                          } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][5]["wins"]) + " "*(9 -len(str(page[(current_page - 1)][5]["wins"])))
+                               } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][5]["losses"]) + " "*(9 -len(str(page[(current_page - 1)][5]["losses"])))
+                                    } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][5]["winrate"]) + " "*(10 -len(str(page[(current_page - 1)][5]["winrate"])))} \033[96m\033[1m|\033[0m\t\t\t\t\t\t|
+|\t\t\t\t\t\t\033[96m\033[1m+------+----------------------+-----------+-----------+-----------+------------+\033[0m\t\t\t\t\t\t|
+|\t\t\t\t\t\t\033[96m\033[1m|\033[0m {page[(current_page - 1)][6]["place"] + " "*(4 -len(page[(current_page - 1)][6]["place"]))
+                } \033[96m\033[1m|\033[0m {page[(current_page - 1)][6]["team"] + " "*(20 -len(page[(current_page - 1)][6]["team"]))
+                     } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][6]["matches"]) + " "*(9 -len(str(page[(current_page - 1)][6]["matches"])))
+                          } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][6]["wins"]) + " "*(9 -len(str(page[(current_page - 1)][6]["wins"])))
+                               } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][6]["losses"]) + " "*(9 -len(str(page[(current_page - 1)][6]["losses"])))
+                                    } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][6]["winrate"]) + " "*(10 -len(str(page[(current_page - 1)][6]["winrate"])))} \033[96m\033[1m|\033[0m\t\t\t\t\t\t|""" 
                
-               bottum_leader_board_text = f"""|\t\t\t\t\t\t+------+----------------------+-----------+-----------+-----------+------------+\t\t\t\t\t\t|
-|\t\t\t\t\t\t| {page[(current_page - 1)][7]["place"] + " "*(4 -len(page[(current_page - 1)][7]["place"]))
-                } | {page[(current_page - 1)][7]["team"] + " "*(20 -len(page[(current_page - 1)][7]["team"]))
-                     } | {str(page[(current_page - 1)][7]["matches"]) + " "*(9 -len(str(page[(current_page - 1)][7]["matches"])))
-                          } | {str(page[(current_page - 1)][7]["wins"]) + " "*(9 -len(str(page[(current_page - 1)][7]["wins"])))
-                               } | {str(page[(current_page - 1)][7]["losses"]) + " "*(9 -len(str(page[(current_page - 1)][7]["losses"])))
-                                    } | {str(page[(current_page - 1)][7]["winrate"]) + " "*(10 -len(str(page[(current_page - 1)][7]["winrate"])))} |\t\t\t\t\t\t|
-|\t\t\t\t\t\t+------+----------------------+-----------+-----------+-----------+------------+\t\t\t\t\t\t|
-|\t\t\t\t\t\t| {page[(current_page - 1)][8]["place"] + " "*(4 -len(page[(current_page - 1)][8]["place"]))
-                } | {page[(current_page - 1)][8]["team"] + " "*(20 -len(page[(current_page - 1)][8]["team"]))
-                     } | {str(page[(current_page - 1)][8]["matches"]) + " "*(9 -len(str(page[(current_page - 1)][8]["matches"])))
-                          } | {str(page[(current_page - 1)][8]["wins"]) + " "*(9 -len(str(page[(current_page - 1)][8]["wins"])))
-                               } | {str(page[(current_page - 1)][8]["losses"]) + " "*(9 -len(str(page[(current_page - 1)][8]["losses"])))
-                                    } | {str(page[(current_page - 1)][8]["winrate"]) + " "*(10 -len(str(page[(current_page - 1)][8]["winrate"])))} |\t\t\t\t\t\t|
-|\t\t\t\t\t\t+------+----------------------+-----------+-----------+-----------+------------+\t\t\t\t\t\t|
-|\t\t\t\t\t\t| {page[(current_page - 1)][9]["place"] + " "*(4 -len(page[(current_page - 1)][9]["place"]))
-                } | {page[(current_page - 1)][9]["team"] + " "*(20 -len(page[(current_page - 1)][9]["team"]))
-                     } | {str(page[(current_page - 1)][9]["matches"]) + " "*(9 -len(str(page[(current_page - 1)][9]["matches"])))
-                          } | {str(page[(current_page - 1)][9]["wins"]) + " "*(9 -len(str(page[(current_page - 1)][9]["wins"])))
-                               } | {str(page[(current_page - 1)][9]["losses"]) + " "*(9 -len(str(page[(current_page - 1)][9]["losses"])))
-                                    } | {str(page[(current_page - 1)][9]["winrate"]) + " "*(10 -len(str(page[(current_page - 1)][9]["winrate"])))} |\t\t\t\t\t\t|
-|\t\t\t\t\t\t+------+----------------------+-----------+-----------+-----------+------------+\t\t\t\t\t\t|"""
+               bottum_leader_board_text = f"""|\t\t\t\t\t\t\033[96m\033[1m+------+----------------------+-----------+-----------+-----------+------------+\033[0m\t\t\t\t\t\t|
+|\t\t\t\t\t\t\033[96m\033[1m|\033[0m {page[(current_page - 1)][7]["place"] + " "*(4 -len(page[(current_page - 1)][7]["place"]))
+                } \033[96m\033[1m|\033[0m {page[(current_page - 1)][7]["team"] + " "*(20 -len(page[(current_page - 1)][7]["team"]))
+                     } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][7]["matches"]) + " "*(9 -len(str(page[(current_page - 1)][7]["matches"])))
+                          } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][7]["wins"]) + " "*(9 -len(str(page[(current_page - 1)][7]["wins"])))
+                               } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][7]["losses"]) + " "*(9 -len(str(page[(current_page - 1)][7]["losses"])))
+                                    } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][7]["winrate"]) + " "*(10 -len(str(page[(current_page - 1)][7]["winrate"])))} \033[96m\033[1m|\033[0m\t\t\t\t\t\t|
+|\t\t\t\t\t\t\033[96m\033[1m+------+----------------------+-----------+-----------+-----------+------------+\033[0m\t\t\t\t\t\t|
+|\t\t\t\t\t\t\033[96m\033[1m|\033[0m {page[(current_page - 1)][8]["place"] + " "*(4 -len(page[(current_page - 1)][8]["place"]))
+                } \033[96m\033[1m|\033[0m {page[(current_page - 1)][8]["team"] + " "*(20 -len(page[(current_page - 1)][8]["team"]))
+                     } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][8]["matches"]) + " "*(9 -len(str(page[(current_page - 1)][8]["matches"])))
+                          } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][8]["wins"]) + " "*(9 -len(str(page[(current_page - 1)][8]["wins"])))
+                               } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][8]["losses"]) + " "*(9 -len(str(page[(current_page - 1)][8]["losses"])))
+                                    } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][8]["winrate"]) + " "*(10 -len(str(page[(current_page - 1)][8]["winrate"])))} \033[96m\033[1m|\033[0m\t\t\t\t\t\t|
+|\t\t\t\t\t\t\033[96m\033[1m+------+----------------------+-----------+-----------+-----------+------------+\033[0m\t\t\t\t\t\t|
+|\t\t\t\t\t\t\033[96m\033[1m|\033[0m {page[(current_page - 1)][9]["place"] + " "*(4 -len(page[(current_page - 1)][9]["place"]))
+                } \033[96m\033[1m|\033[0m {page[(current_page - 1)][9]["team"] + " "*(20 -len(page[(current_page - 1)][9]["team"]))
+                     } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][9]["matches"]) + " "*(9 -len(str(page[(current_page - 1)][9]["matches"])))
+                          } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][9]["wins"]) + " "*(9 -len(str(page[(current_page - 1)][9]["wins"])))
+                               } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][9]["losses"]) + " "*(9 -len(str(page[(current_page - 1)][9]["losses"])))
+                                    } \033[96m\033[1m|\033[0m {str(page[(current_page - 1)][9]["winrate"]) + " "*(10 -len(str(page[(current_page - 1)][9]["winrate"])))} \033[96m\033[1m|\033[0m\t\t\t\t\t\t|
+|\t\t\t\t\t\t\033[96m\033[1m+------+----------------------+-----------+-----------+-----------+------------+\033[0m\t\t\t\t\t\t|"""
 
                if(len(page) <= 1):
-                    up_down_command = """|\t\t\t\t\t\t\t| b. To go back               | q. To quit  the program       |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+-----------------------------+-------------------------------+\t\t\t\t\t\t\t\t|
+                    up_down_command = """|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m b. To go back               \033[30m\033[1m|\033[0m q. To quit  the program       \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m+-----------------------------+-------------------------------+\033[0m\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|"""
 
                elif(current_page == 1):
-                    up_down_command = """|\t\t\t\t\t\t\t|                  d. to go down the list                     |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+-----------------------------+-------------------------------+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t| b. To go back               | q. To quit  the program       |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+-----------------------------+-------------------------------+\t\t\t\t\t\t\t\t|"""
+                    up_down_command = """|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m                  d. to go down the list                     \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m+-----------------------------+-------------------------------+\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m b. To go back               \033[30m\033[1m|\033[0m q. To quit  the program       \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m+-----------------------------+-------------------------------+\033[0m\t\t\t\t\t\t\t\t|"""
 
                elif(len(page) == current_page):
-                    up_down_command = """|\t\t\t\t\t\t\t|                   u. to go up the list                      |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+-----------------------------+-------------------------------+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t| b. To go back               | q. To quit  the program       |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+-----------------------------+-------------------------------+\t\t\t\t\t\t\t\t|"""
+                    up_down_command = """|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m                   u. to go up the list                      \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m+-----------------------------+-------------------------------+\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m b. To go back               \033[30m\033[1m|\033[0m q. To quit  the program       \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m+-----------------------------+-------------------------------+\033[0m\t\t\t\t\t\t\t\t|"""
                 
                elif(len(page) > current_page and current_page > 1):
-                    up_down_command ="""|\t\t\t\t\t\t\t| u. to go up the list        | d. to go down the list        |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+-----------------------------+-------------------------------+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t| b. To go back               | q. To quit  the program       |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+-----------------------------+-------------------------------+\t\t\t\t\t\t\t\t|"""
+                    up_down_command ="""|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m u. to go up the list        \033[30m\033[1m|\033[0m d. to go down the list        \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m+-----------------------------+-------------------------------+\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m b. To go back               \033[30m\033[1m|\033[0m q. To quit  the program       \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m+-----------------------------+-------------------------------+\033[0m\t\t\t\t\t\t\t\t|"""
 
-               footer_text = f"""|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|                  Enter command you want...                  |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+=============================================================+\t\t\t\t\t\t\t\t|
+               footer_text = f"""|\t\t\t\t\t\t\t\033[30m\033[1m+-------------------------------------------------------------+\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m                  Enter command you want...                  |\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m+=============================================================+\033[0m\t\t\t\t\t\t\t\t|
 {up_down_command}
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|

@@ -28,6 +28,3 @@ class PasswordRepository:
             if p.username == username:
                 return p
         return None
-    
-    
-    

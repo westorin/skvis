@@ -12,48 +12,48 @@ class PickLeaderBoardUI():
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t                       *****         ***                       \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t                     *********************                     \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t                   **************************                  \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t                 *****************************                 \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t                *******************************                \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t               *******************************                 \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t              ********************************                 \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t               **************     ************                 \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t                   ********         ***********                \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t                   ********         ***********                \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t                  ***********     ************                 \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t               ******************************                  \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t               *********************************               \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t                *********   *******************                \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t                 ****      ************* *****                 \t\t\t\t\t\t\t\t|""" 
+|\t\t\t\t\t\t\t                       \033[31m\033[1m*****         ***\033[0m                       \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t                     \033[31m\033[1m*********************\033[0m                     \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t                   \033[31m\033[1m**************************\033[0m                  \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t                 \033[31m\033[1m*****************************\033[0m                 \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t                \033[31m\033[1m*******************************\033[0m                \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t               \033[31m\033[1m*******************************\033[0m                 \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t              \033[31m\033[1m********************************\033[0m                 \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t               \033[31m\033[1m**************     ************\033[0m                 \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t                   \033[31m\033[1m********         ***********\033[0m                \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t                   \033[31m\033[1m********         ***********\033[0m                \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t                  \033[31m\033[1m***********     ************\033[0m                 \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t               \033[31m\033[1m******************************\033[0m                  \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t               \033[31m\033[1m*********************************\033[0m               \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t                \033[31m\033[1m*********   *******************\033[0m                \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t                 \033[31m\033[1m****      ************* *****\033[0m                 \t\t\t\t\t\t\t\t|""" 
 
-        # TODO Shoud entering q in the error massage sent to back or close the program ???? 
+
         error_text ="""|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|     ^                                                       |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|    / \       You have entered an invalied input             |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|   / | \                                                     |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|  /  .  \     Enter Y. if you want to try again              |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t| /_______\        or q. if you want to quit.                 |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|     \x1b[33m^\x1b[0m                                                       |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|    \x1b[33m/ \ \x1b[0m       You have entered an invalied input            |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|   \x1b[33m/\x1b[0m \033[31m\033[1m|\033[0m \x1b[33m\ \x1b[0m                                                    |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|  \x1b[33m/\x1b[0m  \033[31m\033[1m.\033[0m  \x1b[33m\  \x1b[0m   Enter Y. if you want to try again              |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t| \x1b[33m/_______\ \x1b[0m       or q. if you want to quit.                 |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|"""
 
-        center_text = """|\t\t\t\t\t\t\t                          **************   *                   \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t                          *************                        \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t                         **************                        \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t                             *****                             \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t                          e-Sports                             \t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|                 Enter the command you want...               |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+==============================+==============================+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|                              |                              |\t\t\t\t\t\t\t\t|"""
+        center_text = """|\t\t\t\t\t\t\t                          \033[31m\033[1m**************   *\033[0m                   \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t                          \033[31m\033[1m*************\033[0m                        \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t                         \033[31m\033[1m**************\033[0m                        \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t                             \033[31m\033[1m*****\033[0m                             \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t                          \033[31m\033[1m\033[4mE-SPORTS\033[0m                             \t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m+-------------------------------------------------------------+\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m                 Enter the command you want...               \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m+==============================+==============================+\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m                              \033[30m\033[1m|\033[0m                              \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|"""
 
-        footer_text = """|\t\t\t\t\t\t\t|    1. Teams leader board     | 2. Clubs leader board        |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|                              |                              |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+==============================+==============================+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|         b. To go back        |   q. To quit  the program    |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t+------------------------------+------------------------------+\t\t\t\t\t\t\t\t|
+        footer_text = """|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m    1. Teams leader board     \033[30m\033[1m|\033[0m 2. Clubs leader board        \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m                              \033[30m\033[1m|\033[0m                              \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m+==============================+==============================+\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m         b. To go back        \033[30m\033[1m|\033[0m   q. To quit  the program    \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m+------------------------------+------------------------------+\033[0m\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|

@@ -132,14 +132,19 @@ class FutureTournamentsUI():
                
             if(choice.lower() == "u" and 1 < current_page):
                 current_page -= 1
+            
             elif(choice.lower() == "d" and len(tournaments_list) > current_page):
                 current_page += 1
+            
             elif(choice.lower() == "b"):
                 return "BACK"
+            
             elif(choice.lower() == "q"):
                 return "QUIT"
-            elif(tournament_check.name.lower() == choice.lower()):
+            
+            elif(tournament_check != None and tournament_check.name.lower() == choice.lower()):
                 return "TOUR_INFO", tournament_check.name
+            
             else:
                 clear_screen()
                 print(header_text)
