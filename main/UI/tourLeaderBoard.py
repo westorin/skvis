@@ -1,4 +1,4 @@
-
+from main.logic.clearScreenInTerminal import clear_screen
 
 class TournamentLeaderBoardUI():
     def __init__(self, logic):
@@ -7,7 +7,7 @@ class TournamentLeaderBoardUI():
     def print_leader_board(self, tournament_name: str):
         self.tournament_name = tournament_name
 
-        leaderboard_manager = self.logic
+        leaderboard_manager = self.logic.leaderboard_manager
 
         page = leaderboard_manager.sort_leaderboard_into_a_list_of_tens()
         current_page = 1

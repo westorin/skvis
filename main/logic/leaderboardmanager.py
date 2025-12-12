@@ -1,5 +1,4 @@
 from main.wrappers.datawrapper import DataWrapper
-from main.wrappers.logicwrapper import LogicWrapper
 from typing import List, Dict
 
 class LeaderboardManager:
@@ -117,16 +116,7 @@ class LeaderboardManager:
 
         return list_of_teams_in_pers_of_tens
 
-    def get_tournament_for_leaderboard(self, leaderboard: List[Dict]) -> List[str]:
-        rows: List[str] = []
-
-        for entry in leaderboard:
-            nr = entry.get("place", "")
-            team = entry.get("team", "")
-            matches = entry.get("matches", "")
-            wins = entry.get("wins", "")
-            losses = entry.get("losses", "")
-            winrate = entry.get("winrate", "")
-
-            rows.append(f"Nr. {nr}, ",f"Team: {team}, ",f"Matches: {matches}, ",f"Wins: {wins}, ",f"Losses: {losses}, ",f"Winrate: {winrate}%")
-        return rows
+    def get_tournament_for_leaderboard(self, tournament_name: str | None = None) -> List[Dict]:
+        if tournament_name is not None:
+            matches= []
+            pass
