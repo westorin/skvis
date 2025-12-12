@@ -957,3 +957,106 @@ class TournamentManager:
 
         self.export_full_results(tournament, summary)
         return summary
+
+    def run_full_simulation_manual():
+        pass
+
+    def run_single_elimination_manual(self, tournament):
+        tid = tournament.tournament_id
+        tname = tournament.name
+
+        #Round definitions: 16, 8, 4, 2
+        rounds = [
+            (1,16),
+            (2,8),
+            (3,4),
+            (4,2),
+        ]
+
+        r1 = self._get_matches(tid, "SE", 1)
+        if not r1:
+            teams = tournament.teams.copy()
+            random.shuffle(teams)
+
+            for i in range(0, 16, 2):
+                self.match_manager.create_tournament_match(
+                    team1=teams[i],
+                    team2=teams[i+1],
+                    bracket="SE",
+                    round_number=1,
+                    tournament_id=tid,
+                    tournament_name = tname,
+                )
+            self.match_manager.repo.save_to_file()
+            r1 = self._get_matches(tid, "SE", 1)
+
+        #process rounds
+        for round_number, expected_teams in rounds:
+            matches = self._get_matches(tid, "SE", round_number)
+
+            #If any matches is unfinished, stop and ask UI for input
+            for m in matches:
+                if m.winner is None:
+                    return {
+                        "status": "awaiting_input",
+                        "match": m,
+                    }
+            
+            #If next round already exists, skip
+            next_round = round_number + 1
+            existing_next = self._get_matches(tid, "SE", next_round)
+            if existing_next:
+                continue
+
+            #Generate next round matches
+            winners = [m.winner for m in matches]
+
+            if len(winners) == 1:
+                #Tournament complete
+                final_match = self.match_manager.repo.get_by_match_id(matches[0].match_id)
+                summary = {
+                    "champion": final_match.winner,
+                    "runner_up": final_match.loser,
+                    "final_score": final_match.final_score,
+                    "total_rounds": final_match.total_rounds,
+                }
+                self.export_full_results(tournament, summary)
+                return {
+                    "status": "completed",
+                    "summary": summary,
+                }
+
+            for i in range(0, len(winners), 2):
+                self.match_manager.create_tournament_match(
+                    team1=winners[i],
+                    team2=winners[i+1],
+                    bracket="SE",
+                    round_number=next_round,
+                    tournament_id=tid,
+                    tournament_name = tname,
+                )
+            self.match_manager.repo.save_to_file()
+
+        #Final must exist and be finished
+        final_matches = self._get_matches(tid, "SE", 4)
+        if not final_matches or final_matches[0].winner is None:
+            return {
+                "status": "awaiting_input",
+                "match": final_matches[0],
+            }
+        
+        final_match = self.match_manager.repo.get_by_match_id(final_matches[0].match_id)
+
+        summary = {
+            "champion": final_match.winner,
+            "runner_up": final_match.loser,
+            "final_score": final_match.final_score,
+            "total_rounds": final_match.total_rounds,
+        }
+        self.export_full_results(tournament, summary)
+        return {
+            "status": "completed",
+            "summary": summary,
+        }
+
+        

@@ -140,6 +140,51 @@ class MatchManager:
             match.winner = match.team2
             match.loser = match.team1
 
+    def set_match_result(self, match_id: int, score1: int, score2: int) -> Match:
+        match = self.repo.get_by_match_id(match_id)
+
+        if match is None:
+            raise ValueError("Match not found")
+
+        if match.winner is not None:
+            raise ValueError("Match already has a result")
+
+        # Apply scores + winner/loser
+        self._apply_result(match, score1, score2)
+
+        # Folder structure: main/IO/<tournament_name>/match_<id>
+        tname = match.tournament_name if match.tournament_name else str(match.tournament_id)
+        tournament_folder = f"main/IO/{tname}"
+        os.makedirs(tournament_folder, exist_ok=True)
+
+        match_folder = f"{tournament_folder}/match_{match.match_id}"
+        os.makedirs(match_folder, exist_ok=True)
+
+        # Write match_results.csv
+        result_path = f"{match_folder}/match_results.csv"
+        with open(result_path, mode="w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow([
+                "match_id",
+                "team1",
+                "team2",
+                "winner",
+                "loser",
+                "final_score",
+                "total_rounds",
+            ])
+            writer.writerow([
+                match.match_id,
+                match.team1,
+                match.team2,
+                match.winner,
+                match.loser,
+                match.final_score,
+                match.total_rounds,
+            ])
+
+        self.repo.save_to_file()
+        return match
 
     def automate_all_matches(self):
         all_matches = self.repo.get_all()
