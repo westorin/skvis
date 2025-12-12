@@ -5,10 +5,12 @@ from main.logic.tournamentmanager import TournamentManager
 from main.logic.matchmanager import MatchManager
 from main.logic.searchmanager import SearchManager
 from main.logic.loginmanager import LoginManager
+#from main.logic.leaderboardmanager import LeaderboardManager
 #from main.logic.clearScreenInTerminal import clear_screen
 
 class LogicWrapper:
     def __init__(self, data) -> None:
+        self.data = data
         self.player_manager: PlayerManager = PlayerManager(data.players)
         self.team_manager: TeamManager = TeamManager(data.teams, data.players, data.passwords)
         self.player_manager.team_manager = self.team_manager  # Link TeamManager to PlayerManager
@@ -20,3 +22,5 @@ class LogicWrapper:
         )
         #self.search_manager: SearchManager = SearchManager(data.players, data.teams, data.tournaments)
         self.login_manager: LoginManager = LoginManager(data.players, data.roles, data.passwords)
+        from main.logic.leaderboardmanager import LeaderboardManager
+        self.leaderboard_manager = LeaderboardManager(data)

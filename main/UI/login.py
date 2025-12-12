@@ -41,11 +41,11 @@ class LoginUI():
         
         error_text ="""|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|     ^                                                       |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|    / \       You have entered an invalied input             |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|   / | \                                                     |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|  /  .  \     Enter Y. if you want to try again              |\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t| /_______\        or q. if you want to quit.                 |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|     \x1b[33m^\x1b[0m                                                       |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|    \x1b[33m/ \ \x1b[0m       You have entered an invalied input            |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|   \x1b[33m/\x1b[0m \033[31m\033[1m|\033[0m \x1b[33m\ \x1b[0m                                                    |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|  \x1b[33m/\x1b[0m  \033[31m\033[1m.\033[0m  \x1b[33m\  \x1b[0m   Enter Y. if you want to try again              |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t| \x1b[33m/_______\ \x1b[0m       or q. if you want to quit.                 |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t|                                                             |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|"""
 
@@ -155,8 +155,8 @@ class LoginUI():
                     return "ADMIN"
                 elif(role == "captain"):
                     team_name = pr.get_by_handle(self.username) #<-- This needs to go
-                    #player = logic.player_manager.get_player_by_handle(self.username)
-                    #team_name = player.team if player else None
+                    player = logic.player_manager.get_player_by_handle(self.username)
+                    team_name = player.team if player else None
                     #Can replace it with the two lines above
                     clear_screen()
                     print(header_text)
@@ -165,9 +165,8 @@ class LoginUI():
                     print(commands_text)
                     #print(team_name) 
                     # Can replace it with the line above
-                    choice = str(input(">>>>"))
-                    return "CAPT", team_name.team #<-- This needs to go
-                    #return "CAPT", team_name 
+                    choice = str(input(">>>> "))
+                    return "CAPT", team_name 
                     # Can replace it with this line above
                 else:
                     print("error in the login checker")

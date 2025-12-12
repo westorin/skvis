@@ -216,6 +216,7 @@ class AddTeamUI():
                 if(len(choice) < 21 and data.players.get_by_handle(choice) == None):
                     capt_username = choice
                     enter_what = "Enter the URL of the team"
+
                 else:
                     isError = True
                     error_text = "Please make sure the name isn't longer then 20 and is unique."
@@ -232,6 +233,7 @@ class AddTeamUI():
                 if(len(choice) == 4):
                     tag = choice
                     enter_what = "Enter the name of the team captain"
+
                 else:
                     isError = True
                     error_text = "Please make sure the tag isn't longer or shorter then 4"                    
@@ -240,6 +242,7 @@ class AddTeamUI():
                 if(len(choice) < 21):
                     capt_name = choice
                     enter_what = "Enter the date of birth of the team captain (dd-mm-yyyy)"
+                
                 else:
                     isError = True
                     error_text = "Please make sure the name isn't longer then 20"
@@ -248,6 +251,7 @@ class AddTeamUI():
                 if(len(choice) == 10):
                     capt_dob = choice
                     enter_what = "Enter the address of the team captain "
+                
                 else:
                     isError = True
                     error_text = "Please make sure the date of birth is in this format (dd-mm-yyyy)"
@@ -264,6 +268,7 @@ class AddTeamUI():
                 if(len(choice) == 7):
                     capt_phone = choice
                     enter_what = "Enter the email of the team captain "
+
                 else:
                     isError = True
                     error_text = "Please make sure the name isn't longer then 7"
@@ -272,6 +277,7 @@ class AddTeamUI():
                 if(len(choice) < 21):
                     capt_email = choice
                     enter_what = "Enter the url of the team captain "
+                
                 else:
                     isError = True
                     error_text = "Please make sure the name isn't longer then 20"
@@ -280,6 +286,7 @@ class AddTeamUI():
                 if(len(choice) < 21):
                     capt_url = choice
                     enter_what = "Enter the username of the player"
+                
                 else:
                     isError = True
                     error_text = "Please make sure the name isn't longer then 20"
@@ -290,6 +297,7 @@ class AddTeamUI():
                 if(len(choice) < 21 and data.players.get_by_handle(choice) == None and choice != capt_username):
                     player_1_username = choice
                     enter_what = "Enter the name of the play"
+                
                 else:
                     isError = True
                     error_text = "Please make sure the name isn't longer then 20 and is unique."
@@ -298,6 +306,7 @@ class AddTeamUI():
                 if(len(choice) < 21):
                     player_1_name = choice
                     enter_what = "Enter the date of birth of the player (dd-mm-yyyy)"
+                
                 else:
                     isError = True
                     error_text = "Please make sure the name isn't longer then 20"
@@ -306,6 +315,7 @@ class AddTeamUI():
                 if(len(choice) == 10):
                     player_1_dob = choice
                     enter_what = "Enter the address of the player"
+                
                 else:
                     isError = True
                     error_text = "Please make sure the date of birth is in this format (dd-mm-yyyy)"
@@ -314,6 +324,7 @@ class AddTeamUI():
                 if(len(choice) < 21):
                     player_1_address = choice
                     enter_what = "Enter the phone number of the player"
+                
                 else:
                     isError = True
                     error_text = "Please make sure the name isn't longer then 20"
@@ -322,6 +333,7 @@ class AddTeamUI():
                 if(len(choice) == 7):
                     player_1_phone = choice
                     enter_what = "Enter the email of the player "
+                
                 else:
                     isError = True
                     error_text = "Please make sure the name isn't longer then 7"
@@ -330,6 +342,7 @@ class AddTeamUI():
                 if(len(choice) < 21):
                     player_1_email = choice
                     enter_what = "Enter the url of the team captain "
+                
                 else:
                     isError = True
                     error_text = "Please make sure the name isn't longer then 20"
@@ -338,6 +351,7 @@ class AddTeamUI():
                 if(len(choice) < 21):
                     player_1_url = choice
                     enter_what = "Enter the username of the player"
+                
                 else:
                     isError = True
                     error_text = "Please make sure the name isn't longer then 20"
@@ -348,6 +362,7 @@ class AddTeamUI():
                 if(len(choice) < 21 and data.players.get_by_handle(choice) == None and choice != player_1_username and choice != capt_username):
                     player_2_username = choice
                     enter_what = "Enter the name of the play"
+                
                 else:
                     isError = True
                     error_text = "Please make sure the name isn't longer then 20 and is unique."
@@ -356,6 +371,7 @@ class AddTeamUI():
                 if(len(choice) < 21):
                     player_2_name = choice
                     enter_what = "Enter the date of birth of the player (dd-mm-yyyy)"
+                
                 else:
                     isError = True
                     error_text = "Please make sure the name isn't longer then 20"
@@ -364,6 +380,7 @@ class AddTeamUI():
                 if(len(choice) == 10):
                     player_2_dob = choice
                     enter_what = "Enter the address of the player"
+                
                 else:
                     isError = True
                     error_text = "Please make sure the date of birth is in this format (dd-mm-yyyy)"
@@ -372,6 +389,7 @@ class AddTeamUI():
                 if(len(choice) < 21):
                     player_2_address = choice
                     enter_what = "Enter the phone number of the player"
+                
                 else:
                     isError = True
                     error_text = "Please make sure the name isn't longer then 20"
@@ -380,6 +398,7 @@ class AddTeamUI():
                 if(len(choice) == 7):
                     player_2_phone = choice
                     enter_what = "Enter the email of the player "
+                
                 else:
                     isError = True
                     error_text = "Please make sure the name isn't longer then 7"
@@ -388,6 +407,7 @@ class AddTeamUI():
                 if(len(choice) < 21):
                     player_2_email = choice
                     enter_what = "Enter the command you want"
+                
                 else:
                     isError = True
                     error_text = "Please make sure the name isn't longer then 20"
@@ -397,6 +417,7 @@ class AddTeamUI():
                     player_2_url = choice
                     enter_what = "Enter the username of the player"
                     all_team_info_in = True
+                
                 else:
                     isError = True
                     error_text = "Please make sure the name isn't longer then 20"
@@ -433,11 +454,11 @@ class AddTeamUI():
 
             error_message_text =f"""|\t\t\t\t\t\t+------------------------------------------------------------------------------+\t\t\t\t\t\t|
 |\t\t\t\t\t\t|                                                                              |\t\t\t\t\t\t|
-|\t\t\t\t\t\t|     ^                                                                        |\t\t\t\t\t\t|
-|\t\t\t\t\t\t|    / \    {error_text + " "*(66 - len(error_text))} |\t\t\t\t\t\t|
-|\t\t\t\t\t\t|   / | \                                                                      |\t\t\t\t\t\t|
-|\t\t\t\t\t\t|  /  .  \            Enter Y. if you want to try again                        |\t\t\t\t\t\t|
-|\t\t\t\t\t\t| /_______\               or q. if you want to quit.                           |\t\t\t\t\t\t|
+|\t\t\t\t\t\t|     \x1b[33m^\x1b[0m                                                                        |\t\t\t\t\t\t|
+|\t\t\t\t\t\t|    \x1b[33m/ \ \x1b[0m   {error_text + " "*(66 - len(error_text))} |\t\t\t\t\t\t|
+|\t\t\t\t\t\t|   \x1b[33m/\x1b[0m \033[31m\033[1m|\033[0m \x1b[33m\ \x1b[0m                                                                     |\t\t\t\t\t\t|
+|\t\t\t\t\t\t|  \x1b[33m/\x1b[0m  \033[31m\033[1m.\033[0m  \x1b[33m\  \x1b[0m           Enter Y. if you want to try again                       |\t\t\t\t\t\t|
+|\t\t\t\t\t\t| \x1b[33m/_______\ \x1b[0m              or q. if you want to quit.                           |\t\t\t\t\t\t|
 |\t\t\t\t\t\t|                                                                              |\t\t\t\t\t\t|
 |\t\t\t\t\t\t+------------------------------------------------------------------------------+\t\t\t\t\t\t|"""
 
