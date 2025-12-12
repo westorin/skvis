@@ -81,3 +81,5 @@ class TournamentUI():
         print(f"Runner-up: {summary['runner_up']}")
         print(f"Final Score: {summary['final_score']}")
         print(f"Total Rounds: {summary['total_rounds']}")
+
+        return "BACK"
