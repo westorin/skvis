@@ -379,7 +379,7 @@ Staða á verkefni: Við spurðum hvort það mætti sleppa Clubs og það má v
 - Type hintea ALLT saman og gera comment þar sem vantar
 - Ekkert crash - Passa að það sé hægt að slá inn vitlaust input án þess að allt crashar
 - Team Captain er með automatic password til að logga sig inn
-- Laga schedule
+- Laga schedule (kemur villa fyrir allt nema waterloo, vantar kannski gögn fyrir það?)
 
 ToDo UI:
 - A 
