@@ -369,7 +369,7 @@ Staða á hópnum: Það er næstum því búið að kóða allt fyrir Logic og 
 
 ## Mæting: Halldór, Einar og Kristján
 
-Staða á verkefni: Við spurðum hvort það mætti sleppa Clubs og það má víst, svo við giskum á að sleppa öllum B og C kröfum til að vera vissir um að allar A kröfur virka fullkomlega.
+Staða á verkefni: Við spurðum hvort það mætti sleppa Clubs og það má víst, svo við giskum á að sleppa öllum B og C kröfum til að vera vissir um að allar A kröfur virka fullkomlega. Höfum ekki tíma fyrir annað.
 
 ## ToDo:
 - ✅ Vantar kóða til að passa árekstra í schedule (schedule conflicts) - scheduling logic
