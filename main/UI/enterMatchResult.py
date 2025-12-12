@@ -3,9 +3,8 @@ from main.wrappers.logicwrapper import LogicWrapper
 
 
 class EnterMatchResultUI:
-    def __init__(self) -> None:
-        data = DataWrapper()
-        self.logic = LogicWrapper(data)
+    def __init__(self, logic) -> None:
+        self.logic = logic
         self.tm = self.logic.tournament_manager
         self.mm = self.logic.match_manager
 

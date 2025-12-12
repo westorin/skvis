@@ -1,8 +1,8 @@
 from main.logic.clearScreenInTerminal import clear_screen
 
 class homepageUI():
-    def __init__(self):
-        pass
+    def __init__(self, logic):
+        self.logic = logic
 
     def print_menu(self, isAdminFromMainUI: bool, isATeamCaptFromMainUI: bool):
         # This checks if you are signed in as admin and prints out what you should see according to it

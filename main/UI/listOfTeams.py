@@ -5,9 +5,8 @@ from main.logic.listOfTeams import ListOfTeamsLogic #<-- This needs to go
 from main.logic.clearScreenInTerminal import clear_screen
 
 class ListOfTeamsUI():
-    def __init__(self):
-        data = DataWrapper()
-        logic = LogicWrapper(data)
+    def __init__(self, logic) -> None:
+        self.logic = logic
         self.tm = logic.team_manager
 
     def print_list_of_teams(self, isAdminFromMain: bool) -> str:

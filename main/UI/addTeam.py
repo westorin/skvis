@@ -6,6 +6,9 @@ import math
 
 class AddTeamUI():
 
+    def __init__(self, logic) -> None:
+        self.logic = logic
+
     def save_new_team_and_players(
         self,
         data: DataWrapper,

@@ -7,8 +7,8 @@ from main.logic.clearScreenInTerminal import clear_screen
 
 
 class LoginUI():
-    def __init__(self):
-        pass
+    def __init__(self, logic) -> None:
+        self.logic = logic
 
     
 
