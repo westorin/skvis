@@ -38,7 +38,7 @@ class MainUI():
         self.__tournament_info_ui = TournamentInfoUI()
         self.__schedule_ui = ScheduleUI()
         self.__tour_leader_ui = TournamentLeaderBoardUI(LogicWrapper(DataWrapper()))
-        self.__tournament_matchs_ui = TournamentMatchsUI(LogicWrapper(DataWrapper()))
+        self.__tournament_matchs_ui = TournamentMatchsUI(LogicWrapper())
         self.__input_match_results_ui = InputMatchResultsUI()
 
         self.current_ui_page = "Homepage"
