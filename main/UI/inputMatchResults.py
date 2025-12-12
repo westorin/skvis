@@ -1,7 +1,7 @@
 
 class InputMatchResultsUI():
-    def __init__(self):
-        pass
+    def __init__(self, logic):
+        self.logic = logic
 
     def print_input_match_resutls(self, tournament_name: str):
         

@@ -8,9 +8,8 @@ python3 -m main.UI.addplayertoteamUI
 '''
 
 class AddPlayerToTeamUI:
-    def __init__(self) -> None:
-        data = DataWrapper()
-        logic = LogicWrapper(data)
+    def __init__(self, logic) -> None:
+        self.logic = logic
         self.tm = logic.team_manager
 
     def add_player_ui(self) -> None:

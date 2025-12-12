@@ -4,8 +4,8 @@ from main.logic.tournamentsList import TournamentsListLogic
 from main.logic.clearScreenInTerminal import clear_screen
 
 class PastTournamentsUI():
-    def __init__(self):
-        pass
+    def __init__(self, logic) -> None:
+        self.logic = logic
 
 
     def print_tournaments(self) -> None:

@@ -7,15 +7,12 @@ class TournamentUI():
         logic = LogicWrapper(data)
         return len(logic.match_manager.repo.get_by_tournament(tournament.tournament_id)) > 0
 
-    def run_tournament_ui(self):
+    def run_tournament_ui(self, tournment_name: str) -> str:
         data = DataWrapper()
         logic = LogicWrapper(data)
         
         tournaments = data.tournaments.get_all()
         print("=== Available Tournaments ===")
-
-        for i, t in enumerate(tournaments, start=1):
-            print(f"{i}. {t.name} ({len(t.teams)} teams)")
 
         choice = int(input("Select a tournament by number: ").strip()) - 1
         selected_tournament = tournaments[choice]

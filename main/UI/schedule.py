@@ -4,7 +4,10 @@ from main.logic.clearScreenInTerminal import clear_screen
 import math
 
 class ScheduleUI():
-    def print_schedule(self, tournament_name):
+     def __init__(self, logic) -> None:
+          self.logic = logic
+
+     def print_schedule(self, tournament_name):
         data = DataWrapper()
         logic = LogicWrapper(data)
 
