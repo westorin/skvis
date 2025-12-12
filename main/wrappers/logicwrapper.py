@@ -3,7 +3,6 @@ from main.logic.playermanager import PlayerManager
 from main.logic.teammanager import TeamManager
 from main.logic.tournamentmanager import TournamentManager
 from main.logic.matchmanager import MatchManager
-from main.logic.searchmanager import SearchManager
 from main.logic.loginmanager import LoginManager
 #from main.logic.leaderboardmanager import LeaderboardManager
 #from main.logic.clearScreenInTerminal import clear_screen

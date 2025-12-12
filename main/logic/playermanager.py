@@ -6,7 +6,7 @@ if TYPE_CHECKING:
     from main.logic.teammanager import TeamManager
 
 class PlayerManager:
-    """Business logic for creating, updating and viewing players."""
+    """Logic for creating, updating and viewing players."""
     def __init__(self, player_repo: "PlayerRepository", team_manager: Optional["TeamManager"] = None) -> None:
         """Arguements: player_repo: Repository for storing/retrieving players.
                        team_manager: Optional manager used to sync team/username changes."""

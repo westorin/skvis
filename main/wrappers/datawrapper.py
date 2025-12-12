@@ -1,4 +1,3 @@
-#DataWrapper = (Repositories) → IO → CSV
 from main.logic.matchmanager import MatchManager
 from main.logic.tournamentmanager import TournamentManager
 from main.repo.matchrepo import MatchRepository
