@@ -127,7 +127,7 @@ class PastTournamentsUI():
             print(footer_text)
             
             choice = str(input(">>>> "))
-
+            # TODO fix
             tournament_check = tr.get_by_name(choice.lower())
                
             if(choice.lower() == "u" and 1 < current_page):
@@ -138,7 +138,7 @@ class PastTournamentsUI():
                 return "BACK"
             elif(choice.lower() == "q"):
                 return "QUIT"
-            elif(tournament_check.name.lower() == choice.lower()):
+            elif(tournament_check != None and tournament_check.name.lower() == choice.lower()):
                 return "TOUR_INFO", tournament_check.name
             else:
                 clear_screen()

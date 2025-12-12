@@ -256,8 +256,8 @@ class MainUI():
                     self.current_ui_page = "TOURNAMENT_SCHEDULE"
 
             if(self.current_ui_page == "TOURNAMENT_SCHEDULE"):
-                action = self.__schedule_ui(self.nameOfATournament)
+                action = self.__schedule_ui.print_schedule(self.nameOfATournament)
                 if(action == "QUIT"):
                     break
                 elif(action == "BACK"):
-                    self.current_ui_page = "TOURNAMENTS_INFO"
+                    self.current_ui_page = "TOURNAMENT_INFO"

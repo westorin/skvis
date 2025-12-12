@@ -800,3 +800,103 @@ class TournamentManager:
                     m.final_score,
                     m.total_rounds,
                     ])
+                
+
+    def run_single_elimination(self, tournament):
+        """
+        Runs a full single-elimination tournament.
+        16 -> 8 -> 4 -> 2 -> 1
+        Automatically generates matches, simulates them,
+        and exports full results to CSV.
+        """
+        tid = tournament.tournament_id
+        tname = tournament.name
+
+        #Ensure R1 matches exist
+        r1 = self._get_matches(tid, "SE", 1)
+        if not r1:
+            teams = tournament.teams.copy()
+            random.shuffle(teams)
+
+            for i in range(0, 16, 2):
+                self.match_manager.create_tournament_match(
+                    team1=teams[i],
+                    team2=teams[i+1],
+                    bracket="SE",
+                    round_number=1,
+                    tournament_id=tid,
+                    tournament_name = tname,
+                )
+            r1 = self._get_matches(tid, "SE", 1)
+
+        #Simulate Round 1: 16 -> 8
+        self._simulate_round(tid, "SE", 1)
+        winners_r1 = [m.winner for m in self._get_matches(tid, "SE", 1)]
+
+        #Generate Round 2: 8 -> 4
+        r2 = self._get_matches(tid, "SE", 2)
+        if not r2:
+            for i in range(0, 8, 2):
+                self.match_manager.create_tournament_match(
+                    team1=winners_r1[i],
+                    team2=winners_r1[i+1],
+                    bracket="SE",
+                    round_number=2,
+                    tournament_id=tid,
+                    tournament_name = tname,
+                )
+
+        #Simulate Round 2
+        self._simulate_round(tid, "SE", 2)
+        winners_r2 = [m.winner for m in self._get_matches(tid, "SE", 2)]
+
+        #Generate Semifinals: 4 -> 2
+        r3 = self._get_matches(tid, "SE", 3)
+        if not r3:
+            self.match_manager.create_tournament_match(
+                team1=winners_r2[0],
+                team2=winners_r2[1],
+                bracket="SE",
+                round_number=3,
+                tournament_id=tid,
+                tournament_name = tname,
+            )
+            self.match_manager.create_tournament_match(
+                team1=winners_r2[2],
+                team2=winners_r2[3],
+                bracket="SE",
+                round_number=3,
+                tournament_id=tid,
+                tournament_name = tname,
+            )
+        
+        #Simulate Semifinals
+        self._simulate_round(tid, "SE", 3)
+        winners_r3 = [m.winner for m in self._get_matches(tid, "SE", 3)]
+
+        #Generate Final: 2 -> 1
+        final = self._get_matches(tid, "SE", 4)
+        if not final:
+            self.match_manager.create_tournament_match(
+                team1=winners_r3[0],
+                team2=winners_r3[1],
+                bracket="SE",
+                round_number=4,
+                tournament_id=tid,
+                tournament_name = tname,
+            )
+        
+        #Simulate Final
+        self._simulate_round(tid, "SE", 4)
+        final_match = self._get_matches(tid, "SE", 4)[0]
+        final_match = self.match_manager.repo.get_by_match_id(final_match.match_id)
+
+        summary = {
+            "champion": final_match.winner,
+            "runner_up": final_match.loser,
+            "final_score": final_match.final_score,
+            "total_rounds": final_match.total_rounds,
+        }
+
+        self.export_full_results(tournament, summary)
+        return summary
