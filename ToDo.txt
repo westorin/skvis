@@ -2,9 +2,9 @@ ToDo:
 
 A kröfur
 - Vantar kóða til að passa árekstra í schedule (schedule conflicts) - scheduling logic
-- UI fyrir "View schedule"
-- Vantar kannski schedule líka?
-- Passa að það séu bara 3-5 í liði
+- UI fyrir "View schedule" ( Done )
+- Vantar kannski schedule líka? ( Done? )
+- Passa að það séu bara 3-5 í liði ( Done? )
 - Start og end date validation (A9)
 - Lið getur ekki spilað tvo leiki samtímis
 - Ekkert crash - Passa að það sé hægt að slá inn vitlaust input án þess að allt crashar
@@ -22,11 +22,11 @@ UI
 - Add colour text
 
 - A 
-  - add team and 3players ( done )
-  - display list of tournaments for past, on going and future (done)
-  - Tournament info (working on)
+  - add team and 3players ( Done )
+  - display list of tournaments for past, on going and future ( Done )
+  - Tournament info ( Done* ) [* need update when program] 
   - add tournament
-  - tournament's schedule
+  - tournament's schedule ( Done )
   - list of all Players in the tournament(???)
   - leader board of the tournament(???)
   - update match

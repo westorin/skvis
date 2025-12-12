@@ -138,7 +138,7 @@ class PastTournamentsUI():
                 return "BACK"
             elif(choice.lower() == "q"):
                 return "QUIT"
-            elif(tournament_check.name.lower() == choice.lower()):
+            elif(tournament_check != None and tournament_check.name.lower() == choice.lower()):
                 return "TOUR_INFO", tournament_check.name
             else:
                 clear_screen()
