@@ -80,22 +80,34 @@ class TournamentManager:
     
     def set_teams_for_tournament(self, tournament_name: str, team_names: List[str]) -> None:
         tournament = self.get_tournament(tournament_name)
-        # Tournament should have exactly 16 teams
+        if tournament is None:
+            raise ValueError("Tournament does not exist.")
+
+        # Exactly 16 teams are required
         if len(team_names) != 16:
             raise ValueError("Exactly 16 teams are required for the tournament.")
+
+        # Remove duplicates while preserving order
         unique_names = list(dict.fromkeys(team_names))
         if len(unique_names) != 16:
             raise ValueError("Team names must be unique.")
-        tournament.teams = unique_names
 
-        # Verify all teams exist
-        for name in team_names:
-            if self.teams.get_team(name) is None:
+        # Verify all teams exist and have 3-5 players
+        checked_names: list[str] = []
+        for name in unique_names:
+            team = self.teams.get_team(name)
+            if team is None:
                 raise ValueError(f"Team '{name}' does not exist.")
-            
-        # Remove duplicates while preserving order
-        tournament.teams = list(dict.fromkeys(team_names))
 
+            player_count = len(team.players)
+            if player_count < 3 or player_count > 5:
+                raise ValueError(
+                    f"Team '{name}' must have between 3 and 5 players."
+                    f"(currently {player_count})."
+                )        
+            checked_names.append(name)
+        
+        tournament.teams = checked_names
         self.tournaments.update_tournament(tournament)
 
     def generate_initial_matches(self, tournament_name: str) -> None:
