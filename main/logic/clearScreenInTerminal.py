@@ -1,11 +1,13 @@
 import os
+import sys
 
-# Clears the terminal screen
 def clear_screen():
-    # Checks what os you're using and if it is windows
-    if os.name == "nt":
-        # it will run cls in your terminal
-        os.system("cls")
+    if sys.platform.startswith('win'):
+        os.system('cls')
     else:
-        # And if your os isn't windows it will run clear in your terminal
-        os.system("clear")
+        os.system('clear')
+
+class ClearScreenLogic:
+    def clear(self) -> None:
+        clear_screen()
+
