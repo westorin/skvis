@@ -1,39 +1,30 @@
+from typing import List, Optional
+
 from main.IO.IOpy.playerIO import PlayerIO
 from main.models.playermodel import Player
 
 class PlayerRepository:
-    def __init__(self):
+    """Repository responsible for loading, storing and updating Player objects. Players are loaded from CSV on initialization and kept in memory."""
+    def __init__(self) -> None:
         self.io = PlayerIO()
-        self.players = self.load_players()
+        self.players: List[Player] = self.load_players()
 
-    # Load players from storage
-    def load_players(self):
+    def load_players(self) -> List[Player]:
+        """Load players from CSV and convert them into Player objects."""
         rows = self.io.read_file()
-        players = []
+        players: List[Player] = []
+
         for row in rows:
             if row[0] == 'playerID':
                 continue  # Skip header row
-            else:
-                p = Player(*row)
-                players.append(p)
+            
+            p = Player(*row)
+            players.append(p)
 
         return players
     
-    # Internal helper to get next ID
-    def _get_next_id(self):
-        if not self.players:
-            return 1
-        else:
-            max_id = max(int(player.player_id) for player in self.players)
-            return max_id + 1
-        
-    # Add a new player
-    def add_player(self, player):
-        self.players.append(player)
-        self.save_players()
-
-    # Save players to storage
-    def save_players(self):
+    def save_players(self) -> None:
+        """Persist all players back to the CSV file."""
         rows = [["playerID","name","dob","address","phone","email","url","username","team"]]
         for p in self.players:
             rows.append([
@@ -49,26 +40,42 @@ class PlayerRepository:
             ])
         self.io.write_file(rows)
 
-    # Get the next available player ID
-    def get_next_id(self):
+    # Internal helpers
+
+    def _get_next_id(self) -> int:
+        """Return the next available player ID."""
+        if not self.players:
+            return 1
+        max_id = max(int(player.player_id) for player in self.players)
+        return max_id + 1
+        
+    # Public API
+
+    def add_player(self, player: Player) -> None:
+        """Add a new player and persist the change."""
+        self.players.append(player)
+        self.save_players()
+
+    def get_next_id(self) -> int:
+        """Expose next available player ID."""
         return self._get_next_id()
     
-    # Get player by name
-    def get_by_name(self, name:str):
+    def get_by_name(self, name: str) -> Optional[Player]:
+        """Return a player by full name, or None if not found."""
         for p in self.players:
             if p.name == name:
                 return p
         return None
     
-    # Get player by handle (username)
-    def get_by_handle(self, handle:str):
+    def get_by_handle(self, handle: str) -> Optional[Player]:
+        """Return a player by username (handle), or None if not found."""
         for p in self.players:
             if p.username == handle:
                 return p
         return None
     
-    # Update existing player
     def update_player(self, player):
+        """Replace an existing player with updated data and persist changes."""
         for idx, p in enumerate(self.players):
             if p.player_id == player.player_id:
                 self.players[idx] = player
