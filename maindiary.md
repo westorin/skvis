@@ -372,13 +372,13 @@ Staða á hópnum: Það er næstum því búið að kóða allt fyrir Logic og 
 Staða á verkefni: Við spurðum hvort það mætti sleppa Clubs og það má víst, svo við giskum á að sleppa öllum B og C kröfum til að vera vissir um að allar A kröfur virka fullkomlega.
 
 ## ToDo:
-- Vantar kóða til að passa árekstra í schedule (schedule conflicts) - scheduling logic
-- Passa að það séu bara 3-5 í liði
-- Start og end date validation (A9)
-- Lið getur ekki spilað tvo leiki samtímis
+- ✅ Vantar kóða til að passa árekstra í schedule (schedule conflicts) - scheduling logic
+- ✅ Passa að það séu bara 3-5 í liði
+- ✅ Start og end date validation (A9)
+- ✅ Lið getur ekki spilað tvo leiki samtímis
 - Type hintea ALLT saman og gera comment þar sem vantar
 - Ekkert crash - Passa að það sé hægt að slá inn vitlaust input án þess að allt crashar
-- Team Captain er með automatic password til að logga sig inn
+- ✅ Team Captain er með automatic password til að logga sig inn
 - Laga schedule (kemur villa fyrir allt nema waterloo, vantar kannski gögn fyrir það?)
 
 ToDo UI:
@@ -394,5 +394,6 @@ ToDo UI:
  
 - Skýrsla
 - Myndband
+- Notendaprófanir
 
 Staða á hópnum: 
