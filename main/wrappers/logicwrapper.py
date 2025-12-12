@@ -4,7 +4,7 @@ from main.logic.teammanager import TeamManager
 from main.logic.tournamentmanager import TournamentManager
 from main.logic.matchmanager import MatchManager
 from main.logic.loginmanager import LoginManager
-from main.logic.clearScreenInTerminal import ClearScreenLogic
+# from main.logic.clearScreenInTerminal import ClearScreenLogic
 from main.logic.leaderboardmanager import LeaderboardManager
 from typing import TYPE_CHECKING
 
@@ -12,9 +12,14 @@ if TYPE_CHECKING:
     from main.wrappers.datawrapper import DataWrapper
 
 class LogicWrapper:
-    def __init__(self, data) -> None:
-        self.data = data
-        self.clear_screen = ClearScreenLogic() 
+    """Creates and wires together all logic-layer managers."""
+    def __init__(self, data: "DataWrapper") -> None:
+        self.data: "DataWrapper" = data
+
+        # Utility logic used by the UI
+        # self.clear_screen: ClearScreenLogic = ClearScreenLogic()
+
+        # Core managers
         self.player_manager: PlayerManager = PlayerManager(data.players)
         self.team_manager: TeamManager = TeamManager(data.teams, data.players, data.passwords)
 
