@@ -40,8 +40,11 @@ class AddTournamentUI:
         try:
             self.tm.create_tournament(data)
             print("Tournament successfully created!")
+            input(">>>> ")
+            return "BACK"
         except ValueError as e:
             print("Error:", e)
+        
         
 # Temporary for testing
 if __name__ == "__main__":

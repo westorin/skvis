@@ -193,10 +193,6 @@ class MainUI():
                 elif(action == "QUIT"):
                     break
 
-            if(self.current_ui_page == "ADD_TOURNAMENT"):
-                print("not implamented")
-                break
-
             if(self.current_ui_page == "PICK_SEARCH"):
                 print("not implamented")
                 break
