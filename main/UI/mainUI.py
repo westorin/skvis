@@ -298,6 +298,11 @@ class MainUI():
                 action = self.__tournament_matchs_ui.print_matchs(self.nameOfATournament)
                 if(action == "QUIT"):
                     break
-                
+
                 elif(action == "BACK"):
                     self.current_ui_page = "TOURNAMENT_INFO"
+
+            if(self.current_ui_page == "ADD_TOURNAMENT"):
+                action = self.__add_tournament_ui.add_tournament_ui()
+                if(action == "BACK"):
+                    self.current_ui_page = "Homepage"

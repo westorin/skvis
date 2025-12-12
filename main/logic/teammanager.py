@@ -9,7 +9,7 @@ if TYPE_CHECKING:
     from main.repo.passwordrepo import PasswordRepository
 
 class TeamManager:
-    """Business logic for creating and managing teams."""
+    """Logic for creating and managing teams."""
     def __init__(self, team_repo: Optional["TeamRepository"] = None, player_repo: Optional["PlayerRepository"] = None, password_repo: Optional["PasswordRepository"] = None) -> None:
         self.team_repo = team_repo
         self.player_repo = player_repo
