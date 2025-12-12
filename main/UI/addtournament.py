@@ -1,15 +1,11 @@
-from main.wrappers.datawrapper import DataWrapper
-from main.wrappers.logicwrapper import LogicWrapper
-
 '''
 To run the main UI type this into terminal: 
 
 python3 -m main.UI.addtournament
 '''
 class AddTournamentUI:
-    def __init__(self) -> None:
-        data = DataWrapper()
-        logic = LogicWrapper(data)
+    def __init__(self, logic) -> None:
+        self.logic = logic
         self.tm = logic.tournament_manager
 
     def add_tournament_ui(self) -> None:

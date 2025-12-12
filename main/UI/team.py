@@ -5,15 +5,16 @@ import math
 
 
 class TeamUI():
-    def __init__(self):
-        #self.logic = LogicWrapper()
-        #Can replace with the line above
-        pass #<-- This can go
+    def __init__(self,logic) -> None:
+        self.logic = logic
+
 
 
     def print_team(self, team_name: str) -> str:
         self.team_name = team_name
-        logic_team = TeamLogic(self).create_list_of_team_info_for_all(self.team_name)
+        logic_team = TeamLogic(self).create_list_of_team_info_for_all(self.team_name) #<-- This can go
+        #logic_team = self.logic.team_manager.create_list_of_team_info_for_all(self.team_name)
+        #Can replace with the line above
         wins = "" 
         win_rate = ""
         losses = ""        

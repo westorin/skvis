@@ -2,7 +2,7 @@ from main.wrappers.datawrapper import DataWrapper
 from main.wrappers.logicwrapper import LogicWrapper
 
 class AddTeamsToTournamentUI:
-    def __init__(self,logic):
+    def __init__(self, logic):
         self.logic = logic
 
     def add_teams_ui(self):
