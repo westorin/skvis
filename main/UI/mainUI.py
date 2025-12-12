@@ -1,3 +1,6 @@
+from main.wrappers.datawrapper import DataWrapper
+from main.wrappers.logicwrapper import LogicWrapper
+
 from main.UI.homepage_UI import homepageUI
 from main.UI.pickTimeOfTournament import PickTimeOfTournamentUI
 from main.UI.teamLeaderBoardUI import TeamLeaderBoardUI
@@ -13,6 +16,7 @@ from main.UI.onGoingTournamentsList import OnGoingTournamentsUI
 from main.UI.futureTournamentsList import FutureTournamentsUI
 from main.UI.tournamentInfo import TournamentInfoUI
 from main.UI.schedule import ScheduleUI
+from main.UI.tourLeaderBoard import TournamentLeaderBoardUI
 
 class MainUI():
     def __init__(self):
@@ -31,6 +35,7 @@ class MainUI():
         self.__future_tournaments_ui = FutureTournamentsUI()
         self.__tournament_info_ui = TournamentInfoUI()
         self.__schedule_ui = ScheduleUI()
+        self.__tour_leader_ui = TournamentLeaderBoardUI(LogicWrapper(DataWrapper()))
 
         self.current_ui_page = "Homepage"
         self.isAdmin = False
@@ -257,10 +262,22 @@ class MainUI():
                 
                 elif(action == "SCHEDULE"):
                     self.current_ui_page = "TOURNAMENT_SCHEDULE"
+                
+                elif(action == "TOUR_LEADER"):
+                    self.current_ui_page = "TOURNAMENT_LEADER_BOARD"
 
             if(self.current_ui_page == "TOURNAMENT_SCHEDULE"):
                 action = self.__schedule_ui.print_schedule(self.nameOfATournament)
                 
+                if(action == "QUIT"):
+                    break
+                
+                elif(action == "BACK"):
+                    self.current_ui_page = "TOURNAMENT_INFO"
+            
+            if(self.current_ui_page == "TOURNAMENT_LEADER_BOARD"):
+                action = self.__tour_leader_ui.print_leader_board(self.nameOfATournament)
+
                 if(action == "QUIT"):
                     break
                 
