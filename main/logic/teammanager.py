@@ -1,25 +1,33 @@
 from main.models.teammodel import Team
 from main.models.passwordsmodel import PasswordsManager
+from main.logic.listOfTeams import ListOfTeamsLogic
+from typing import Optional, List, TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from main.repo.teamrepo import TeamRepository
+    from main.repo.playerrepo import PlayerRepository
+    from main.repo.passwordrepo import PasswordRepository
 
 class TeamManager:
-    def __init__(self, team_repo=None, player_repo=None, password_repo=None):
+    """Business logic for creating and managing teams."""
+    def __init__(self, team_repo: Optional["TeamRepository"] = None, player_repo: Optional["PlayerRepository"] = None, password_repo: Optional["PasswordRepository"] = None) -> None:
         self.team_repo = team_repo
         self.player_repo = player_repo
         self.password_repo = password_repo
 
-    # Create a new team ============================
-    def register_team(self, name, captain_handle, website_url="") -> "Team":
-        team_id = self.team_repo.get_next_id()
+    # Create a new team
+    def register_team(self, name: str, captain_handle: str, website_url: str = "") -> Team:
+        """Create a new team and assign a captain. Returns the created team."""
+        team_id: int = self.team_repo.get_next_id()
 
         # Look up captain by name
         captain = self.player_repo.get_by_handle(captain_handle)
         if captain is None:
-            print("DEBUG PLAYERS:", [(p.username) for p in self.player_repo.players])
-            raise ValueError("Captain must be a registered player")
+            raise ValueError("Captain must be a registered player.")
             
         # Team name must be unique
         if self.team_repo.get_team(name):
-            raise ValueError("Team name must be unique")
+            raise ValueError("Team name must be unique.")
 
         new_team = Team(
             team_id=team_id,
@@ -45,24 +53,24 @@ class TeamManager:
 
         return new_team
 
-    # Add a player to a team ============================ 
-    def add_player_to_team(self, team_name, player_handle):
+    # Add player to a team
+    def add_player_to_team(self, team_name: str, player_handle: str) -> Team:
+        """Add a player to an existing team."""
         team = self.team_repo.get_team(team_name)
         if team is None:
-            raise ValueError("Team does not exist")
+            raise ValueError("Team does not exist.")
 
-        # Look up player object by name
+        # Look up player by handle
         player = self.player_repo.get_by_handle(player_handle)
         if player is None:
-            raise ValueError("Player does not exist")
+            raise ValueError("Player does not exist.")
 
         if player.team == team_name:
-            raise ValueError("Player is already in the team")
+            raise ValueError("Player is already in the team.")
 
         # Max team size = 5
         if len(team.players) >= 5:
-            print("DEBUG team.players =", team.players, type(team.players))
-            raise ValueError("Team is already full (max 5 players)")
+            raise ValueError("Team is already full (max 5 players).")
 
         # Add player to team
         team.players.append(player_handle)
@@ -74,46 +82,44 @@ class TeamManager:
 
         return team
     
-    # Remove a player from a team ===========================
-    def remove_player_from_team(self, current_user, team_name, player_handle):
+    # Remove a player from a team
+    def remove_player_from_team(self, current_user: Any, team_name: str, player_handle: str) -> Team:
+        """Remove player from a team."""
         team = self.team_repo.get_team(team_name)
-        # If team does not exist, raise error
         if not team:
-            raise ValueError("Team does not exist")
+            raise ValueError("Team does not exist.")
 
         player = self.player_repo.get_by_handle(player_handle)
-        # If player does not exist, raise error
         if not player: 
-            raise ValueError("Player does not exist")
+            raise ValueError("Player does not exist.")
         
         #Permission check
         if current_user.role == "captain":
-            raise PermissionError("Captains can only edit their own team")
+            raise PermissionError("Captains can only edit their own team.")
         elif current_user.role == "player":
-            raise PermissionError("Players cannot remove other players")
+            raise PermissionError("Players cannot remove other players.")
         
         # Check if player is in the team
         if player_handle not in team.players:
-            raise ValueError("Player is not in the team")
+            raise ValueError("Player is not in the team.")
         
         # Do NOT allow removing captain unless by admin
         if player_handle == team.captain and current_user.role != "admin":
-            raise ValueError("Cannot remove the team captain unless you are an admin")
+            raise ValueError("Cannot remove the team captain unless you are an admin.")
         
         # Remove player from team
         team.players.remove(player_handle)
-
-        #Update player's team to empty
         player.team = ""
 
-        #Save updates
+        # Save updates
         self.team_repo.save_teams()
         self.player_repo.save_players()
 
         return team
 
-    # Sync team assignment when updating player's team ===========================
-    def update_player_team(self, player_handle, new_team):
+    # Sync team assignment when updating player's team
+    def update_player_team(self, player_handle: str, new_team: Any) -> None:
+        """Sync team membership when a player's team changes."""
         # If new_team is a Team object, convert it to its name
         if hasattr(new_team, "name"):
             new_team = new_team.name
@@ -127,8 +133,7 @@ class TeamManager:
         if not player:
             raise ValueError("Player does not exist")
 
-        # If updating username triggers this function by mistake, ignore it
-        # (username == new_team -> invalid)
+        # Ignore accidental calls caused by username updates
         if new_team == player_handle:
             return
 
@@ -149,7 +154,7 @@ class TeamManager:
 
         new_team_obj.players.append(player_handle)
 
-        # Update player CSV team
+        # Update player record
         player.team = new_team
         self.player_repo.save_players()
 
@@ -157,9 +162,9 @@ class TeamManager:
         self.team_repo.save_teams()
 
 
-    # Sync username changes inside team players list ===========================
-    def update_username_in_teams(self, old_handle, new_handle):
-        # Replace old username with new username in every team
+    # Sync username changes inside team players list
+    def update_username_in_teams(self, old_handle: str, new_handle: str) -> None:
+        """Replace old username with new username in every team"""
         for team in self.team_repo.teams:
             team.players = [
                 new_handle if p == old_handle else p
@@ -170,50 +175,32 @@ class TeamManager:
             if team.captain == old_handle:
                 team.captain = new_handle
 
-        # Save updated teams
         self.team_repo.save_teams()
 
-    def get_team_by_captain(self, captain_handle: str):
+    def get_team_by_captain(self, captain_handle: str) -> Optional[Team]:
         """Return the team where this username is captain or None."""
         for team in self.team_repo.teams:
             if team.captain == captain_handle:
                 return team
         return None
 
-    # Get all teams ===========================
+    # Get all teams 
     def get_all_teams(self):
+        """Return all teams."""
         return self.team_repo.teams
     
-    def get_team(self, team_name):
+    def get_team(self, team_name: str) -> Optional[Team]:
+        """Return a team by name, or None if not found."""
         return self.team_repo.get_team(team_name)
     
-    def does_team_exist(self, team_name):
+    def does_team_exist(self, team_name: str) -> bool:
+        """Check if a team exists."""
         team = self.team_repo.get_team(team_name.lower())
         if team is None:
             return False
-        if (team.name).lower() == team_name.lower():
-            return True
+        return team.name.lower() == team_name.lower()
         
-
     def sort_teams_into_a_list_of_tens(self) -> list:
-        from main.logic.listOfTeams import ListOfTeamsLogic
+        """Delegate pagination logic to ListOfTeamsLogic."""
         logic = ListOfTeamsLogic()
         return logic.sort_teams_into_a_list_of_tens()
-        
-
-    # # Get all teams ===========================
-    # def get_all_teams(self):
-    #     return self.team_repo.teams
-    
-    # def get_team(self, team_name):
-    #     return self.team_repo.get_team(team_name)
-    
-    # def does_team_exist(self, team_name):
-    #     team = self.team_repo.get_team(team_name.lower())
-    #     if team is None:
-    #         return False
-    #     if (team.name).lower() == team_name:
-    #         return True
-        
-
-
