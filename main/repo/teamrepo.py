@@ -1,33 +1,38 @@
+from typing import List, Optional
+
 from main.models.teammodel import Team
 from main.IO.IOpy.teamIO import TeamIO
 
 class TeamRepository:
-    def __init__(self):
+    """Repository responsible for loading, storing and retrieving Team objects."""
+    def __init__(self) -> None:
         self.io = TeamIO()
-        self.teams = self.load_teams()
+        self.teams: List[Team] = self.load_teams()
 
-    # Load teams from storage
-    def load_teams(self):
+    # Loading / Saving
+
+    def load_teams(self) -> List[Team]:
+        """Load teams from CSV and convert them into Team objects."""
         rows = self.io.read_file()
-        teams = []
+        teams: List[Team] = []
+
         for row in rows:
             if row[0] == 'team_id':
                 continue  # Skip header row
-            else:
-                team_id = row[0]
-                name = row[1]
-                captain = row[2]
-                players = row[3].split("|") if row[3] else []
-                website_url = row[4]
-                tag = row[5] if len(row) > 5 else ""
 
-                t = Team(team_id, name, captain, players, website_url, tag, wins=0, losses=0)
-                teams.append(t)
+            team_id = row[0]
+            name = row[1]
+            captain = row[2]
+            players = row[3].split("|") if row[3] else []
+            website_url = row[4]
+            tag = row[5] if len(row) > 5 else ""
+
+            t = Team(team_id, name, captain, players, website_url, tag, wins=0, losses=0)
+            teams.append(t)
 
         return teams
 
-    # Save teams to storage
-    def save_teams(self):
+    def save_teams(self) -> None:
         rows = [["team_id", "name", "captain", "players", "website_url"]]
         for t in self.teams:
             player_string = "|".join(t.players)
@@ -41,33 +46,35 @@ class TeamRepository:
             ])
         self.io.write_file(rows)
 
-    # Add a new team
-    def add_team(self, team):
+    # Public API
+
+    def add_team(self, team: Team) -> None:
+        """Add a new team and persist the change."""
         self.teams.append(team)
         self.save_teams()
 
-    # Get the next available team ID
-    def get_next_id(self):
+    def get_next_id(self) -> int:
+        """Return the next available team ID."""
         if not self.teams:
             return 1
-        else:
-            max_id = max(int(team.team_id) for team in self.teams)
-            return max_id + 1
+        return max(int(team.team_id) for team in self.teams) + 1
     
-    # Get team by name
-    def get_team(self, team_name):
+    def get_team(self, team_name: str) -> Optional[Team]:
+        """Retrieve a team by name"""
         for team in self.teams:
             n = team.name
             if n.lower() == team_name.lower():
                 return team
         return None
     
-    def get_all_players_in_team(self) -> list:
-        all_players = []
+    def get_all_players_in_team(self) -> List[str]:
+        """Return a flat list of all player username accross all teams."""
+        all_players: List[str] = []
         for team in self.teams:
             for player in team.players:
                 all_players.append(player)
         return all_players
     
-    def get_all(self):
+    def get_all(self) -> List[Team]:
+        """Return a copy of all teams."""
         return list(self.teams)
