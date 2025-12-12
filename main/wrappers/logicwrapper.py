@@ -14,7 +14,7 @@ from main.logic.leaderboardmanager import LeaderboardManager
 class LogicWrapper:
     def __init__(self, data) -> None:
         self.data = data
-        self.clear_screen: ClearScreenLogic = ClearScreenLogic() 
+        self.clear_screen = ClearScreenLogic() 
         self.player_manager: PlayerManager = PlayerManager(data.players)
         self.team_manager: TeamManager = TeamManager(data.teams, data.players, data.passwords)
         self.player_manager.team_manager = self.team_manager  # Link TeamManager to PlayerManager
