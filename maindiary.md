@@ -327,6 +327,7 @@ A kröfur
 - Type hintea ALLT saman og gera comment þar sem vantar
 - Ekkert crash - Passa að það sé hægt að slá inn vitlaust input án þess að allt crashar
 - Team Captain er með automatic password til að logga sig inn
+- Laga schedule
 
 B kröfur
 - Multi-event tournament
@@ -363,4 +364,4 @@ ToDo UI:
     - Player
     - Tournament
 
-Staða á hópnum:
+Staða á hópnum: Það er næstum því búið að kóða allt fyrir Logic og Data layerana. Þurfum að passa að allar A kröfur virka á morgun og ætlum að spurja hvort við megum sleppa einhverjum B kröfum því þær eru tímafrekar og eigum eftir að græja TUI, skýrslu og myndband.
