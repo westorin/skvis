@@ -1,0 +1,16 @@
+match_id,round,bracket,team1,team2,winner,loser,final_score,total_rounds
+35,1,SE,greek,aurora,aurora,greek,8-13,21
+36,1,SE,legacy,hrútar,hrútar,legacy,9-13,22
+37,1,SE,spirit,vitality,vitality,spirit,12-13,25
+38,1,SE,falcons,jolasveinarnir,falcons,jolasveinarnir,13-12,25
+39,1,SE,mouz,furia,furia,mouz,6-13,19
+40,1,SE,taco,le france,taco,le france,13-3,16
+41,1,SE,lego fans,faze,lego fans,faze,13-12,25
+42,1,SE,liquid,g2,g2,liquid,5-13,18
+43,2,SE,aurora,hrútar,hrútar,aurora,5-13,18
+44,2,SE,vitality,falcons,falcons,vitality,8-13,21
+45,2,SE,furia,taco,furia,taco,13-3,16
+46,2,SE,lego fans,g2,lego fans,g2,13-10,23
+47,3,SE,hrútar,falcons,hrútar,falcons,13-10,23
+48,3,SE,furia,lego fans,furia,lego fans,13-8,21
+49,4,SE,hrútar,furia,hrútar,furia,13-7,20

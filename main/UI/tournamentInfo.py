@@ -86,3 +86,4 @@ class TournamentInfoUI():
                 return "LIST_PLAYER_TOUR"
             elif(choice == "5"):
                 return "MAP_TOUR"
+            

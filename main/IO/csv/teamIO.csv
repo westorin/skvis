@@ -1,17 +1,18 @@
-team_id,name,captain,players,website_url,tag
-1,Faze,siggi,siggi|haalldor,nei
-2,Jolasveinarnir,westorin,westorin,blush.is
-3,Lego Fans,einar,einar,ja.is
-4,Hrútar,aribesti123,aribesti123,ok.com
-5,Taco,kiddi03,kiddi03,canvas.com
-6,Le France,napoleon,napoleon|talleyrand|bernadotte,napoleon.com
-7,Greek,alexsander the great,alexsander the great,funkypigeon.com 
-8,Falcons,NiKo,NiKo,Falcons.com
-9,FURIA,kyxsan,kyxsan,furia.com
-10,Vitality,kyousuke,kyousuke,Vitality.com
-11,MOUZ,gaymerz,gaymerz,MOUZ.com
-12,Spirit,TeSeS,TeSeS,spirit.com
-13,Liquid,m0NESY,m0NESY,liquid.com
-14,Aurora,aribesti123,aribesti123,aurora.com
-15,Legacy,kyxsan,kyxsan,legacy.com
-16,G2,kyousuke,kyousuke,g2.com
+team_id,name,captain,players,website_url
+1,Faze,siggi,siggi|haalldor,nei,
+2,Jolasveinarnir,westorin,westorin,blush.is,
+3,Lego Fans,einar,einar,ja.is,
+4,Hrútar,aribesti123,aribesti123,ok.com,
+5,Taco,kiddi03,kiddi03,canvas.com,
+6,Le France,napoleon,napoleon|talleyrand|bernadotte,napoleon.com,
+7,Greek,alexsander the great,alexsander the great,funkypigeon.com ,
+8,Falcons,NiKo,NiKo,Falcons.com,
+9,FURIA,kyxsan,kyxsan,furia.com,
+10,Vitality,kyousuke,kyousuke,Vitality.com,
+11,MOUZ,gaymerz,gaymerz,MOUZ.com,
+12,Spirit,TeSeS,TeSeS,spirit.com,
+13,Liquid,m0NESY,m0NESY,liquid.com,
+14,Aurora,aribesti123,aribesti123,aurora.com,
+15,Legacy,kyxsan,kyxsan,legacy.com,
+16,G2,kyousuke,kyousuke,g2.com,
+17,money,money,money|junior|senior,money.com,mony

@@ -17,7 +17,8 @@ class LeaderboardManager:
 
         #Initialize stats for each team
         for team in teams:
-            stats[team.name] = {
+            key = team.name.lower()
+            stats[key] = {
                 "team": team.name,
                 "matches": 0,
                 "wins": 0,
@@ -26,20 +27,25 @@ class LeaderboardManager:
 
         #Aggregate stats from matches
         for match in matches:
-            t1 = match.team1
-            t2 = match.team2
+            t1 = match.team1.lower()
+            t2 = match.team2.lower()
 
-            if t1 not in stats or t2 not in stats:
-                continue  # Skip if team not found
+            if t1 not in stats:
+                stats[t1] = {"team": match.team1, "matches": 0, "wins": 0, "losses": 0}
+            if t2 not in stats:
+                stats[t2] = {"team": match.team2, "matches": 0, "wins": 0, "losses": 0}
 
             stats[t1]["matches"] += 1
             stats[t2]["matches"] += 1
 
             if match.winner and match.loser:
-                if match.winner in stats:
-                    stats[match.winner]["wins"] += 1
-                if match.loser in stats:
-                    stats[match.loser]["losses"] += 1
+                winner_key = match.winner.lower()
+                loser_key = match.loser.lower()
+
+                if winner_key in stats:
+                    stats[winner_key]["wins"] += 1
+                if loser_key in stats:
+                    stats[loser_key]["losses"] += 1
         
         #Compute winrates and prepare leaderboard
         leaderboard = []
@@ -110,3 +116,17 @@ class LeaderboardManager:
                 list_of_teams = []
 
         return list_of_teams_in_pers_of_tens
+
+    def get_tournament_for_leaderboard(self, leaderboard: List[Dict]) -> List[str]:
+        rows: List[str] = []
+
+        for entry in leaderboard:
+            nr = entry.get("place", "")
+            team = entry.get("team", "")
+            matches = entry.get("matches", "")
+            wins = entry.get("wins", "")
+            losses = entry.get("losses", "")
+            winrate = entry.get("winrate", "")
+
+            rows.append(f"Nr. {nr}, ",f"Team: {team}, ",f"Matches: {matches}, ",f"Wins: {wins}, ",f"Losses: {losses}, ",f"Winrate: {winrate}%")
+        return rows
