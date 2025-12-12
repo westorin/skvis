@@ -1,4 +1,3 @@
-#DataWrapper = (Repositories) → IO → CSV
 from main.logic.matchmanager import MatchManager
 from main.logic.tournamentmanager import TournamentManager
 from main.repo.matchrepo import MatchRepository
@@ -11,11 +10,12 @@ from main.repo.passwordrepo import PasswordRepository
 from main.repo.rolesrepo import RoleRepository
 
 class DataWrapper:
-    def __init__(self):
-        self.players = PlayerRepository()
-        self.teams = TeamRepository()
-        self.tournaments = TournamentRepository()
-        self.matches = MatchRepository()
-        self.clubs = ClubRepository()
-        self.passwords = PasswordRepository()
-        self.roles = RoleRepository()
+    """Holds repository instances (data access layer)."""
+    def __init__(self) -> None:
+        self.players: PlayerRepository = PlayerRepository()
+        self.teams: TeamRepository = TeamRepository()
+        self.tournaments: TournamentRepository = TournamentRepository()
+        self.matches: MatchRepository = MatchRepository()
+        self.clubs: ClubRepository = ClubRepository()
+        self.passwords: PasswordRepository = PasswordRepository()
+        self.roles: RoleRepository = RoleRepository()
