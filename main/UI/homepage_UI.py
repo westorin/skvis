@@ -12,7 +12,7 @@ class homepageUI():
         if(self.isAdmin == True or self.isATeamCapt == True):
             var1 = "5. Sign Out      "
             if(self.isAdmin == True):
-                var2 = "7. Add tournament "
+                var2 = "6. Add tournament "
             else:
                 var2 = "                  "
         else:
@@ -61,12 +61,12 @@ class homepageUI():
 |\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|"""
 
         footer = f"""|\t\t\t\t\t\t\t\033[30m\033[1m+--------------------+-------------------+--------------------+\033[0m\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m 4. Clubs           \033[30m\033[1m|\033[0m {var1} \033[30m\033[1m|\033[0m 6. Players         \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\033[30m\033[1m+--------------------+-------------------+--------------------+\033[0m\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m {var2} \033[30m\033[1m|\033[0m 8. Search         \033[30m\033[1m|\033[0m                    \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m 4. Players         \033[30m\033[1m|\033[0m {var1} \033[30m\033[1m|\033[0m {var2} \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\033[30m\033[1m+====================+===================+====================+\033[0m\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\033[30m\033[1m|\033[0m                         q. quit                             \033[30m\033[1m|\033[0m\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\033[30m\033[1m+-------------------------------------------------------------+\033[0m\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
@@ -82,25 +82,32 @@ class homepageUI():
 
             if choice == "1":
                 return "TIME"
+            
             elif(choice == "2"):
                 return "LEADER"
+            
             elif(choice == "3"):
                 return "TEAMS"
+            
             elif(choice == "4"):
-                return "CLUBS"
+                return "PLAYERS"
+            
             elif(choice == "5"):
                 if(self.isAdmin == True or self.isATeamCapt == True):
                     return "SIGN"
+            
                 else:
                     return "LOGIN"
-            elif(choice == "6"):
-                return "PLAYERS"
-            elif(choice == "7" and self.isAdmin == True):
+            
+            elif(choice == "6" and self.isAdmin == True):
                 return "ADD"
+            
             elif(choice == "8"):
                 return "SEARCH"
+            
             elif choice.lower() == "q":
                 return "QUIT"
+            
             else:
                 clear_screen()
 

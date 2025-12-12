@@ -1,18 +1,13 @@
 from main.UI.homepage_UI import homepageUI
 from main.UI.pickTimeOfTournament import PickTimeOfTournamentUI
 from main.UI.teamLeaderBoardUI import TeamLeaderBoardUI
-from main.UI.pickLeaderBoard import PickLeaderBoardUI
 from main.UI.listOfTeams import ListOfTeamsUI
-from main.UI.listOfClubs import listOfClubsUI
 from main.UI.login import LoginUI
 from main.UI.listOfPlayers import ListOfPlayersUI
 from main.UI.addtournament import AddTournamentUI
-from main.UI.search import SearchUI
 from main.UI.team import TeamUI
 from main.UI.teamAllInfo import TeamAllInfoUI
 from main.UI.pastTournamentsList import PastTournamentsUI
-from main.UI.addTeam import AddTeamUI
-from main.UI.pickLeaderBoard import PickLeaderBoardUI
 from main.UI.addTeam import AddTeamUI
 from main.UI.onGoingTournamentsList import OnGoingTournamentsUI
 from main.UI.futureTournamentsList import FutureTournamentsUI
@@ -23,19 +18,15 @@ class MainUI():
     def __init__(self):
         self.__homepage_ui = homepageUI()
         self.__ptot_ui = PickTimeOfTournamentUI()
-        self.__pick_leader_board_ui = PickLeaderBoardUI()
         self.__list_of_teams_ui = ListOfTeamsUI()
-        self.__list_of_clubs_ui = listOfClubsUI()
         self.__login_ui = LoginUI()
         self.__list_of_players_ui = ListOfPlayersUI()
         self.__add_tournament_ui = AddTournamentUI()
-        self.__search_ui = SearchUI()
         self.__team_ui = TeamUI()
         self.__team_all_info_ui = TeamAllInfoUI()
         self.__past_tournaments_list_ui = PastTournamentsUI()
         self.__add_team_ui = AddTeamUI()
         self.__team_leader_board_ui = TeamLeaderBoardUI()
-        self.__add_team_ui = AddTeamUI()
         self.__on_going_tournaments_ui = OnGoingTournamentsUI()
         self.__future_tournaments_ui = FutureTournamentsUI()
         self.__tournament_info_ui = TournamentInfoUI()
@@ -62,14 +53,11 @@ class MainUI():
                 
                 # Here we put set you to the page that shows you the leader board for all teams and tournaments
                 elif(action == "LEADER"):
-                    self.current_ui_page = "PICK_LEADER_BOARD"
+                    self.current_ui_page = "LEADER_BOARD"
                 
                 # Here we put set you to the page that show you a list of all the teams
                 elif(action == "TEAMS"):
                     self.current_ui_page = "LIST_OF_TEAMS"
-                
-                elif(action == "CLUBS"):
-                    self.current_ui_page = "LIST_OF_CLUBS"
 
                 # Here you are sign out of being an admin or a team captian if you are loged in
                 elif(action == "SIGN"):
@@ -89,10 +77,6 @@ class MainUI():
                 # Here you're set to the page that allows you to add tournament if and only if you are loged in
                 elif(action == "ADD"):
                     self.current_ui_page = "ADD_TOURNAMENT"
-                
-                # Here you're set to the page where you pick what you want to search for
-                elif(action == "SEARCH"):
-                    self.current_ui_page = "PICK_SEARCH"
                 
                 # Here we end the program
                 elif(action == "QUIT"):
@@ -133,39 +117,38 @@ class MainUI():
                 else:
                     print("Error in main UI. not sent to the currect UI page in Ptot")
                     break
-            
-            if(self.current_ui_page == "PICK_LEADER_BOARD"):
-                action = self.__pick_leader_board_ui.print_plb_ui()
-                if(action == "QUIT"):
-                    break
-                elif(action == "BACK"):
-                    self.current_ui_page = "Homepage"
-                elif(action == "TEAM"):
-                    self.current_ui_page = "TEAM_LEADER_BOARD"
 
-            if(self.current_ui_page == "TEAM_LEADER_BOARD"):
+            if(self.current_ui_page == "LEADER_BOARD"):
                 action = self.__team_leader_board_ui.print_team_leader_board()
+                
                 if(action == "BACK"):
-                    self.current_ui_page = "PICK_LEADER_BOARD"
+                    self.current_ui_page = "Homepage"
+                
                 if(action == "QUIT"):
                     break
 
             if(self.current_ui_page == "LIST_OF_TEAMS"):
                 action = self.__list_of_teams_ui.print_list_of_teams(self.isAdmin)
+                
                 if(action == "BACK"):
                     self.current_ui_page = "Homepage"
+                
                 elif(action == "QUIT"):
                     break
+                
                 elif(action == "ADD_TE"):
                     self.current_ui_page = "ADD_TEAM"
+                
                 elif(action[0] == "TEAM"):
                     self.current_ui_page = "A_TEAM"
                     self.nameOfATeam = action[1]
 
             if(self.current_ui_page == "ADD_TEAM"):
                 action = self.__add_team_ui.print_add_team()
+                
                 if(action == "QUIT"):
                     break
+                
                 elif(action == "BACK"):
                     self.current_ui_page = "LIST_OF_TEAMS"
 
@@ -176,13 +159,17 @@ class MainUI():
 
             if(self.current_ui_page == "LOG_IN"):
                 action = self.__login_ui.print_login()
+                
                 if(action == "BACK"):
                     self.current_ui_page = "Homepage"
+                
                 elif(action == "QUIT"):
                     break
+                
                 elif(action == "ADMIN"):
                     self.current_ui_page ="Homepage"
                     self.isAdmin = True
+                
                 elif(action[0] == "CAPT"):
                     self.current_ui_page = "Homepage"
                     self.isATeamCapt = True
@@ -190,8 +177,10 @@ class MainUI():
 
             if(self.current_ui_page == "LIST_OF_PLAYERS"):
                 action = self.__list_of_players_ui.print_list_of_players()
+                
                 if(action == "BACK"):
                     self.current_ui_page = "Homepage"
+                
                 elif(action == "QUIT"):
                     break
 
@@ -206,8 +195,10 @@ class MainUI():
             if(self.current_ui_page == "A_TEAM"):
                 if((self.nameOfTeamCaptTeamsName.lower() == self.nameOfATeam.lower() and self.isATeamCapt == True) or self.isAdmin == True):
                     action = self.__team_all_info_ui.print_team_info(self.nameOfATeam, self.isAdmin, self.isATeamCapt)
+                
                 else:
                     action = self.__team_ui.print_team(self.nameOfATeam)
+                
                 if(action == "BACK"):
                     self.nameOfATeam = ""
                     self.current_ui_page = "LIST_OF_TEAMS"
@@ -217,47 +208,61 @@ class MainUI():
 
             if(self.current_ui_page == "PAST_TOURNAMENTS"):
                 action = self.__past_tournaments_list_ui.print_tournaments()
+                
                 if(action == "QUIT"):
                     break
+                
                 elif(action == "BACK"):
                     self.current_ui_page = "TIME_OF_TOURNAMENTS"
+                
                 elif(action[0] == "TOUR_INFO"):
                     self.nameOfATournament = action[1]
                     self.current_ui_page = "TOURNAMENT_INFO"
 
             if(self.current_ui_page == "ON_GOING_TOURNAMENTS"):
                 action = self.__on_going_tournaments_ui.print_tournaments()
+                
                 if(action == "QUIT"):
                     break
+                
                 elif(action == "BACK"):
                     self.current_ui_page = "TIME_OF_TOURNAMENTS"
+                
                 elif(action[0] == "TOUR_INFO"):
                     self.nameOfATournament = action[1]
                     self.current_ui_page = "TOURNAMENT_INFO"
 
             if(self.current_ui_page == "FUTURE_TOURNAMENTS"):
                 action = self.__future_tournaments_ui.print_tournaments()
+                
                 if(action == "QUIT"):
                     break
+                
                 elif(action == "BACK"):
                     self.current_ui_page = "TIME_OF_TOURNAMENTS"
+                
                 elif(action[0] == "TOUR_INFO"):
                     self.nameOfATournament = action[1]
                     self.current_ui_page = "TOURNAMENT_INFO"
 
             if(self.current_ui_page == "TOURNAMENT_INFO"):
                 action = self.__tournament_info_ui.print_info(self.nameOfATournament, self.isAdmin)
+                
                 if(action == "QUIT"):
                     break
+                
                 elif(action == "BACK"):
                     self.current_ui_page = "TIME_OF_TOURNAMENTS"
                     self.nameOfATournament = ""
+                
                 elif(action == "SCHEDULE"):
                     self.current_ui_page = "TOURNAMENT_SCHEDULE"
 
             if(self.current_ui_page == "TOURNAMENT_SCHEDULE"):
                 action = self.__schedule_ui.print_schedule(self.nameOfATournament)
+                
                 if(action == "QUIT"):
                     break
+                
                 elif(action == "BACK"):
                     self.current_ui_page = "TOURNAMENT_INFO"
