@@ -1,9 +1,11 @@
 from main.models.teammodel import Team
+from main.models.passwordsmodel import PasswordsManager
 
 class TeamManager:
-    def __init__(self, team_repo=None, player_repo=None):
+    def __init__(self, team_repo=None, player_repo=None, password_repo=None):
         self.team_repo = team_repo
         self.player_repo = player_repo
+        self.password_repo = password_repo
 
     # Create a new team ============================
     def register_team(self, name, captain_handle, website_url="") -> "Team":
@@ -35,6 +37,11 @@ class TeamManager:
         # Assign captain to the team
         captain.team = name
         self.player_repo.save_players()
+
+        if self.password_repo.get_by_username(captain_handle) is None:
+            pw = PasswordsManager(captain_handle, "captain123")
+            self.password_repo.passwords.append(pw)
+            self.password_repo.save_passwords()
 
         return new_team
 
