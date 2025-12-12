@@ -391,5 +391,8 @@ ToDo UI:
   - update team
   - add Player to team
   - Display knockout tournament
+ 
+- Skýrsla
+- Myndband
 
 Staða á hópnum: 
