@@ -17,6 +17,8 @@ from main.UI.futureTournamentsList import FutureTournamentsUI
 from main.UI.tournamentInfo import TournamentInfoUI
 from main.UI.schedule import ScheduleUI
 from main.UI.tourLeaderBoard import TournamentLeaderBoardUI
+from main.UI.tournamentMatch import TournamentMatchsUI
+from main.UI.inputMatchResults import InputMatchResultsUI
 
 class MainUI():
     def __init__(self):
@@ -36,6 +38,8 @@ class MainUI():
         self.__tournament_info_ui = TournamentInfoUI()
         self.__schedule_ui = ScheduleUI()
         self.__tour_leader_ui = TournamentLeaderBoardUI(LogicWrapper(DataWrapper()))
+        self.__tournament_matchs_ui = TournamentMatchsUI(LogicWrapper(DataWrapper()))
+        self.__input_match_results_ui = InputMatchResultsUI()
 
         self.current_ui_page = "Homepage"
         self.isAdmin = False
@@ -266,6 +270,12 @@ class MainUI():
                 elif(action == "TOUR_LEADER"):
                     self.current_ui_page = "TOURNAMENT_LEADER_BOARD"
 
+                elif(action == "GAME_BY_GAME"):
+                    self.current_ui_page = "TOURNAMENT_MATCHS"
+
+                elif(action == "UPDATE_MATCH"):
+                    self.current_ui_page = "INPUT_MATCH_RESULTS"
+
             if(self.current_ui_page == "TOURNAMENT_SCHEDULE"):
                 action = self.__schedule_ui.print_schedule(self.nameOfATournament)
                 
@@ -278,6 +288,14 @@ class MainUI():
             if(self.current_ui_page == "TOURNAMENT_LEADER_BOARD"):
                 action = self.__tour_leader_ui.print_leader_board(self.nameOfATournament)
 
+                if(action == "QUIT"):
+                    break
+                
+                elif(action == "BACK"):
+                    self.current_ui_page = "TOURNAMENT_INFO"
+
+            if(self.current_ui_page == "TOURNAMENT_MATCHS"):
+                action = self.__tournament_matchs_ui.print_matchs(self.nameOfATournament)
                 if(action == "QUIT"):
                     break
                 

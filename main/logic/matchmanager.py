@@ -1,22 +1,27 @@
 from main.repo.matchrepo import MatchRepository
 from main.models.matchmodel import Match
+
 import csv
 import os
 import random
+from typing import Any, Optional, List, Tuple
 
 class MatchManager:
-    """Match creation and updates."""
+    """Responsible for creating matches, updating results and simulating matches."""
 
-    def __init__(self, match_repo: MatchRepository | None = None) -> None:
-        self.repo = match_repo or MatchRepository()
+    def __init__(self, match_repo: Optional[MatchRepository] = None) -> None:
+        """match_repo: Optional repository injection for testing. If None, a new MatchRepository is created."""
+        self.repo: MatchRepository = match_repo or MatchRepository()
     
-    def create_match(self, data) -> Match:
-        """Create a new match."""
-        server_id = data["server_id"]
+    def create_match(self, data: dict[str, Any]) -> Match:
+        """Create a new match from a data dictionary and store it in the repository."""
+        server_id: str = data["server_id"]
 
-        if self.repo.get_by_server_id(server_id):
+        # Enforce unique server ID per match
+        if self.repo.get_by_server_id(server_id): 
             raise ValueError("Server ID must be unique for each match")
 
+        # Prevent a team playing against itself
         if data["team1"] == data["team2"]:
             raise ValueError("A team cannot play against itself")
 
@@ -42,8 +47,9 @@ class MatchManager:
         self.repo.add_match(match)
         return match
 
-    def create_tournament_match(self, team1, team2, bracket, round_number, tournament_id, tournament_name):
-        match_id = self.repo.get_next_id()
+    def create_tournament_match(self, team1: str, team2: str, bracket: str, round_number: int, tournament_id: str, tournament_name: str) -> Match:
+        """Create a match that belongs to a tournament bracket. This creates a unique server_id based on tournament_id and match_id"""
+        match_id: int = self.repo.get_next_id()
         
         match = Match(
             match_id=match_id,
@@ -66,31 +72,35 @@ class MatchManager:
         self.repo.add_match(match)
         return match
 
-    def list_matches(self):
+    def list_matches(self) -> List[Match]:
+        """Return all matches from the repository."""
         return self.repo.get_all()
 
-    def set_scores(self, server_id, score1, score2, winner=None):
+    def set_scores(self, server_id: str, score1: int, score2: int, winner: Optional[str] = None) -> Match:
+        """Update scores (and optionally winner) for a match identified by server_id."""
         updated = self.repo.update_scores(server_id, score1, score2, winner)
         if updated is None:
             raise ValueError("Match not found")
         return updated
 
-    def _simulate_rounds(self,match_id):
+    def _simulate_rounds(self, match_id: int) -> Tuple[str, str, int, str, List[Tuple[int, str]]]:
+        """Simulate a match round-by-round."""
         match = self.repo.get_by_match_id(match_id)
+        if match is None:
+            raise ValueError("Match not found")
 
-        team1 = match.team1
-        team2 = match.team2
+        team1: str = match.team1
+        team2: str = match.team2
 
-        t1_rounds = 0
-        t2_rounds = 0
-        round_number = 1
-        round_logs = []
+        t1_rounds: int = 0
+        t2_rounds: int = 0
+        round_number: int = 1
+        round_logs: List[Tuple[int, str]] = []
 
-        #Regulation + win-by-2 OT
+        #Regulation + overtime (win by 2 from 12-12)
         while True:
             winner = random.choice([team1,team2])
             loser = team2 if winner == team1 else team1
-
             if winner == team1:
                 t1_rounds += 1
             else:
@@ -102,7 +112,7 @@ class MatchManager:
             if t1_rounds == 13 or t2_rounds == 13:
                 break
             
-            #Overtime: win by 2
+            #Overtime: win by 2 if both teams reached 12
             if t1_rounds >= 12 and t2_rounds >= 12:
                 if abs(t1_rounds - t2_rounds) >= 2:
                     break
@@ -125,7 +135,6 @@ class MatchManager:
             raise ValueError("Scores must be non-negative")
 
         if s1 == s2:
-            # Assuming no draws in this game
             raise ValueError("Match cannot end in a draw. One team must win.")
 
         match.score1 = s1
@@ -186,7 +195,8 @@ class MatchManager:
         self.repo.save_to_file()
         return match
 
-    def automate_all_matches(self):
+    def automate_all_matches(self) -> List[Match]:
+        """Automatically simulate all unfinished matches and persist results. Returns the full list of matches after automation."""
         all_matches = self.repo.get_all()
         for match in all_matches:
             if match.winner is None:
@@ -195,12 +205,12 @@ class MatchManager:
         self.repo.save_to_file()
         return all_matches
 
-    #Simulate random rounds, first to 13 wins
-    def play_match_random(self,match_id):
+    def play_match_random(self, match_id: int) -> Match:
+        """Simulate a match and write round logs + results to CSV files."""
         match = self.repo.get_by_match_id(match_id)
-
         if match is None:
             raise ValueError("Match not found")
+        
         winner, loser, total_rounds, final_score, round_logs = self._simulate_rounds(match_id)
 
         match.winner = winner
@@ -208,12 +218,12 @@ class MatchManager:
         match.final_score = final_score
         match.total_rounds = total_rounds
 
-        # --- Folder creation chain (correct order) ---
+        # Determine tournament folder name
         tname = match.tournament_name
         if not tname:
             tname = str(match.tournament_id)
 
-        # Tournament folder
+        # Create folders (tournament folder first, then match folder)
         tournament_folder = f"main/IO/{tname}"
         os.makedirs(tournament_folder, exist_ok=True)
 
@@ -221,7 +231,7 @@ class MatchManager:
         match_folder = f"{tournament_folder}/match_{match.match_id}"
         os.makedirs(match_folder, exist_ok=True)
 
-        #Write round files
+        # Write each simulated round to its own CSV file
         for rnum, rwinner in round_logs:
             round_path = f"{match_folder}/round_{rnum}.csv"
             with open(round_path, mode="w", newline="") as file:
@@ -229,7 +239,7 @@ class MatchManager:
                 writer.writerow(["round", "winner"])
                 writer.writerow([rnum, rwinner])
         
-        #Write match_results.csv
+        # Write the match results summary CSV
         result_path = f"{match_folder}/match_results.csv"
         with open(result_path, mode="w", newline="") as file:
             writer = csv.writer(file)
@@ -239,34 +249,43 @@ class MatchManager:
         self.repo.save_to_file()
         return match
 
-    def simulate_round(self, matches):
+    def simulate_round(self, matches: List[Match]) -> None:
+        """Simlate all unfinished matches in the provided list and persist results."""
         for m in matches:
             if m.winner is None:
                 self.play_match_random(m.match_id)
         self.repo.save_to_file()
 
-    def get_winner(self, match_id):
+    def get_winner(self, match_id: int) -> Optional[str]:
+        """Return the winner team name for a match, or None if not decided."""
         match = self.repo.get_by_match_id(match_id)
+        if match is None:
+            return None
         return match.winner
 
     def get_loser(self, match_id):
+        """Return the loser team name for a match, or None if not decided."""
         match = self.repo.get_by_match_id(match_id)
+        if match is None:
+            return None
         return match.loser
 
-    def create_and_play(self,team1,team2,bracket,round_number,tournament_id):
-        match = self.create_tournament_match(team1=team1,team2=team2,bracket=bracket,round_number=round_number,tournament_id=tournament_id)
+    def create_and_play(self, team1: str, team2: str, bracket: str, round_number: int, tournament_id: int) -> Match:
+        """Convenience method: create a tournament match and immediately simulate it."""
+        match = self.create_tournament_match(team1=team1,team2=team2,bracket=bracket,round_number=round_number,tournament_id=tournament_id, tournament_name="")
         return self.play_match_random(match.match_id)
 
     def get_unfinished_matches(self):
+        """Return all matches that do not yet have a winner."""
         return [m for m in self.repo.get_all() if m.winner is None]
     
-    def unfinished_in_round(self, matches):
+    def unfinished_in_round(self, matches: List[Match]) -> List[Match]:
+        """Filter a list of matches down to only those without a winner."""
         return [m for m in matches if m.winner is None]
 
-    #round-by-round manual score input
-    def play_match_manual(self,match_id, score1, score2):
+    def play_match_manual(self, match_id: int, score1: int | str, score2: int | str) -> Match:
+        """Record a manual result for a match and write match_results.csv. This uses the same folder + output CSV behaviour as random simulation"""
         match = self.repo.get_by_match_id(match_id)
-
         if match is None:
             raise ValueError("Match not found")
 
@@ -303,5 +322,6 @@ class MatchManager:
         return match
 
     #Update CSV, team stats, bracket advancement
-    def finalize_match(self,winner,loser):
+    def finalize_match(self, winner: str, loser: str) -> None:
+        """Placeholder for future work: update CSV/team stats/bracket advancement."""
         pass

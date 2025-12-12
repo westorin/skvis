@@ -43,7 +43,17 @@ class TournamentInfoUI():
 |\t\t\t\t\t\t| /_______\               or q. if you want to quit.                           |\t\t\t\t\t\t|
 |\t\t\t\t\t\t|                                                                              |\t\t\t\t\t\t|
 |\t\t\t\t\t\t+------------------------------------------------------------------------------+\t\t\t\t\t\t|"""
-        
+
+        if( is_admin == True):
+            command_text = f"""\n|\t\t\t\t\t\t\t\t+------------------------------------------+\t\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\t|             4. Update Match              |\t\t\t\t\t\t\t\t\t|"""
+            pading_text = f""""""
+        else:
+            command_text = f""""""
+            pading_text = f"""\n|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|"""
+
+
         footer_text =f"""|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t+------------------------------------------+\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t|              Enter command               |\t\t\t\t\t\t\t\t\t|
@@ -52,15 +62,13 @@ class TournamentInfoUI():
 |\t\t\t\t\t\t\t\t+------------------------------------------+\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t|         2. Display leader board          |\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t+------------------------------------------+\t\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t|     3. Display game by game results      |\t\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t+------------------------------------------+\t\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t|   4. Display all players in tournament   |\t\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t+------------------------------------------+\t\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t\t|      5. Display knockout tournament      |\t\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\t|     3. Display game by game results      |\t\t\t\t\t\t\t\t\t|{command_text}
 |\t\t\t\t\t\t\t\t+====================+=====================+\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t| b. go to last page | q. Quit the program |\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t+--------------------+---------------------+\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|{pading_text}
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+"""
 
         while True:
@@ -83,7 +91,17 @@ class TournamentInfoUI():
             elif(choice == "3"):
                 return "GAME_BY_GAME"
             elif(choice == "4"):
-                return "LIST_PLAYER_TOUR"
-            elif(choice == "5"):
-                return "MAP_TOUR"
+                return "UPDATE_MATCH"
+            else:
+                
+                clear_screen()
+
+                print(header_text)
+                print(error_text)
+                print(footer_text)
+
+                choice = str(input(">>>> "))
+
+                if(choice.lower() == "q"):
+                    return "BACK"
             
