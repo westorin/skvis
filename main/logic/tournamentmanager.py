@@ -71,7 +71,7 @@ class TournamentManager:
             raise ValueError("Team is already registered in this tournament.")
         
         tournament.teams.append(team_name)
-        self.tournaments.save()
+        self.tournaments.update_tournament(tournament)
         return tournament
 
     def is_team_registered(self, tournament_name: str, team_name: str) -> bool:

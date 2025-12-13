@@ -181,10 +181,13 @@ class TournamentRepository:
     def update_tournament(self, tournament: Tournament) -> None:
         """Replace an existing tournament (matched by tournament_id) and persist changes."""
         for idx, t in enumerate(self.tournaments):
-            if t.tournament_id == tournament.tournament_id:
+            if (t.tournament_id is not None and t.tournament_id == tournament.tournament_id) or \
+               (t.tournament_id is None and t.name.lower() == tournament.name.lower()):
                 self.tournaments[idx] = tournament
                 self.save_to_file()
                 return
+
+        raise ValueError("Tournament not found for update")
             
     def get_tournament(self, tournament_name: str) -> Optional[Tournament]:
         """Alias for get_by_name (kept for compatibility with older code)."""

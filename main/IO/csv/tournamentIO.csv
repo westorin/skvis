@@ -1,8 +1,10 @@
 tournament_id,name,start_date,end_date,location,contact_email,contact_phone,teams,matches,winner
-1,YOLO,2025-12-07,2025-12-09,Grænland,haha@email.com,8886969,faze|jolasveinarnir|lego fans|hrútar|taco|le france|greek|falcons|furia|vitality|mouz|spirit|liquid|legacy|g2|aurora,1|2|3|4|5|6|7|8,
+1,YOLO,2025-12-07,2025-12-09,Grænland,haha@email.com,8886969,faze|jolasveinarnir|lego fans|hrútar|taco|le france|greek|falcons|furia|vitality|mouz|spirit|liquid|aurora|legacy|g2,1|2|3|4|5|6|7|8,
 2,Azelf,2025-10-15,2025-10-25,Keflavik,azelf@gmail.com,1111111,faze|jolasveinarnir|lego fans|hrútar|taco|le france|greek|falcons|furia|vitality|mouz|spirit|liquid|aurora|legacy|g2,50|51|52|53|54|55|56|57,
 3,Bulbasaur,2025-10-07,2025-10-12,Kopavogur,bulbasaur@gmail.com,1111111,faze|jolasveinarnir|lego fans|hrútar|taco|le france|greek|falcons|furia|vitality|mouz|spirit|liquid|aurora|legacy|g2,,
 4,Waterloo,2025-12-01,2025-12-31,USA,waterloo@gmail.com,111111,faze|jolasveinarnir|lego fans|hrútar|taco|le france|greek|falcons|furia|vitality|mouz|spirit|liquid|aurora|legacy|g2,,
 5,HR,2026-01-01,2026-01-08,RU@RU.is,RU@RU.is,1111111,faze|jolasveinarnir|lego fans|hrútar|taco|le france|greek|falcons|furia|vitality|mouz|spirit|liquid|aurora|legacy|g2,,
 6,mamma,2025-06-06,2025-06-12,mamma,mamma@gmail.com,5812345,,,
 7,bleh,2026-09-12,2026-09-19,Reykjavik Arena,reykjavik@arena.is,8783423,,,
+8,HEBBS,2026-12-12,2026-12-14,Afrika,hgfjl,3454323,,,
+9,JOKO,2026-12-13,2026-12-19,Tuku,ssghfsl,fgdjkl,Faze|Jolasveinarnir|LEgo fans|hrútar|taco|le france|greek|falcons|furia|vitality|mouz|spirit|liquid|aurora|legacy|g2,,
