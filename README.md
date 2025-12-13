@@ -24,6 +24,9 @@ Verkefnið snýst um að hanna og smíða hugbúnað sem heldur utan um rafíþr
 skrá leikmenn og lið, búa til mót og leikjadagskrá, skrá úrslit og sýna stöðu og
 upplýsingar á notendavænan hátt.
 
+Linkur á YouTube myndbandinu:
+https://youtu.be/3ewU3NtBlKw
+
 Til þess að keyra forritið:
 
 ```bash
