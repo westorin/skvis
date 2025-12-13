@@ -18,7 +18,7 @@ from main.UI.tournamentInfo import TournamentInfoUI
 from main.UI.schedule import ScheduleUI
 from main.UI.tourLeaderBoard import TournamentLeaderBoardUI
 from main.UI.tournamentMatch import TournamentMatchsUI
-from main.UI.tournamentUI import TournamentUI
+from main.UI.TournamentUI import TournamentUI
 from main.UI.addplayertoteamUI import AddPlayerToTeamUI
 from main.UI.createplayerUI import PlayerUI
 
