@@ -6,8 +6,6 @@ import math
 
 class TeamUI():
     def __init__(self, logic):
-        #self.logic = LogicWrapper()
-        #Can replace with the line above
         self.logic = logic
 
 

@@ -45,9 +45,6 @@ class AddTournamentUI:
             return "BACK"
         except ValueError as e:
             print("Error:", e)
-        
-        
-# Temporary for testing
-if __name__ == "__main__":
-    ui = AddTournamentUI()
-    ui.add_tournament_ui()
+            input(">>>> ")
+            return "BACK"
+        return "BACK"

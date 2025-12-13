@@ -204,3 +204,13 @@ class TeamManager:
         """Delegate pagination logic to ListOfTeamsLogic."""
         logic = ListOfTeamsLogic()
         return logic.sort_teams_into_a_list_of_tens()
+
+    def create_list_of_teams_all_info(self, team_name: str):
+        """
+        Delegate detailed team info creation to ListOfTeamsLogic.
+        This keeps UI talking only to TeamManager.
+        """
+        logic = ListOfTeamsLogic()
+        return logic.create_list_of_teams_all_info(team_name)
+    
+    

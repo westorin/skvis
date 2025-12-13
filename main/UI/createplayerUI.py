@@ -59,11 +59,9 @@ class PlayerUI:
                 except Exception as e:
                     print("Warning: could not add player to team:", e)
             print("\nPlayer successfully registered!")
+            return "BACK"
         except ValueError as e:
             print("\nError:", e)
-
-if __name__ == "__main__":
-    PlayerUI().register_player_ui()
-
+        return "BACK"
 #        def register_player_is_empty(self, name, dob, address, phone, email, url, username, team):
 #           return not all([name, dob, address, phone, email, url, username, team])

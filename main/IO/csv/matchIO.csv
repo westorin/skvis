@@ -48,3 +48,18 @@ match_id,team1,team2,date,time,server_id,round,bracket,winner,loser,tournament_i
 47,hrútar,falcons,,,3_match_47,3,SE,hrútar,falcons,3,13-10,23,0,0
 48,furia,lego fans,,,3_match_48,3,SE,furia,lego fans,3,13-8,21,0,0
 49,hrútar,furia,,,3_match_49,4,SE,hrútar,furia,3,13-7,20,0,0
+50,spirit,greek,,,4_match_50,1,SE,greek,spirit,4,7-13,20,0,0
+51,faze,vitality,,,4_match_51,1,SE,faze,vitality,4,13-8,21,0,0
+52,taco,falcons,,,4_match_52,1,SE,taco,falcons,4,13-10,23,0,0
+53,mouz,hrútar,,,4_match_53,1,SE,hrútar,mouz,4,9-13,22,0,0
+54,furia,le france,,,4_match_54,1,SE,furia,le france,4,13-10,23,0,0
+55,legacy,lego fans,,,4_match_55,1,SE,legacy,lego fans,4,13-10,23,0,0
+56,aurora,g2,,,4_match_56,1,SE,g2,aurora,4,11-13,24,0,0
+57,jolasveinarnir,liquid,,,4_match_57,1,SE,jolasveinarnir,liquid,4,13-7,20,0,0
+58,greek,faze,,,4_match_58,2,SE,greek,faze,4,13-10,23,0,0
+59,taco,hrútar,,,4_match_59,2,SE,hrútar,taco,4,3-13,16,0,0
+60,furia,legacy,,,4_match_60,2,SE,legacy,furia,4,8-13,21,0,0
+61,g2,jolasveinarnir,,,4_match_61,2,SE,jolasveinarnir,g2,4,8-13,21,0,0
+62,greek,hrútar,,,4_match_62,3,SE,greek,hrútar,4,13-11,24,0,0
+63,legacy,jolasveinarnir,,,4_match_63,3,SE,legacy,jolasveinarnir,4,13-9,22,0,0
+64,greek,legacy,,,4_match_64,4,SE,legacy,greek,4,11-13,24,0,0

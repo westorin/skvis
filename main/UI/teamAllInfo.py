@@ -8,8 +8,8 @@ import math
 
 class TeamAllInfoUI():
     def __init__(self, logic):
-        self.logic = logic 
-        #Need to add: logic in the init
+        self.logic = logic
+         #Need to add: logic in the init
         data = DataWrapper() #<-- This can go
         logic = LogicWrapper(data) #<-- This can go
         #self.logic = logic

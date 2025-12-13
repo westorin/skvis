@@ -7,18 +7,26 @@ class ListOfPlayersUI():
     def __init__(self, logic):
         self.logic = logic
 
-    def print_list_of_players(self):
+    def print_list_of_players(self, isAdmin):
         self.list_of_players = self.logic.player_manager.sort_players_into_pers_of_ten()
         #self.list_of_players = LogicWrapper().list_of_players_logic.sort_players_into_pers_of_ten()
         #self.list_of_players = ListOfPlayersLogic().sort_players_into_pers_of_ten() #<-- This needs to go. Can replace it with the code above
         list_layer_counters = 1
 
-    
-        add_command = """|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
+        if(isAdmin == True):
+            add_command = """|\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|               Enter the command you want...                 |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t+=============================================================+\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|                     a. Create player.                       |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t+-----------------------------+-------------------------------+\t\t\t\t\t\t\t\t|"""
+
+        else:
+          add_command = """|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+-------------------------------------------------------------+\t\t\t\t\t\t\t\t|
-|\t\t\t\t\t\t\t|     Enter the command you want or name of the player...     |\t\t\t\t\t\t\t\t|
+|\t\t\t\t\t\t\t|               Enter the command you want...                 |\t\t\t\t\t\t\t\t|
 |\t\t\t\t\t\t\t+=============================+===============================+\t\t\t\t\t\t\t\t|"""
+        
 
         error_text ="""|\t\t\t\t\t\t+------------------------------------------------------------------------+  \t\t\t\t\t\t\t|
 |\t\t\t\t\t\t|                                                                        |  \t\t\t\t\t\t\t|
@@ -138,6 +146,8 @@ class ListOfPlayersUI():
                 return "BACK"
             elif(choice.lower() == "q"):
                 return "QUIT"
+            elif(choice.lower() == "a" and isAdmin == True):
+                return "CREATE_PLAYER"
             # TODO Need to add show a player
             else:
                 clear_screen()
@@ -150,3 +160,4 @@ class ListOfPlayersUI():
 
                 if(choice.lower() == "q"):
                     return "BACK"
+                
