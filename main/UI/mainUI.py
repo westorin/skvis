@@ -23,7 +23,8 @@ from main.UI.addplayertoteamUI import AddPlayerToTeamUI
 from main.UI.createplayerUI import PlayerUI
 
 class MainUI():
-    def __init__(self):
+    def __init__(self, logic):
+        self.logic = logic
         self.__homepage_ui = homepageUI(LogicWrapper(DataWrapper()))
         self.__ptot_ui = PickTimeOfTournamentUI(LogicWrapper(DataWrapper()))
         self.__list_of_teams_ui = ListOfTeamsUI(LogicWrapper(DataWrapper()))

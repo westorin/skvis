@@ -9,7 +9,8 @@ from main.models.matchtestmodel import MatchTestModel
 class MatchRepository:
     """Repository responsible for loading, storing and persisting Match objects.
     Data is loaded from CSV on initialization and written back on updates."""
-    def __init__(self) -> None:
+    def __init__(self, logic: object | None = None) -> None:
+        self.logic = logic
         self.io = MatchIO()
         self.matches = self.load_matches()
 
@@ -20,15 +21,25 @@ class MatchRepository:
         rows = self.io.read_file()
         matches: List[Match] = []
 
-        if not rows:
-            return matches
-
-        header = rows[0]
-        data_rows = rows[1:] if header and header[0] == "match_id" else rows
+        data_rows = []
+        for row in rows:
+            if not row:
+                continue
+            # Skip header rows defensively
+            if row[0] == "match_id" or row[0] == "MatchID":
+                continue
+            data_rows.append(row)
 
         for row in data_rows:
             if not row:
                 continue
+
+            # Skip rows that are clearly malformed or shifted (e.g. header duplication)
+            if len(row) < 15 or row[0] == "final_score":
+                continue
+
+            # Ensure compatibility if CSV has extra columns
+            row = row[:15]
 
             (
                 match_id,
@@ -66,9 +77,9 @@ class MatchRepository:
                 loser=loser or None,
                 tournament_id=tournament_id or None,
                 final_score=final_score or None,
-                total_rounds=int(total_rounds) if total_rounds else 0,
-                score1=int(score1) if score1 else 0,
-                score2=int(score2) if score2 else 0,
+                total_rounds=int(total_rounds) if str(total_rounds).isdigit() else 0,
+                score1=int(score1) if str(score1).isdigit() else 0,
+                score2=int(score2) if str(score2).isdigit() else 0,
             )
             matches.append(match)
 
@@ -171,4 +182,3 @@ class MatchRepository:
     def save_all(self) -> None:
         """Explicitly persist all matches to file."""
         self.save_to_file()
-        
