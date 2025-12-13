@@ -1,5 +1,5 @@
-match_id,team1,team2,date,time,server_id,round,bracket,winner,loser,tournament_id,final_score,total_rounds,score1,score2
-1,Legacy,Falcons,,,1_match_1,1,WB,Legacy,Falcons,1,13-12,25,0,0
+tname,match_id,team1,team2,date,time,server_id,round,bracket,winner,loser,tournament_id,final_score,total_rounds,score1,score2
+hr,1,Legacy,Falcons,,,1_match_1,1,WB,Legacy,Falcons,1,13-12,25,0,0
 2,Lego Fans,Liquid,,,1_match_2,1,WB,Lego Fans,Liquid,1,13-7,20,0,0
 3,Taco,Le France,,,1_match_3,1,WB,Taco,Le France,1,13-7,20,0,0
 4,Greek,Jolasveinarnir,,,1_match_4,1,WB,Jolasveinarnir,Greek,1,10-13,23,0,0

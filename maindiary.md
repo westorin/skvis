@@ -394,6 +394,5 @@ ToDo UI:
  
 - Skýrsla
 - Myndband
-- Notendaprófanir
 
-Staða á hópnum: 
+Staða á hópnum: Eftir mikið stress í dag náðum við loksins að klára. Takk fyrir okkur.
