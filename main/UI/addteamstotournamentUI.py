@@ -45,7 +45,6 @@ class AddTeamsToTournamentUI:
         if len(selected) != 16:
             print("You must select exactly 16 teams to proceed.")
             return
-        return selected
 
         try:
             self.logic.tournament_manager.set_teams_for_tournament(tournament_name, selected)
