@@ -18,30 +18,28 @@ from main.UI.tournamentInfo import TournamentInfoUI
 from main.UI.schedule import ScheduleUI
 from main.UI.tourLeaderBoard import TournamentLeaderBoardUI
 from main.UI.tournamentMatch import TournamentMatchsUI
-from main.UI.TournamentUI import TournamentUI
+#from main.UI.TournamentUI import TournamentUI
 
 class MainUI():
-    def __init__(self, logic_wrapper):
-        self.logic_wrapper = logic_wrapper
-
-        self.__homepage_ui = homepageUI(self.logic_wrapper)
-        self.__ptot_ui = PickTimeOfTournamentUI(self.logic_wrapper)
-        self.__list_of_teams_ui = ListOfTeamsUI(self.logic_wrapper)
-        self.__login_ui = LoginUI(self.logic_wrapper)
-        self.__list_of_players_ui = ListOfPlayersUI(self.logic_wrapper)
-        self.__add_tournament_ui = AddTournamentUI(self.logic_wrapper)
-        self.__team_ui = TeamUI(self.logic_wrapper)
-        self.__team_all_info_ui = TeamAllInfoUI(self.logic_wrapper)
-        self.__past_tournaments_list_ui = PastTournamentsUI(self.logic_wrapper)
-        self.__add_team_ui = AddTeamUI(self.logic_wrapper)
-        self.__team_leader_board_ui = TeamLeaderBoardUI(self.logic_wrapper)
-        self.__on_going_tournaments_ui = OnGoingTournamentsUI(self.logic_wrapper)
-        self.__future_tournaments_ui = FutureTournamentsUI(self.logic_wrapper)
-        self.__tournament_info_ui = TournamentInfoUI(self.logic_wrapper)
-        self.__schedule_ui = ScheduleUI(self.logic_wrapper)
-        self.__tour_leader_ui = TournamentLeaderBoardUI(self.logic_wrapper)
-        self.__tournament_matchs_ui = TournamentMatchsUI(self.logic_wrapper)
-        self.__input_match_results_ui = TournamentUI(self.logic_wrapper)
+    def __init__(self):
+        self.__homepage_ui = homepageUI(LogicWrapper(DataWrapper()))
+        self.__ptot_ui = PickTimeOfTournamentUI(LogicWrapper(DataWrapper()))
+        self.__list_of_teams_ui = ListOfTeamsUI(LogicWrapper(DataWrapper()))
+        self.__login_ui = LoginUI(LogicWrapper(DataWrapper()))
+        self.__list_of_players_ui = ListOfPlayersUI(LogicWrapper(DataWrapper()))
+        self.__add_tournament_ui = AddTournamentUI(LogicWrapper(DataWrapper()))
+        self.__team_ui = TeamUI(LogicWrapper(DataWrapper()))
+        self.__team_all_info_ui = TeamAllInfoUI(LogicWrapper(DataWrapper()))
+        self.__past_tournaments_list_ui = PastTournamentsUI(LogicWrapper(DataWrapper()))
+        self.__add_team_ui = AddTeamUI(LogicWrapper(DataWrapper()))
+        self.__team_leader_board_ui = TeamLeaderBoardUI(LogicWrapper(DataWrapper()))
+        self.__on_going_tournaments_ui = OnGoingTournamentsUI(LogicWrapper(DataWrapper()))
+        self.__future_tournaments_ui = FutureTournamentsUI(LogicWrapper(DataWrapper()))
+        self.__tournament_info_ui = TournamentInfoUI(LogicWrapper(DataWrapper()))
+        self.__schedule_ui = ScheduleUI(LogicWrapper(DataWrapper()))
+        self.__tour_leader_ui = TournamentLeaderBoardUI(LogicWrapper(DataWrapper()))
+        self.__tournament_matchs_ui = TournamentMatchsUI(LogicWrapper(DataWrapper()))
+        self.__input_match_results_ui = TournamentUI(LogicWrapper(DataWrapper()))
 
         self.current_ui_page = "Homepage"
         self.isAdmin = False
