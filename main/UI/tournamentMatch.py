@@ -14,15 +14,10 @@ class TournamentMatchsUI():
         matches = self.logic.match_manager.get_matches_for_tournament_by_name(tournament_name)
 
 
-        header_text = f"""+----------+----------------------+-----+----------------------+-------+----------------------+
+        header_text = f"""        
++----------+----------------------+-----+----------------------+-------+----------------------+
 | Game Nr. | Red Team             | Vs. | Blue Team            | score | Winner               | 
 +==========+======================+=====+======================+=======+======================+"""
-        
-        footer_text = """+----------+----------------------+-----+----------------------+-------+----------------------+
-| Enter... | b. To go back to last page.                       | q. To quit the program.      |
-+----------+---------------------------------------------------+------------------------------+
-"""
-
         print(header_text)
 
         if not matches:
@@ -37,7 +32,7 @@ class TournamentMatchsUI():
                 winner = (match.winner or "-").ljust(20)
 
                 print(f"| {game_nr} | {team1} | Vs. | {team2} | {score} | {winner} |")
-                print(footer_text)
+                print("+----------+----------------------+-----+----------------------+-------+----------------------+")
 
         choice = str(input(">>>> "))
 
