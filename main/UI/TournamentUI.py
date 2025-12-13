@@ -2,20 +2,21 @@ from main.wrappers.datawrapper import DataWrapper
 from main.wrappers.logicwrapper import LogicWrapper
 
 class TournamentUI():
-    def tournament_has_matches(tournament):
-        data = DataWrapper()
-        logic = LogicWrapper(data)
-        return len(logic.match_manager.repo.get_by_tournament(tournament.tournament_id)) > 0
+    def __init__(self, logic):
+        self.logic = logic
 
-    def run_tournament_ui(self, tournment_name: str) -> str:
-        data = DataWrapper()
-        logic = LogicWrapper(data)
-        
-        tournaments = data.tournaments.get_all()
-        print("=== Available Tournaments ===")
+    def tournament_has_matches(self, tournament):
+        return len(self.logic.match_manager.repo.get_by_tournament(tournament.tournament_id)) > 0
 
-        choice = int(input("Select a tournament by number: ").strip()) - 1
-        selected_tournament = tournaments[choice]
+    def run_tournament_ui(self, tournament) -> str:
+        # Allow UI to pass either Tournament object or tournament name
+        if isinstance(tournament, str):
+            selected_tournament = self.logic.tournament_manager.get_tournament(tournament)
+            if selected_tournament is None:
+                raise ValueError(f"Tournament '{tournament}' not found.")
+        else:
+            selected_tournament = tournament
+
         tname = selected_tournament.name
 
         print(f"\nChoose tournament execution mode")
@@ -39,9 +40,9 @@ class TournamentUI():
 
         if mode == "1":
             if fmt == "1":
-                result = logic.tournament_manager.run_full_simulation(selected_tournament)
+                result = self.logic.tournament_manager.run_full_simulation(selected_tournament)
             elif fmt == "2":
-                result = logic.tournament_manager.run_single_elimination(selected_tournament)
+                result = self.logic.tournament_manager.run_single_elimination(selected_tournament)
             else:
                 raise ValueError("Invalid format selected.")
         elif mode == "2":
@@ -52,14 +53,14 @@ class TournamentUI():
                 print("Manual mode requires a fresh tournament")
                 print("Please create a new tournament for manual mode")
                 exit()
-            result = logic.tournament_manager.run_single_elimination_manual(selected_tournament)
+            result = self.logic.tournament_manager.run_single_elimination_manual(selected_tournament)
             while result["status"] == "awaiting_input":
                 match = result["match"]
                 print(f"\nMatch {match.match_id}: {match.team1} vs {match.team2}")
                 score1 = int(input(f"Enter score for {match.team1}: ").strip())
                 score2 = int(input(f"Enter score for {match.team2}: ").strip())
-                logic.match_manager.set_match_result(match.match_id, score1, score2)
-                result = logic.tournament_manager.run_single_elimination_manual(selected_tournament)
+                self.logic.match_manager.set_match_result(match.match_id, score1, score2)
+                result = self.logic.tournament_manager.run_single_elimination_manual(selected_tournament)
         else:
             raise ValueError("Invalid mode selected.")
 

@@ -18,10 +18,13 @@ from main.UI.tournamentInfo import TournamentInfoUI
 from main.UI.schedule import ScheduleUI
 from main.UI.tourLeaderBoard import TournamentLeaderBoardUI
 from main.UI.tournamentMatch import TournamentMatchsUI
-#from main.UI.TournamentUI import TournamentUI
+from main.UI.tournamentUI import TournamentUI
+from main.UI.addplayertoteamUI import AddPlayerToTeamUI
+from main.UI.createplayerUI import PlayerUI
 
 class MainUI():
-    def __init__(self):
+    def __init__(self, logic):
+        self.logic = logic
         self.__homepage_ui = homepageUI(LogicWrapper(DataWrapper()))
         self.__ptot_ui = PickTimeOfTournamentUI(LogicWrapper(DataWrapper()))
         self.__list_of_teams_ui = ListOfTeamsUI(LogicWrapper(DataWrapper()))
@@ -39,7 +42,9 @@ class MainUI():
         self.__schedule_ui = ScheduleUI(LogicWrapper(DataWrapper()))
         self.__tour_leader_ui = TournamentLeaderBoardUI(LogicWrapper(DataWrapper()))
         self.__tournament_matchs_ui = TournamentMatchsUI(LogicWrapper(DataWrapper()))
-        #self.__input_match_results_ui = TournamentUI(LogicWrapper(DataWrapper()))
+        self.__input_match_results_ui = TournamentUI(LogicWrapper(DataWrapper()))
+        self.__add_player_to_team_ui = AddPlayerToTeamUI()
+        self.__create_player_ui = PlayerUI()
 
         self.current_ui_page = "Homepage"
         self.isAdmin = False
@@ -185,26 +190,21 @@ class MainUI():
                     self.nameOfTeamCaptTeamsName = action[1]
 
             if(self.current_ui_page == "LIST_OF_PLAYERS"):
-                action = self.__list_of_players_ui.print_list_of_players()
+                action = self.__list_of_players_ui.print_list_of_players(self.isAdmin)
+
                 
                 if(action == "BACK"):
                     self.current_ui_page = "Homepage"
                 
                 elif(action == "QUIT"):
-                    break
-
-            if(self.current_ui_page == "ADD_TOURNAMENT"):
-                print("not implamented")
-                break
-
-            if(self.current_ui_page == "PICK_SEARCH"):
-                print("not implamented")
-                break
+                    break  
+                elif(action == "CREATE_PLAYER"):
+                    self.current_ui_page = "ADD_PLAYER"
 
             if(self.current_ui_page == "A_TEAM"):
                 if((self.nameOfTeamCaptTeamsName.lower() == self.nameOfATeam.lower() and self.isATeamCapt == True) or self.isAdmin == True):
                     action = self.__team_all_info_ui.print_team_info(self.nameOfATeam, self.isAdmin, self.isATeamCapt)
-                
+                    
                 else:
                     action = self.__team_ui.print_team(self.nameOfATeam)
                 
@@ -214,6 +214,9 @@ class MainUI():
 
                 elif(action == "QUIT"):
                     break
+                elif(action[0] == "ADD_PLAYER_TO_TEAM"):
+                    self.current_ui_page = "ADD_PLAYER_TO_TEAM"
+                    
 
             if(self.current_ui_page == "PAST_TOURNAMENTS"):
                 action = self.__past_tournaments_list_ui.print_tournaments()
@@ -308,4 +311,25 @@ class MainUI():
                     self.current_ui_page = "Homepage"
 
             if(self.current_ui_page == "INPUT_MATCH_RESULTS"):
-                action = self.__input_match_results_ui.run_tournament_ui()
+                action = self.__input_match_results_ui.run_tournament_ui(self.nameOfATournament)
+                if(action == "BACK"):
+                    self.current_ui_page = "TOURNAMENT_INFO"
+
+            if (self.current_ui_page == "ADD_PLAYER_TO_TEAM"):
+                action = self.__add_player_to_team_ui.add_player_ui(self.nameOfATeam)
+                
+                if(action == "BACK"):
+                    self.current_ui_page = "A_TEAM"
+                
+                elif(action == "QUIT"):
+                    break
+
+            if (self.current_ui_page == "ADD_PLAYER"):
+                player_ui = PlayerUI()
+                action = player_ui.register_player_ui()
+                
+                if(action == "BACK"):
+                    self.current_ui_page = "LIST_OF_PLAYERS"
+                
+                elif(action == "QUIT"):
+                    break
