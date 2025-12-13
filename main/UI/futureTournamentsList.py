@@ -4,7 +4,7 @@ from main.logic.tournamentsList import TournamentsListLogic
 from main.logic.clearScreenInTerminal import clear_screen
 
 class FutureTournamentsUI():
-    def __init__(self, logic) -> None:
+    def __init__(self, logic):
         self.logic = logic
 
 

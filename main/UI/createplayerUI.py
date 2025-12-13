@@ -11,8 +11,9 @@ from main.wrappers.datawrapper import DataWrapper
 from main.wrappers.logicwrapper import LogicWrapper
 
 class PlayerUI:
-    def __init__(self,logic) -> None:
-        self.logic = logic
+    def __init__(self):
+        data = DataWrapper()
+        logic = LogicWrapper(data)
         self.pm = logic.player_manager
 
     def register_player_ui(self):

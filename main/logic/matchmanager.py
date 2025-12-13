@@ -1,5 +1,6 @@
 from main.repo.matchrepo import MatchRepository
 from main.models.matchmodel import Match
+from main.repo.tournamentrepo import TournamentRepository
 
 import csv
 import os
@@ -9,9 +10,10 @@ from typing import Any, Optional, List, Tuple
 class MatchManager:
     """Responsible for creating matches, updating results and simulating matches."""
 
-    def __init__(self, match_repo: Optional[MatchRepository] = None) -> None:
+    def __init__(self, match_repo: Optional[MatchRepository] = None, tournament_repo: Optional[TournamentRepository] = None) -> None:
         """match_repo: Optional repository injection for testing. If None, a new MatchRepository is created."""
         self.repo: MatchRepository = match_repo or MatchRepository()
+        self.tournament_repo: TournamentRepository = tournament_repo or TournamentRepository()
     
     def create_match(self, data: dict[str, Any]) -> Match:
         """Create a new match from a data dictionary and store it in the repository."""
@@ -325,3 +327,7 @@ class MatchManager:
     def finalize_match(self, winner: str, loser: str) -> None:
         """Placeholder for future work: update CSV/team stats/bracket advancement."""
         pass
+
+    def get_matches_for_tournament_by_name(self, tournament_name: str) -> List[Match]:
+        tournament = self.tournament_repo.get_by_name(tournament_name)
+        return self.repo.get_by_tournament(tournament.tournament_id)

@@ -1,5 +1,6 @@
 from main.models.playermodel import Player
 from typing import Optional, TYPE_CHECKING, Any
+from main.logic.listOfPlayers import ListOfPlayersLogic
 
 if TYPE_CHECKING:
     from main.repo.playerrepo import PlayerRepository
@@ -12,6 +13,10 @@ class PlayerManager:
                        team_manager: Optional manager used to sync team/username changes."""
         self.player_repo = player_repo
         self.team_manager = team_manager
+
+    def sort_players_into_pers_of_ten(self):
+        logic = ListOfPlayersLogic()
+        return logic.sort_players_into_pers_of_ten()
 
     def register_player(self, name: str, dob: str, address: str, phone: str, email: str, url: str, username: str, team: str) -> Player:
         """Register a new player and store them in the repository. Returns the created player."""

@@ -9,7 +9,7 @@ class ListOfTeamsLogic():
 
     def __init__(self) -> None:
         """Initialize the logic layer with access to the team repository."""
-        self.team_rep: TeamRepository = TeamRepository()
+        self.team_repo: TeamRepository = TeamRepository()
 
     def get_all_teams(self) -> List["Team"]:
         """Return all Team objects currently loaded in the repository."""

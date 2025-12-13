@@ -39,7 +39,7 @@ class MainUI():
         self.__schedule_ui = ScheduleUI(LogicWrapper(DataWrapper()))
         self.__tour_leader_ui = TournamentLeaderBoardUI(LogicWrapper(DataWrapper()))
         self.__tournament_matchs_ui = TournamentMatchsUI(LogicWrapper(DataWrapper()))
-        self.__input_match_results_ui = TournamentUI(LogicWrapper(DataWrapper()))
+        #self.__input_match_results_ui = TournamentUI(LogicWrapper(DataWrapper()))
 
         self.current_ui_page = "Homepage"
         self.isAdmin = False

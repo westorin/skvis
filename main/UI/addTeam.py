@@ -5,8 +5,7 @@ from main.models.teammodel import Team
 import math
 
 class AddTeamUI():
-
-    def __init__(self, logic) -> None:
+    def __init__(self, logic):
         self.logic = logic
 
     def save_new_team_and_players(

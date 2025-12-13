@@ -5,8 +5,8 @@ from main.logic.clearScreenInTerminal import clear_screen
 
 
 class TeamLeaderBoardUI():
-     def __init__(self):
-         pass
+     def __init__(self, logic):
+         self.logic = logic
      
      def print_team_leader_board(self):
          

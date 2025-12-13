@@ -1,8 +1,8 @@
 from main.logic.clearScreenInTerminal import clear_screen
 
 class PickLeaderBoardUI():
-    def __init__(self, logic):
-        self.logic = logic
+    def __init__(self):
+        pass
     
 
     def print_plb_ui(self):
