@@ -14,3 +14,22 @@ match_id,round,bracket,team1,team2,winner,loser,final_score,total_rounds
 32,3,SE,vitality,greek,vitality,greek,13-7,20
 33,3,SE,spirit,furia,furia,spirit,6-13,19
 34,4,SE,vitality,furia,furia,vitality,9-13,22
+80,1,WB,aurora,spirit,spirit,aurora,8-13,21
+81,1,WB,greek,jolasveinarnir,jolasveinarnir,greek,10-13,23
+82,1,WB,lego fans,mouz,mouz,lego fans,12-13,25
+83,1,WB,taco,g2,g2,taco,10-13,23
+84,1,WB,falcons,hrútar,hrútar,falcons,11-13,24
+85,1,WB,furia,legacy,legacy,furia,11-13,24
+86,1,WB,faze,liquid,liquid,faze,8-13,21
+87,1,WB,le france,vitality,le france,vitality,13-7,20
+88,2,WB,spirit,jolasveinarnir,jolasveinarnir,spirit,5-13,18
+89,2,WB,mouz,g2,mouz,g2,13-6,19
+90,2,WB,hrútar,legacy,legacy,hrútar,12-13,25
+91,2,WB,liquid,le france,liquid,le france,13-12,25
+92,1,LB,aurora,greek,greek,aurora,8-13,21
+93,1,LB,lego fans,taco,taco,lego fans,10-13,23
+94,1,LB,falcons,furia,furia,falcons,11-13,24
+95,1,LB,faze,vitality,vitality,faze,12-13,25
+96,3,WB,jolasveinarnir,mouz,jolasveinarnir,mouz,13-11,24
+97,3,WB,legacy,liquid,legacy,liquid,13-10,23
+98,4,WB,jolasveinarnir,legacy,jolasveinarnir,legacy,13-11,24

@@ -167,10 +167,17 @@ class MatchRepository:
         return None
     
     def get_next_id(self) -> int:
-        """Return the next available match ID."""
-        if not self.matches:
+        """Return the next available numeric match ID, ignoring malformed IDs."""
+        numeric_ids = []
+        for m in self.matches:
+            try:
+                numeric_ids.append(int(m.match_id))
+            except (ValueError, TypeError):
+                continue
+
+        if not numeric_ids:
             return 1
-        return max(int(m.match_id) for m in self.matches) + 1
+        return max(numeric_ids) + 1
     
     def get_by_tournament(self, tournament_id: str) -> List[Match]:
         result: List[Match] = []

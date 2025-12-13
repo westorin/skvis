@@ -1,6 +1,4 @@
-from main.wrappers.datawrapper import DataWrapper
-from main.wrappers.logicwrapper import LogicWrapper
-
+from main.UI.addteamstotournamentUI import AddTeamsToTournamentUI
 '''
 To run the main UI type this into terminal: 
 
@@ -9,8 +7,6 @@ python3 -m main.UI.addtournament
 class AddTournamentUI:
     def __init__(self, logic):
         self.logic = logic
-        data = DataWrapper()
-        logic = LogicWrapper(data)
         self.tm = logic.tournament_manager
 
     def add_tournament_ui(self) -> None:
@@ -40,8 +36,33 @@ class AddTournamentUI:
 
         try:
             self.tm.create_tournament(data)
-            print("Tournament successfully created!")
-            input(">>>> ")
+            print("Tournament successfully created!\n")
+
+            tournaments = self.tm.get_all_tournaments()
+
+            while True:
+                choice = "1"
+                if not choice.isdigit():
+                    print("Please enter a number.")
+                    continue
+
+                choice = int(choice) - 1
+                if 0 <= choice < len(tournaments):
+                    selected_tournament = tournaments[choice]
+                    break
+                else:
+                    print("Invalid selection.")
+
+            add_teams_ui = AddTeamsToTournamentUI(self.logic)
+            selected_teams = add_teams_ui.add_teams_ui()
+
+            if selected_teams:
+                self.tm.set_teams_for_tournament(
+                    selected_tournament.name,
+                    selected_teams
+                )
+                print("Teams successfully added to the tournament!")
+
             return "BACK"
         except ValueError as e:
             print("Error:", e)

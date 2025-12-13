@@ -1028,5 +1028,48 @@ class TournamentManager:
             "status": "completed",
             "summary": summary,
         }
+    def get_all_tournaments(self):
+        return self.tournaments.get_all()
+    
+    # def set_teams_for_tournament(self, tournament_name: str, team_names: List[str]) -> None:
+    #     """
+    #     Assign exactly 16 teams to a tournament.
+    #     Overwrites any existing team list.
+    #     """
+    #     tournament = self.get_tournament(tournament_name)
+    #     if tournament is None:
+    #         raise ValueError("Tournament does not exist.")
+
+    #     if len(team_names) != 16:
+    #         raise ValueError("Exactly 16 teams must be selected.")
+
+    #     # Normalize + ensure uniqueness (case-insensitive)
+    #     normalized = []
+    #     seen = set()
+    #     for name in team_names:
+    #         key = name.strip().lower()
+    #         if key in seen:
+    #             raise ValueError("Duplicate team names are not allowed.")
+    #         seen.add(key)
+    #         normalized.append(name.strip())
+
+    #     # Validate teams exist and have valid player count
+    #     valid_teams: List[str] = []
+    #     for team_name in normalized:
+    #         team = self.teams.get_team(team_name)
+    #         if team is None:
+    #             raise ValueError(f"Team '{team_name}' does not exist.")
+
+    #         player_count = len(team.players)
+    #         if player_count < 3 or player_count > 5:
+    #             raise ValueError(
+    #                 f"Team '{team_name}' must have between 3 and 5 players "
+    #                 f"(currently {player_count})."
+    #             )
+
+    #         valid_teams.append(team.name)
+
+    #     tournament.teams = valid_teams
+    #     self.tournaments.update_tournament(tournament)
 
         

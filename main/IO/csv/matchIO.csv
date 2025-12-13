@@ -1,5 +1,6 @@
-tname,match_id,team1,team2,date,time,server_id,round,bracket,winner,loser,tournament_id,final_score,total_rounds,score1,score2
-hr,1,Legacy,Falcons,,,1_match_1,1,WB,Legacy,Falcons,1,13-12,25,0,0
+match_id,team1,team2,date,time,server_id,round,bracket,winner,loser,tournament_id,final_score,total_rounds,score1,score2
+tname,match_id,team1,team2,date,time,server_id,round,bracket,winner,loser,tournament_id,0,0,0
+hr,1,Legacy,Falcons,,,1_match_1,1,WB,Legacy,Falcons,1,0,25,0
 2,Lego Fans,Liquid,,,1_match_2,1,WB,Lego Fans,Liquid,1,13-7,20,0,0
 3,Taco,Le France,,,1_match_3,1,WB,Taco,Le France,1,13-7,20,0,0
 4,Greek,Jolasveinarnir,,,1_match_4,1,WB,Jolasveinarnir,Greek,1,10-13,23,0,0
@@ -63,3 +64,37 @@ hr,1,Legacy,Falcons,,,1_match_1,1,WB,Legacy,Falcons,1,13-12,25,0,0
 62,greek,hrútar,,,4_match_62,3,SE,greek,hrútar,4,13-11,24,0,0
 63,legacy,jolasveinarnir,,,4_match_63,3,SE,legacy,jolasveinarnir,4,13-9,22,0,0
 64,greek,legacy,,,4_match_64,4,SE,legacy,greek,4,11-13,24,0,0
+65,jolasveinarnir,lego fans,,,2_match_65,1,SE,jolasveinarnir,lego fans,2,13-10,23,0,0
+66,greek,hrútar,,,2_match_66,1,SE,greek,hrútar,2,13-11,24,0,0
+67,legacy,spirit,,,2_match_67,1,SE,legacy,spirit,2,13-8,21,0,0
+68,taco,faze,,,2_match_68,1,SE,faze,taco,2,12-13,25,0,0
+69,g2,le france,,,2_match_69,1,SE,le france,g2,2,12-13,25,0,0
+70,vitality,furia,,,2_match_70,1,SE,vitality,furia,2,13-8,21,0,0
+71,aurora,falcons,,,2_match_71,1,SE,aurora,falcons,2,13-11,24,0,0
+72,mouz,liquid,,,2_match_72,1,SE,mouz,liquid,2,13-5,18,0,0
+73,jolasveinarnir,greek,,,2_match_73,2,SE,jolasveinarnir,greek,2,13-10,23,0,0
+74,legacy,faze,,,2_match_74,2,SE,faze,legacy,2,11-13,24,0,0
+75,le france,vitality,,,2_match_75,2,SE,le france,vitality,2,13-11,24,0,0
+76,aurora,mouz,,,2_match_76,2,SE,mouz,aurora,2,12-13,25,0,0
+77,jolasveinarnir,faze,,,2_match_77,3,SE,jolasveinarnir,faze,2,13-11,24,0,0
+78,le france,mouz,,,2_match_78,3,SE,mouz,le france,2,10-13,23,0,0
+79,jolasveinarnir,mouz,,,2_match_79,4,SE,mouz,jolasveinarnir,2,12-13,25,0,0
+80,aurora,spirit,,,5_match_80,1,WB,spirit,aurora,5,8-13,21,0,0
+81,greek,jolasveinarnir,,,5_match_81,1,WB,jolasveinarnir,greek,5,10-13,23,0,0
+82,lego fans,mouz,,,5_match_82,1,WB,mouz,lego fans,5,12-13,25,0,0
+83,taco,g2,,,5_match_83,1,WB,g2,taco,5,10-13,23,0,0
+84,falcons,hrútar,,,5_match_84,1,WB,hrútar,falcons,5,11-13,24,0,0
+85,furia,legacy,,,5_match_85,1,WB,legacy,furia,5,11-13,24,0,0
+86,faze,liquid,,,5_match_86,1,WB,liquid,faze,5,8-13,21,0,0
+87,le france,vitality,,,5_match_87,1,WB,le france,vitality,5,13-7,20,0,0
+88,spirit,jolasveinarnir,,,5_match_88,2,WB,jolasveinarnir,spirit,5,5-13,18,0,0
+89,mouz,g2,,,5_match_89,2,WB,mouz,g2,5,13-6,19,0,0
+90,hrútar,legacy,,,5_match_90,2,WB,legacy,hrútar,5,12-13,25,0,0
+91,liquid,le france,,,5_match_91,2,WB,liquid,le france,5,13-12,25,0,0
+92,aurora,greek,,,5_match_92,1,LB,greek,aurora,5,8-13,21,0,0
+93,lego fans,taco,,,5_match_93,1,LB,taco,lego fans,5,10-13,23,0,0
+94,falcons,furia,,,5_match_94,1,LB,furia,falcons,5,11-13,24,0,0
+95,faze,vitality,,,5_match_95,1,LB,vitality,faze,5,12-13,25,0,0
+96,jolasveinarnir,mouz,,,5_match_96,3,WB,jolasveinarnir,mouz,5,13-11,24,0,0
+97,legacy,liquid,,,5_match_97,3,WB,legacy,liquid,5,13-10,23,0,0
+98,jolasveinarnir,legacy,,,5_match_98,4,WB,jolasveinarnir,legacy,5,13-11,24,0,0

@@ -2,6 +2,8 @@ from main.wrappers.datawrapper import DataWrapper
 from main.wrappers.logicwrapper import LogicWrapper
 
 class AddTeamsToTournamentUI:
+    def __init__(self,logic):
+        self.logic = logic
     def add_teams_ui(self):
         print("=== Add Teams to Tournament ===")
 
@@ -43,15 +45,10 @@ class AddTeamsToTournamentUI:
         if len(selected) != 16:
             print("You must select exactly 16 teams to proceed.")
             return
+        return selected
 
         try:
             self.logic.tournament_manager.set_teams_for_tournament(tournament_name, selected)
             print(f"Teams added to tournament '{tournament_name}' successfully.")
         except Exception as e:
             print("Error:", e)
-
-if __name__ == "__main__":
-    data = DataWrapper()
-    logic = LogicWrapper(data)
-    ui = AddTeamsToTournamentUI(logic)
-    ui.add_teams_ui()
